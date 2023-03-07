@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine.AI;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class CharacterConrtoller : MonoBehaviour
 {
@@ -14,7 +14,7 @@ public class CharacterConrtoller : MonoBehaviour
 
     void Start()
     {
-        Debug.Log("Hello");
+
     }
 
     void Update()
@@ -26,14 +26,13 @@ public class CharacterConrtoller : MonoBehaviour
     }
 
     #region Methode
-
+    
     private void Moving()
     {
         Ray movePosition = _camera.ScreenPointToRay(Input.mousePosition);
 
         if (Physics.Raycast(movePosition, out var hitInfo))
         {
-            Debug.Log(hitInfo);
             _agent.SetDestination(hitInfo.point);
         }
     }
@@ -42,5 +41,8 @@ public class CharacterConrtoller : MonoBehaviour
     {
         //Action exécuté par le joueur
     }
+
+
+    
     #endregion Methode
 }

@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class PNJDetections : MonoBehaviour
 {
+    #region Attributs
 
-    [SerializeField] private float _radius = 0f;
-    [Range(0, 360)]
+    [SerializeField] private float _radius = 0f; [Range(0, 360)]
     [SerializeField] private float _angle = 0f;
 
     [SerializeField] private GameObject _playerRef = null;
@@ -15,6 +15,10 @@ public class PNJDetections : MonoBehaviour
     [SerializeField] private LayerMask _obstructionMask;
 
     [SerializeField] private bool _isCanSeePlayer = false;
+
+    #endregion Attributs
+
+    #region Propertie
 
     public float Radius
     {
@@ -42,11 +46,17 @@ public class PNJDetections : MonoBehaviour
 
     public GameObject PlayerRef => _playerRef;
 
+    #endregion Properties
+
     private void Start()
     {
         StartCoroutine(FOVRoutine());
     }
 
+    /// <summary>
+    /// je cormprend pas ALEEED
+    /// </summary>
+    /// <returns></returns>
     private IEnumerator FOVRoutine()
     {
         WaitForSeconds wait = new WaitForSeconds(0.2f);
