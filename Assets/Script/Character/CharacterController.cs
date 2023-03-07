@@ -19,7 +19,7 @@ public class CharacterConrtoller : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButton(1))
         {
             Moving();
         }
@@ -38,5 +38,9 @@ public class CharacterConrtoller : MonoBehaviour
         }
     }
 
+    private void Action()
+    {
+        //Action exécuté par le joueur
+    }
     #endregion Methode
 }
