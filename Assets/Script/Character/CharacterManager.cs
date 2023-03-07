@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class CharacterManager : MonoBehaviour
 {
@@ -41,6 +42,15 @@ public class CharacterManager : MonoBehaviour
             CharacterController.Moving();
             Moving Character to destination
             */
+        }
+
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            //rotation de la caméra
+        }
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            //rotation de la caméra
         }
     }
 }
