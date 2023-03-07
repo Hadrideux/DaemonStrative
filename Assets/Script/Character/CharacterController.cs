@@ -12,12 +12,12 @@ public class CharacterConrtoller : MonoBehaviour
 
     #endregion Attributs
 
-    void start()
+    void Start()
     {
         Debug.Log("Hello");
     }
 
-    void update()
+    void Update()
     {
         if (Input.GetMouseButtonDown(1))
         {
