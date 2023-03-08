@@ -16,6 +16,8 @@ public class UIController : MonoBehaviour
     }
     */
 
+    #region Mono
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,20 +35,25 @@ public class UIController : MonoBehaviour
 
     }
 
+    #endregion Mono
+
     #region Methode
 
+    //Active l'UI de pause
     private void pauseGame()
     {
         _pauseUI.SetActive(true);
         Time.timeScale = 0;
     }
 
+    //Desactive l'ui de pause
     public void ResumeGame()
     {
         _pauseUI.SetActive(false);
         Time.timeScale = 1;
     }
 
+    //Quit l'application
     public void QuitGame()
     {
         Application.Quit();

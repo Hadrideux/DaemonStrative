@@ -9,25 +9,24 @@ public class PNJController : MonoBehaviour
 
     [SerializeField] private GameObject _interactUI = null;
 
-    //[SerializeField] private GameObject _frontTrigger = null;
-    //[SerializeField] private GameObject _backTrigger = null;
+    #region Mono
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-
-        
     }
+
+    #endregion Mono
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Player")
+        if (other.CompareTag("Player"))
         {
             Debug.Log(other.tag);
             UIInteract(true);
@@ -42,7 +41,10 @@ public class PNJController : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        UIInteract(false);
+        if (!other.CompareTag("Player"))
+        {
+            UIInteract(false);
+        }
     }
 
     public void UIInteract(bool value)
