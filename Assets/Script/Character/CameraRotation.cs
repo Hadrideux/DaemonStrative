@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Net.Sockets;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 
@@ -12,26 +13,13 @@ public class CameraRotation : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _offSet = transform.position - _target.transform.position;
+        _offSet = transform.position - _target.position;
     }
 
     // Update is called once per frame
     void Update()
     {
-        CameraAngle();
-        transform.LookAt(_target.transform.position);
+        transform.LookAt(_target.position);
     }
 
-    private void CameraAngle()
-    {
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            transform.RotateAround(_target.transform.position, Vector3.up, 90f);
-        }
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            transform.RotateAround(_target.transform.position, Vector3.up, -90f);
-        }
-        transform.position = _target.transform.position + _offSet;
-    }
 }

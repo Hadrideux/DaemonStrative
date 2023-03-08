@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 
 public class UIManager : Singleton<UIManager>
 {
-    [SerializeField] private RectTransform _interactUI = null; 
+    [SerializeField] private GameObject _interactUI = null; 
     
     // Start is called before the first frame update
     void Start()
@@ -26,11 +26,4 @@ public class UIManager : Singleton<UIManager>
     {
 
     }
-    public void UIInteract()
-    {
-        
-        //Display de l'ui d'interaction
-    }
-
-
 }

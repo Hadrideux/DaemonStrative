@@ -9,6 +9,9 @@ public class PNJController : MonoBehaviour
 
     [SerializeField] private GameObject _interactUI = null;
 
+    //[SerializeField] private GameObject _frontTrigger = null;
+    //[SerializeField] private GameObject _backTrigger = null;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,9 +27,9 @@ public class PNJController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Player" )
+        if(other.tag == "Player")
         {
-            //UIManager.Instance.UIInteract();
+            Debug.Log(other.tag);
             UIInteract(true);
 
             if (Input.GetKeyDown(KeyCode.E))
@@ -34,8 +37,7 @@ public class PNJController : MonoBehaviour
                 //PNJManager.Instance.TargetPnj = ;
                 PNJManager.Instance.Interact();
             }
-        }
-        
+        }        
     }
 
     private void OnTriggerExit(Collider other)
@@ -46,5 +48,6 @@ public class PNJController : MonoBehaviour
     public void UIInteract(bool value)
     {
         _interactUI.SetActive(value);
+        //Display de l'ui d'interaction
     }
 }
