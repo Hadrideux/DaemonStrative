@@ -19,7 +19,7 @@ public class CharacterConrtoller : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButton(1))
+        if (Input.GetMouseButtonDown(1))
         {
             Moving();
         }

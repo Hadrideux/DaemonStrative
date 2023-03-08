@@ -1,8 +1,9 @@
+using Engine.Utils;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DialogueManager : MonoBehaviour
+public class DialogueManager : Singleton<DialogueManager>
 {
     // Start is called before the first frame update
     void Start()
@@ -15,4 +16,11 @@ public class DialogueManager : MonoBehaviour
     {
         
     }
+
+    public void PNJDialogue()
+    {
+
+    }
+
+
 }
