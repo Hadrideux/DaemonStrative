@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class UIManager : Singleton<UIManager>
 {
@@ -12,7 +13,7 @@ public class UIManager : Singleton<UIManager>
     // Start is called before the first frame update
     void Start()
     {
-        
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     // Update is called once per frame
@@ -30,4 +31,6 @@ public class UIManager : Singleton<UIManager>
         
         //Display de l'ui d'interaction
     }
+
+
 }

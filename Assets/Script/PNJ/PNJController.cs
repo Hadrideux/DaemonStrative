@@ -8,6 +8,7 @@ public class PNJController : MonoBehaviour
 {
 
     [SerializeField] private GameObject _interactUI = null;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,7 +27,7 @@ public class PNJController : MonoBehaviour
         if(other.tag == "Player" )
         {
             //UIManager.Instance.UIInteract();
-            UIInteract();
+            UIInteract(true);
 
             if (Input.GetKeyDown(KeyCode.E))
             {
@@ -37,8 +38,13 @@ public class PNJController : MonoBehaviour
         
     }
 
-    public void UIInteract()
+    private void OnTriggerExit(Collider other)
     {
-        _interactUI.SetActive(true);
+        UIInteract(false);
+    }
+
+    public void UIInteract(bool value)
+    {
+        _interactUI.SetActive(value);
     }
 }

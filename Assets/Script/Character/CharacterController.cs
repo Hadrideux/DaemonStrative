@@ -21,21 +21,12 @@ public class CharacterConrtoller : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(1))
         {
-            Moving();
+           CharacterManager.Instance.Moving(_camera, _agent);
         }
     }
 
     #region Methode
-    
-    private void Moving()
-    {
-        Ray movePosition = _camera.ScreenPointToRay(Input.mousePosition);
 
-        if (Physics.Raycast(movePosition, out var hitInfo))
-        {
-            _agent.SetDestination(hitInfo.point);
-        }
-    }
 
     private void Action()
     {

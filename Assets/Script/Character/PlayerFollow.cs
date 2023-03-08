@@ -25,8 +25,7 @@ public class PlayerFollow : MonoBehaviour
     private void CameraAngle()
     {
         if (Input.GetKey(KeyCode.Q))
-        {
-           
+        {           
             transform.Rotate(0,1,0);
             Debug.Log("turn");
         }
