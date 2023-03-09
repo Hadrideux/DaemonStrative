@@ -8,6 +8,21 @@ public class InventoryManager : Singleton<InventoryManager>
     [SerializeField] private int _amountBlood = 0;
     [SerializeField] private int _amountSkull = 0;
 
+
+    public int AmountSkull
+    {
+        get => _amountSkull;
+        set => _amountSkull = value;
+    }
+    
+    public int AmountBlood
+    {
+        get => _amountBlood;
+        set => _amountBlood = value;
+    }
+
+    #region MONO
+
     void Start()
     {
 
@@ -19,16 +34,20 @@ public class InventoryManager : Singleton<InventoryManager>
         
     }
 
+    #endregion MONO
+
     public void AddItem(ERessourceType typeRessource, int amountRessource)
     {
         if(ERessourceType.SKULL == typeRessource)
         {
-            _amountSkull += amountRessource ;
+            AmountSkull += amountRessource;
+            Debug.Log(AmountSkull);
         }
 
         if (ERessourceType.BLOOD == typeRessource)
         {
-            _amountBlood += amountRessource;
+            AmountBlood += amountRessource;
+            Debug.Log(AmountBlood);
         }
     }
 }

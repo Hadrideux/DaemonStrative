@@ -58,8 +58,7 @@ public class PNJManager : Singleton<PNJManager>
 
     public void Interact()
     {
-        //DialogueManager.Instance.PNJDialogue();
-        UIManager.Instance.DisplayUI();
+        //UIManager.Instance.DisplayUI();
         InventoryManager.Instance.AddItem(TypeRessource, AmountRessource);
     }
 

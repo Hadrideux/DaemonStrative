@@ -1,1 +1,3 @@
-Assets/Scenes/MaineMenu.unity
+Assets/Scenes/TestScene.unity
+Assets/Scenes/MainMenu.unity
+Assets/Scenes/PersistentScene.unity

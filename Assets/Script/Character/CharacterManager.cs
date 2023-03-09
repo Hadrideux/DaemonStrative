@@ -10,14 +10,8 @@ public class CharacterManager : Singleton<CharacterManager>
 
     public CharacterController Controller
     {
-        get
-        {
-            return _controller;
-        }
-        set
-        {
-            _controller = value;
-        }
+        get => _controller;
+        set => _controller = value;
     }
 
     public void Moving(Camera camera, NavMeshAgent agent)

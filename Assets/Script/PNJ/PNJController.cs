@@ -42,5 +42,4 @@ public class PNJController : MonoBehaviour
     }
 
     #endregion Mono
-
 }
