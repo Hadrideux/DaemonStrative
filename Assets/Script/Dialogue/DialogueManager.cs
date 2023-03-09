@@ -16,27 +16,55 @@ public class DialogueManager : Singleton<DialogueManager>
     private DialogueController.Message[] _currentMessages;
     private DialogueController.Actor[] _currentActors;
     private int _activeMessage = 0;
+    public static bool isDialogueActive = false;
 
     public void OpenDialogue(DialogueController.Message[] messages, DialogueController.Actor[] actors)
     {
         _currentMessages = messages;
         _currentActors = actors;
         _activeMessage = 0;
-
+        isDialogueActive = true;
         Debug.Log("Started Conversation !" + messages.Length);
         
     }
-    // Start is called before the first frame update
-    void Start()
+
+    private void DisplayMessage()
     {
-        
+        DialogueController.Message messageToDisplay = _currentMessages[_activeMessage];
+        messageText.text = messageToDisplay.message;
+
+        DialogueController.Actor actorToDisplay = _currentActors[messageToDisplay.actorId];
+        actorName.text = actorToDisplay.name;
+        actorImage.sprite = actorToDisplay.sprite;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void NextMessage()
     {
-        
+        _activeMessage++;
+        if (_activeMessage < _currentMessages.Length)
+        {
+            DisplayMessage();
+        }
+        else
+        {
+            Debug.Log("Conversation eneded!");
+            isDialogueActive = false;
+        }
     }
+        // Start is called before the first frame update
+        void Start()
+        {
 
+        }
 
+        // Update is called once per frame
+        void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Space) && isDialogueActive == true)
+            {
+                NextMessage();
+            }
+        }
+
+    
 }
