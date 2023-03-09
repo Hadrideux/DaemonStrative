@@ -115,6 +115,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7457649220548839032}
   - component: {fileID: 1630115269197000864}
+  - component: {fileID: 8849152249375741003}
   m_Layer: 0
   m_Name: FrontTrigger
   m_TagString: Untagged
@@ -158,6 +159,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 3.5, y: 2.5, z: 3.5}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8849152249375741003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3244547712955503269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53e58df41d2a84146aece1e3158075da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4494110322694235859
 GameObject:
   m_ObjectHideFlags: 0
@@ -167,6 +180,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5258048500708836414}
+  - component: {fileID: 8332498799063600133}
+  - component: {fileID: 6799255372495204967}
   m_Layer: 0
   m_Name: PNJMannequin
   m_TagString: Untagged
@@ -190,8 +205,43 @@ Transform:
   - {fileID: 7457649220548839032}
   - {fileID: 6618007988191774949}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8332498799063600133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4494110322694235859}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd715c3a5f808064ca0673066cae2648, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interactUI: {fileID: 0}
+--- !u!114 &6799255372495204967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4494110322694235859}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fc0d4f5bd40d8c4d8970985f5d06902, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _radius: 0
+  _angle: 0
+  _playerRef: {fileID: 0}
+  _targetMask:
+    serializedVersion: 2
+    m_Bits: 0
+  _obstructionMask:
+    serializedVersion: 2
+    m_Bits: 0
+  _isCanSeePlayer: 0
 --- !u!1 &6633124213090920873
 GameObject:
   m_ObjectHideFlags: 0
@@ -202,6 +252,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6618007988191774949}
   - component: {fileID: 6591455463352107107}
+  - component: {fileID: 2996096385746964170}
   m_Layer: 0
   m_Name: BackTrigger
   m_TagString: Untagged
@@ -245,3 +296,15 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2, y: 2.5, z: 1.5}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2996096385746964170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6633124213090920873}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3190305a18a124a4080d7d4324d84183, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
