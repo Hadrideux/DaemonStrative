@@ -1,15 +1,16 @@
+using Engine.Utils;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PNJDetections : MonoBehaviour
+public class PNJDetections : Singleton<PNJDetections>
 {
     #region Attributs
 
     [SerializeField] private float _radius = 0f; [Range(0, 360)]
     [SerializeField] private float _angle = 0f;
 
-    [SerializeField] private GameObject _playerRef = null;
+    [SerializeField] private CharacterConrtoller _playerRef = null;
 
     [SerializeField] private LayerMask _targetMask;
     [SerializeField] private LayerMask _obstructionMask;
@@ -44,7 +45,7 @@ public class PNJDetections : MonoBehaviour
         }
     }
 
-    public GameObject PlayerRef => _playerRef;
+    public CharacterConrtoller PlayerRef => _playerRef;
 
     #endregion Properties
 

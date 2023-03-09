@@ -6,7 +6,8 @@ using UnityEngine.AI;
 
 public class CharacterManager : Singleton<CharacterManager>
 {
-    [SerializeField] private CharacterController _controller = null;
+    [SerializeField] private CharacterConrtoller _controller = null;
+    [SerializeField] private GameObject _collider = null;
 
     [SerializeField] private NavMeshAgent _agent = null;
     [SerializeField] private Camera _camera = null;
@@ -16,7 +17,7 @@ public class CharacterManager : Singleton<CharacterManager>
 
     #region Properties
 
-    public CharacterController Controller
+    public CharacterConrtoller Controller
     {
         get => _controller;
         set => _controller = value;
@@ -40,13 +41,17 @@ public class CharacterManager : Singleton<CharacterManager>
         set => _isHostile = value;
     }
 
+    public GameObject Collider
+    {
+        get => _collider;
+        set => _collider = value;
+    }
+
     #endregion properties
 
-    void Update()
+    private void Start()
     {
-        if (IsHostile)
-        {
-        }
+        //PNJDetections.Instance.PlayerRef = _controller;
     }
     #region Methode
     public void Moving(/*Camera camera, NavMeshAgent agent*/)
@@ -68,6 +73,7 @@ public class CharacterManager : Singleton<CharacterManager>
     {
         if (IsHostile)
         {
+            Destroy(_collider);
             Debug.Log("Morsure");
         }
     }
@@ -76,6 +82,7 @@ public class CharacterManager : Singleton<CharacterManager>
     {
         if (IsHostile)
         {
+            Destroy(_collider);
             Debug.Log("Griffure");
         }       
     }

@@ -17,8 +17,7 @@ public class CharacterConrtoller : MonoBehaviour
 
     void Start()
     {
-        //Problème de convertion ALEEEED JE COMPREND PAS POURQUOI
-        /*CharacterManager.Instance.Controller = this;*/
+        CharacterManager.Instance.Controller = this;
 
         CharacterManager.Instance.Agent = _agent;
         CharacterManager.Instance.Camera = _camera;
@@ -44,6 +43,12 @@ public class CharacterConrtoller : MonoBehaviour
         {
             CharacterManager.Instance.Shadowalk();
         }        
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        CharacterManager.Instance.Collider = other.gameObject; //Détruit que le trigger du dos des pnjs
+        //CharacterManager.Instance.Collider = other.GetComponentInParent<PNJController>();
     }
 
 }

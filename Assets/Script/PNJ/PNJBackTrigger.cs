@@ -14,6 +14,6 @@ public class PNJBackTrigger : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-
+        CharacterManager.Instance.IsHostile = false;
     }
 }
