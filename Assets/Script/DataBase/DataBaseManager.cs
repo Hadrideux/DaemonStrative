@@ -23,9 +23,9 @@ public class DataBaseManager : Singleton<DataBaseManager>
         }
 
     }
-    public ItemData GetItemAmount(string name)
+    public ItemData GetItemAmount()
     {
-        ItemData amountData = _items[].Amount;
+        //ItemData amountData = _items[].Amount;
         //ajout de la quantité dans la variable concerné pour l'item
     }
 }
