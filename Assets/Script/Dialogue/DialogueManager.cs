@@ -1,7 +1,6 @@
 using Engine.Utils;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.VersionControl;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -20,9 +19,9 @@ public class DialogueManager : Singleton<DialogueManager>
 
     public void OpenDialogue(DialogueController.Message[] messages, DialogueController.Actor[] actors)
     {
+        _activeMessage = 0;
         _currentMessages = messages;
         _currentActors = actors;
-        _activeMessage = 0;
         isDialogueActive = true;
         Debug.Log("Started Conversation !" + messages.Length);
         
