@@ -27,22 +27,23 @@ public class PNJManager : Singleton<PNJManager>
 
     public EPNJType TypePNJ
     {
-        get { return _typePNJ; }
-        set { _typePNJ = value; }
+        get => _typePNJ;
+        set => _typePNJ = value;
     }
 
     public ERessourceType TypeRessource
     {
-        get { return _typeRessource; }
-        set { _typeRessource = value; }
+        get => _typeRessource;
+        set => _typeRessource = value;
     }
 
     public int AmountRessource
     {
-        get { return _amountRessource; }
-        set { _amountRessource = value; }
+        get => _amountRessource; 
+        set => _amountRessource = value;
     }
 
+    #region MONO
 
     // Start is called before the first frame update
     void Start()
@@ -56,14 +57,16 @@ public class PNJManager : Singleton<PNJManager>
         
     }
 
+    #endregion MONO
+
     public void Interact()
     {
-        //UIManager.Instance.DisplayUI();
         InventoryManager.Instance.AddItem(TypeRessource, AmountRessource);
     }
 
-    public void UIInteract(bool value)
+    public void UIInteract(bool isDisplay)
     {
-        _interactUI.SetActive(value);   //Display de l'ui d'interaction
+        UIManager.Instance.DisplayUI(isDisplay);
+        //_interactUI.SetActive(value);   //Display de l'ui d'interaction
     }
 }

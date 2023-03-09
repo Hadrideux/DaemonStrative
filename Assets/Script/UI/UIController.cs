@@ -13,7 +13,9 @@ public class UIController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        UIManager.Instance.Controller = this;
+        UIManager.Instance.PauseUI = _pauseUI;
+        UIManager.Instance.InteracUI = _interactUI;
     }
 
     // Update is called once per frame
@@ -21,7 +23,7 @@ public class UIController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.P))
         {
-            pauseGame();
+            UIManager.Instance.pauseGame();
             //UIManager.Instance.pauseGame();
         }
 
@@ -29,28 +31,15 @@ public class UIController : MonoBehaviour
 
     #endregion Mono
 
-    #region Methode
-
-    //Active l'UI de pause
-    private void pauseGame()
+    public void Resumegame()
     {
-        _pauseUI.SetActive(true);
-        Time.timeScale = 0;
+        UIManager.Instance.ResumeGame();
     }
 
-    //Desactive l'ui de pause
-    public void ResumeGame()
-    {
-        _pauseUI.SetActive(false);
-        Time.timeScale = 1;
-    }
-
-    //Quit l'application
     public void QuitGame()
     {
-        Application.Quit();
+        UIManager.Instance.QuitGame();
     }
 
-    #endregion Methode
 
 }

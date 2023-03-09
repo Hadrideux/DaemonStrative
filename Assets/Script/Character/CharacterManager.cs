@@ -6,7 +6,15 @@ using UnityEngine.AI;
 
 public class CharacterManager : Singleton<CharacterManager>
 {
-    private CharacterController _controller = null;
+    [SerializeField] private CharacterController _controller = null;
+
+    [SerializeField] private NavMeshAgent _agent = null;
+    [SerializeField] private Camera _camera = null;
+
+
+    [SerializeField] private bool _isHostile = false;
+
+    #region Properties
 
     public CharacterController Controller
     {
@@ -14,18 +22,69 @@ public class CharacterManager : Singleton<CharacterManager>
         set => _controller = value;
     }
 
-    public void Moving(Camera camera, NavMeshAgent agent)
+    public NavMeshAgent Agent
     {
-        Ray movePosition = camera.ScreenPointToRay(Input.mousePosition);
+        get => _agent; 
+        set => _agent = value;
+    }
+
+    public Camera Camera
+    {
+        get => _camera; 
+        set => _camera = value;
+    }
+
+    public bool IsHostile
+    {
+        get => _isHostile;
+        set => _isHostile = value;
+    }
+
+    #endregion properties
+
+    void Update()
+    {
+        if (IsHostile)
+        {
+        }
+    }
+    #region Methode
+    public void Moving(/*Camera camera, NavMeshAgent agent*/)
+    {
+        Ray movePosition = Camera.ScreenPointToRay(Input.mousePosition);
 
         if (Physics.Raycast(movePosition, out var hitInfo))
         {
-            agent.SetDestination(hitInfo.point);
+            Agent.SetDestination(hitInfo.point);
         }
     }
 
-    private void Action()
+    #region Player Action
+    /// <summary>
+    /// Fonction des action du joueur durant les différente phase de jeux
+    /// </summary>
+    /// 
+    public void Morsure()
     {
-        //Action exécuté par le joueur
+        if (IsHostile)
+        {
+            Debug.Log("Morsure");
+        }
     }
+
+    public void Griffe()
+    {
+        if (IsHostile)
+        {
+            Debug.Log("Griffure");
+        }       
+    }
+    public void Shadowalk()
+    {
+        Debug.Log("tchachachacha");
+    }
+
+    #endregion Player Action
+
+    #endregion Methode
 }

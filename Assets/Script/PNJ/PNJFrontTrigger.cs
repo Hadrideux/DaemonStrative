@@ -6,22 +6,16 @@ public class PNJFrontTrigger : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
-        {
-            PNJManager.Instance.UIInteract(true);
+        PNJManager.Instance.UIInteract(true);
 
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                PNJManager.Instance.Interact();
-            }
+        if (other.CompareTag("Player") && Input.GetKeyDown(KeyCode.E))
+        {
+            PNJManager.Instance.Interact();
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (!other.CompareTag("Player"))
-        {
-            PNJManager.Instance.UIInteract(false);
-        }
+        PNJManager.Instance.UIInteract(false);
     }
 }

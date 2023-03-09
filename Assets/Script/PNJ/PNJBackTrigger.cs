@@ -8,21 +8,12 @@ public class PNJBackTrigger : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            PNJManager.Instance.UIInteract(true);
-
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                Debug.Log("Hello");
-                PNJManager.Instance.Interact();
-            }
+           CharacterManager.Instance.IsHostile = true;
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (!other.CompareTag("Player"))
-        {
-            PNJManager.Instance.UIInteract(false);
-        }
+
     }
 }

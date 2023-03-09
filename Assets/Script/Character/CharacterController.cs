@@ -10,18 +10,40 @@ public class CharacterConrtoller : MonoBehaviour
     [SerializeField] private NavMeshAgent _agent = null;
     [SerializeField] private Camera _camera = null;
 
+
     #endregion Attributs
+
+
 
     void Start()
     {
-        //CharacterManager.Instance.Controller = this;
+        //Problème de convertion ALEEEED JE COMPREND PAS POURQUOI
+        /*CharacterManager.Instance.Controller = this;*/
+
+        CharacterManager.Instance.Agent = _agent;
+        CharacterManager.Instance.Camera = _camera;
     }
     void Update()
     {
         if (Input.GetMouseButtonDown(1))
         {
-           CharacterManager.Instance.Moving(_camera, _agent);
+           CharacterManager.Instance.Moving(/*_camera, _agent*/);
         }
+
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            CharacterManager.Instance.Morsure();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            CharacterManager.Instance.Griffe();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            CharacterManager.Instance.Shadowalk();
+        }        
     }
 
 }
