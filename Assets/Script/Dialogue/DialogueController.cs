@@ -4,27 +4,28 @@ using UnityEngine;
 
 public class DialogueController : MonoBehaviour
 {
+    
     public Message[] messages;
     public Actor[] actors;
-
-    public void StartDialogue()
-    {
-        DialogueManager.Instance.OpenDialogue(messages, actors);
-
-    }
 
     [System.Serializable]
     public class Message
     {
-        public int actorID;
-        public string text;
+        public int actorId;
+        public string message;
     }
 
+    
     [System.Serializable]
     public class Actor
     {
-        public string text;
+        public string name;
         public Sprite sprite;
     }
 
+    public void StartDialogue()
+    {
+        DialogueManager.Instance.OpenDialogue(messages, actors);
+    }
+   
 }
