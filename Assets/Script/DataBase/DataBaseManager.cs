@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class DataBaseManager : Singleton<DataBaseManager>
 {
+    [SerializeField] private ItemGetteur _itemGetteurRef = null; 
     [SerializeField] private ItemData[] _items = null;
 
     private Dictionary<string, ItemData> _dataBase = null;
@@ -20,13 +21,11 @@ public class DataBaseManager : Singleton<DataBaseManager>
             ItemData item = _items[i];
             _dataBase.Add(item.Name, item);
         }
-    }
 
-    /*
-    public ItemData GetItemData()
+    }
+    public ItemData GetItemAmount(string name)
     {
-       ItemData amountData = _items[].Amount;
+        ItemData amountData = _items[].Amount;
         //ajout de la quantité dans la variable concerné pour l'item
     }
-    */
 }

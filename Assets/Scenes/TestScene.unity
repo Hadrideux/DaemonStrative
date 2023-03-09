@@ -4343,6 +4343,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -5854330660391173603, guid: 638119aad35106c4d990120eb1bcab99, type: 3}
+      propertyPath: _items
+      value: 
+      objectReference: {fileID: 11400000, guid: 7c620d4b299c8164c96b72eaca318939, type: 2}
+    - target: {fileID: -5854330660391173603, guid: 638119aad35106c4d990120eb1bcab99, type: 3}
+      propertyPath: _canGet
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3613864088208456291, guid: 638119aad35106c4d990120eb1bcab99, type: 3}
       propertyPath: m_RootOrder
       value: 8
