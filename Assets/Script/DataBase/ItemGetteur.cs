@@ -8,7 +8,7 @@ public class ItemGetteur : MonoBehaviour
     [SerializeField] private bool _pickUp = false;
 
 
-    public ItemData ItemData
+    public ItemData ItemDataGet
     {
         get => _items;
         set => _items = value;
