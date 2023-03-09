@@ -5,11 +5,12 @@ using UnityEngine;
 
 public class InventoryManager : Singleton<InventoryManager>
 {
-    //[SerializeField] private ItemGetteur _itemGet = null;
-    // Start is called before the first frame update
+    [SerializeField] private int _amountBlood = 0;
+    [SerializeField] private int _amountSkull = 0;
+
     void Start()
     {
-        //ItemData itemAmount = 
+
     }
 
     // Update is called once per frame
@@ -17,12 +18,17 @@ public class InventoryManager : Singleton<InventoryManager>
     {
         
     }
-    /*
-    public ItemData GetItemAmount(ItemData itemGet)
+
+    public void AddItem(ERessourceType typeRessource, int amountRessource)
     {
-        int amountData = itemGet.Amount;
-        Debug.Log(amountData);
-        //ajout de la quantité dans la variable concerné pour l'item
+        if(ERessourceType.SKULL == typeRessource)
+        {
+            _amountSkull += amountRessource ;
+        }
+
+        if (ERessourceType.BLOOD == typeRessource)
+        {
+            _amountBlood += amountRessource;
+        }
     }
-    */
 }

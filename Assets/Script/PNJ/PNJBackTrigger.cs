@@ -8,7 +8,7 @@ public class PNJBackTrigger : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            PNJController.Instance.UIInteract(true);
+            PNJManager.Instance.UIInteract(true);
 
             if (Input.GetKeyDown(KeyCode.E))
             {
@@ -22,7 +22,7 @@ public class PNJBackTrigger : MonoBehaviour
     {
         if (!other.CompareTag("Player"))
         {
-            PNJController.Instance.UIInteract(false);
+            PNJManager.Instance.UIInteract(false);
         }
     }
 }

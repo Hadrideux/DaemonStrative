@@ -5,14 +5,42 @@ using UnityEngine;
 
 public class PNJManager : Singleton<PNJManager>
 {
-    [SerializeField] private PNJController _targetPnj = null;
+    [SerializeField] private PNJController _controller = null;
 
+    [SerializeField] private GameObject _interactUI = null;
 
-    public PNJController TargetPnj
+    [SerializeField] private EPNJType _typePNJ = EPNJType.SORCIERE;
+    [SerializeField] private ERessourceType _typeRessource = ERessourceType.SKULL;
+    [SerializeField] private int _amountRessource = 0;
+
+    public PNJController Controller
     {
-        get => _targetPnj;
+        get => _controller;
+        set => _controller = value;
+    }
 
-        set => _targetPnj = value;        
+    public GameObject InteractUI
+    {
+        get => _interactUI;
+        set => _interactUI = value;
+    }
+
+    public EPNJType TypePNJ
+    {
+        get { return _typePNJ; }
+        set { _typePNJ = value; }
+    }
+
+    public ERessourceType TypeRessource
+    {
+        get { return _typeRessource; }
+        set { _typeRessource = value; }
+    }
+
+    public int AmountRessource
+    {
+        get { return _amountRessource; }
+        set { _amountRessource = value; }
     }
 
 
@@ -30,7 +58,13 @@ public class PNJManager : Singleton<PNJManager>
 
     public void Interact()
     {
-        DialogueManager.Instance.PNJDialogue();
+        //DialogueManager.Instance.PNJDialogue();
         UIManager.Instance.DisplayUI();
+        InventoryManager.Instance.AddItem(TypeRessource, AmountRessource);
+    }
+
+    public void UIInteract(bool value)
+    {
+        _interactUI.SetActive(value);   //Display de l'ui d'interaction
     }
 }
