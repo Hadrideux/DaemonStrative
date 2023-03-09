@@ -1,6 +1,5 @@
 public enum ERessourceType
 {
-    SANG,
-    DENT,
-    CRANE,
+    BLOOD,
+    SKULL,
 }

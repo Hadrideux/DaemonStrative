@@ -6,56 +6,19 @@ using UnityEngine.AI;
 
 public class CharacterManager : Singleton<CharacterManager>
 {
+    private CharacterController _controller = null;
 
-    /*
-    [SerializeField] private NavMeshAgent _agent = null;
-    [SerializeField] private Camera _camera = null;
-
-    #region Properties
-    
-    public Ray MousePosition
+    public CharacterController Controller
     {
         get
         {
-            return _agent.MousePosition;
+            return _controller;
+        }
+        set
+        {
+            _controller = value;
         }
     }
-    
-    #endregion Properties
-    */
-
-    // Update is called once per frame
-    void Update()
-    {
-        //ActionInput();
-    }
-
-    /*
-    private void ActionInput()
-    {
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            //Interact with PNJ
-        }
-        if (Input.GetMouseButton(1))
-        {
-            /*
-            MousePosition = _camera.ScreenPointToRay(Input.mousePosition);
-            CharacterController.Moving();
-            Moving Character to destination
-            
-        }
-
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            //rotation de la caméra
-        }
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            //rotation de la caméra
-        }
-    }
-    */
 
     public void Moving(Camera camera, NavMeshAgent agent)
     {
@@ -65,5 +28,10 @@ public class CharacterManager : Singleton<CharacterManager>
         {
             agent.SetDestination(hitInfo.point);
         }
+    }
+
+    private void Action()
+    {
+        //Action exécuté par le joueur
     }
 }

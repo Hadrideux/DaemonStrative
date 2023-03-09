@@ -14,9 +14,8 @@ public class CharacterConrtoller : MonoBehaviour
 
     void Start()
     {
-
+        CharacterManager.Instance.Controller = this;
     }
-
     void Update()
     {
         if (Input.GetMouseButtonDown(1))
@@ -25,15 +24,4 @@ public class CharacterConrtoller : MonoBehaviour
         }
     }
 
-    #region Methode
-
-
-    private void Action()
-    {
-        //Action exécuté par le joueur
-    }
-
-
-    
-    #endregion Methode
 }

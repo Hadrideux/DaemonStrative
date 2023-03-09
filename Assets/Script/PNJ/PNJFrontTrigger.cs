@@ -4,15 +4,25 @@ using UnityEngine;
 
 public class PNJFrontTrigger : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private void OnTriggerEnter(Collider other)
     {
-        
+        if (other.CompareTag("Player"))
+        {
+            PNJManager.Instance.UIInteract(true);
+
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                //PNJManager.Instance.TargetPnj = ;
+                PNJManager.Instance.Interact();
+            }
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerExit(Collider other)
     {
-        
+        if (!other.CompareTag("Player"))
+        {
+            PNJManager.Instance.UIInteract(false);
+        }
     }
 }
