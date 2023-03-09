@@ -11,12 +11,13 @@ public class ItemData : ScriptableObject
     [SerializeField] private ERessourceType _type = ERessourceType.SANG;
 
     [SerializeField] private int _amount = 1;
-    [SerializeField] private bool _isPickUp = false;
+    //[SerializeField] private bool _isPickUp = false;
 
     public string Name => _name;
     public EPNJType Origin => _origin;
     public ERessourceType Type => _type;
     public int Amount => _amount;   
-    public bool IsPickUp => _isPickUp;
+
+    //public bool IsPickUp => _isPickUp;
 
 }

@@ -20,13 +20,11 @@ public class DataBaseManager : Singleton<DataBaseManager>
             ItemData item = _items[i];
             _dataBase.Add(item.Name, item);
         }
-    }
 
-    /*
-    public ItemData GetItemData()
-    {
-       ItemData amountData = _items[].Amount;
-        //ajout de la quantité dans la variable concerné pour l'item
     }
-    */
+    /*public ItemData GetItemAmount()
+    {
+        //ItemData amountData = _items[].Amount;
+        //ajout de la quantité dans la variable concerné pour l'item
+    }*/
 }
