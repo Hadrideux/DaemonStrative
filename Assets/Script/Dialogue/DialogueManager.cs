@@ -31,7 +31,7 @@ public class DialogueManager : Singleton<DialogueManager>
     private void DisplayMessage()
     {
         DialogueController.Message messageToDisplay = _currentMessage[_activeMessage];
-        _messageText.text = messageToDisplay.messages;
+     
     }
 
     // Start is called before the first frame update
@@ -44,11 +44,6 @@ public class DialogueManager : Singleton<DialogueManager>
     void Update()
     {
         
-    }
-
-    public void PNJDialogue()
-    {
-
     }
 
 
