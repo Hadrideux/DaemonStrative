@@ -30,7 +30,7 @@ public class PNJManager : Singleton<PNJManager>
 
     public void Interact()
     {
-        DialogueManager.Instance.PNJDialogue();
+        //DialogueManager.Instance.PNJDialogue();
         UIManager.Instance.DisplayUI();
     }
 }
