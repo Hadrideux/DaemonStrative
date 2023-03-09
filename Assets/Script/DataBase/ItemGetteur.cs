@@ -5,7 +5,7 @@ using UnityEngine;
 public class ItemGetteur : MonoBehaviour
 {
     [SerializeField] private ItemData _items = null;
-    [SerializeField] private bool _pickUp = false;
+    //[SerializeField] private bool _pickUp = false;
 
 
     public ItemData ItemDataGet
@@ -20,55 +20,8 @@ public class ItemGetteur : MonoBehaviour
 
         if (other.tag == "Player" && Input.GetKeyDown(KeyCode.E))
         {
+            //InventoryManager.Instance.GetItemAmount(ItemDataGet);
             Destroy(gameObject);
         }
     }
-
 }
-
-/*
-[SerializeField] private GameObject _character = null; //reference to your hands/the position where you want your object to go
-[SerializeField] private bool _isCanPickUp; //a bool to see if you can or cant pick up the item
-[SerializeField] private GameObject ObjectIwantToPickUp; // the gameobject onwhich you collided with
-bool hasItem; // a bool to see if you have an item in your hand
-              // Start is called before the first frame update
-void Start()
-{
-    _isCanPickUp = false;    //setting both to false
-    hasItem = false;
-}
-
-// Update is called once per frame
-void Update()
-{
-    if (_isCanPickUp == true) // if you enter thecollider of the objecct
-    {
-        if (Input.GetKeyDown("e"))  // can be e or any key
-        {
-            ObjectIwantToPickUp.GetComponent<Rigidbody>().isKinematic = true;   //makes the rigidbody not be acted upon by forces
-            ObjectIwantToPickUp.transform.position = _character.transform.position; // sets the position of the object to your hand position
-            ObjectIwantToPickUp.transform.parent = _character.transform; //makes the object become a child of the parent so that it moves with the hands
-        }
-    }
-    if (Input.GetButtonDown("q") && hasItem == true) // if you have an item and get the key to remove the object, again can be any key
-    {
-        ObjectIwantToPickUp.GetComponent<Rigidbody>().isKinematic = false; // make the rigidbody work again
-
-        ObjectIwantToPickUp.transform.parent = null; // make the object no be a child of the hands
-    }
-}
-private void OnTriggerEnter(Collider other) // to see when the player enters the collider
-{
-    if (other.gameObject.tag == "object") //on the object you want to pick up set the tag to be anything, in this case "object"
-    {
-        _isCanPickUp = true;  //set the pick up bool to true
-        ObjectIwantToPickUp = other.gameObject; //set the gameobject you collided with to one you can reference
-        Destroy(gameObject);
-    }
-}
-private void OnTriggerExit(Collider other)
-{
-    _isCanPickUp = false; //when you leave the collider set the canpickup bool to false
-
-}
-*/
