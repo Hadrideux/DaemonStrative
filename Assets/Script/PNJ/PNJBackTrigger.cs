@@ -12,7 +12,7 @@ public class PNJBackTrigger : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.E))
             {
-                //PNJManager.Instance.TargetPnj = ;
+                Debug.Log("Hello");
                 PNJManager.Instance.Interact();
             }
         }

@@ -154,6 +154,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _items: []
+  _pnjController: {fileID: 0}
 --- !u!4 &341432182
 Transform:
   m_ObjectHideFlags: 0
@@ -181,6 +182,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 462233d272bf34c449d226e430c29750, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _amountBlood: 0
+  _amountSkull: 0
 --- !u!1 &400180201
 GameObject:
   m_ObjectHideFlags: 0
@@ -210,7 +213,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bff9cb4e6b70454cb65a9bcba4f481d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _interactUI: {fileID: 0}
 --- !u!4 &400180203
 Transform:
   m_ObjectHideFlags: 0
@@ -362,7 +364,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bff9cb4e6b70454cb65a9bcba4f481d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _interactUI: {fileID: 0}
 --- !u!1 &1602088753
 GameObject:
   m_ObjectHideFlags: 0
@@ -392,7 +393,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0635db44706afd046be13044924aa8c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _targetPnj: {fileID: 0}
+  _controller: {fileID: 0}
+  _interactUI: {fileID: 0}
+  _typePNJ: 0
+  _typeRessource: 1
+  _amountRessource: 0
 --- !u!4 &1602088755
 Transform:
   m_ObjectHideFlags: 0

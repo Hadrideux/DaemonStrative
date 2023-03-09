@@ -12,7 +12,6 @@ public class PNJFrontTrigger : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.E))
             {
-                //PNJManager.Instance.TargetPnj = ;
                 PNJManager.Instance.Interact();
             }
         }

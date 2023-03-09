@@ -14,7 +14,7 @@ public class CharacterConrtoller : MonoBehaviour
 
     void Start()
     {
-        CharacterManager.Instance.Controller = this;
+        //CharacterManager.Instance.Controller = this;
     }
     void Update()
     {

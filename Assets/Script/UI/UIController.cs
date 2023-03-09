@@ -8,14 +8,6 @@ public class UIController : MonoBehaviour
     [SerializeField] private GameObject _pauseUI = null;
     [SerializeField] private GameObject _interactUI = null;
 
-    /*
-    public GameObject PauseUI
-    {
-        get { return _pauseUI; }
-        set { _pauseUI = value; }
-    }
-    */
-
     #region Mono
 
     // Start is called before the first frame update

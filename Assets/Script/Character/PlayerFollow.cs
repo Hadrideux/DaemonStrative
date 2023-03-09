@@ -27,12 +27,10 @@ public class PlayerFollow : MonoBehaviour
         if (Input.GetKey(KeyCode.Q))
         {           
             transform.Rotate(0,1,0);
-            Debug.Log("turn");
         }
         if (Input.GetKey(KeyCode.D))
         {
             transform.Rotate(0,-1, 0);
-            Debug.Log("turn");
         }
     }
 
