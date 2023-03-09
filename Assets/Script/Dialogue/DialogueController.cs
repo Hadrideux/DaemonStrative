@@ -4,15 +4,21 @@ using UnityEngine;
 
 public class DialogueController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public Message[] messages;
+    public Actor[] actors;
+
+    [System.Serializable]
+    public class Message
     {
-        
+        public int actorID;
+        public string text;
     }
 
-    // Update is called once per frame
-    void Update()
+    [System.Serializable]
+    public class Actor
     {
-        
+        public string text;
+        public Sprite sprite;
     }
+
 }
