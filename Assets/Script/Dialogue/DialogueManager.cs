@@ -2,6 +2,7 @@ using Engine.Utils;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.VersionControl;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using static DialogueController;
@@ -9,8 +10,8 @@ using static DialogueController;
 public class DialogueManager : Singleton<DialogueManager>
 {
     public Image _actorImage;
-    public GameObject _actorName;
-    public GameObject _messageText;
+    public TMPro.TMP_Text _actorName;
+    public TMPro.TMP_Text _messageText;
     public RectTransform _backgroundBox;
 
     private DialogueController.Message[] _currentMessage;
@@ -19,8 +20,18 @@ public class DialogueManager : Singleton<DialogueManager>
 
     public void OpenDialogue(DialogueController.Message[] messages, Actor[] actors)
     {
-        _currentMessage = messages; 
+        _currentMessage = messages;
+        _currentActor = actors;
+        _activeMessage = 0;
 
+        Debug.Log("Conversation Started" + messages.Length);
+
+    }
+
+    private void DisplayMessage()
+    {
+        DialogueController.Message messageToDisplay = _currentMessage[_activeMessage];
+        _messageText.text = messageToDisplay.messages;
     }
 
     // Start is called before the first frame update
