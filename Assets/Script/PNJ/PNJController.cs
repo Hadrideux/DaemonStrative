@@ -9,9 +9,8 @@ public class PNJController : MonoBehaviour
 {
 
     #region Attributs
-    [SerializeField] private GameObject _interactUI = null;
+    [SerializeField] private ItemData _itemData = null;
 
-    [SerializeField] private EPNJType _typePNJ = EPNJType.SORCIERE;
     [SerializeField] private ERessourceType _typeRessource = ERessourceType.SKULL;
     [SerializeField] private int _amountRessource = 0;
 
@@ -23,9 +22,7 @@ public class PNJController : MonoBehaviour
     void Start()
     {
         PNJManager.Instance.Controller = this;
-        PNJManager.Instance.InteractUI = _interactUI;
 
-        PNJManager.Instance.TypePNJ = _typePNJ;
         PNJManager.Instance.TypeRessource = _typeRessource;
         PNJManager.Instance.AmountRessource = _amountRessource;
     }
@@ -34,6 +31,15 @@ public class PNJController : MonoBehaviour
     void Update()
     {
 
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Player") 
+        {
+            PNJManager.Instance.ItemGet = _itemData;
+        }
+            
     }
 
     #endregion Mono

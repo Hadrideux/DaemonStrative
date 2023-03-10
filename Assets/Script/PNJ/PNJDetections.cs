@@ -35,17 +35,15 @@ public class PNJDetections : Singleton<PNJDetections>
 
     public bool IsCanSeePlayer
     {
-        get 
-        { 
-            return _isCanSeePlayer; 
-        }
-        set 
-        { 
-            _isCanSeePlayer = value; 
-        }
+        get => _isCanSeePlayer;
+        set => _isCanSeePlayer = value;
     }
 
-    public CharacterConrtoller PlayerRef => _playerRef;
+    public CharacterConrtoller PlayerRef
+    {
+        get => _playerRef;
+        set => _playerRef = value;
+    }
 
     #endregion Properties
 
@@ -83,14 +81,32 @@ public class PNJDetections : Singleton<PNJDetections>
                 float distanceToTarget = Vector3.Distance(transform.position, target.position);
 
                 if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, _obstructionMask))
-                    _isCanSeePlayer = true;
+                {
+                    IsCanSeePlayer = true;
+                    Actualisation();
+                }
                 else
-                    _isCanSeePlayer = false;
+                {
+                    IsCanSeePlayer = false;
+                }
             }
             else
-                _isCanSeePlayer = false;
+            {
+                IsCanSeePlayer = false;
+                Actualisation();
+            }
         }
-        else if (_isCanSeePlayer)
-            _isCanSeePlayer = false;
+        else if (IsCanSeePlayer)
+        {
+            IsCanSeePlayer = false;
+        }        
     }
+
+    private void Actualisation()
+    {
+        PNJManager.Instance.UInteract(IsCanSeePlayer);
+        //PNJManager.Instance.LookAtPlayer(IsCanSeePlayer);
+    }
+
+
 }

@@ -6,10 +6,14 @@ using UnityEngine;
 public class PNJManager : Singleton<PNJManager>
 {
     [SerializeField] private PNJController _controller = null;
-
     [SerializeField] private GameObject _interactUI = null;
 
-    [SerializeField] private EPNJType _typePNJ = EPNJType.SORCIERE;
+    //[SerializeField] private Vector3 _lookAt = Vector3.zero;
+
+    [SerializeField] private ItemData _itemData = null;
+
+ 
+
     [SerializeField] private ERessourceType _typeRessource = ERessourceType.SKULL;
     [SerializeField] private int _amountRessource = 0;
 
@@ -27,12 +31,6 @@ public class PNJManager : Singleton<PNJManager>
         set => _interactUI = value;
     }
 
-    public EPNJType TypePNJ
-    {
-        get => _typePNJ;
-        set => _typePNJ = value;
-    }
-
     public ERessourceType TypeRessource
     {
         get => _typeRessource;
@@ -44,6 +42,20 @@ public class PNJManager : Singleton<PNJManager>
         get => _amountRessource; 
         set => _amountRessource = value;
     }
+
+    public ItemData ItemGet
+    {
+        get => _itemData;
+        set => _itemData = value;
+    }
+
+    /*
+    public Vector3 LookAt
+    {
+        get => _lookAt; 
+        set => _lookAt = value;
+    }
+    */
 
     #endregion Properties
 
@@ -66,16 +78,20 @@ public class PNJManager : Singleton<PNJManager>
     public void Interact()
     {
         InventoryManager.Instance.AddItem(TypeRessource, AmountRessource);
-        Debug.Log("Interact");
     }
 
-    public void FrontUIInteract(bool isDisplay)
+    public void UInteract(bool isDisplay)
     {
         UIManager.Instance.DisplayUI(isDisplay);
     }
 
-    public void BackUIInteract(bool isDisplay)
+    /*
+    public void LookAtPlayer(bool isSee)
     {
-        UIManager.Instance.DisplayUI(isDisplay);
+        if (isSee)
+        {
+            LookAt = transform.LookAt(_target.position);
+        }        
     }
+    */
 }

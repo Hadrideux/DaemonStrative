@@ -29,13 +29,13 @@ public class InventoryManager : Singleton<InventoryManager>
         if(ERessourceType.SKULL == typeRessource)
         {
             AmountSkull += amountRessource;
-            Debug.Log(AmountSkull);
+            Debug.Log("AmountSkull : " + AmountSkull);
         }
 
         if (ERessourceType.BLOOD == typeRessource)
         {
             AmountBlood += amountRessource;
-            Debug.Log(AmountBlood);
+            Debug.Log("AmountBlood : " + AmountBlood);
         }
     }
 }
