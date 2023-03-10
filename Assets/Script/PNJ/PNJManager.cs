@@ -6,12 +6,11 @@ using UnityEngine;
 public class PNJManager : Singleton<PNJManager>
 {
     [SerializeField] private PNJController _controller = null;
-    [SerializeField] private GameObject _interactUI = null;
+    //[SerializeField] private GameObject _interactUI = null;
 
     //[SerializeField] private Vector3 _lookAt = Vector3.zero;
 
     [SerializeField] private ItemData _itemData = null;
-
  
 
     [SerializeField] private ERessourceType _typeRessource = ERessourceType.SKULL;
@@ -25,11 +24,13 @@ public class PNJManager : Singleton<PNJManager>
         set => _controller = value;
     }
 
+    /*
     public GameObject InteractUI
     {
         get => _interactUI;
         set => _interactUI = value;
     }
+    */
 
     public ERessourceType TypeRessource
     {
@@ -94,4 +95,10 @@ public class PNJManager : Singleton<PNJManager>
         }        
     }
     */
+
+    public void GetItemAmount()
+    {
+        //ItemData amountData = ;
+        //ajout de la quantité dans la variable concerné pour l'item
+    }
 }

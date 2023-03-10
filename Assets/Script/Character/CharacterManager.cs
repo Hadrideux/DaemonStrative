@@ -51,9 +51,9 @@ public class CharacterManager : Singleton<CharacterManager>
 
     private void Start()
     {
-        
         //PNJDetections.Instance.PlayerRef = _controller;
     }
+
     #region Methode
 
     public void Moving(/*Camera camera, NavMeshAgent agent*/)
@@ -96,6 +96,7 @@ public class CharacterManager : Singleton<CharacterManager>
             Debug.Log("Griffure");
         }       
     }
+
     public void Shadowalk()
     {
         Debug.Log("tchachachacha");
@@ -103,7 +104,6 @@ public class CharacterManager : Singleton<CharacterManager>
 
     public void IsInBack()
     {
-
         if (IsHostile)
         {
             PNJManager.Instance.Interact();

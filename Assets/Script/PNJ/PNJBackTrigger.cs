@@ -10,8 +10,7 @@ public class PNJBackTrigger : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            PNJManager.Instance.UInteract(true);
-            CharacterManager.Instance.IsHostile = true;
+            
         }
     }
 
