@@ -1,2 +1,2 @@
+Assets/Scenes/Blop_Dev.unity
 Assets/Scenes/PersistentScene.unity
-Assets/Scenes/TestScene.unity
