@@ -12,10 +12,17 @@ public class DialogueManager : Singleton<DialogueManager>
     public TextMeshProUGUI messageText;
     public RectTransform backgroundBox;
 
+    [SerializeField] RectTransform _dialogueButton;
     private DialogueController.Message[] _currentMessages;
     private DialogueController.Actor[] _currentActors;
     private int _activeMessage = 0;
     public static bool isDialogueActive = false;
+
+    
+    void Start()
+    {
+        backgroundBox.transform.localScale = Vector3.zero;
+    }
 
     public void OpenDialogue(DialogueController.Message[] messages, DialogueController.Actor[] actors)
     {
@@ -24,7 +31,17 @@ public class DialogueManager : Singleton<DialogueManager>
         _currentActors = actors;
         isDialogueActive = true;
         Debug.Log("Started Conversation !" + messages.Length);
-        
+        backgroundBox.LeanScale(Vector3.one, 0.5f);
+
+        DialogueController.Message messageToDisplay = _currentMessages[_activeMessage];
+        messageText.text = messageToDisplay.message;
+
+        DialogueController.Actor actorToDisplay = _currentActors[messageToDisplay.actorId];
+        actorName.text = actorToDisplay.name;
+        actorImage.sprite = actorToDisplay.sprite;
+        AnimatedTextColor();
+
+        HideButton();
     }
 
     private void DisplayMessage()
@@ -35,6 +52,7 @@ public class DialogueManager : Singleton<DialogueManager>
         DialogueController.Actor actorToDisplay = _currentActors[messageToDisplay.actorId];
         actorName.text = actorToDisplay.name;
         actorImage.sprite = actorToDisplay.sprite;
+        AnimatedTextColor();
     }
 
     public void NextMessage()
@@ -48,15 +66,18 @@ public class DialogueManager : Singleton<DialogueManager>
         {
             Debug.Log("Conversation eneded!");
             isDialogueActive = false;
+            backgroundBox.LeanScale(Vector3.zero, 0.5f).setEaseInOutExpo();
+            HideButton();
         }
     }
-        // Start is called before the first frame update
-        void Start()
-        {
+     
+    private void AnimatedTextColor()
+    {
+        LeanTween.textAlpha(messageText.rectTransform, 0, 0);
+        LeanTween.textAlpha(messageText.rectTransform, 1, 0.5f);
+    }
 
-        }
-
-        // Update is called once per frame
+       
         void Update()
         {
             if (Input.GetKeyDown(KeyCode.Space) && isDialogueActive == true)
@@ -65,5 +86,15 @@ public class DialogueManager : Singleton<DialogueManager>
             }
         }
 
-    
+    private void HideButton()
+    {
+        if (isDialogueActive == true) 
+        {
+            _dialogueButton.gameObject.SetActive(false);
+        }
+        else if (isDialogueActive == false) 
+        {
+            _dialogueButton.gameObject.SetActive(true);
+        }
+    }
 }
