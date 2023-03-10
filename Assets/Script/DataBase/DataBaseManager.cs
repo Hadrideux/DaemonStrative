@@ -20,7 +20,6 @@ public class DataBaseManager : Singleton<DataBaseManager>
             ItemData item = _items[i];
             _dataBase.Add(item.Name, item);
         }
-
     }
 
     /*

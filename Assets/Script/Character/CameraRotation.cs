@@ -14,6 +14,7 @@ public class CameraRotation : MonoBehaviour
     void Start()
     {
         _offSet = transform.position - _target.position;
+
     }
 
     // Update is called once per frame

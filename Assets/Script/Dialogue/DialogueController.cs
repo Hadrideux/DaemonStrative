@@ -27,5 +27,7 @@ public class DialogueController : MonoBehaviour
     {
         DialogueManager.Instance.OpenDialogue(messages, actors);
     }
+
+    
    
 }

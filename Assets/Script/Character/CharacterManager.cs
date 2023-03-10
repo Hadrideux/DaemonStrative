@@ -53,15 +53,25 @@ public class CharacterManager : Singleton<CharacterManager>
     {
         //PNJDetections.Instance.PlayerRef = _controller;
     }
+
     #region Methode
+
     public void Moving(/*Camera camera, NavMeshAgent agent*/)
     {
-        Ray movePosition = Camera.ScreenPointToRay(Input.mousePosition);
-
-        if (Physics.Raycast(movePosition, out var hitInfo))
+        if (DialogueManager.isDialogueActive == true)
         {
-            Agent.SetDestination(hitInfo.point);
+            return;
         }
+        else
+        {
+            Ray movePosition = Camera.ScreenPointToRay(Input.mousePosition);
+
+            if (Physics.Raycast(movePosition, out var hitInfo))
+            {
+                Agent.SetDestination(hitInfo.point);
+            }
+        }
+        
     }
 
     #region Player Action
@@ -86,9 +96,18 @@ public class CharacterManager : Singleton<CharacterManager>
             Debug.Log("Griffure");
         }       
     }
+
     public void Shadowalk()
     {
         Debug.Log("tchachachacha");
+    }
+
+    public void IsInBack()
+    {
+        if (IsHostile)
+        {
+            PNJManager.Instance.Interact();
+        }
     }
 
     #endregion Player Action
