@@ -51,6 +51,7 @@ public class CharacterManager : Singleton<CharacterManager>
 
     private void Start()
     {
+        
         //PNJDetections.Instance.PlayerRef = _controller;
     }
     #region Methode
@@ -98,6 +99,15 @@ public class CharacterManager : Singleton<CharacterManager>
     public void Shadowalk()
     {
         Debug.Log("tchachachacha");
+    }
+
+    public void IsInBack()
+    {
+
+        if (IsHostile)
+        {
+            PNJManager.Instance.Interact();
+        }
     }
 
     #endregion Player Action
