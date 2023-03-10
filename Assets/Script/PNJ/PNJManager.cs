@@ -13,6 +13,8 @@ public class PNJManager : Singleton<PNJManager>
     [SerializeField] private ERessourceType _typeRessource = ERessourceType.SKULL;
     [SerializeField] private int _amountRessource = 0;
 
+    #region Properties
+
     public PNJController Controller
     {
         get => _controller;
@@ -43,6 +45,8 @@ public class PNJManager : Singleton<PNJManager>
         set => _amountRessource = value;
     }
 
+    #endregion Properties
+
     #region MONO
 
     // Start is called before the first frame update
@@ -62,11 +66,16 @@ public class PNJManager : Singleton<PNJManager>
     public void Interact()
     {
         InventoryManager.Instance.AddItem(TypeRessource, AmountRessource);
+        Debug.Log("Interact");
     }
 
-    public void UIInteract(bool isDisplay)
+    public void FrontUIInteract(bool isDisplay)
     {
         UIManager.Instance.DisplayUI(isDisplay);
-        //_interactUI.SetActive(value);   //Display de l'ui d'interaction
+    }
+
+    public void BackUIInteract(bool isDisplay)
+    {
+        UIManager.Instance.DisplayUI(isDisplay);
     }
 }

@@ -17,11 +17,6 @@ public class PNJController : MonoBehaviour
 
     #endregion Attributs
 
-    #region Properties
-
-
-    #endregion Propertie
-
     #region Mono
 
     // Start is called before the first frame update
