@@ -24,7 +24,6 @@ public class UIController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.P))
         {
             UIManager.Instance.pauseGame();
-            //UIManager.Instance.pauseGame();
         }
 
     }

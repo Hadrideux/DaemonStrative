@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 77a1f198885ced74a97d7f2caebb8779, type: 3}
-  m_Name: SANG
+  m_Name: SKULL
   m_EditorClassIdentifier: 
-  _name: Sang
-  _origin: 1
-  _type: 0
-  _amount: 5
+  _name: "Cr\xE2ne"
+  _origin: 2
+  _type: 2
+  _amount: 1
   _isPickUp: 1

@@ -18,6 +18,8 @@ public class CharacterConrtoller : MonoBehaviour
     void Start()
     {
         CharacterManager.Instance.Controller = this;
+        PNJDetections.Instance.PlayerRef = this;
+        //PNJManager.Instance.Target = transform;
 
         CharacterManager.Instance.Agent = _agent;
         CharacterManager.Instance.Camera = _camera;
@@ -42,13 +44,19 @@ public class CharacterConrtoller : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             CharacterManager.Instance.Shadowalk();
-        }        
+        }
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            CharacterManager.Instance.IsInBack();
+        }
     }
+        
 
     private void OnTriggerEnter(Collider other)
     {
-        CharacterManager.Instance.Collider = other.gameObject; //Détruit que le trigger du dos des pnjs
-        //CharacterManager.Instance.Collider = other.GetComponentInParent<PNJController>();
+        //Détruit que le trigger du dos des pnjs
+        CharacterManager.Instance.Collider = other.gameObject; 
     }
 
 }
