@@ -48,7 +48,7 @@ public class CharacterConrtoller : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.E))
         {
-            CharacterManager.Instance.IsInBack();
+            //CharacterManager.Instance.IsInBack();
         }
     }
         

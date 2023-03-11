@@ -26,19 +26,16 @@ public class InventoryManager : Singleton<InventoryManager>
 
     public void AddItem(ItemData itemGet)
     {
-        Debug.Log(itemGet.Name);
-        Debug.Log(itemGet.Amount);
-
         if(ERessourceType.SKULL == itemGet.Type)
         {
             AmountSkull += itemGet.Amount;
-            Debug.Log("AmountSkull : " + AmountSkull);
+            Debug.Log(itemGet.Name + " : " + AmountSkull);
         }
 
         if (ERessourceType.BLOOD == itemGet.Type)
         {
             AmountBlood += itemGet.Amount;
-            Debug.Log("AmountBlood : " + AmountBlood);
+            Debug.Log(itemGet.Name + " : " + AmountBlood);
         }
     }
 }

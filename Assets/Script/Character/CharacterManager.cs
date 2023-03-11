@@ -84,6 +84,7 @@ public class CharacterManager : Singleton<CharacterManager>
         if (IsHostile)
         {
             Destroy(_collider);
+            PNJManager.Instance.KillVillager();
             Debug.Log("Morsure");
         }
     }
@@ -93,6 +94,7 @@ public class CharacterManager : Singleton<CharacterManager>
         if (IsHostile)
         {
             Destroy(_collider);
+            PNJManager.Instance.KillVillager();
             Debug.Log("Griffure");
         }       
     }
@@ -102,6 +104,7 @@ public class CharacterManager : Singleton<CharacterManager>
         Debug.Log("tchachachacha");
     }
 
+    /*
     public void IsInBack()
     {
         if (IsHostile)
@@ -109,6 +112,7 @@ public class CharacterManager : Singleton<CharacterManager>
             PNJManager.Instance.Interact();
         }
     }
+    */
 
     #endregion Player Action
 

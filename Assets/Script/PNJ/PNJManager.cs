@@ -54,7 +54,7 @@ public class PNJManager : Singleton<PNJManager>
 
     public void Interact()
     {
-        InventoryManager.Instance.AddItem(ItemGet);
+        
     }
 
     public void UInteract(bool isDisplay)
@@ -72,9 +72,8 @@ public class PNJManager : Singleton<PNJManager>
     }
     */
 
-    public void GetItemAmount()
+    public void KillVillager()
     {
-        //ItemData amountData = ;
-        //ajout de la quantité dans la variable concerné pour l'item
+        InventoryManager.Instance.AddItem(ItemGet);
     }
 }
