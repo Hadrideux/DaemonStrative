@@ -28,7 +28,7 @@ public class CharacterConrtoller : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(1))
         {
-           CharacterManager.Instance.Moving(/*_camera, _agent*/);
+           CharacterManager.Instance.Moving();
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha1))

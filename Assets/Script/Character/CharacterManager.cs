@@ -51,12 +51,12 @@ public class CharacterManager : Singleton<CharacterManager>
 
     private void Start()
     {
-        //PNJDetections.Instance.PlayerRef = _controller;
+        PNJDetections.Instance.PlayerRef = Controller;
     }
 
     #region Methode
 
-    public void Moving(/*Camera camera, NavMeshAgent agent*/)
+    public void Moving()
     {
         if (DialogueManager.isDialogueActive == true)
         {
