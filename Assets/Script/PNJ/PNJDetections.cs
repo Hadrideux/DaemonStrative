@@ -104,7 +104,8 @@ public class PNJDetections : Singleton<PNJDetections>
 
     private void Actualisation()
     {
-        PNJManager.Instance.UInteract(IsCanSeePlayer);
+        //Empeche l'affichage de l'ui d'interaction car set constament IsCanSeePlayer à false 
+        //PNJManager.Instance.UInteract(IsCanSeePlayer);
         //PNJManager.Instance.LookAtPlayer(IsCanSeePlayer);
     }
 

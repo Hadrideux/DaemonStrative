@@ -56,7 +56,7 @@ public class CharacterConrtoller : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         //Détruit que le trigger du dos des pnjs
-        CharacterManager.Instance.Collider = other.gameObject; 
+        CharacterManager.Instance.Collider = other.gameObject;
     }
 
 }
