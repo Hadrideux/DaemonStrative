@@ -429,7 +429,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 667360540}
-  _waitTime: 5
+  _timeToWalk: 5
+  _waitTimer: 0
+  _waitTimerOut: 5
+  _isWalking: 0
   _wayPoints:
   - target: {fileID: 1914475553}
   - target: {fileID: 2042080620}

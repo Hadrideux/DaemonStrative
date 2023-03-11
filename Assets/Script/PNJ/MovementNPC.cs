@@ -10,9 +10,12 @@ using static UnityEngine.GraphicsBuffer;
 public class MovementNPC : MonoBehaviour
 {
     [SerializeField] private NavMeshAgent agent;
-    [SerializeField] private float _waitTime = 0;
+    [SerializeField] private float _timeToWalk = 0;
+    [SerializeField] private float _waitTimer = 0;
+    [SerializeField] private float _waitTimerOut = 0;
+    [SerializeField] private bool _isWalking = false;
     private int _activePoint = 0;
-    private float _timePatrol = 0;
+    private float _walkingTimeSpend = 0;
 
     public WayPoint[] _wayPoints;
 
@@ -40,26 +43,35 @@ public class MovementNPC : MonoBehaviour
     {
         
         WayPoint actualPoint = _wayPoints[_activePoint];
-        _timePatrol += Time.deltaTime;
+        _walkingTimeSpend += Time.deltaTime;
+        _waitTimer += Time.deltaTime;
 
-        if(actualPoint != null && _waitTime > _timePatrol) 
+        if (actualPoint != null && _timeToWalk > _walkingTimeSpend && _isWalking == true) 
         {
 
-            agent.SetDestination(actualPoint.target.transform.position);
-           
+            agent.SetDestination(actualPoint.target.transform.position);            
+            _waitTimer = 0;
+            
         }
-        else if (_waitTime < _timePatrol && _activePoint < _wayPoints.Length-1)
+        else if (_isWalking = true && _timeToWalk < _walkingTimeSpend && _waitTimerOut > _waitTimer)
+        {
+            _isWalking= false;            
+            
+        }
+        else if (_isWalking == false && _activePoint < _wayPoints.Length- 1 && _waitTimerOut < _waitTimer)
         {
             _activePoint += 1;
-            _timePatrol = 0;
-            WalkRound();
+            _walkingTimeSpend = 0;
+            _waitTimer = 0;
+            _isWalking = true;
+
 
             Debug.Log(_activePoint.ToString());
-        }
+        }        
         else
         {
             _activePoint= 0;
-            WalkRound();
+            
         }
     }
        
