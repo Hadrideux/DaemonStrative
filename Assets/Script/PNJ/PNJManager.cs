@@ -11,10 +11,6 @@ public class PNJManager : Singleton<PNJManager>
     //[SerializeField] private Vector3 _lookAt = Vector3.zero;
 
     [SerializeField] private ItemData _itemData = null;
- 
-
-    [SerializeField] private ERessourceType _typeRessource = ERessourceType.SKULL;
-    [SerializeField] private int _amountRessource = 0;
 
     #region Properties
 
@@ -22,26 +18,6 @@ public class PNJManager : Singleton<PNJManager>
     {
         get => _controller;
         set => _controller = value;
-    }
-
-    /*
-    public GameObject InteractUI
-    {
-        get => _interactUI;
-        set => _interactUI = value;
-    }
-    */
-
-    public ERessourceType TypeRessource
-    {
-        get => _typeRessource;
-        set => _typeRessource = value;
-    }
-
-    public int AmountRessource
-    {
-        get => _amountRessource; 
-        set => _amountRessource = value;
     }
 
     public ItemData ItemGet
@@ -71,14 +47,14 @@ public class PNJManager : Singleton<PNJManager>
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     #endregion MONO
 
     public void Interact()
     {
-        InventoryManager.Instance.AddItem(TypeRessource, AmountRessource);
+        InventoryManager.Instance.AddItem(ItemGet);
     }
 
     public void UInteract(bool isDisplay)

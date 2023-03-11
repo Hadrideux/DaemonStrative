@@ -24,17 +24,20 @@ public class InventoryManager : Singleton<InventoryManager>
 
     #endregion Properties
 
-    public void AddItem(ERessourceType typeRessource, int amountRessource)
+    public void AddItem(ItemData itemGet)
     {
-        if(ERessourceType.SKULL == typeRessource)
+        Debug.Log(itemGet.Name);
+        Debug.Log(itemGet.Amount);
+
+        if(ERessourceType.SKULL == itemGet.Type)
         {
-            AmountSkull += amountRessource;
+            AmountSkull += itemGet.Amount;
             Debug.Log("AmountSkull : " + AmountSkull);
         }
 
-        if (ERessourceType.BLOOD == typeRessource)
+        if (ERessourceType.BLOOD == itemGet.Type)
         {
-            AmountBlood += amountRessource;
+            AmountBlood += itemGet.Amount;
             Debug.Log("AmountBlood : " + AmountBlood);
         }
     }

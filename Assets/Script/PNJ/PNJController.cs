@@ -9,11 +9,8 @@ public class PNJController : MonoBehaviour
 {
 
     #region Attributs
-    [SerializeField] private bool _isBack = false;
 
     [SerializeField] private ItemData _itemData = null;
-    [SerializeField] private ERessourceType _typeRessource = ERessourceType.SKULL;
-    [SerializeField] private int _amountRessource = 0;
 
     #endregion Attributs
 
@@ -24,8 +21,7 @@ public class PNJController : MonoBehaviour
     {
         PNJManager.Instance.Controller = this;
 
-        PNJManager.Instance.TypeRessource = _typeRessource;
-        PNJManager.Instance.AmountRessource = _amountRessource;
+        PNJManager.Instance.ItemGet = _itemData;
     }
 
     // Update is called once per frame
@@ -36,7 +32,7 @@ public class PNJController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player") 
+        if (other.CompareTag("Player")) 
         {
             PNJManager.Instance.ItemGet = _itemData;
             PNJManager.Instance.UInteract(true);
@@ -46,7 +42,7 @@ public class PNJController : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        PNJManager.Instance.UInteract(false);
+        //PNJManager.Instance.UInteract(false);
         CharacterManager.Instance.IsHostile = false;
     }
 

@@ -14,6 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: "Cr\xE2ne"
   _origin: 2
-  _type: 2
+  _type: 1
   _amount: 1
-  _isPickUp: 1
