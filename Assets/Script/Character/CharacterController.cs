@@ -14,10 +14,10 @@ public class CharacterConrtoller : MonoBehaviour
     #endregion Attributs
 
 
-
     void Start()
     {
         CharacterManager.Instance.Controller = this;
+        PNJDetections.Instance.PlayerRef = this;
         PNJDetections.Instance.PlayerRef = this;
         //PNJManager.Instance.Target = transform;
 

@@ -32,12 +32,12 @@ public class UIController : MonoBehaviour
 
     #endregion Mono
 
-    public void Resumegame()
+    public void ResumegameInstance()
     {
         UIManager.Instance.ResumeGame();
     }
 
-    public void QuitGame()
+    public void QuitGameInstance()
     {
         UIManager.Instance.QuitGame();
     }

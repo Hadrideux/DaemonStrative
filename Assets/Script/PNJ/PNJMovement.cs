@@ -7,15 +7,15 @@ using UnityEngine.EventSystems;
 using static UnityEditor.PlayerSettings;
 using static UnityEngine.GraphicsBuffer;
 
-public class MovementNPC : MonoBehaviour
+public class PNJMovement : MonoBehaviour
 {
     [SerializeField] private NavMeshAgent agent;
     [SerializeField] private float _timeToWalk = 0;
     [SerializeField] private float _waitTimer = 0;
     [SerializeField] private float _waitTimerOut = 0;
     [SerializeField] private bool _isWalking = false;
-    private int _activePoint = 0;
-    private float _walkingTimeSpend = 0;
+    [SerializeField] private int _activePoint = 0;
+    [SerializeField] private float _walkingTimeSpend = 0;
     [SerializeField] private bool _isGuard = false;
 
     public WayPoint[] _wayPoints;
@@ -45,10 +45,11 @@ public class MovementNPC : MonoBehaviour
             }
             else
             {
-                UIManager.Instance.GameOver();                
+                UIManager.Instance.GameOver();
             }
+            Debug.Log(PNJDetections.Instance.IsCanSeePlayer);
         }
-        Debug.Log(PNJDetections.Instance.IsCanSeePlayer);
+        
     }
 
     private void WalkRound()

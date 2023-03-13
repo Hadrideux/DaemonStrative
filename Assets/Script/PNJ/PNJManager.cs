@@ -6,9 +6,8 @@ using UnityEngine;
 public class PNJManager : Singleton<PNJManager>
 {
     [SerializeField] private PNJController _controller = null;
-    //[SerializeField] private GameObject _interactUI = null;
 
-    [SerializeField] private bool _isCanSeePlayer = false;
+    //[SerializeField] private GameObject _interactUI = null;
     //[SerializeField] private Vector3 _lookAt = Vector3.zero;
 
     [SerializeField] private ItemData _itemData = null;
