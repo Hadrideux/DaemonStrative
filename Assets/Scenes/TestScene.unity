@@ -3166,8 +3166,12 @@ MonoBehaviour:
   _messageText: {fileID: 0}
   _backgroundBox: {fileID: 0}
   _dialogueButton: {fileID: 0}
-  _currentMessages: []
-  _currentActors: []
+  _currentMessages:
+  - actorId: 0
+    message: ERGR
+  _currentActors:
+  - name: EFG
+    sprite: {fileID: 21300000, guid: 24dfef829c13c0341a32242daf9e3973, type: 3}
   _activeMessage: 0
 --- !u!43 &928294081
 Mesh:
