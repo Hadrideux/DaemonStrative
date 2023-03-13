@@ -51,7 +51,7 @@ public class DialogueController : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && DialogueManager._isDialogueActive == true)
+        if (Input.GetKeyDown(KeyCode.Space) && DialogueManager.Instance.IsDialogueActive == true)
         {
             DialogueManager.Instance.NextMessage();
         }

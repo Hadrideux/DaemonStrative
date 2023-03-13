@@ -8,7 +8,7 @@ public class UI_DialogueLookAtCam : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //_cameraTarget = CharacterManager.Instance.Camera;
+
     }
 
     // Update is called once per frame

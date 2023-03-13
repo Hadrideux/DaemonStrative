@@ -78,7 +78,6 @@ public class PNJMovement : MonoBehaviour
             _waitTimer = 0;
             _isWalking = true;
 
-
             Debug.Log(_activePoint.ToString());
         }        
         else

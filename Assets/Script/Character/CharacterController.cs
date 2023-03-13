@@ -19,7 +19,6 @@ public class CharacterConrtoller : MonoBehaviour
         CharacterManager.Instance.Controller = this;
         PNJDetections.Instance.PlayerRef = this;
         PNJDetections.Instance.PlayerRef = this;
-        //PNJManager.Instance.Target = transform;
 
         CharacterManager.Instance.Agent = _agent;
         CharacterManager.Instance.Camera = _camera;
@@ -44,10 +43,7 @@ public class CharacterConrtoller : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             CharacterManager.Instance.Shadowalk();
-        }
-
-        if (Input.GetKeyDown(KeyCode.E))
-        {
+            //LayerMask.LayerToName(Shadow);
         }
     }
 

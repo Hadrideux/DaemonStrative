@@ -52,10 +52,6 @@ public class PNJDetections : Singleton<PNJDetections>
         StartCoroutine(FOVRoutine());
     }
 
-    /// <summary>
-    /// je cormprend pas ALEEED
-    /// </summary>
-    /// <returns></returns>
     private IEnumerator FOVRoutine()
     {
         WaitForSeconds wait = new WaitForSeconds(0.2f);
@@ -84,7 +80,6 @@ public class PNJDetections : Singleton<PNJDetections>
                 if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, _obstructionMask))
                 {
                     IsCanSeePlayer = true;
-                    Actualisation();
                 }
                 else
                 {
@@ -101,12 +96,4 @@ public class PNJDetections : Singleton<PNJDetections>
             IsCanSeePlayer = false;
         }      
     }
-
-    private void Actualisation()
-    {
-        //Empeche l'affichage de l'ui d'interaction car set constament IsCanSeePlayer à false
-        //PNJManager.Instance.LookAtPlayer(IsCanSeePlayer);
-    }
-
-
 }

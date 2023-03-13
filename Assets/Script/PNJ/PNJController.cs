@@ -23,24 +23,16 @@ public class PNJController : MonoBehaviour
 
         PNJManager.Instance.ItemGet = _itemData;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player")) 
         {
             PNJManager.Instance.ItemGet = _itemData;
-            PNJManager.Instance.UInteract(true);
             CharacterManager.Instance.IsHostile = true;
         }            
     }
     private void OnTriggerExit(Collider other)
     {
-        //PNJManager.Instance.UInteract(false);
         CharacterManager.Instance.IsHostile = false;
     }
 

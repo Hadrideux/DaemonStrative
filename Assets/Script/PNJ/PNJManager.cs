@@ -7,8 +7,6 @@ public class PNJManager : Singleton<PNJManager>
 {
     [SerializeField] private PNJController _controller = null;
 
-    //[SerializeField] private Vector3 _lookAt = Vector3.zero;
-
     [SerializeField] private ItemData _itemData = null;
 
     #region Properties
@@ -24,40 +22,8 @@ public class PNJManager : Singleton<PNJManager>
         get => _itemData;
         set => _itemData = value;
     }
-   
-    /*
-    public Vector3 LookAt
-    {
-        get => _lookAt; 
-        set => _lookAt = value;
-    }
-    */
 
     #endregion Properties
-
-    #region MONO
-
-    #endregion MONO
-
-    public void Interact()
-    {
-        
-    }
-
-    public void UInteract(bool isDisplay)
-    {
-        UIManager.Instance.DisplayUI(isDisplay);
-    }
-
-    /*
-    public void LookAtPlayer(bool isSee)
-    {
-        if (isSee)
-        {
-            LookAt = transform.LookAt(_target.position);
-        }        
-    }
-    */
 
     public void KillVillager()
     {

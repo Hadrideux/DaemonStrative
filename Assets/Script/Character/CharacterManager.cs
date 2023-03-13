@@ -83,8 +83,9 @@ public class CharacterManager : Singleton<CharacterManager>
     {
         if (IsHostile)
         {
-            Destroy(_collider);
+            Destroy(Collider);
             PNJManager.Instance.KillVillager();
+            UIManager.Instance.MorsureTime();
             Debug.Log("Morsure");
         }
     }
@@ -93,26 +94,18 @@ public class CharacterManager : Singleton<CharacterManager>
     {
         if (IsHostile)
         {
-            Destroy(_collider);
+            Destroy(Collider);
             PNJManager.Instance.KillVillager();
+            UIManager.Instance.GriffeTime();
             Debug.Log("Griffure");
         }       
     }
 
     public void Shadowalk()
     {
+        UIManager.Instance.OmbreMarcheTime();
         Debug.Log("tchachachacha");
     }
-
-    /*
-    public void IsInBack()
-    {
-        if (IsHostile)
-        {
-            PNJManager.Instance.Interact();
-        }
-    }
-    */
 
     #endregion Player Action
 
