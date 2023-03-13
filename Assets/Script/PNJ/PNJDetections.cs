@@ -70,7 +70,6 @@ public class PNJDetections : Singleton<PNJDetections>
     private void FieldOfViewCheck()
     {
         Collider[] rangeChecks = Physics.OverlapSphere(transform.position, _radius, _targetMask);
-        Debug.Log("vue");
 
         if (rangeChecks.Length != 0)
         {

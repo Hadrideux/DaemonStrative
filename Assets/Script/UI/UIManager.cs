@@ -79,5 +79,6 @@ public class UIManager : Singleton<UIManager>
         _gameOverUI.SetActive(true);
         Time.timeScale = 0;
     }
+
     #endregion Methode
 }
