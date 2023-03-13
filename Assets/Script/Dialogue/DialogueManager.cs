@@ -110,13 +110,7 @@ public class DialogueManager : Singleton<DialogueManager>
     }
 
        
-        void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.Space) && IsDialogueActive == true)
-            {
-                NextMessage();
-            }
-        }
+     
 
     private void HideButton()
     {
