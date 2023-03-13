@@ -8,6 +8,7 @@ public class PNJManager : Singleton<PNJManager>
     [SerializeField] private PNJController _controller = null;
     //[SerializeField] private GameObject _interactUI = null;
 
+    [SerializeField] private bool _isCanSeePlayer = false;
     //[SerializeField] private Vector3 _lookAt = Vector3.zero;
 
     [SerializeField] private ItemData _itemData = null;
@@ -24,6 +25,12 @@ public class PNJManager : Singleton<PNJManager>
     {
         get => _itemData;
         set => _itemData = value;
+    }
+
+    public bool IsCanSeePlayer
+    {
+        get => _isCanSeePlayer;
+        set => _isCanSeePlayer = value;
     }
 
     /*
