@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class UI_DialogueLookAtCam : MonoBehaviour
 {
-    [SerializeField] private GameObject _cameraTarget;
+    [SerializeField] private Camera _cameraTarget;
     // Start is called before the first frame update
     void Start()
     {
-        
+        _cameraTarget = CharacterManager.Instance.Camera;
     }
 
     // Update is called once per frame

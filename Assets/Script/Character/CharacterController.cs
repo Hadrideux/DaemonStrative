@@ -48,15 +48,11 @@ public class CharacterConrtoller : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.E))
         {
-            //CharacterManager.Instance.IsInBack();
         }
     }
-        
 
     private void OnTriggerEnter(Collider other)
     {
-        //Détruit que le trigger du dos des pnjs
         CharacterManager.Instance.Collider = other.gameObject;
     }
-
 }

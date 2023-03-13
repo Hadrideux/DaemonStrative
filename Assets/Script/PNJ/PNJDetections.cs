@@ -70,11 +70,13 @@ public class PNJDetections : Singleton<PNJDetections>
     private void FieldOfViewCheck()
     {
         Collider[] rangeChecks = Physics.OverlapSphere(transform.position, _radius, _targetMask);
+        Debug.Log("vue");
 
         if (rangeChecks.Length != 0)
         {
             Transform target = rangeChecks[0].transform;
             Vector3 directionToTarget = (target.position - transform.position).normalized;
+            Debug.Log("ici");
 
             if (Vector3.Angle(transform.forward, directionToTarget) < _angle / 2)
             {
@@ -93,7 +95,6 @@ public class PNJDetections : Singleton<PNJDetections>
             else
             {
                 IsCanSeePlayer = false;
-                Actualisation();
             }
         }
         else if (IsCanSeePlayer)
@@ -104,8 +105,7 @@ public class PNJDetections : Singleton<PNJDetections>
 
     private void Actualisation()
     {
-        //Empeche l'affichage de l'ui d'interaction car set constament IsCanSeePlayer à false 
-        //PNJManager.Instance.UInteract(IsCanSeePlayer);
+        //Empeche l'affichage de l'ui d'interaction car set constament IsCanSeePlayer à false
         //PNJManager.Instance.LookAtPlayer(IsCanSeePlayer);
     }
 

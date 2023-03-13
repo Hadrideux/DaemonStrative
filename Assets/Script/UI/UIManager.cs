@@ -51,7 +51,7 @@ public class UIManager : Singleton<UIManager>
     //Display de l'ui d'interaction
     public void DisplayUI(bool isDisplay)
     {
-        _interactUI.SetActive(isDisplay);
+
     }
 
     //Active l'UI de pause
