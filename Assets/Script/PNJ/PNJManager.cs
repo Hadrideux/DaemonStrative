@@ -26,13 +26,7 @@ public class PNJManager : Singleton<PNJManager>
         get => _itemData;
         set => _itemData = value;
     }
-
-    public bool IsCanSeePlayer
-    {
-        get => _isCanSeePlayer;
-        set => _isCanSeePlayer = value;
-    }
-
+   
     /*
     public Vector3 LookAt
     {

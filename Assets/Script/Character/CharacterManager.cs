@@ -58,7 +58,7 @@ public class CharacterManager : Singleton<CharacterManager>
 
     public void Moving()
     {
-        if (DialogueManager.isDialogueActive == true)
+        if (DialogueManager.Instance.IsDialogueActive == true)
         {
             return;
         }

@@ -29,7 +29,7 @@ public class PNJController : MonoBehaviour
     {
 
     }
-
+    /*
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player")) 
@@ -39,7 +39,7 @@ public class PNJController : MonoBehaviour
             CharacterManager.Instance.IsHostile = true;
         }            
     }
-
+    */
     private void OnTriggerExit(Collider other)
     {
         //PNJManager.Instance.UInteract(false);

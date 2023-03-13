@@ -16,6 +16,7 @@ public class MovementNPC : MonoBehaviour
     [SerializeField] private bool _isWalking = false;
     private int _activePoint = 0;
     private float _walkingTimeSpend = 0;
+    [SerializeField] private bool _isGuard = false;
 
     public WayPoint[] _wayPoints;
 
@@ -36,7 +37,18 @@ public class MovementNPC : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        WalkRound();
+        if (_isGuard == true)
+        {
+            if (PNJDetections.Instance.IsCanSeePlayer == false)
+            {
+                WalkRound();
+            }
+            else
+            {
+                UIManager.Instance.GameOver();                
+            }
+        }
+        Debug.Log(PNJDetections.Instance.IsCanSeePlayer);
     }
 
     private void WalkRound()

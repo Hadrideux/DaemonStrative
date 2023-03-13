@@ -82,24 +82,24 @@ public class PNJDetections : Singleton<PNJDetections>
 
                 if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, _obstructionMask))
                 {
-                    PNJManager.Instance.IsCanSeePlayer = true;
+                    IsCanSeePlayer = true;
                     Actualisation();
                 }
                 else
                 {
-                    PNJManager.Instance.IsCanSeePlayer = false;
+                    IsCanSeePlayer = false;
                 }
             }
             else
             {
-                PNJManager.Instance.IsCanSeePlayer = false;
+                IsCanSeePlayer = false;
                 Actualisation();
             }
         }
         else if (IsCanSeePlayer)
         {
-            PNJManager.Instance.IsCanSeePlayer = false;
-        }        
+            IsCanSeePlayer = false;
+        }      
     }
 
     private void Actualisation()

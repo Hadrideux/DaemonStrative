@@ -14,6 +14,6 @@ public class UI_DialogueLookAtCam : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.rotation = Quaternion.LookRotation(-_cameraTarget.transform.position);
+        transform.LookAt(-_cameraTarget.transform.position);
     }
 }

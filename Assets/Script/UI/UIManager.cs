@@ -15,6 +15,7 @@ public class UIManager : Singleton<UIManager>
 
     [SerializeField] private GameObject _pauseUI = null;
     [SerializeField] private GameObject _interactUI = null;
+    [SerializeField] private GameObject _gameOverUI = null;
 
     #endregion Attributs
 
@@ -38,6 +39,11 @@ public class UIManager : Singleton<UIManager>
         set => _interactUI = value;
     }
 
+    public GameObject GameOverUI
+    {
+        get => _gameOverUI;
+        set => _gameOverUI = value;
+    }
     #endregion Properties
 
     #region Methode
@@ -68,5 +74,10 @@ public class UIManager : Singleton<UIManager>
         Application.Quit();
     }
 
+    public void GameOver()
+    {
+        _gameOverUI.SetActive(true);
+        Time.timeScale = 0;
+    }
     #endregion Methode
 }
