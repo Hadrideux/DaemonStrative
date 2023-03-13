@@ -7,6 +7,8 @@ using UnityEngine.UI;
 
 public class DialogueManager : Singleton<DialogueManager>
 {
+    #region Attributs
+
     [SerializeField] private Image _actorImage;
     [SerializeField] private TMPro.TextMeshProUGUI _actorName;
     [SerializeField] private TextMeshProUGUI _messageText;
@@ -16,7 +18,11 @@ public class DialogueManager : Singleton<DialogueManager>
     [SerializeField] private DialogueController.Message[] _currentMessages;
     [SerializeField] private DialogueController.Actor[] _currentActors;
     [SerializeField] private int _activeMessage = 0;
-    public static bool _isDialogueActive = false;
+    [SerializeField] private bool _isDialogueActive = false;
+
+    #endregion Attributs
+
+    #region Properties
 
     public Image ActorImage
     {
@@ -43,18 +49,13 @@ public class DialogueManager : Singleton<DialogueManager>
         get => _isDialogueActive;
         set => _isDialogueActive = value;
     }
-
     public RectTransform DialogueButton
     {
         get => _dialogueButton;
         set => _dialogueButton = value;
     }
 
-    
-    void Start()
-    {
-
-    }
+    #endregion Properties
 
     public void OpenDialogue(DialogueController.Message[] messages, DialogueController.Actor[] actors)
     {

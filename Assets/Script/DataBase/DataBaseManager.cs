@@ -6,7 +6,6 @@ using UnityEngine;
 public class DataBaseManager : Singleton<DataBaseManager>
 {
     [SerializeField] private ItemData[] _items = null;
-    [SerializeField] private PNJController _pnjController = null;
     private Dictionary<string, ItemData> _dataBase = null;
 
     protected override void Start()
