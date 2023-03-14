@@ -32,7 +32,7 @@ public class CharacterConrtoller : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             CharacterManager.Instance.VFXType = _VFXMorsure;            
-            CharacterManager.Instance.Morsure();           
+            CharacterManager.Instance.Morsure();
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha2))
