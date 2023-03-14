@@ -8,12 +8,17 @@ public class CharacterManager : Singleton<CharacterManager>
 {
     [SerializeField] private CharacterConrtoller _controller = null;
     [SerializeField] private GameObject _collider = null;
+    [SerializeField] private GameObject _body = null;
 
     [SerializeField] private NavMeshAgent _agent = null;
     [SerializeField] private Camera _camera = null;
 
 
     [SerializeField] private bool _isHostile = false;
+
+    [SerializeField] private GameObject _VFXSpawnPoint = null;
+    [SerializeField] private GameObject _VFXType = null;
+
 
     #region Properties
 
@@ -47,7 +52,30 @@ public class CharacterManager : Singleton<CharacterManager>
         set => _collider = value;
     }
 
+    public GameObject Body
+    {
+        get => _body;
+        set => _body = value;
+    }
+
+    public GameObject VFXSpawner
+    {
+        get => _VFXSpawnPoint;
+        set => _VFXSpawnPoint = value;
+    }
+
+    public GameObject VFXType
+    {
+        get => _VFXType;
+        set => _VFXType = value;
+    }
+
     #endregion properties
+
+    private void Start()
+    {
+        PNJDetections.Instance.PlayerRef = Controller;
+    }
 
     #region Methode
 
@@ -78,31 +106,42 @@ public class CharacterManager : Singleton<CharacterManager>
     {
         if (IsHostile)
         {
+            BloodAndFlesh();
+            
             PNJManager.Instance.KillVillager();
             UIManager.Instance.MorsureTime();
-            Destroy(Collider);
-            
-            IsHostile = false;
-            
             Debug.Log("Morsure");
+            
         }
     }
 
+    public void BloodAndFlesh()
+    {
+        Debug.Log("Blood");
+        
+        Instantiate(_VFXType, _VFXSpawnPoint.transform);
+    }
+
+
     public void Griffe()
     {
+
         if (IsHostile)
         {
+            BloodAndFlesh();
+                      
+            Destroy(_body);
             PNJManager.Instance.KillVillager();
             UIManager.Instance.GriffeTime();
-            
-            Destroy(Collider);
-            
-            IsHostile = false;
-            
             Debug.Log("Griffure");
         }       
     }
 
+    public void DestroyAll()
+    {
+        Destroy(_collider);
+        PNJManager.Instance.isDead = false;
+    }
     public void Shadowalk()
     {
         UIManager.Instance.OmbreMarcheTime();

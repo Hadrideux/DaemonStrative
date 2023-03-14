@@ -9,7 +9,8 @@ public class CharacterConrtoller : MonoBehaviour
 
     [SerializeField] private NavMeshAgent _agent = null;
     [SerializeField] private Camera _camera = null;
-
+    [SerializeField] private GameObject _VFXMorsure = null;
+    [SerializeField] private GameObject _VFXGriffure = null;
 
     #endregion Attributs
 
@@ -23,19 +24,22 @@ public class CharacterConrtoller : MonoBehaviour
     }
     void Update()
     {
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButton(1))
         {
            CharacterManager.Instance.Moving();
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            CharacterManager.Instance.Morsure();
+            CharacterManager.Instance.VFXType = _VFXMorsure;            
+            CharacterManager.Instance.Morsure();           
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            CharacterManager.Instance.Griffe();
+            CharacterManager.Instance.VFXType = _VFXGriffure;
+            PNJManager.Instance.isDead = true;
+            CharacterManager.Instance.Griffe();            
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha3))
