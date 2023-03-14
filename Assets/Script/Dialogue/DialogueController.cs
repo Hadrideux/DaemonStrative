@@ -44,6 +44,7 @@ public class DialogueController : MonoBehaviour
 
     public void StartDialogue()
     {
+        CharacterManager.Instance.Agent.isStopped = true;
         DialogueManager.Instance.OpenDialogue(messages, actors);
         Debug.Log("jkbbkjbjb");
     }

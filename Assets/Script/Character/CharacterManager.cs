@@ -90,6 +90,7 @@ public class CharacterManager : Singleton<CharacterManager>
 
             if (Physics.Raycast(movePosition, out var hitInfo))
             {
+                Agent.isStopped = false;
                 Agent.SetDestination(hitInfo.point);
             }
         }

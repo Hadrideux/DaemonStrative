@@ -39,13 +39,18 @@ public class PNJMovement : MonoBehaviour
     {
         if (_isGuard == true)
         {
-            if (PNJDetections.Instance.IsCanSeePlayer == false)
+            if(agent.remainingDistance < 0.05f)
             {
                 WalkRound();
-            }
-            else
-            {
-                UIManager.Instance.GameOver();
+                _activePoint = (_activePoint + 1)%_wayPoints.Length;
+                /*if (PNJDetections.Instance.IsCanSeePlayer == false)
+                {
+                    WalkRound();
+                }
+                else
+                {
+                    UIManager.Instance.GameOver();
+                }*/
             }
         }
         
@@ -53,37 +58,40 @@ public class PNJMovement : MonoBehaviour
 
     private void WalkRound()
     {
-        
+        Debug.Log(_activePoint);
         WayPoint actualPoint = _wayPoints[_activePoint];
-        _walkingTimeSpend += Time.deltaTime;
-        _waitTimer += Time.deltaTime;
+        agent.SetDestination(actualPoint.target.transform.position);
+        /*   
+         WayPoint actualPoint = _wayPoints[_activePoint];
+         _walkingTimeSpend += Time.deltaTime;
+         _waitTimer += Time.deltaTime;
 
-        if (actualPoint != null && _timeToWalk > _walkingTimeSpend && _isWalking == true) 
-        {
+         if (actualPoint != null && _timeToWalk > _walkingTimeSpend && _isWalking == true) 
+         {
 
-            agent.SetDestination(actualPoint.target.transform.position);            
-            _waitTimer = 0;
-            
-        }
-        else if (_isWalking = true && _timeToWalk < _walkingTimeSpend && _waitTimerOut > _waitTimer)
-        {
-            _isWalking= false;            
-            
-        }
-        else if (_isWalking == false && _activePoint < _wayPoints.Length- 1 && _waitTimerOut < _waitTimer)
-        {
-            _activePoint += 1;
-            _walkingTimeSpend = 0;
-            _waitTimer = 0;
-            _isWalking = true;
+             agent.SetDestination(actualPoint.target.transform.position);            
+             _waitTimer = 0;
 
-            Debug.Log(_activePoint.ToString());
-        }        
-        else
-        {
-            _activePoint= 0;
-            
-        }
+         }
+         else if (_isWalking = true && _timeToWalk < _walkingTimeSpend && _waitTimerOut > _waitTimer)
+         {
+             _isWalking= false;            
+
+         }
+         else if (_isWalking == false && _activePoint < _wayPoints.Length- 1 && _waitTimerOut < _waitTimer)
+         {
+             _activePoint += 1;
+             _walkingTimeSpend = 0;
+             _waitTimer = 0;
+             _isWalking = true;
+
+             //Debug.Log(_activePoint.ToString());
+         }        
+         else
+         {
+             _activePoint= 0;
+
+         }*/
     }
-       
+
 }

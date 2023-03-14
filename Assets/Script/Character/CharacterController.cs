@@ -49,6 +49,8 @@ public class CharacterConrtoller : MonoBehaviour
             gameObject.layer = LayerIgnoreRaycast;
 
         }
+        //Vector3 destination = Input.GetAxis("Horizontal") * transform.right + Input.GetAxis("Vertical") * transform.forward; //0f <> 1f
+        //if(Input.GetButtonDown("Fire1")
     }
 
     private void OnTriggerEnter(Collider other)
