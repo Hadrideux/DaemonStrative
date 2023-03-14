@@ -72,10 +72,6 @@ public class CharacterManager : Singleton<CharacterManager>
 
     #endregion properties
 
-    private void Start()
-    {
-    }
-
     #region Methode
 
     public void Moving()
@@ -101,7 +97,7 @@ public class CharacterManager : Singleton<CharacterManager>
     /// <summary>
     /// Fonction des action du joueur durant les différente phase de jeux
     /// </summary>
-    /// 
+
     public void Morsure()
     {
         if (IsHostile)
@@ -109,7 +105,6 @@ public class CharacterManager : Singleton<CharacterManager>
             BloodAndFlesh();
             
             PNJManager.Instance.KillVillager();
-            //UIManager.Instance.MorsureTime();
             Debug.Log("Morsure");
             
         }
@@ -132,7 +127,6 @@ public class CharacterManager : Singleton<CharacterManager>
                       
             Destroy(_body);
             PNJManager.Instance.KillVillager();
-            //UIManager.Instance.GriffeTime();
             Debug.Log("Griffure");
         }       
     }
@@ -146,6 +140,7 @@ public class CharacterManager : Singleton<CharacterManager>
     {
         UIManager.Instance.OmbreMarcheTime();
         Debug.Log("tchachachacha");
+        UIManager.Instance.IsCast = true;
     }
 
     #endregion Player Action

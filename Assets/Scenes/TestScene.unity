@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2952,8 +2952,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _characterRef: {fileID: 1044533981}
   _camera: {fileID: 1901480017}
-  _speed: 300
-  _speedAlpha: 0.75
+  _speed: 10
+  _speedAlpha: 0.422
 --- !u!1001 &693863977
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6482,6 +6482,7 @@ GameObject:
   - component: {fileID: 1289766615}
   - component: {fileID: 1289766617}
   - component: {fileID: 1289766616}
+  - component: {fileID: 1289766618}
   m_Layer: 5
   m_Name: Blood
   m_TagString: Untagged
@@ -6549,6 +6550,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1289766614}
   m_CullTransparentMesh: 1
+--- !u!114 &1289766618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1289766614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3312d7739989d2b4e91e6319e9a96d76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding: {x: 0, y: 0, z: 0, w: 0}
+  m_Softness: {x: 0, y: 0}
 --- !u!1 &1291319066
 GameObject:
   m_ObjectHideFlags: 0

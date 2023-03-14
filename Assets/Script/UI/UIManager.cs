@@ -29,11 +29,8 @@ public class UIManager : Singleton<UIManager>
 
     #endregion Competence
 
-    #region Blood
+    [SerializeField] private bool _isCast = false;
 
-    
-
-    #endregion Blood
     #endregion Attributs
 
     #region Properties
@@ -86,19 +83,23 @@ public class UIManager : Singleton<UIManager>
     }
     #endregion UI Competence
 
+    public bool IsCast
+    {
+        get => _isCast;
+        set => _isCast = value;
+    }
+
     #endregion Properties
 
-    private void Start()
-    {
-        
-    }
     private void Update()
     {
-        
-        /*if (MorsureTimer <= _coldDown)
+        if (IsCast)
         {
-            MorsureTime();
-        }*/
+            if (OmbreMarcheTimer <= _coldDown)
+            {
+                OmbreMarcheTime();
+            }
+        }
     }
 
     #region Methode
@@ -166,6 +167,7 @@ public class UIManager : Singleton<UIManager>
         if (OmbreMarcheTimer >= _coldDown)
         {
             OmbreMarcheTimer = 0;
+            IsCast = false;
         }
     }
 
