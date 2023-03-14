@@ -41,7 +41,9 @@ public class CharacterConrtoller : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             CharacterManager.Instance.Shadowalk();
-            //LayerMask.LayerToName(Shadow);
+            int LayerIgnoreRaycast = LayerMask.NameToLayer("Ignore Raycast");
+            gameObject.layer = LayerIgnoreRaycast;
+
         }
     }
 
