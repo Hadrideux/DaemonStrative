@@ -95,4 +95,6 @@ public class PNJDetections : Singleton<PNJDetections>
             IsCanSeePlayer = false;
         }      
     }
+
+
 }
