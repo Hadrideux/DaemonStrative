@@ -64,7 +64,7 @@ public class UI_IngameController : MonoBehaviour
 
     public void UpdateBlood()
     {
-        int perc = InventoryManager.Instance.AmountBlood / _maxBlood;
+        float perc = (float)InventoryManager.Instance.AmountBlood / (float)_maxBlood;
         _fill.localPosition = Vector3.Lerp(_startPos, _endPos, perc);
     }
 
