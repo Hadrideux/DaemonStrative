@@ -18,8 +18,6 @@ public class CharacterConrtoller : MonoBehaviour
     void Start()
     {
         CharacterManager.Instance.Controller = this;
-        PNJDetections.Instance.PlayerRef = this;
-        PNJDetections.Instance.PlayerRef = this;
 
         CharacterManager.Instance.Agent = _agent;
         CharacterManager.Instance.Camera = _camera;
@@ -47,7 +45,9 @@ public class CharacterConrtoller : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             CharacterManager.Instance.Shadowalk();
-            //LayerMask.LayerToName(Shadow);
+            int LayerIgnoreRaycast = LayerMask.NameToLayer("Ignore Raycast");
+            gameObject.layer = LayerIgnoreRaycast;
+
         }
     }
 

@@ -4,7 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.EventSystems;
-using static UnityEditor.PlayerSettings;
+//using static UnityEditor.PlayerSettings;
 using static UnityEngine.GraphicsBuffer;
 
 public class PNJMovement : MonoBehaviour
@@ -47,7 +47,6 @@ public class PNJMovement : MonoBehaviour
             {
                 UIManager.Instance.GameOver();
             }
-            Debug.Log(PNJDetections.Instance.IsCanSeePlayer);
         }
         
     }

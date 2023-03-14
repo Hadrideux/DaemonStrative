@@ -10,7 +10,7 @@ public class PNJDetections : Singleton<PNJDetections>
     [SerializeField] private float _radius = 0f; [Range(0, 360)]
     [SerializeField] private float _angle = 0f;
 
-    [SerializeField] private CharacterConrtoller _playerRef = null;
+    [SerializeField] private GameObject _playerRef = null;
 
     [SerializeField] private LayerMask _targetMask;
     [SerializeField] private LayerMask _obstructionMask;
@@ -39,7 +39,7 @@ public class PNJDetections : Singleton<PNJDetections>
         set => _isCanSeePlayer = value;
     }
 
-    public CharacterConrtoller PlayerRef
+    public GameObject PlayerRef
     {
         get => _playerRef;
         set => _playerRef = value;
@@ -65,15 +65,14 @@ public class PNJDetections : Singleton<PNJDetections>
 
     private void FieldOfViewCheck()
     {
-        Collider[] rangeChecks = Physics.OverlapSphere(transform.position, _radius, _targetMask);
+        Collider[] rangeChecks = Physics.OverlapSphere(transform.position, Radius, _targetMask);
 
         if (rangeChecks.Length != 0)
         {
             Transform target = rangeChecks[0].transform;
             Vector3 directionToTarget = (target.position - transform.position).normalized;
-            Debug.Log("ici");
 
-            if (Vector3.Angle(transform.forward, directionToTarget) < _angle / 2)
+            if (Vector3.Angle(transform.forward, directionToTarget) < Angle / 2)
             {
                 float distanceToTarget = Vector3.Distance(transform.position, target.position);
 
@@ -91,7 +90,7 @@ public class PNJDetections : Singleton<PNJDetections>
                 IsCanSeePlayer = false;
             }
         }
-        else if (IsCanSeePlayer)
+        else //if (IsCanSeePlayer)
         {
             IsCanSeePlayer = false;
         }      
