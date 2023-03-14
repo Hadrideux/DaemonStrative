@@ -26,22 +26,18 @@ public class PlayerFollow : MonoBehaviour
     {
         this.transform.position = new Vector3(_characterRef.position.x, _characterRef.position.y + 10f, _characterRef.position.z);
         CameraAngle();
-        transform.eulerAngles = Vector3.Lerp(transform.eulerAngles, transform.eulerAngles + targetRotation, _speedAlpha); 
+        
+        // Rotation lerped
+        Vector3 eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y + targetRotation.y, transform.eulerAngles.z);
+        Vector3 lerp = Vector3.Lerp(transform.eulerAngles, eulerAngles, _speedAlpha);
+        transform.rotation = Quaternion.Euler(lerp);
+        
         _camera.transform.LookAt(_characterRef.position);
     }
 
     private void CameraAngle()
     {
-        if (Input.GetKey(KeyCode.Q))
-        {
-            //transform.Rotate(0,1,0);
-            targetRotation += new Vector3(0, Time.deltaTime * _speed, 0);
-        }
-        if (Input.GetKey(KeyCode.D))
-        {
-            //transform.Rotate(0,-1, 0);
-            targetRotation -= new Vector3(0, Time.deltaTime * _speed, 0);
-        }
+        targetRotation = new Vector3(0, Time.deltaTime * _speed  * Input.GetAxis("Horizontal"), 0);
     }
 
 }
