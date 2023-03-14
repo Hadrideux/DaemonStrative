@@ -47,7 +47,6 @@ public class PNJMovement : MonoBehaviour
             {
                 UIManager.Instance.GameOver();
             }
-            Debug.Log(PNJDetections.Instance.IsCanSeePlayer);
         }
         
     }

@@ -51,7 +51,6 @@ public class CharacterManager : Singleton<CharacterManager>
 
     private void Start()
     {
-        PNJDetections.Instance.PlayerRef = Controller;
     }
 
     #region Methode

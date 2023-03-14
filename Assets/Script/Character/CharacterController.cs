@@ -17,8 +17,6 @@ public class CharacterConrtoller : MonoBehaviour
     void Start()
     {
         CharacterManager.Instance.Controller = this;
-        PNJDetections.Instance.PlayerRef = this;
-        PNJDetections.Instance.PlayerRef = this;
 
         CharacterManager.Instance.Agent = _agent;
         CharacterManager.Instance.Camera = _camera;
