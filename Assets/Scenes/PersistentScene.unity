@@ -203,8 +203,6 @@ MonoBehaviour:
   _interactUI: {fileID: 0}
   _gameOverUI: {fileID: 0}
   _coldDown: 5
-  _morsureTimer: 0
-  _griffureTimer: 0
   _ombreMarcheTimer: 0
 --- !u!4 &400180203
 Transform:

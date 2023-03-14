@@ -44,14 +44,14 @@ public class UI_IngameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _startPos.y = _fill.rect.width;
+        _startPos.y = -_fill.rect.width;
     }
 
     // Update is called once per frame
     void Update()
     {
-        _morsurText.text = UIManager.Instance.MorsureTimer.ToString();
-        _griffeText.text = UIManager.Instance.GriffeTimer.ToString();
+        //_morsurText.text = UIManager.Instance.MorsureTimer.ToString();
+        //_griffeText.text = UIManager.Instance.GriffeTimer.ToString();
         _ombreMarcheText.text = UIManager.Instance.OmbreMarcheTimer.ToString();
 
         _bloodText.text = InventoryManager.Instance.AmountBlood.ToString();

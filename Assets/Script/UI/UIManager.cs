@@ -23,8 +23,8 @@ public class UIManager : Singleton<UIManager>
     #region Competence
 
     [SerializeField] private float _coldDown = 0f;
-    [SerializeField] private float _morsureTimer = 0.0f;
-    [SerializeField] private float _griffureTimer = 0.0f;
+    //[SerializeField] private float _morsureTimer = 0.0f;
+    //[SerializeField] private float _griffureTimer = 0.0f;
     [SerializeField] private float _ombreMarcheTimer = 0.0f;
 
     #endregion Competence
@@ -65,6 +65,7 @@ public class UIManager : Singleton<UIManager>
     #endregion UI Menu
 
     #region UI Competence
+    /*
     public float MorsureTimer
     {
         get => _morsureTimer;
@@ -76,7 +77,7 @@ public class UIManager : Singleton<UIManager>
         get => _griffureTimer;
         set => _griffureTimer = Mathf.Clamp(value, 0, _coldDown);
     }
-
+    */
     public float OmbreMarcheTimer
     {
         get => _ombreMarcheTimer;
@@ -93,14 +94,12 @@ public class UIManager : Singleton<UIManager>
     }
     private void Update()
     {
-
+        
         /*if (MorsureTimer <= _coldDown)
         {
             MorsureTime();
         }*/
     }
-
-
 
     #region Methode
 
@@ -134,6 +133,8 @@ public class UIManager : Singleton<UIManager>
 
     #endregion UI System
 
+    #region Competence
+    /*
     public void MorsureTime()
     {
         MorsureTimer += Time.deltaTime;
@@ -155,6 +156,7 @@ public class UIManager : Singleton<UIManager>
             GriffeTimer = 0;
         }
     }
+    */
 
     public void OmbreMarcheTime()
     {
@@ -166,5 +168,8 @@ public class UIManager : Singleton<UIManager>
             OmbreMarcheTimer = 0;
         }
     }
+
+    #endregion Competence
+
     #endregion Methode
 }
