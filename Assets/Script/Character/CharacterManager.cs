@@ -1,56 +1,112 @@
+using Engine.Utils;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
+using UnityEngine.AI;
 
-public class CharacterManager : MonoBehaviour
+public class CharacterManager : Singleton<CharacterManager>
 {
+    [SerializeField] private CharacterConrtoller _controller = null;
+    [SerializeField] private GameObject _collider = null;
 
-    /*
     [SerializeField] private NavMeshAgent _agent = null;
     [SerializeField] private Camera _camera = null;
 
+
+    [SerializeField] private bool _isHostile = false;
+
     #region Properties
-    
-    public Ray MousePosition
-    {
-        get
-        {
-            return _agent.MousePosition;
-        }
-    }
-    
-    #endregion Properties
-    */
 
-    // Update is called once per frame
-    void Update()
+    public CharacterConrtoller Controller
     {
-        ActionInput();
+        get => _controller;
+        set => _controller = value;
     }
 
-    private void ActionInput()
+    public NavMeshAgent Agent
     {
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            //Interact with PNJ
-        }
-        if (Input.GetMouseButton(1))
-        {
-            /*
-            MousePosition = _camera.ScreenPointToRay(Input.mousePosition);
-            CharacterController.Moving();
-            Moving Character to destination
-            */
-        }
+        get => _agent; 
+        set => _agent = value;
+    }
 
-        if (Input.GetKeyDown(KeyCode.Q))
+    public Camera Camera
+    {
+        get => _camera; 
+        set => _camera = value;
+    }
+
+    public bool IsHostile
+    {
+        get => _isHostile;
+        set => _isHostile = value;
+    }
+
+    public GameObject Collider
+    {
+        get => _collider;
+        set => _collider = value;
+    }
+
+    #endregion properties
+
+    private void Start()
+    {
+    }
+
+    #region Methode
+
+    public void Moving()
+    {
+        if (DialogueManager.Instance.IsDialogueActive == true)
         {
-            //rotation de la caméra
+            return;
         }
-        if (Input.GetKeyDown(KeyCode.D))
+        else
         {
-            //rotation de la caméra
+            Ray movePosition = Camera.ScreenPointToRay(Input.mousePosition);
+
+            if (Physics.Raycast(movePosition, out var hitInfo))
+            {
+                Agent.SetDestination(hitInfo.point);
+            }
+        }
+        
+    }
+
+    #region Player Action
+    /// <summary>
+    /// Fonction des action du joueur durant les différente phase de jeux
+    /// </summary>
+    /// 
+    public void Morsure()
+    {
+        if (IsHostile)
+        {
+            Destroy(Collider);
+            PNJManager.Instance.KillVillager();
+            UIManager.Instance.MorsureTime();
+            Debug.Log("Morsure");
         }
     }
+
+    public void Griffe()
+    {
+        if (IsHostile)
+        {
+            Destroy(Collider);
+            PNJManager.Instance.KillVillager();
+            UIManager.Instance.GriffeTime();
+            Debug.Log("Griffure");
+        }       
+    }
+
+    public void Shadowalk()
+    {
+        UIManager.Instance.OmbreMarcheTime();
+        Debug.Log("tchachachacha");
+    }
+
+    #endregion Player Action
+
+    #endregion Methode
 }

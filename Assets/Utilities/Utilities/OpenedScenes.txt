@@ -1,0 +1,2 @@
+Assets/Scenes/GameScene.unity
+Assets/Scenes/PersistentScene.unity

@@ -5,32 +5,28 @@ using UnityEngine;
 
 public class PNJManager : Singleton<PNJManager>
 {
-    [SerializeField] private PNJController _targetPnj = null;
+    [SerializeField] private PNJController _controller = null;
 
+    [SerializeField] private ItemData _itemData = null;
 
-    public PNJController TargetPnj
+    #region Properties
+
+    public PNJController Controller
     {
-        get => _targetPnj;
-
-        set => _targetPnj = value;        
+        get => _controller;
+        set => _controller = value;
     }
 
-
-    // Start is called before the first frame update
-    void Start()
+    public ItemData ItemGet
     {
-        
+        get => _itemData;
+        set => _itemData = value;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    #endregion Properties
 
-    public void Interact()
+    public void KillVillager()
     {
-        DialogueManager.Instance.PNJDialogue();
-        UIManager.Instance.DisplayUI();
+        InventoryManager.Instance.AddItem(ItemGet);
     }
 }

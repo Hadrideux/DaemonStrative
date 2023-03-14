@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,38 +8,33 @@ using UnityEngine.UI;
 public class PNJController : MonoBehaviour
 {
 
-    [SerializeField] private GameObject _interactUI = null;
+    #region Attributs
+
+    [SerializeField] private ItemData _itemData = null;
+
+    #endregion Attributs
+
+    #region Mono
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        PNJManager.Instance.Controller = this;
+
+        PNJManager.Instance.ItemGet = _itemData;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-        
-    }
-
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Player" )
+        if (other.CompareTag("Player")) 
         {
-            //UIManager.Instance.UIInteract();
-            UIInteract();
-
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                //PNJManager.Instance.TargetPnj = ;
-                PNJManager.Instance.Interact();
-            }
-        }
-        
+            PNJManager.Instance.ItemGet = _itemData;
+            CharacterManager.Instance.IsHostile = true;
+        }            
     }
-
-    public void UIInteract()
+    private void OnTriggerExit(Collider other)
     {
-        _interactUI.SetActive(true);
+        CharacterManager.Instance.IsHostile = false;
     }
+
+    #endregion Mono
 }

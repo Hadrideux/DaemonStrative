@@ -10,39 +10,43 @@ public class CharacterConrtoller : MonoBehaviour
     [SerializeField] private NavMeshAgent _agent = null;
     [SerializeField] private Camera _camera = null;
 
+
     #endregion Attributs
+
 
     void Start()
     {
+        CharacterManager.Instance.Controller = this;
 
+        CharacterManager.Instance.Agent = _agent;
+        CharacterManager.Instance.Camera = _camera;
     }
-
     void Update()
     {
         if (Input.GetMouseButtonDown(1))
         {
-            Moving();
+           CharacterManager.Instance.Moving();
         }
-    }
 
-    #region Methode
-    
-    private void Moving()
-    {
-        Ray movePosition = _camera.ScreenPointToRay(Input.mousePosition);
-
-        if (Physics.Raycast(movePosition, out var hitInfo))
+        if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            _agent.SetDestination(hitInfo.point);
+            CharacterManager.Instance.Morsure();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            CharacterManager.Instance.Griffe();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            CharacterManager.Instance.Shadowalk();
+            //LayerMask.LayerToName(Shadow);
         }
     }
 
-    private void Action()
+    private void OnTriggerEnter(Collider other)
     {
-        //Action exécuté par le joueur
+        CharacterManager.Instance.Collider = other.gameObject;
     }
-
-
-    
-    #endregion Methode
 }

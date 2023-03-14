@@ -7,7 +7,8 @@ using static UnityEngine.GraphicsBuffer;
 public class PlayerFollow : MonoBehaviour
 {
 
-    [SerializeField] private GameObject _characterRef = null;
+    [SerializeField] private Transform _characterRef = null;
+    [SerializeField] private Camera _camera = null;
 
     // Start is called before the first frame update
     void Start()
@@ -18,22 +19,21 @@ public class PlayerFollow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        this.transform.position = new Vector3(_characterRef.transform.position.x, _characterRef.transform.position.y + 10f, _characterRef.transform.position.z);
+        this.transform.position = new Vector3(_characterRef.position.x, _characterRef.position.y + 10f, _characterRef.position.z);
         CameraAngle();
+
+        _camera.transform.LookAt(_characterRef.position);
     }
 
     private void CameraAngle()
     {
         if (Input.GetKey(KeyCode.Q))
-        {
-           
+        {           
             transform.Rotate(0,1,0);
-            Debug.Log("turn");
         }
         if (Input.GetKey(KeyCode.D))
         {
             transform.Rotate(0,-1, 0);
-            Debug.Log("turn");
         }
     }
 

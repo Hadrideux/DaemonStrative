@@ -1,8 +1,9 @@
+using Engine.Utils;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PNJDetections : MonoBehaviour
+public class PNJDetections : Singleton<PNJDetections>
 {
     #region Attributs
 
@@ -34,17 +35,15 @@ public class PNJDetections : MonoBehaviour
 
     public bool IsCanSeePlayer
     {
-        get 
-        { 
-            return _isCanSeePlayer; 
-        }
-        set 
-        { 
-            _isCanSeePlayer = value; 
-        }
+        get => _isCanSeePlayer;
+        set => _isCanSeePlayer = value;
     }
 
-    public GameObject PlayerRef => _playerRef;
+    public GameObject PlayerRef
+    {
+        get => _playerRef;
+        set => _playerRef = value;
+    }
 
     #endregion Properties
 
@@ -53,10 +52,6 @@ public class PNJDetections : MonoBehaviour
         StartCoroutine(FOVRoutine());
     }
 
-    /// <summary>
-    /// je cormprend pas ALEEED
-    /// </summary>
-    /// <returns></returns>
     private IEnumerator FOVRoutine()
     {
         WaitForSeconds wait = new WaitForSeconds(0.2f);
@@ -70,26 +65,34 @@ public class PNJDetections : MonoBehaviour
 
     private void FieldOfViewCheck()
     {
-        Collider[] rangeChecks = Physics.OverlapSphere(transform.position, _radius, _targetMask);
+        Collider[] rangeChecks = Physics.OverlapSphere(transform.position, Radius, _targetMask);
 
         if (rangeChecks.Length != 0)
         {
             Transform target = rangeChecks[0].transform;
             Vector3 directionToTarget = (target.position - transform.position).normalized;
 
-            if (Vector3.Angle(transform.forward, directionToTarget) < _angle / 2)
+            if (Vector3.Angle(transform.forward, directionToTarget) < Angle / 2)
             {
                 float distanceToTarget = Vector3.Distance(transform.position, target.position);
 
                 if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, _obstructionMask))
-                    _isCanSeePlayer = true;
+                {
+                    IsCanSeePlayer = true;
+                }
                 else
-                    _isCanSeePlayer = false;
+                {
+                    IsCanSeePlayer = false;
+                }
             }
             else
-                _isCanSeePlayer = false;
+            {
+                IsCanSeePlayer = false;
+            }
         }
-        else if (_isCanSeePlayer)
-            _isCanSeePlayer = false;
+        else //if (IsCanSeePlayer)
+        {
+            IsCanSeePlayer = false;
+        }      
     }
 }
