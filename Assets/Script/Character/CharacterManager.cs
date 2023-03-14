@@ -8,12 +8,17 @@ public class CharacterManager : Singleton<CharacterManager>
 {
     [SerializeField] private CharacterConrtoller _controller = null;
     [SerializeField] private GameObject _collider = null;
+    [SerializeField] private GameObject _body = null;
 
     [SerializeField] private NavMeshAgent _agent = null;
     [SerializeField] private Camera _camera = null;
 
 
     [SerializeField] private bool _isHostile = false;
+
+    [SerializeField] private GameObject _VFXSpawnPoint = null;
+    [SerializeField] private GameObject _VFXType = null;
+
 
     #region Properties
 
@@ -45,6 +50,24 @@ public class CharacterManager : Singleton<CharacterManager>
     {
         get => _collider;
         set => _collider = value;
+    }
+
+    public GameObject Body
+    {
+        get => _body;
+        set => _body = value;
+    }
+
+    public GameObject VFXSpawner
+    {
+        get => _VFXSpawnPoint;
+        set => _VFXSpawnPoint = value;
+    }
+
+    public GameObject VFXType
+    {
+        get => _VFXType;
+        set => _VFXType = value;
     }
 
     #endregion properties
@@ -83,24 +106,42 @@ public class CharacterManager : Singleton<CharacterManager>
     {
         if (IsHostile)
         {
-            Destroy(Collider);
+            BloodAndFlesh();
+            
             PNJManager.Instance.KillVillager();
             UIManager.Instance.MorsureTime();
             Debug.Log("Morsure");
+            
         }
     }
 
+    public void BloodAndFlesh()
+    {
+        Debug.Log("Blood");
+        
+        Instantiate(_VFXType, _VFXSpawnPoint.transform);
+    }
+
+
     public void Griffe()
     {
+
         if (IsHostile)
         {
-            Destroy(Collider);
+            BloodAndFlesh();
+                      
+            Destroy(_body);
             PNJManager.Instance.KillVillager();
             UIManager.Instance.GriffeTime();
             Debug.Log("Griffure");
         }       
     }
 
+    public void DestroyAll()
+    {
+        Destroy(_collider);
+        PNJManager.Instance.isDead = false;
+    }
     public void Shadowalk()
     {
         UIManager.Instance.OmbreMarcheTime();
