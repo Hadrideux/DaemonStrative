@@ -17,16 +17,6 @@ public class UI_DialogueLookAtCam : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*
-        time += Time.deltaTime;
-        float seconds = Mathf.Floor((time / 100) % 60);
-        //minute
-        float minutes = Mathf.Floor(seconds / 60);
-        // hour
-        float hours = Mathf.Floor(minutes / 60);
-    
-        Debug.Log(string.Format("Heure : {0}:{1}:{2}", hours, minutes, seconds))
-        */
         transform.LookAt(_cameraTarget.transform.position);
     }
 }
