@@ -31,10 +31,11 @@ public class PNJController : MonoBehaviour
             CharacterManager.Instance.IsHostile = true;
         }            
     }
+    /*
     private void OnTriggerExit(Collider other)
     {
         CharacterManager.Instance.IsHostile = false;
     }
-
+    */
     #endregion Mono
 }

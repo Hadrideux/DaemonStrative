@@ -49,10 +49,6 @@ public class CharacterManager : Singleton<CharacterManager>
 
     #endregion properties
 
-    private void Start()
-    {
-    }
-
     #region Methode
 
     public void Moving()
@@ -82,9 +78,12 @@ public class CharacterManager : Singleton<CharacterManager>
     {
         if (IsHostile)
         {
-            Destroy(Collider);
             PNJManager.Instance.KillVillager();
             UIManager.Instance.MorsureTime();
+            Destroy(Collider);
+            
+            IsHostile = false;
+            
             Debug.Log("Morsure");
         }
     }
@@ -93,9 +92,13 @@ public class CharacterManager : Singleton<CharacterManager>
     {
         if (IsHostile)
         {
-            Destroy(Collider);
             PNJManager.Instance.KillVillager();
             UIManager.Instance.GriffeTime();
+            
+            Destroy(Collider);
+            
+            IsHostile = false;
+            
             Debug.Log("Griffure");
         }       
     }
