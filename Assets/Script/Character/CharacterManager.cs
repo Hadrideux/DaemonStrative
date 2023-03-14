@@ -74,7 +74,6 @@ public class CharacterManager : Singleton<CharacterManager>
 
     private void Start()
     {
-        PNJDetections.Instance.PlayerRef = Controller;
     }
 
     #region Methode
@@ -109,7 +108,7 @@ public class CharacterManager : Singleton<CharacterManager>
             BloodAndFlesh();
             
             PNJManager.Instance.KillVillager();
-            UIManager.Instance.MorsureTime();
+            //UIManager.Instance.MorsureTime();
             Debug.Log("Morsure");
             
         }
@@ -132,7 +131,7 @@ public class CharacterManager : Singleton<CharacterManager>
                       
             Destroy(_body);
             PNJManager.Instance.KillVillager();
-            UIManager.Instance.GriffeTime();
+            //UIManager.Instance.GriffeTime();
             Debug.Log("Griffure");
         }       
     }
