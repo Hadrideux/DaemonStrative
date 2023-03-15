@@ -31,11 +31,24 @@ public class UI_IngameController : MonoBehaviour
 
     #endregion Item
 
+    #region Blood
+
     [SerializeField] private int _maxBlood = 0;
-    [SerializeField] private RectTransform _fill = null;
+    [SerializeField] private RectTransform _fillBlood = null;
 
     private Vector3 _startPos = Vector3.zero;
     private Vector3 _endPos = Vector3.zero;
+
+    #endregion Blood
+
+    #region Suspicious
+
+    [SerializeField] private Image _fillsuspicious = null;
+
+    [Range(0f, 1f)]
+    [SerializeField] private float _fillProgress = 0;
+
+    #endregion Suspicious
 
     #endregion Attributs
 
@@ -44,20 +57,19 @@ public class UI_IngameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _startPos.y = -_fill.rect.width;
+        _startPos.y = -_fillBlood.rect.width;
     }
 
     // Update is called once per frame
     void Update()
     {
-        //_morsurText.text = UIManager.Instance.MorsureTimer.ToString();
-        //_griffeText.text = UIManager.Instance.GriffeTimer.ToString();
         _ombreMarcheText.text = UIManager.Instance.OmbreMarcheTimer.ToString("0");
 
         _bloodText.text = InventoryManager.Instance.AmountBlood.ToString();
         _skullText.text = InventoryManager.Instance.AmountSkull.ToString(); 
 
         UpdateBlood();
+        UpdateSuspicious();
     }
 
     #endregion MONO
@@ -65,7 +77,12 @@ public class UI_IngameController : MonoBehaviour
     public void UpdateBlood()
     {
         float perc = (float)InventoryManager.Instance.AmountBlood / (float)_maxBlood;
-        _fill.localPosition = Vector3.Lerp(_startPos, _endPos, perc);
+        _fillBlood.localPosition = Vector3.Lerp(_startPos, _endPos, perc);
+    }
+
+    public void UpdateSuspicious()
+    {
+        _fillsuspicious.fillAmount = _fillProgress;
     }
 
 }

@@ -36,6 +36,7 @@ public class InventoryManager : Singleton<InventoryManager>
         {
             AmountBlood += itemGet.Amount;
             Debug.Log(itemGet.Name + " : " + AmountBlood);
+
         }
     }
 }
