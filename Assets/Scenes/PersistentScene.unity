@@ -354,6 +354,9 @@ MonoBehaviour:
   _isHostile: 0
   _VFXSpawnPoint: {fileID: 0}
   _VFXType: {fileID: 0}
+  _layer:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!4 &1159214846
 Transform:
   m_ObjectHideFlags: 0

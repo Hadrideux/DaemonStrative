@@ -14,19 +14,18 @@ public class CharacterManager : Singleton<CharacterManager>
     [SerializeField] private Camera _camera = null;
 
     [SerializeField] private bool _isHostile = false;
+    [SerializeField] private bool _isCanBeSee = true;
 
     [SerializeField] private GameObject _VFXSpawnPoint = null;
     [SerializeField] private GameObject _VFXType = null;
 
-    [SerializeField] private LayerMask _layer;
-
 
     #region Properties
 
-    public LayerMask Layer
+    public bool IsCanBeSee
     {
-        get => _layer; 
-        set => _layer = value;
+        get => _isCanBeSee; 
+        set => _isCanBeSee = value;
     }
     public CharacterConrtoller Controller
     {
@@ -80,7 +79,6 @@ public class CharacterManager : Singleton<CharacterManager>
 
     private void Update()
     {
-        Controller.gameObject.layer = Layer;
     }
     #region Methode
 
@@ -150,6 +148,7 @@ public class CharacterManager : Singleton<CharacterManager>
     {
         UIManager.Instance.OmbreMarcheTime();
         Debug.Log("tchachachacha");
+        IsCanBeSee = false;
         UIManager.Instance.IsCast = true;
     }
 

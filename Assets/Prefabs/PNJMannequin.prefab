@@ -451,7 +451,7 @@ GameObject:
   - component: {fileID: 3361851467033868413}
   m_Layer: 0
   m_Name: PNJMannequin
-  m_TagString: Untagged
+  m_TagString: PNJ
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -547,12 +547,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 5434017713403560353}
-  _timeToWalk: 5
-  _waitTimer: 0
-  _waitTimerOut: 5
+  _timeRef: 0
   _isWalking: 0
   _activePoint: 0
-  _walkingTimeSpend: 0
   _isGuard: 0
   _wayPoints: []
 --- !u!54 &2739785758015266038

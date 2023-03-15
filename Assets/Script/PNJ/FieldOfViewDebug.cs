@@ -1,12 +1,12 @@
 using UnityEditor;
 using UnityEngine;
 
-[CustomEditor(typeof(PNJDetections))]
+[CustomEditor(typeof(PNJDetection))]
 public class FieldOfViewEditor : Editor
 {
     private void OnSceneGUI()
     {
-        PNJDetections fov = (PNJDetections)target;
+        PNJDetection fov = (PNJDetection)target;
         Handles.color = Color.white;
         Handles.DrawWireArc(fov.transform.position, Vector3.up, Vector3.forward, 360, fov.Radius);
 

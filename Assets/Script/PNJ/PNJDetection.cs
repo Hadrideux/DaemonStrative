@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PNJDetections : Singleton<PNJDetections>
+public class PNJDetection : Singleton<PNJDetection>
 {
     #region Attributs
 
@@ -59,7 +59,11 @@ public class PNJDetections : Singleton<PNJDetections>
         while (true)
         {
             yield return wait;
-            FieldOfViewCheck();
+            if (CharacterManager.Instance.IsCanBeSee)
+            {
+                FieldOfViewCheck();
+            }
+            
         }
     }
 

@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class UIManager : Singleton<UIManager>
 {
@@ -141,6 +142,7 @@ public class UIManager : Singleton<UIManager>
         if (OmbreMarcheTimer >= _coldDown)
         {
             OmbreMarcheTimer = 0;
+            CharacterManager.Instance.IsCanBeSee = true;
             IsCast = false;
         }
     }
