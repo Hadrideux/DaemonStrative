@@ -37,7 +37,7 @@ public class PlayerFollow : MonoBehaviour
 
     private void CameraAngle()
     {
-        targetRotation = new Vector3(0, Time.deltaTime * _speed  * Input.GetAxis("Horizontal"), 0);
+        targetRotation = new Vector3(0, Time.deltaTime * _speed  * Input.GetAxis("RotateCam"), 0);
     }
 
 }
