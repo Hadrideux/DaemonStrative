@@ -128,7 +128,7 @@ public class UIManager : Singleton<UIManager>
 
     public void ReloadScene()
     {
-                SceneManager.LoadScene("TestScene");
+        SceneManager.LoadScene("TestScene");
         Time.timeScale = 1;
     }
     #endregion UI System
