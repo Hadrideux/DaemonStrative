@@ -17,7 +17,4 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/GameScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 1
-    path: Assets/Scenes/Blop_Dev.unity
-    guid: bc834b67de79b084c91e2a5f1a056d16
   m_configObjects: {}

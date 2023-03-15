@@ -21,6 +21,7 @@ public class UI_IngameController : MonoBehaviour
 
 
     #endregion Competence
+
     #region Item
 
     [SerializeField] private Image _bloodImage = null;

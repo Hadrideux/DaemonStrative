@@ -5,6 +5,7 @@ using UnityEngine;
 public class UI_DialogueLookAtCam : MonoBehaviour
 {
     [SerializeField] private Camera _cameraTarget;
+
     // Start is called before the first frame update
 
     float time;
