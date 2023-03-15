@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class UIManager : Singleton<UIManager>
 {
@@ -69,6 +70,11 @@ public class UIManager : Singleton<UIManager>
         set => _ombreMarcheTimer = Mathf.Clamp(value, 0, _coldDown);
 
     }
+
+    public float ColdDown
+    {
+        get => _coldDown;
+    }
     #endregion UI Competence
 
     public bool IsCast
@@ -120,6 +126,11 @@ public class UIManager : Singleton<UIManager>
         Time.timeScale = 0;
     }
 
+    public void ReloadScene()
+    {
+        SceneManager.LoadScene("TestScene");
+        Time.timeScale = 1;
+    }
     #endregion UI System
 
     #region Competence
@@ -131,7 +142,7 @@ public class UIManager : Singleton<UIManager>
         if (OmbreMarcheTimer >= _coldDown)
         {
             OmbreMarcheTimer = 0;
-            CharacterManager.Instance.Layer = LayerMask.NameToLayer("Player");
+            CharacterManager.Instance.IsCanBeSee = true;
             IsCast = false;
         }
     }

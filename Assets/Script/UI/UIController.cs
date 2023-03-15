@@ -27,6 +27,7 @@ public class UIController : MonoBehaviour
         {
             UIManager.Instance.pauseGame();
         }
+
     }
 
     #endregion Mono
@@ -39,5 +40,10 @@ public class UIController : MonoBehaviour
     public void QuitGameInstance()
     {
         UIManager.Instance.QuitGame();
+    }
+
+    public void ReloadScceneInstance()
+    {
+        UIManager.Instance.ReloadScene();
     }
 }

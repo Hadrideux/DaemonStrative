@@ -46,7 +46,6 @@ public class CharacterConrtoller : MonoBehaviour
         {
             CharacterManager.Instance.Shadowalk();
             UIManager.Instance.IsCast = true;
-            CharacterManager.Instance.Layer = LayerMask.NameToLayer("Ignore Raycast");
 
         }
         //Vector3 destination = Input.GetAxis("Horizontal") * transform.right + Input.GetAxis("Vertical") * transform.forward; //0f <> 1f
@@ -55,6 +54,9 @@ public class CharacterConrtoller : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        CharacterManager.Instance.Collider = other.gameObject;
+        if (other.CompareTag("PNJ"))
+        {
+            CharacterManager.Instance.Collider = other.gameObject;
+        }
     }
 }
