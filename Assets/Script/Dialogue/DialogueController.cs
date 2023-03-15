@@ -54,11 +54,14 @@ public class DialogueController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space) && DialogueManager.Instance.IsDialogueActive == true)
         {
-            DialogueManager.Instance.NextMessage();
+            CallNextMessage();
         }
     }
 
-
+    private void CallNextMessage()
+    {
+        DialogueManager.Instance.NextMessage();
+    }
 
 
 

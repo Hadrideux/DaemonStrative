@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using static PNJMovement;
 
 public class DialogueManager : Singleton<DialogueManager>
 {
@@ -86,11 +87,13 @@ public class DialogueManager : Singleton<DialogueManager>
         ActorName.text = actorToDisplay.name;
         ActorImage.sprite = actorToDisplay.sprite;
         AnimatedTextColor();
+        
     }
 
     public void NextMessage()
     {
-        _activeMessage++;
+        Debug.Log("dialogue :" + _activeMessage);
+        _activeMessage = _activeMessage + 1;
         if (_activeMessage < _currentMessages.Length)
         {
             DisplayMessage();
