@@ -11,13 +11,12 @@ public class UI_IngameController : MonoBehaviour
 
     
     [SerializeField] private Image _morsureImage = null;
-    [SerializeField] private Image _griffureImage = null;
-    [SerializeField] private Image _ombreMarcheImage = null;
-
     
-    [SerializeField] private TextMeshProUGUI _morsurText = null;
-    [SerializeField] private TextMeshProUGUI _griffeText = null;
+    [SerializeField] private Image _griffureImage = null;
+    
+    [SerializeField] private Image _ombreMarcheImage = null;
     [SerializeField] private TextMeshProUGUI _ombreMarcheText = null;
+
 
 
     #endregion Competence
@@ -25,9 +24,9 @@ public class UI_IngameController : MonoBehaviour
     #region Item
 
     [SerializeField] private Image _bloodImage = null;
-    [SerializeField] private Image _skullImage = null;
-
     [SerializeField] private TextMeshProUGUI _bloodText = null;
+
+    [SerializeField] private Image _skullImage = null;
     [SerializeField] private TextMeshProUGUI _skullText = null;
 
     #endregion Item
@@ -53,7 +52,7 @@ public class UI_IngameController : MonoBehaviour
     {
         //_morsurText.text = UIManager.Instance.MorsureTimer.ToString();
         //_griffeText.text = UIManager.Instance.GriffeTimer.ToString();
-        _ombreMarcheText.text = UIManager.Instance.OmbreMarcheTimer.ToString();
+        _ombreMarcheText.text = UIManager.Instance.OmbreMarcheTimer.ToString("0");
 
         _bloodText.text = InventoryManager.Instance.AmountBlood.ToString();
         _skullText.text = InventoryManager.Instance.AmountSkull.ToString(); 

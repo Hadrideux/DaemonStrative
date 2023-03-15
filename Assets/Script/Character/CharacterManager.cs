@@ -13,15 +13,21 @@ public class CharacterManager : Singleton<CharacterManager>
     [SerializeField] private NavMeshAgent _agent = null;
     [SerializeField] private Camera _camera = null;
 
-
     [SerializeField] private bool _isHostile = false;
 
     [SerializeField] private GameObject _VFXSpawnPoint = null;
     [SerializeField] private GameObject _VFXType = null;
 
+    [SerializeField] private LayerMask _layer;
+
 
     #region Properties
 
+    public LayerMask Layer
+    {
+        get => _layer; 
+        set => _layer = value;
+    }
     public CharacterConrtoller Controller
     {
         get => _controller;
@@ -72,6 +78,10 @@ public class CharacterManager : Singleton<CharacterManager>
 
     #endregion properties
 
+    private void Update()
+    {
+        Controller.gameObject.layer = Layer;
+    }
     #region Methode
 
     public void Moving()

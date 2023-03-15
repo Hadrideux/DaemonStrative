@@ -62,19 +62,7 @@ public class UIManager : Singleton<UIManager>
     #endregion UI Menu
 
     #region UI Competence
-    /*
-    public float MorsureTimer
-    {
-        get => _morsureTimer;
-        set => _morsureTimer = Mathf.Clamp(value, 0, _coldDown);
-    }
 
-    public float GriffeTimer
-    {
-        get => _griffureTimer;
-        set => _griffureTimer = Mathf.Clamp(value, 0, _coldDown);
-    }
-    */
     public float OmbreMarcheTimer
     {
         get => _ombreMarcheTimer;
@@ -135,38 +123,15 @@ public class UIManager : Singleton<UIManager>
     #endregion UI System
 
     #region Competence
-    /*
-    public void MorsureTime()
-    {
-        MorsureTimer += Time.deltaTime;
-        Debug.Log(MorsureTimer);
-
-        if (MorsureTimer >= _coldDown)
-        {
-            MorsureTimer = 0;
-        }
-    }
-
-    public void GriffeTime()
-    {
-        GriffeTimer += Time.deltaTime;
-        Debug.Log(GriffeTimer);
-
-        if (GriffeTimer >= _coldDown)
-        {
-            GriffeTimer = 0;
-        }
-    }
-    */
 
     public void OmbreMarcheTime()
     {
         OmbreMarcheTimer += Time.deltaTime;
         Debug.Log(OmbreMarcheTimer);
-
         if (OmbreMarcheTimer >= _coldDown)
         {
             OmbreMarcheTimer = 0;
+            CharacterManager.Instance.Layer = LayerMask.NameToLayer("Player");
             IsCast = false;
         }
     }
