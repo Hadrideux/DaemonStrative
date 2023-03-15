@@ -79,6 +79,7 @@ public class PNJDetections : Singleton<PNJDetections>
                 if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, _obstructionMask))
                 {
                     IsCanSeePlayer = true;
+                    UIManager.Instance.GameOver();                    
                 }
                 else
                 {
