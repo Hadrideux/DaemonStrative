@@ -23,17 +23,12 @@ public class UIManager : Singleton<UIManager>
     #region Competence
 
     [SerializeField] private float _coldDown = 0f;
-    [SerializeField] private float _morsureTimer = 0.0f;
-    [SerializeField] private float _griffureTimer = 0.0f;
     [SerializeField] private float _ombreMarcheTimer = 0.0f;
 
     #endregion Competence
 
-    #region Blood
+    [SerializeField] private bool _isCast = false;
 
-    
-
-    #endregion Blood
     #endregion Attributs
 
     #region Properties
@@ -65,17 +60,6 @@ public class UIManager : Singleton<UIManager>
     #endregion UI Menu
 
     #region UI Competence
-    public float MorsureTimer
-    {
-        get => _morsureTimer;
-        set => _morsureTimer = Mathf.Clamp(value, 0, _coldDown);
-    }
-
-    public float GriffeTimer
-    {
-        get => _griffureTimer;
-        set => _griffureTimer = Mathf.Clamp(value, 0, _coldDown);
-    }
 
     public float OmbreMarcheTimer
     {
@@ -83,24 +67,31 @@ public class UIManager : Singleton<UIManager>
         set => _ombreMarcheTimer = Mathf.Clamp(value, 0, _coldDown);
 
     }
+
+    public float ColdDown
+    {
+        get => _coldDown;
+    }
     #endregion UI Competence
+
+    public bool IsCast
+    {
+        get => _isCast;
+        set => _isCast = value;
+    }
 
     #endregion Properties
 
-    private void Start()
-    {
-        
-    }
     private void Update()
     {
-
-        /*if (MorsureTimer <= _coldDown)
+        if (IsCast)
         {
-            MorsureTime();
-        }*/
+            if (OmbreMarcheTimer <= _coldDown)
+            {
+                OmbreMarcheTime();
+            }
+        }
     }
-
-
 
     #region Methode
 
@@ -132,39 +123,28 @@ public class UIManager : Singleton<UIManager>
         Time.timeScale = 0;
     }
 
+    public void ReloadScene()
+    {
+        SceneManager.LoadScene("TestScene");
+        Time.timeScale = 1;
+    }
     #endregion UI System
 
-    public void MorsureTime()
-    {
-        MorsureTimer += Time.deltaTime;
-        Debug.Log(MorsureTimer);
-
-        if (MorsureTimer >= _coldDown)
-        {
-            MorsureTimer = 0;
-        }
-    }
-
-    public void GriffeTime()
-    {
-        GriffeTimer += Time.deltaTime;
-        Debug.Log(GriffeTimer);
-
-        if (GriffeTimer >= _coldDown)
-        {
-            GriffeTimer = 0;
-        }
-    }
+    #region Competence
 
     public void OmbreMarcheTime()
     {
         OmbreMarcheTimer += Time.deltaTime;
         Debug.Log(OmbreMarcheTimer);
-
         if (OmbreMarcheTimer >= _coldDown)
         {
             OmbreMarcheTimer = 0;
+            CharacterManager.Instance.IsCanBeSee = true;
+            IsCast = false;
         }
     }
+
+    #endregion Competence
+
     #endregion Methode
 }

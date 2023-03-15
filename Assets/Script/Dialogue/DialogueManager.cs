@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using static PNJMovement;
 
 public class DialogueManager : Singleton<DialogueManager>
 {
@@ -86,11 +87,13 @@ public class DialogueManager : Singleton<DialogueManager>
         ActorName.text = actorToDisplay.name;
         ActorImage.sprite = actorToDisplay.sprite;
         AnimatedTextColor();
+        
     }
 
     public void NextMessage()
     {
-        _activeMessage++;
+        Debug.Log("dialogue :" + _activeMessage);
+        _activeMessage = _activeMessage + 1;
         if (_activeMessage < _currentMessages.Length)
         {
             DisplayMessage();
@@ -101,6 +104,8 @@ public class DialogueManager : Singleton<DialogueManager>
             IsDialogueActive = false;
             BackGroundBox.LeanScale(Vector3.zero, 0.5f).setEaseInOutExpo();
             HideButton();
+            /*if (CharacterManager.Instance.Agent.remainingDistance < 0.5f)
+                CharacterManager.Instance.Agent.isStopped = false;*/
         }
     }
      

@@ -8,15 +8,25 @@ public class CharacterManager : Singleton<CharacterManager>
 {
     [SerializeField] private CharacterConrtoller _controller = null;
     [SerializeField] private GameObject _collider = null;
+    [SerializeField] private GameObject _body = null;
 
     [SerializeField] private NavMeshAgent _agent = null;
     [SerializeField] private Camera _camera = null;
 
-
     [SerializeField] private bool _isHostile = false;
+    [SerializeField] private bool _isCanBeSee = true;
+
+    [SerializeField] private GameObject _VFXSpawnPoint = null;
+    [SerializeField] private GameObject _VFXType = null;
+
 
     #region Properties
 
+    public bool IsCanBeSee
+    {
+        get => _isCanBeSee; 
+        set => _isCanBeSee = value;
+    }
     public CharacterConrtoller Controller
     {
         get => _controller;
@@ -47,12 +57,29 @@ public class CharacterManager : Singleton<CharacterManager>
         set => _collider = value;
     }
 
-    #endregion properties
-
-    private void Start()
+    public GameObject Body
     {
+        get => _body;
+        set => _body = value;
     }
 
+    public GameObject VFXSpawner
+    {
+        get => _VFXSpawnPoint;
+        set => _VFXSpawnPoint = value;
+    }
+
+    public GameObject VFXType
+    {
+        get => _VFXType;
+        set => _VFXType = value;
+    }
+
+    #endregion properties
+
+    private void Update()
+    {
+    }
     #region Methode
 
     public void Moving()
@@ -67,6 +94,7 @@ public class CharacterManager : Singleton<CharacterManager>
 
             if (Physics.Raycast(movePosition, out var hitInfo))
             {
+                Agent.isStopped = false;
                 Agent.SetDestination(hitInfo.point);
             }
         }
@@ -77,33 +105,51 @@ public class CharacterManager : Singleton<CharacterManager>
     /// <summary>
     /// Fonction des action du joueur durant les différente phase de jeux
     /// </summary>
-    /// 
+
     public void Morsure()
     {
         if (IsHostile)
         {
-            Destroy(Collider);
+            BloodAndFlesh();
+            
             PNJManager.Instance.KillVillager();
-            UIManager.Instance.MorsureTime();
             Debug.Log("Morsure");
+            
         }
     }
 
+    public void BloodAndFlesh()
+    {
+        Debug.Log("Blood");
+        
+        Instantiate(_VFXType, _VFXSpawnPoint.transform);
+    }
+
+
     public void Griffe()
     {
+
         if (IsHostile)
         {
-            Destroy(Collider);
+            BloodAndFlesh();
+                      
+            Destroy(_body);
             PNJManager.Instance.KillVillager();
-            UIManager.Instance.GriffeTime();
             Debug.Log("Griffure");
         }       
     }
 
+    public void DestroyAll()
+    {
+        Destroy(_collider);
+        PNJManager.Instance.isDead = false;
+    }
     public void Shadowalk()
     {
         UIManager.Instance.OmbreMarcheTime();
         Debug.Log("tchachachacha");
+        IsCanBeSee = false;
+        UIManager.Instance.IsCast = true;
     }
 
     #endregion Player Action

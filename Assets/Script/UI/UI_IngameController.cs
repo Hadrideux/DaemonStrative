@@ -11,22 +11,22 @@ public class UI_IngameController : MonoBehaviour
 
     
     [SerializeField] private Image _morsureImage = null;
-    [SerializeField] private Image _griffureImage = null;
-    [SerializeField] private Image _ombreMarcheImage = null;
-
     
-    [SerializeField] private TextMeshProUGUI _morsurText = null;
-    [SerializeField] private TextMeshProUGUI _griffeText = null;
+    [SerializeField] private Image _griffureImage = null;
+    
+    [SerializeField] private Image _ombreMarcheImage = null;
     [SerializeField] private TextMeshProUGUI _ombreMarcheText = null;
 
 
+
     #endregion Competence
+
     #region Item
 
     [SerializeField] private Image _bloodImage = null;
-    [SerializeField] private Image _skullImage = null;
-
     [SerializeField] private TextMeshProUGUI _bloodText = null;
+
+    [SerializeField] private Image _skullImage = null;
     [SerializeField] private TextMeshProUGUI _skullText = null;
 
     #endregion Item
@@ -44,15 +44,15 @@ public class UI_IngameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _startPos.y = _fill.rect.width;
+        _startPos.y = -_fill.rect.width;
     }
 
     // Update is called once per frame
     void Update()
     {
-        _morsurText.text = UIManager.Instance.MorsureTimer.ToString();
-        _griffeText.text = UIManager.Instance.GriffeTimer.ToString();
-        _ombreMarcheText.text = UIManager.Instance.OmbreMarcheTimer.ToString();
+        //_morsurText.text = UIManager.Instance.MorsureTimer.ToString();
+        //_griffeText.text = UIManager.Instance.GriffeTimer.ToString();
+        _ombreMarcheText.text = UIManager.Instance.OmbreMarcheTimer.ToString("0");
 
         _bloodText.text = InventoryManager.Instance.AmountBlood.ToString();
         _skullText.text = InventoryManager.Instance.AmountSkull.ToString(); 
@@ -64,7 +64,7 @@ public class UI_IngameController : MonoBehaviour
 
     public void UpdateBlood()
     {
-        int perc = InventoryManager.Instance.AmountBlood / _maxBlood;
+        float perc = (float)InventoryManager.Instance.AmountBlood / (float)_maxBlood;
         _fill.localPosition = Vector3.Lerp(_startPos, _endPos, perc);
     }
 

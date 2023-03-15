@@ -44,6 +44,7 @@ public class DialogueController : MonoBehaviour
 
     public void StartDialogue()
     {
+        CharacterManager.Instance.Agent.isStopped = true;
         DialogueManager.Instance.OpenDialogue(messages, actors);
         Debug.Log("jkbbkjbjb");
     }
@@ -53,11 +54,14 @@ public class DialogueController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space) && DialogueManager.Instance.IsDialogueActive == true)
         {
-            DialogueManager.Instance.NextMessage();
+            CallNextMessage();
         }
     }
 
-
+    private void CallNextMessage()
+    {
+        DialogueManager.Instance.NextMessage();
+    }
 
 
 

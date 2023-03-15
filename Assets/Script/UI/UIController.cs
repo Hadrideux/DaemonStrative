@@ -6,7 +6,6 @@ using UnityEngine;
 public class UIController : MonoBehaviour
 {
     [SerializeField] private GameObject _pauseUI = null;
-    [SerializeField] private GameObject _interactUI = null;
     [SerializeField] private GameObject _gameOverUI = null;
 
     #region Mono
@@ -16,7 +15,6 @@ public class UIController : MonoBehaviour
     {
         UIManager.Instance.Controller = this;
         UIManager.Instance.PauseUI = _pauseUI;
-        UIManager.Instance.InteracUI = _interactUI;
         UIManager.Instance.GameOverUI = _gameOverUI;
     }
 
@@ -27,6 +25,7 @@ public class UIController : MonoBehaviour
         {
             UIManager.Instance.pauseGame();
         }
+
     }
 
     #endregion Mono
@@ -39,5 +38,10 @@ public class UIController : MonoBehaviour
     public void QuitGameInstance()
     {
         UIManager.Instance.QuitGame();
+    }
+
+    public void ReloadScceneInstance()
+    {
+        UIManager.Instance.ReloadScene();
     }
 }
