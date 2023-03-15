@@ -5,7 +5,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class UIManager : Singleton<UIManager>
 {
@@ -24,8 +23,6 @@ public class UIManager : Singleton<UIManager>
     #region Competence
 
     [SerializeField] private float _coldDown = 0f;
-    //[SerializeField] private float _morsureTimer = 0.0f;
-    //[SerializeField] private float _griffureTimer = 0.0f;
     [SerializeField] private float _ombreMarcheTimer = 0.0f;
 
     #endregion Competence
