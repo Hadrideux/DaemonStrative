@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -70,6 +71,17 @@ public class UI_IngameController : MonoBehaviour
 
         UpdateBlood();
         UpdateSuspicious();
+
+        if (_skullText.text == "0")
+        {
+            _skullImage.color = new Color(_skullImage.color.r, _skullImage.color.g, _skullImage.color.b, 0.5f); ;
+        }
+        else
+        {
+            _skullImage.color = new Color(_skullImage.color.r, _skullImage.color.g, _skullImage.color.b, 1f); ;
+
+        }
+
     }
 
     #endregion MONO
