@@ -10,27 +10,28 @@ using static UnityEngine.GraphicsBuffer;
 public class PNJMovement : MonoBehaviour
 {
     [SerializeField] private NavMeshAgent agent;
-    [SerializeField] private float _timeToWalk = 0;
-    [SerializeField] private float _waitTimer = 0;
-    [SerializeField] private float _waitTimerOut = 0;
+    [SerializeField] private float _timeRef = 0;
+    
     [SerializeField] private bool _isWalking = false;
     [SerializeField] private int _activePoint = 0;
-    [SerializeField] private float _walkingTimeSpend = 0;
+    
     [SerializeField] private bool _isGuard = false;
-
+    
     public WayPoint[] _wayPoints;
 
     [System.Serializable]
     public class WayPoint
     {
         public GameObject target;
+        public float waitTime;
     }
 
-
+   
     // Start is called before the first frame update
     void Start()
     {
         _activePoint = 0;
+        
         
     }
 
@@ -41,16 +42,24 @@ public class PNJMovement : MonoBehaviour
         {
             if(agent.remainingDistance < 0.05f)
             {
+                _timeRef += Time.deltaTime;
+                WayPoint timer = _wayPoints[_activePoint];
+
                 WalkRound();
-                _activePoint = (_activePoint + 1)%_wayPoints.Length;
-                /*if (PNJDetections.Instance.IsCanSeePlayer == false)
-                {
-                    WalkRound();
+
+                if (_timeRef > timer.waitTime && _activePoint < _wayPoints.Length)
+                {                    
+                    _activePoint = (_activePoint + 1) % _wayPoints.Length;
+                    _timeRef = 0;
+                    Debug.Log(_activePoint.ToString());
                 }
-                else
+                else if (_timeRef > timer.waitTime)
                 {
-                    UIManager.Instance.GameOver();
-                }*/
+                    _activePoint = 0;
+                    _timeRef = 0;
+                    Debug.Log("ResetMove");
+                }
+                                
             }
         }
         
@@ -58,40 +67,8 @@ public class PNJMovement : MonoBehaviour
 
     private void WalkRound()
     {
-        Debug.Log(_activePoint);
         WayPoint actualPoint = _wayPoints[_activePoint];
-        agent.SetDestination(actualPoint.target.transform.position);
-        /*   
-         WayPoint actualPoint = _wayPoints[_activePoint];
-         _walkingTimeSpend += Time.deltaTime;
-         _waitTimer += Time.deltaTime;
-
-         if (actualPoint != null && _timeToWalk > _walkingTimeSpend && _isWalking == true) 
-         {
-
-             agent.SetDestination(actualPoint.target.transform.position);            
-             _waitTimer = 0;
-
-         }
-         else if (_isWalking = true && _timeToWalk < _walkingTimeSpend && _waitTimerOut > _waitTimer)
-         {
-             _isWalking= false;            
-
-         }
-         else if (_isWalking == false && _activePoint < _wayPoints.Length- 1 && _waitTimerOut < _waitTimer)
-         {
-             _activePoint += 1;
-             _walkingTimeSpend = 0;
-             _waitTimer = 0;
-             _isWalking = true;
-
-             //Debug.Log(_activePoint.ToString());
-         }        
-         else
-         {
-             _activePoint= 0;
-
-         }*/
+        agent.SetDestination(actualPoint.target.transform.position);       
     }
 
 }
