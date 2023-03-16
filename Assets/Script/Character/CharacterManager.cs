@@ -18,6 +18,7 @@ public class CharacterManager : Singleton<CharacterManager>
 
     [SerializeField] private GameObject _VFXSpawnPoint = null;
     [SerializeField] private GameObject _VFXType = null;
+    [SerializeField] private GameObject _VFXOmbremarche = null;
 
 
     #region Properties
@@ -69,10 +70,16 @@ public class CharacterManager : Singleton<CharacterManager>
         set => _VFXSpawnPoint = value;
     }
 
-    public GameObject VFXType
+    public GameObject VFXSkills
     {
         get => _VFXType;
         set => _VFXType = value;
+    }
+
+    public GameObject VFXOmbremarche
+    {
+        get => _VFXOmbremarche;
+        set => _VFXOmbremarche = value;
     }
 
     #endregion properties

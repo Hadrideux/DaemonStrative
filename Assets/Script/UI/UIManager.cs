@@ -151,6 +151,12 @@ public class UIManager : Singleton<UIManager>
 
             IsCast = false;
             OmbreMarcheImage.color = new Color(OmbreMarcheImage.color.r, OmbreMarcheImage.color.g, OmbreMarcheImage.color.b, 1f);
+
+            CharacterManager.Instance.VFXOmbremarche.SetActive(false);
+        }
+        else
+        {
+            CharacterManager.Instance.VFXOmbremarche.SetActive(true);
         }
     }
 
