@@ -5928,7 +5928,7 @@ MonoBehaviour:
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
+  m_FillMethod: 1
   m_FillAmount: 0
   m_FillClockwise: 1
   m_FillOrigin: 0
@@ -6042,8 +6042,8 @@ MonoBehaviour:
   _skullImage: {fileID: 1463752568}
   _skullText: {fileID: 1718978897}
   _maxBlood: 100
-  _fillBlood: {fileID: 0}
-  _fillsuspicious: {fileID: 0}
+  _fillBlood: {fileID: 1426984623}
+  _fillsuspicious: {fileID: 1198033438}
   _fillProgress: 0
 --- !u!43 &1250035795
 Mesh:

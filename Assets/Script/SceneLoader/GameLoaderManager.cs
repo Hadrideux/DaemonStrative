@@ -11,4 +11,16 @@ public class GameLoaderManager : Singleton<GameLoaderManager>
     {
         SceneManager.LoadScene("TestScene");
     }
+
+    public void LoadWitchScene()
+    {
+        SceneManager.UnloadSceneAsync("TestScene");
+        SceneManager.LoadScene("WitchScene");
+    }
+
+    public void LoadGameScene()
+    {
+        SceneManager.UnloadSceneAsync("WitchScene");
+        SceneManager.LoadScene("TestScene");
+    }
 }
