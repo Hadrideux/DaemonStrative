@@ -13,12 +13,10 @@ public class TriggerLoadScene : MonoBehaviour
         {
             if (_isGoWitchScene)
             {
-                Debug.Log("Load Witch");
                 GameLoaderManager.Instance.LoadWitchScene();
             }
             if (_isGoGameScene)
             {
-                Debug.Log("Load Witch");
                 GameLoaderManager.Instance.LoadGameScene();
             }
         }
