@@ -11,8 +11,7 @@ public class PNJMovement : MonoBehaviour
 {
     [SerializeField] private NavMeshAgent agent;
     [SerializeField] private float _timeRef = 0;
-    
-    [SerializeField] private bool _isWalking = false;
+
     [SerializeField] private int _activePoint = 0;
     
     [SerializeField] private bool _isGuard = false;
@@ -31,8 +30,6 @@ public class PNJMovement : MonoBehaviour
     void Start()
     {
         _activePoint = 0;
-        
-        
     }
 
     // Update is called once per frame

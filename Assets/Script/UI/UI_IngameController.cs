@@ -44,7 +44,7 @@ public class UI_IngameController : MonoBehaviour
 
     #region Suspicious
 
-    [SerializeField] private Image _fillsuspicious = null;
+    [SerializeField] private Image _fillSuspicious = null;
 
     [Range(0, 1)]
     [SerializeField] private float _fillProgress = 0;
@@ -59,6 +59,8 @@ public class UI_IngameController : MonoBehaviour
     void Start()
     {
         _startPos.y = -_fillBlood.rect.width;
+
+        UIManager.Instance.OmbreMarcheImage = _ombreMarcheImage;
     }
 
     // Update is called once per frame
@@ -74,7 +76,7 @@ public class UI_IngameController : MonoBehaviour
 
         if (_skullText.text == "0")
         {
-            _skullImage.color = new Color(_skullImage.color.r, _skullImage.color.g, _skullImage.color.b, 0.5f); ;
+            _skullImage.color = new Color(_skullImage.color.r, _skullImage.color.g, _skullImage.color.b, 0.5f);
         }
         else
         {
@@ -94,7 +96,6 @@ public class UI_IngameController : MonoBehaviour
 
     public void UpdateSuspicious()
     {
-        _fillsuspicious.fillAmount = _fillProgress;
+        _fillSuspicious.fillAmount = _fillProgress;
     }
-
 }

@@ -77,9 +77,6 @@ public class CharacterManager : Singleton<CharacterManager>
 
     #endregion properties
 
-    private void Update()
-    {
-    }
     #region Methode
 
     public void Moving()
