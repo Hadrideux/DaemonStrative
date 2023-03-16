@@ -13,13 +13,11 @@ public class GameLoaderManager : Singleton<GameLoaderManager>
 
     public void LoadWitchScene()
     {
-        //SceneManager.UnloadSceneAsync("TestScene");
         SceneManager.LoadScene("WitchScene", LoadSceneMode.Single);
     }
 
     public void LoadGameScene()
     {
-        //SceneManager.UnloadSceneAsync("WitchScene");
         SceneManager.LoadScene("TestScene", LoadSceneMode.Single);
     }
 }
