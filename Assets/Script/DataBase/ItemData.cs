@@ -10,12 +10,8 @@ public class ItemData : ScriptableObject
     [SerializeField] private ERessourceType _type = ERessourceType.BLOOD;
 
     [SerializeField] private int _amount = 1;
-    //[SerializeField] private bool _isPickUp = false;
 
     public string Name => _name;
     public ERessourceType Type => _type;
     public int Amount => _amount;   
-
-    //public bool IsPickUp => _isPickUp;
-
 }
