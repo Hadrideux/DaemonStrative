@@ -4,20 +4,23 @@ using UnityEngine;
 
 public class TriggerLoadScene : MonoBehaviour
 {
+    [SerializeField] private bool _isGoWitchScene = false;
+    [SerializeField] private bool _isGoGameScene = false;
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter(Collider other)
     {
-        if (Input.GetKeyDown(KeyCode.W))
+        if (other.CompareTag("Player"))
         {
-            Debug.Log("Load Witch");
-            GameLoaderManager.Instance.LoadWitchScene();
-        }
-
-        if (Input.GetKeyDown(KeyCode.X))
-        {
-            Debug.Log("Load Game");
-            GameLoaderManager.Instance.LoadGameScene();
+            if (_isGoWitchScene)
+            {
+                Debug.Log("Load Witch");
+                GameLoaderManager.Instance.LoadWitchScene();
+            }
+            if (_isGoGameScene)
+            {
+                Debug.Log("Load Witch");
+                GameLoaderManager.Instance.LoadGameScene();
+            }
         }
     }
 }

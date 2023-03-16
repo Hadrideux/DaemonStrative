@@ -352,11 +352,9 @@ MonoBehaviour:
   _agent: {fileID: 0}
   _camera: {fileID: 0}
   _isHostile: 0
+  _isCanBeSee: 1
   _VFXSpawnPoint: {fileID: 0}
   _VFXType: {fileID: 0}
-  _layer:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!4 &1159214846
 Transform:
   m_ObjectHideFlags: 0
