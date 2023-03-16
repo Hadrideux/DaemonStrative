@@ -46,7 +46,7 @@ public class UI_IngameController : MonoBehaviour
 
     [SerializeField] private Image _fillsuspicious = null;
 
-    [Range(0f, 1f)]
+    [Range(0, 1)]
     [SerializeField] private float _fillProgress = 0;
 
     #endregion Suspicious

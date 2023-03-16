@@ -40,28 +40,21 @@ public class DialogueController : MonoBehaviour
         DialogueManager.Instance.MessageText = _messageText;
         DialogueManager.Instance.BackGroundBox = _backgroundBox;
         DialogueManager.Instance.DialogueButton = _dialogueButton;
+
     }
 
     public void StartDialogue()
     {
         CharacterManager.Instance.Agent.isStopped = true;
-        DialogueManager.Instance.OpenDialogue(messages, actors);
-        Debug.Log("jkbbkjbjb");
+        DialogueManager.Instance.OpenDialogue(messages, actors);       
     }
 
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && DialogueManager.Instance.IsDialogueActive == true)
-        {
-            CallNextMessage();
-        }
+       
     }
 
-    private void CallNextMessage()
-    {
-        DialogueManager.Instance.NextMessage();
-    }
 
 
 
