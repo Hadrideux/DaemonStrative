@@ -1694,12 +1694,20 @@ PrefabInstance:
       value: Welcome Lord
       objectReference: {fileID: 0}
     - target: {fileID: 1143662628575882297, guid: e98ccfe44a14faa45ad83f426776cd5c, type: 3}
+      propertyPath: messages.Array.data[2].actorId
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1143662628575882297, guid: e98ccfe44a14faa45ad83f426776cd5c, type: 3}
       propertyPath: messages.Array.data[3].message
       value: Could you ?
       objectReference: {fileID: 0}
     - target: {fileID: 1143662628575882297, guid: e98ccfe44a14faa45ad83f426776cd5c, type: 3}
       propertyPath: messages.Array.data[4].message
       value: No way
+      objectReference: {fileID: 0}
+    - target: {fileID: 1143662628575882297, guid: e98ccfe44a14faa45ad83f426776cd5c, type: 3}
+      propertyPath: messages.Array.data[5].actorId
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1261295695285075962, guid: e98ccfe44a14faa45ad83f426776cd5c, type: 3}
       propertyPath: m_Enabled

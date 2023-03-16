@@ -48,6 +48,12 @@ public class CharacterConrtoller : MonoBehaviour
             UIManager.Instance.IsCast = true;
 
         }
+
+        if (Input.GetKeyDown(KeyCode.Space) && DialogueManager.Instance.IsDialogueActive == true)
+        {
+
+            DialogueManager.Instance.NextMessage();
+        }
         //Vector3 destination = Input.GetAxis("Horizontal") * transform.right + Input.GetAxis("Vertical") * transform.forward; //0f <> 1f
         //if(Input.GetButtonDown("Fire1")
     }
