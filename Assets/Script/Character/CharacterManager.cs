@@ -136,17 +136,10 @@ public class CharacterManager : Singleton<CharacterManager>
             
             PNJManager.Instance.KillVillager();
             Debug.Log("Morsure");
-            
+
+            UIManager.Instance.AlphaMorsure(true);
         }
     }
-
-    public void BloodAndFlesh()
-    {
-        Debug.Log("Blood");
-        
-        Instantiate(_VFXType, _VFXSpawnPoint.transform);
-    }
-
 
     public void Griffe()
     {
@@ -158,6 +151,8 @@ public class CharacterManager : Singleton<CharacterManager>
             Destroy(_body);
             PNJManager.Instance.KillVillager();
             Debug.Log("Griffure");
+
+            UIManager.Instance.AlphaGriffure(true);
         }       
     }
 
@@ -175,6 +170,13 @@ public class CharacterManager : Singleton<CharacterManager>
     }
 
     #endregion Player Action
+
+    public void BloodAndFlesh()
+    {
+        Debug.Log("Blood");
+
+        Instantiate(_VFXType, _VFXSpawnPoint.transform);
+    }
 
     #endregion Methode
 }

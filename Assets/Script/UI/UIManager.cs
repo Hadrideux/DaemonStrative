@@ -16,16 +16,22 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] private UIController _controller = null;
 
     [SerializeField] private GameObject _pauseUI = null;
-    [SerializeField] private GameObject _interactUI = null;
     [SerializeField] private GameObject _gameOverUI = null;
     #endregion UI Menu
 
     #region Competence
+    
+    [SerializeField] private float _coldDown = 5f;
+    [SerializeField] private float _alphaColdDown = 1f;
 
     [SerializeField] private Image _ombreMarcheImage = null;
-
-    [SerializeField] private float _coldDown = 0f;
     [SerializeField] private float _ombreMarcheTimer = 0.0f;
+
+    [SerializeField] private Image _morsureImage = null;
+    [SerializeField] private float _alphaMorsureTimer = 0;
+
+    [SerializeField] private Image _griffureImage = null;
+    [SerializeField] private float _alphaGriffureTimer = 0;
 
     #endregion Competence
 
@@ -48,12 +54,6 @@ public class UIManager : Singleton<UIManager>
         set => _pauseUI = value;
     }
 
-    public GameObject InteracUI
-    {
-        get => _interactUI;
-        set => _interactUI = value;
-    }
-
     public GameObject GameOverUI
     {
         get => _gameOverUI;
@@ -74,12 +74,24 @@ public class UIManager : Singleton<UIManager>
         set => _ombreMarcheTimer = Mathf.Clamp(value, 0, _coldDown);
 
     }
-
     public float ColdDown
     {
         get => _coldDown;
     }
+
     #endregion UI Competence
+
+    public Image MorsureImage
+    {
+        get => _morsureImage;
+        set => _morsureImage = value;
+    }
+
+    public Image GriffureImage
+    {
+        get => _griffureImage;
+        set => _griffureImage = value;
+    }
 
     public bool IsCast
     {
@@ -91,12 +103,21 @@ public class UIManager : Singleton<UIManager>
 
     private void Update()
     {
-        if (IsCast)
+        if (OmbreMarcheTimer <= _coldDown && WitchManager.Instance.IsQuestOmbreMarche == true)
         {
-            if (OmbreMarcheTimer <= _coldDown)
-            {
-                OmbreMarcheTime();
-            }
+            OmbreMarcheTime();
+            Debug.Log(OmbreMarcheTimer);
+        }
+        if (_alphaMorsureTimer <= _alphaColdDown)
+        {
+            AlphaMorsure(true);
+            Debug.Log(_alphaMorsureTimer);
+        }
+
+        if (_alphaGriffureTimer <= _alphaColdDown)
+        {
+            AlphaGriffure(true);
+            Debug.Log(_alphaGriffureTimer);
         }
     }
 
@@ -161,7 +182,42 @@ public class UIManager : Singleton<UIManager>
         }
     }
 
-    #endregion Competence
+    public void AlphaMorsure(bool isCast)
+    {
+        if (isCast == true)
+        {
+            _alphaMorsureTimer += Time.deltaTime;
+            MorsureImage.color = new Color(MorsureImage.color.r, MorsureImage.color.g, MorsureImage.color.b, 0.5f);
 
+            if (_alphaMorsureTimer >= _alphaColdDown)
+            {
+                MorsureImage.color = new Color(MorsureImage.color.r, MorsureImage.color.g, MorsureImage.color.b, 1f);
+            }
+            else
+            {
+                isCast = false;
+            }
+        }
+    }
+    public void AlphaGriffure(bool isCast)
+    {
+        if (isCast == true)
+        {
+            _alphaGriffureTimer += Time.deltaTime;
+            GriffureImage.color = new Color(GriffureImage.color.r, GriffureImage.color.g, GriffureImage.color.b, 0.5f);
+
+            if (_alphaGriffureTimer >= _alphaColdDown)
+            {
+                GriffureImage.color = new Color(GriffureImage.color.r, GriffureImage.color.g, GriffureImage.color.b, 1f);
+            }
+            else
+            {
+                isCast = false;
+            }
+        }
+               
+    }
+
+    #endregion Competence
     #endregion Methode
 }

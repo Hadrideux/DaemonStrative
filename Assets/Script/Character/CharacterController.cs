@@ -44,10 +44,10 @@ public class CharacterConrtoller : MonoBehaviour
         {
             CharacterManager.Instance.VFXSkills = _VFXGriffure;
             PNJManager.Instance.isDead = true;
-            CharacterManager.Instance.Griffe();            
+            CharacterManager.Instance.Griffe();
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha3))
+        if (Input.GetKeyDown(KeyCode.Alpha3) && WitchManager.Instance.IsQuestOmbreMarche == true)
         {
             CharacterManager.Instance.Shadowalk();
             UIManager.Instance.IsCast = true;
