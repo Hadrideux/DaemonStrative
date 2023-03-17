@@ -12,6 +12,7 @@ public class CharacterConrtoller : MonoBehaviour
     [SerializeField] private GameObject _VFXMorsure = null;
     [SerializeField] private GameObject _VFXGriffure = null;
     [SerializeField] private GameObject _VFXOmbremarche = null;
+    [SerializeField] private GameObject _VFXHitPoint = null;
 
     #endregion Attributs
 
@@ -23,6 +24,7 @@ public class CharacterConrtoller : MonoBehaviour
         CharacterManager.Instance.Agent = _agent;
         CharacterManager.Instance.Camera = _camera;
         CharacterManager.Instance.VFXOmbremarche = _VFXOmbremarche;
+        CharacterManager.Instance.VFXHitPointNavigation = _VFXHitPoint;
     }
     void Update()
     {
@@ -30,6 +32,7 @@ public class CharacterConrtoller : MonoBehaviour
         {
            CharacterManager.Instance.Moving();
         }
+        CharacterManager.Instance.EndMovement();
 
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
@@ -56,6 +59,7 @@ public class CharacterConrtoller : MonoBehaviour
 
             DialogueManager.Instance.NextMessage();
         }
+                
         //Vector3 destination = Input.GetAxis("Horizontal") * transform.right + Input.GetAxis("Vertical") * transform.forward; //0f <> 1f
         //if(Input.GetButtonDown("Fire1")
     }
@@ -67,4 +71,6 @@ public class CharacterConrtoller : MonoBehaviour
             CharacterManager.Instance.Collider = other.gameObject;
         }
     }
+
+  
 }

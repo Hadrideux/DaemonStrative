@@ -1,6 +1,7 @@
 using Engine.Utils;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -19,6 +20,8 @@ public class CharacterManager : Singleton<CharacterManager>
     [SerializeField] private GameObject _VFXSpawnPoint = null;
     [SerializeField] private GameObject _VFXType = null;
     [SerializeField] private GameObject _VFXOmbremarche = null;
+
+    [SerializeField] private GameObject _VFXHitPointNavigation = null;
 
 
     #region Properties
@@ -82,6 +85,11 @@ public class CharacterManager : Singleton<CharacterManager>
         set => _VFXOmbremarche = value;
     }
 
+    public GameObject VFXHitPointNavigation
+    {
+        get => _VFXHitPointNavigation;
+        set => _VFXHitPointNavigation = value;
+    }
     #endregion properties
 
     #region Methode
@@ -100,11 +108,21 @@ public class CharacterManager : Singleton<CharacterManager>
             {
                 Agent.isStopped = false;
                 Agent.SetDestination(hitInfo.point);
+                VFXHitPointNavigation.gameObject.SetActive(true);
+                _VFXHitPointNavigation.transform.position = new Vector3 (hitInfo.point.x, 0.5f, hitInfo.point.z);
             }
+           
         }
-        
+       
     }
 
+    public void EndMovement()
+    {
+        if (_agent.remainingDistance < 0.05f)
+        {
+            VFXHitPointNavigation.gameObject.SetActive(false);
+        }
+    }
     #region Player Action
     /// <summary>
     /// Fonction des action du joueur durant les différente phase de jeux
