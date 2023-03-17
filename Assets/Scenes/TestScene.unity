@@ -6555,7 +6555,7 @@ MonoBehaviour:
   _skullText: {fileID: 1718978897}
   _maxBlood: 100
   _fillBlood: {fileID: 1426984623}
-  _fillSuspicious: {fileID: 0}
+  _fillSuspicious: {fileID: 1198033438}
   _fillProgress: 0
 --- !u!43 &1250035795
 Mesh:
@@ -7075,6 +7075,10 @@ PrefabInstance:
       objectReference: {fileID: 928294081}
     - target: {fileID: 3241373717132524369, guid: e98ccfe44a14faa45ad83f426776cd5c, type: 3}
       propertyPath: m_Convex
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4029515529519846825, guid: e98ccfe44a14faa45ad83f426776cd5c, type: 3}
+      propertyPath: m_FillAmount
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4060130795205037758, guid: e98ccfe44a14faa45ad83f426776cd5c, type: 3}
