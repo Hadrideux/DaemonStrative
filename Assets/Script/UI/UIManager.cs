@@ -22,6 +22,8 @@ public class UIManager : Singleton<UIManager>
 
     #region Competence
 
+    [SerializeField] private Image _ombreMarcheImage = null;
+
     [SerializeField] private float _coldDown = 0f;
     [SerializeField] private float _ombreMarcheTimer = 0.0f;
 
@@ -61,6 +63,11 @@ public class UIManager : Singleton<UIManager>
 
     #region UI Competence
 
+    public Image OmbreMarcheImage
+    {
+        get => _ombreMarcheImage;
+        set => _ombreMarcheImage = value;
+    }
     public float OmbreMarcheTimer
     {
         get => _ombreMarcheTimer;
@@ -135,12 +142,21 @@ public class UIManager : Singleton<UIManager>
     public void OmbreMarcheTime()
     {
         OmbreMarcheTimer += Time.deltaTime;
-        Debug.Log(OmbreMarcheTimer);
+        OmbreMarcheImage.color = new Color(OmbreMarcheImage.color.r, OmbreMarcheImage.color.g, OmbreMarcheImage.color.b, 0.5f);
+
         if (OmbreMarcheTimer >= _coldDown)
         {
             OmbreMarcheTimer = 0;
             CharacterManager.Instance.IsCanBeSee = true;
+
             IsCast = false;
+            OmbreMarcheImage.color = new Color(OmbreMarcheImage.color.r, OmbreMarcheImage.color.g, OmbreMarcheImage.color.b, 1f);
+
+            CharacterManager.Instance.VFXOmbremarche.SetActive(false);
+        }
+        else
+        {
+            CharacterManager.Instance.VFXOmbremarche.SetActive(true);
         }
     }
 

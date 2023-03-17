@@ -11,6 +11,7 @@ public class CharacterConrtoller : MonoBehaviour
     [SerializeField] private Camera _camera = null;
     [SerializeField] private GameObject _VFXMorsure = null;
     [SerializeField] private GameObject _VFXGriffure = null;
+    [SerializeField] private GameObject _VFXOmbremarche = null;
 
     #endregion Attributs
 
@@ -21,9 +22,12 @@ public class CharacterConrtoller : MonoBehaviour
 
         CharacterManager.Instance.Agent = _agent;
         CharacterManager.Instance.Camera = _camera;
+        CharacterManager.Instance.VFXOmbremarche = _VFXOmbremarche;
     }
     void Update()
     {
+        Debug.Log("Time is OK ? : " + Time.timeScale);
+
         if (Input.GetMouseButton(1))
         {
            CharacterManager.Instance.Moving();
@@ -31,13 +35,13 @@ public class CharacterConrtoller : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            CharacterManager.Instance.VFXType = _VFXMorsure;            
+            CharacterManager.Instance.VFXSkills = _VFXMorsure;            
             CharacterManager.Instance.Morsure();
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            CharacterManager.Instance.VFXType = _VFXGriffure;
+            CharacterManager.Instance.VFXSkills = _VFXGriffure;
             PNJManager.Instance.isDead = true;
             CharacterManager.Instance.Griffe();            
         }

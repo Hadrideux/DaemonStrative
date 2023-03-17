@@ -11,8 +11,7 @@ public class PNJMovement : MonoBehaviour
 {
     [SerializeField] private NavMeshAgent agent;
     [SerializeField] private float _timeRef = 0;
-    
-    [SerializeField] private bool _isWalking = false;
+
     [SerializeField] private int _activePoint = 0;
     
     [SerializeField] private bool _isGuard = false;
@@ -31,15 +30,18 @@ public class PNJMovement : MonoBehaviour
     void Start()
     {
         _activePoint = 0;
-        
-        
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (_isGuard == true)
+        if (_isGuard == true && PNJDetection.Instance.IsCanSeePlayer == false)
         {
+            if(agent.isStopped == true)
+            {
+                agent.isStopped = false;
+            }
+            
             if(agent.remainingDistance < 0.05f)
             {
                 _timeRef += Time.deltaTime;
@@ -59,8 +61,13 @@ public class PNJMovement : MonoBehaviour
                     _timeRef = 0;
                     Debug.Log("ResetMove");
                 }
+                
                                 
             }
+        }
+        else if (PNJDetection.Instance.IsCanSeePlayer == true)
+        {
+            agent.isStopped= true;
         }
         
     }
