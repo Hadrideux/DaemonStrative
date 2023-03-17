@@ -9,7 +9,6 @@ public class UI_IngameController : MonoBehaviour
 {
     #region Attributs
     #region Competence
-
     
     [SerializeField] private Image _morsureImage = null;
     
@@ -17,8 +16,6 @@ public class UI_IngameController : MonoBehaviour
     
     [SerializeField] private Image _ombreMarcheImage = null;
     [SerializeField] private TextMeshProUGUI _ombreMarcheText = null;
-
-
 
     #endregion Competence
 
@@ -50,7 +47,6 @@ public class UI_IngameController : MonoBehaviour
     [SerializeField] private float _fillProgress = 0;
 
     #endregion Suspicious
-
     #endregion Attributs
 
     #region MONO
@@ -61,6 +57,8 @@ public class UI_IngameController : MonoBehaviour
         _startPos.y = -_fillBlood.rect.width;
 
         UIManager.Instance.OmbreMarcheImage = _ombreMarcheImage;
+        UIManager.Instance.MorsureImage = _morsureImage;
+        UIManager.Instance.GriffureImage = _griffureImage;
     }
 
     // Update is called once per frame
@@ -69,10 +67,7 @@ public class UI_IngameController : MonoBehaviour
         _ombreMarcheText.text = UIManager.Instance.OmbreMarcheTimer.ToString("0");
 
         _bloodText.text = InventoryManager.Instance.AmountBlood.ToString();
-        _skullText.text = InventoryManager.Instance.AmountSkull.ToString(); 
-
-        UpdateBlood();
-        UpdateSuspicious();
+        _skullText.text = InventoryManager.Instance.AmountSkull.ToString();    
 
         if (_skullText.text == "0")
         {
@@ -84,10 +79,11 @@ public class UI_IngameController : MonoBehaviour
 
         }
 
+        UpdateBlood();
+        UpdateSuspicious();
     }
 
     #endregion MONO
-
     public void UpdateBlood()
     {
         float perc = (float)InventoryManager.Instance.AmountBlood / (float)_maxBlood;

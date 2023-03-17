@@ -2871,7 +2871,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _characterRef: {fileID: 1044533981}
   _camera: {fileID: 1901480017}
-  _speed: 10
+  _speed: 300
   _speedAlpha: 0.8
 --- !u!1001 &693863977
 PrefabInstance:
@@ -4503,7 +4503,6 @@ GameObject:
   - component: {fileID: 875077197}
   - component: {fileID: 875077196}
   - component: {fileID: 875077200}
-  - component: {fileID: 875077201}
   m_Layer: 5
   m_Name: HUD
   m_TagString: Untagged
@@ -4611,31 +4610,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _pauseUI: {fileID: 1533636584}
   _gameOverUI: {fileID: 1600901930}
---- !u!114 &875077201
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 875077195}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5ce943a291c4e742b8c25ac3c26ac29, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _actorImage: {fileID: 0}
-  _actorName: {fileID: 0}
-  _messageText: {fileID: 0}
-  _backgroundBox: {fileID: 0}
-  _dialogueButton: {fileID: 0}
-  _currentMessages:
-  - actorId: 0
-    message: ERGR
-  _currentActors:
-  - name: EFG
-    sprite: {fileID: 21300000, guid: 24dfef829c13c0341a32242daf9e3973, type: 3}
-  _activeMessage: 0
-  _isDialogueActive: 0
 --- !u!43 &923004535
 Mesh:
   m_ObjectHideFlags: 0
@@ -5372,7 +5346,7 @@ MonoBehaviour:
   _camera: {fileID: 1901480017}
   _VFXMorsure: {fileID: 1000013355911406, guid: d32aa916f50cac94db11e6f19821a58f, type: 3}
   _VFXGriffure: {fileID: 1834194341294532, guid: d5f26854a8904624c8073139cd2eb346, type: 3}
-  _VFXOmbremarche: {fileID: 0}
+  _VFXOmbremarche: {fileID: 100006, guid: 1fc7dfffb398d0b48b056795e222cbc4, type: 3}
 --- !u!136 &1044533978
 CapsuleCollider:
   m_ObjectHideFlags: 0
