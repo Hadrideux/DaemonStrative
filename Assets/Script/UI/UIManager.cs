@@ -134,6 +134,7 @@ public class UIManager : Singleton<UIManager>
     {
         SceneManager.LoadScene("TestScene");
         Time.timeScale = 1;
+        PNJDetection.Instance.DetectionFeedBack = 0;
     }
     #endregion UI System
 
