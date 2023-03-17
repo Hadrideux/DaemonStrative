@@ -26,6 +26,8 @@ public class CharacterConrtoller : MonoBehaviour
     }
     void Update()
     {
+        Debug.Log("Time is OK ? : " + Time.timeScale);
+
         if (Input.GetMouseButton(1))
         {
            CharacterManager.Instance.Moving();

@@ -2,6 +2,8 @@ using Engine.Utils;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using static UnityEngine.Rendering.DebugUI;
 
 public class PNJDetection : Singleton<PNJDetection>
 {
@@ -16,6 +18,9 @@ public class PNJDetection : Singleton<PNJDetection>
     [SerializeField] private LayerMask _obstructionMask;
 
     [SerializeField] private bool _isCanSeePlayer = false;
+    [SerializeField] private float _delayDetection = 2f;
+    [SerializeField] private float _delayDetectionTimer = Mathf.Clamp(0, 0, 2);
+    [SerializeField] private Image _detectionGauge = null;
 
     #endregion Attributs
 
@@ -39,33 +44,38 @@ public class PNJDetection : Singleton<PNJDetection>
         set => _isCanSeePlayer = value;
     }
 
+    public Image DetectionGauge
+    {
+        get => _detectionGauge;
+        set => _detectionGauge = value;
+    }
+
     public GameObject PlayerRef
     {
         get => _playerRef;
         set => _playerRef = value;
     }
 
+    public float DetectionFeedBack
+    {
+        get => _delayDetectionTimer;  
+        set => _delayDetectionTimer = Mathf.Clamp(value,0,2);
+    }
+
     #endregion Properties
 
     private void Start()
     {
-        StartCoroutine(FOVRoutine());
+       
     }
 
-    private IEnumerator FOVRoutine()
+    private void Update()
     {
-        WaitForSeconds wait = new WaitForSeconds(0.2f);
-
-        while (true)
+        if (CharacterManager.Instance.IsCanBeSee)
         {
-            yield return wait;
-            if (CharacterManager.Instance.IsCanBeSee)
-            {
-                FieldOfViewCheck();
-            }
-            
+            FieldOfViewCheck();
         }
-    }
+    }   
 
     private void FieldOfViewCheck()
     {
@@ -83,23 +93,35 @@ public class PNJDetection : Singleton<PNJDetection>
                 if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, _obstructionMask))
                 {
                     IsCanSeePlayer = true;
-                    UIManager.Instance.GameOver();                    
+
+                    _delayDetectionTimer += Time.deltaTime;
+                    
+
+                    Debug.Log("Time beeing see : " + _delayDetectionTimer);
+
+                    if (_delayDetectionTimer > _delayDetection)
+                    {
+                        UIManager.Instance.GameOver();
+                    }                                        
                 }
                 else
                 {
+                    _delayDetectionTimer = Mathf.Clamp(_delayDetectionTimer -= Time.deltaTime,0,2);
                     IsCanSeePlayer = false;
                 }
             }
             else
             {
+                _delayDetectionTimer = Mathf.Clamp(_delayDetectionTimer -= Time.deltaTime, 0, 2);
                 IsCanSeePlayer = false;
             }
         }
         else //if (IsCanSeePlayer)
         {
+            _delayDetectionTimer = Mathf.Clamp(_delayDetectionTimer -= Time.deltaTime, 0, 2);
             IsCanSeePlayer = false;
         }      
     }
 
-
+    
 }

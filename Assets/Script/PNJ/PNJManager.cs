@@ -2,6 +2,7 @@ using Engine.Utils;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PNJManager : Singleton<PNJManager>
 {
@@ -11,6 +12,7 @@ public class PNJManager : Singleton<PNJManager>
 
     [SerializeField] private bool _isDying = false;
     [SerializeField] private float _VFXDuration = 0f;
+    
 
     #region Properties
 
@@ -37,10 +39,12 @@ public class PNJManager : Singleton<PNJManager>
         get => _VFXDuration;
         set => _VFXDuration = value;
     }
+        
     #endregion Properties
 
     public void KillVillager()
     {
         InventoryManager.Instance.AddItem(ItemGet);
     }
+        
 }
