@@ -107,19 +107,6 @@ public class UIManager : Singleton<UIManager>
         {
             OmbreMarcheTime();
         }
-        /*
-        if (_alphaMorsureTimer <= _alphaColdDown)
-        {
-            AlphaMorsure(true);
-            Debug.Log("Morsure Time : " + _alphaMorsureTimer);
-        }
-
-        if (_alphaGriffureTimer <= _alphaColdDown)
-        {
-            AlphaGriffure(true);
-            Debug.Log("Griffure Time : " + _alphaGriffureTimer);
-        }
-        */
     }
 
     #region Methode
@@ -132,20 +119,18 @@ public class UIManager : Singleton<UIManager>
         _pauseUI.SetActive(true);
         Time.timeScale = 0;
     }
-
-    //Desactive l'ui de pause
+    //Desactive l'UI de pause
     public void ResumeGame()
     {
         _pauseUI.SetActive(false);
         Time.timeScale = 1;
     }
-
     //Quit l'application
     public void QuitGame()
     {
         Application.Quit();
     }
-
+    //Active L'UI de Defaite
     public void GameOver()
     {
         _gameOverUI.SetActive(true);
@@ -183,40 +168,19 @@ public class UIManager : Singleton<UIManager>
         }
     }
 
-    public void AlphaMorsure(bool isCast)
+    public void AlphaMorsure()
     {
-        if (isCast == true)
-        {
-            _alphaMorsureTimer += Time.deltaTime;
-            MorsureImage.color = new Color(MorsureImage.color.r, MorsureImage.color.g, MorsureImage.color.b, 0.5f);
+        //_alphaMorsureTimer += Time.deltaTime;
+        MorsureImage.color = new Color(MorsureImage.color.r, MorsureImage.color.g, MorsureImage.color.b, 0.5f);
 
-            if (_alphaMorsureTimer >= _alphaColdDown)
-            {
-                MorsureImage.color = new Color(MorsureImage.color.r, MorsureImage.color.g, MorsureImage.color.b, 1f);
-            }
-            else
-            {
-                isCast = false;
-            }
-        }
+        //MorsureImage.color = new Color(MorsureImage.color.r, MorsureImage.color.g, MorsureImage.color.b, 1f);
     }
-    public void AlphaGriffure(bool isCast)
+    public void AlphaGriffure()
     {
-        if (isCast == true)
-        {
-            _alphaGriffureTimer += Time.deltaTime;
-            GriffureImage.color = new Color(GriffureImage.color.r, GriffureImage.color.g, GriffureImage.color.b, 0.5f);
+       //_alphaGriffureTimer += Time.deltaTime;
+        GriffureImage.color = new Color(GriffureImage.color.r, GriffureImage.color.g, GriffureImage.color.b, 0.5f);
 
-            if (_alphaGriffureTimer >= _alphaColdDown)
-            {
-                GriffureImage.color = new Color(GriffureImage.color.r, GriffureImage.color.g, GriffureImage.color.b, 1f);
-            }
-            else
-            {
-                isCast = false;
-            }
-        }
-               
+        //GriffureImage.color = new Color(GriffureImage.color.r, GriffureImage.color.g, GriffureImage.color.b, 1f);
     }
 
     #endregion Competence

@@ -96,7 +96,7 @@ public class CharacterManager : Singleton<CharacterManager>
 
             if (Physics.Raycast(movePosition, out var hitInfo))
             {
-                Agent.isStopped = false;
+                //Agent.isStopped = false;
                 Agent.SetDestination(hitInfo.point);
                 VFXHitPointNavigation.gameObject.SetActive(true);
                 VFXHitPointNavigation.transform.position = new Vector3(hitInfo.point.x, 0.5f, hitInfo.point.z);
@@ -124,7 +124,7 @@ public class CharacterManager : Singleton<CharacterManager>
         PNJManager.Instance.KillVillager();
         PNJManager.Instance.IsDead = true;
 
-        UIManager.Instance.AlphaMorsure(true);
+        UIManager.Instance.AlphaMorsure();
     }
     public void Griffe()
     {
@@ -134,7 +134,7 @@ public class CharacterManager : Singleton<CharacterManager>
         PNJManager.Instance.IsDead = true;
         PNJManager.Instance.KillVillager();
 
-        UIManager.Instance.AlphaGriffure(true);
+        UIManager.Instance.AlphaGriffure();
     }
     public void Shadowalk()
     {

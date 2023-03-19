@@ -84,12 +84,12 @@ public class UI_IngameController : MonoBehaviour
     }
 
     #endregion MONO
+
     public void UpdateBlood()
     {
         float perc = (float)InventoryManager.Instance.AmountBlood / (float)_maxBlood;
         _fillBlood.localPosition = Vector3.Lerp(_startPos, _endPos, perc);
     }
-
     public void UpdateSuspicious()
     {
         _fillSuspicious.fillAmount = _fillProgress;

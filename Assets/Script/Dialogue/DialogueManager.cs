@@ -102,6 +102,8 @@ public class DialogueManager : Singleton<DialogueManager>
         else
         {
             IsDialogueActive = false;
+            CharacterManager.Instance.Agent.isStopped = false;
+
             BackGroundBox.LeanScale(Vector3.zero, 0.5f).setEaseInOutExpo();
             HideButton();
             /*if (CharacterManager.Instance.Agent.remainingDistance < 0.5f)
