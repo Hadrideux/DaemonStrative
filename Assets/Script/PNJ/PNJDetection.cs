@@ -31,31 +31,26 @@ public class PNJDetection : Singleton<PNJDetection>
         get => _radius;
         set => _radius = value;
     }
-
     public float Angle
     {
         get => _angle;
         set => _angle = value;
     }
-
     public bool IsCanSeePlayer
     {
         get => _isCanSeePlayer;
         set => _isCanSeePlayer = value;
     }
-
     public Image DetectionGauge
     {
         get => _detectionGauge;
         set => _detectionGauge = value;
     }
-
     public GameObject PlayerRef
     {
         get => _playerRef;
         set => _playerRef = value;
     }
-
     public float DetectionFeedBack
     {
         get => _delayDetectionTimer;  
@@ -63,11 +58,6 @@ public class PNJDetection : Singleton<PNJDetection>
     }
 
     #endregion Properties
-
-    private void Start()
-    {
-       
-    }
 
     private void Update()
     {
@@ -95,7 +85,6 @@ public class PNJDetection : Singleton<PNJDetection>
                     IsCanSeePlayer = true;
 
                     _delayDetectionTimer += Time.deltaTime;
-                    
 
                     Debug.Log("Time beeing see : " + _delayDetectionTimer);
 

@@ -22,7 +22,6 @@ public class DialogueController : MonoBehaviour
         public int actorId;
         public string message;
     }
-
     
     [System.Serializable]
     public class Actor
@@ -45,19 +44,6 @@ public class DialogueController : MonoBehaviour
 
     public void StartDialogue()
     {
-        CharacterManager.Instance.Agent.isStopped = true;
         DialogueManager.Instance.OpenDialogue(messages, actors);       
     }
-
-
-    private void Update()
-    {
-       
-    }
-
-
-
-
-
-
 }

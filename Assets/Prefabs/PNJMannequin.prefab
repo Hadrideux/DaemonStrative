@@ -601,7 +601,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fc0d4f5bd40d8c4d8970985f5d06902, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _radius: 7
+  _radius: 12
   _angle: 100
   _playerRef: {fileID: 0}
   _targetMask:
@@ -627,9 +627,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 5434017713403560353}
-  _timeRef: 0
   _activePoint: 0
   _isGuard: 0
+  _timeRef: 0
   _wayPoints: []
 --- !u!54 &2739785758015266038
 Rigidbody:

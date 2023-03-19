@@ -14,11 +14,10 @@ public class CharacterManager : Singleton<CharacterManager>
     [SerializeField] private NavMeshAgent _agent = null;
     [SerializeField] private Camera _camera = null;
 
-    [SerializeField] private bool _isHostile = false;
     [SerializeField] private bool _isCanBeSee = true;
 
     [SerializeField] private GameObject _VFXSpawnPoint = null;
-    [SerializeField] private GameObject _VFXType = null;
+    [SerializeField] private GameObject _VFXSkills = null;
     [SerializeField] private GameObject _VFXOmbremarche = null;
 
     [SerializeField] private GameObject _VFXHitPointNavigation = null;
@@ -36,71 +35,62 @@ public class CharacterManager : Singleton<CharacterManager>
         get => _controller;
         set => _controller = value;
     }
-
     public NavMeshAgent Agent
     {
         get => _agent; 
         set => _agent = value;
     }
-
     public Camera Camera
     {
         get => _camera; 
         set => _camera = value;
     }
-
-    public bool IsHostile
-    {
-        get => _isHostile;
-        set => _isHostile = value;
-    }
-
     public GameObject Collider
     {
         get => _collider;
         set => _collider = value;
     }
-
+    /*
     public GameObject Body
     {
         get => _body;
         set => _body = value;
     }
-
+    
     public GameObject VFXSpawner
     {
         get => _VFXSpawnPoint;
         set => _VFXSpawnPoint = value;
     }
-
+    */
     public GameObject VFXSkills
     {
-        get => _VFXType;
-        set => _VFXType = value;
+        get => _VFXSkills;
+        set => _VFXSkills = value;
     }
-
     public GameObject VFXOmbremarche
     {
         get => _VFXOmbremarche;
         set => _VFXOmbremarche = value;
     }
-
     public GameObject VFXHitPointNavigation
     {
         get => _VFXHitPointNavigation;
         set => _VFXHitPointNavigation = value;
     }
+
     #endregion properties
+
+    private void Update()
+    {
+        EndMovement();
+    }
 
     #region Methode
 
     public void Moving()
     {
-        if (DialogueManager.Instance.IsDialogueActive == true)
-        {
-            return;
-        }
-        else
+        if (!DialogueManager.Instance.IsDialogueActive == true && Agent.isStopped == false)
         {
             Ray movePosition = Camera.ScreenPointToRay(Input.mousePosition);
 
@@ -109,11 +99,9 @@ public class CharacterManager : Singleton<CharacterManager>
                 Agent.isStopped = false;
                 Agent.SetDestination(hitInfo.point);
                 VFXHitPointNavigation.gameObject.SetActive(true);
-                _VFXHitPointNavigation.transform.position = new Vector3 (hitInfo.point.x, 0.5f, hitInfo.point.z);
+                VFXHitPointNavigation.transform.position = new Vector3(hitInfo.point.x, 0.5f, hitInfo.point.z);
             }
-           
-        }
-       
+        }       
     }
 
     public void EndMovement()
@@ -123,6 +111,7 @@ public class CharacterManager : Singleton<CharacterManager>
             VFXHitPointNavigation.gameObject.SetActive(false);
         }
     }
+
     #region Player Action
     /// <summary>
     /// Fonction des action du joueur durant les différente phase de jeux
@@ -130,52 +119,35 @@ public class CharacterManager : Singleton<CharacterManager>
 
     public void Morsure()
     {
-        if (IsHostile)
-        {
-            BloodAndFlesh();
-            
-            PNJManager.Instance.KillVillager();
-            Debug.Log("Morsure");
+        BloodAndFlesh();
 
-            UIManager.Instance.AlphaMorsure(true);
-        }
+        PNJManager.Instance.KillVillager();
+        PNJManager.Instance.IsDead = true;
+
+        UIManager.Instance.AlphaMorsure(true);
     }
-
     public void Griffe()
     {
+        BloodAndFlesh();
+        //Destroy(Body);
 
-        if (IsHostile)
-        {
-            BloodAndFlesh();
-                      
-            Destroy(_body);
-            PNJManager.Instance.KillVillager();
-            Debug.Log("Griffure");
+        PNJManager.Instance.IsDead = true;
+        PNJManager.Instance.KillVillager();
 
-            UIManager.Instance.AlphaGriffure(true);
-        }       
-    }
-
-    public void DestroyAll()
-    {
-        Destroy(_collider);
-        PNJManager.Instance.isDead = false;
+        UIManager.Instance.AlphaGriffure(true);
     }
     public void Shadowalk()
     {
-        UIManager.Instance.OmbreMarcheTime();
-        Debug.Log("tchachachacha");
-        IsCanBeSee = false;
         UIManager.Instance.IsCast = true;
+        UIManager.Instance.OmbreMarcheTime();
+        IsCanBeSee = false;
     }
 
     #endregion Player Action
 
     public void BloodAndFlesh()
     {
-        Debug.Log("Blood");
-
-        Instantiate(_VFXType, _VFXSpawnPoint.transform);
+        Instantiate(VFXSkills, PNJManager.Instance.VFXSpawner.transform);
     }
 
     #endregion Methode

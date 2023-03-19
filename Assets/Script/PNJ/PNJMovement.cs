@@ -10,11 +10,11 @@ using static UnityEngine.GraphicsBuffer;
 public class PNJMovement : MonoBehaviour
 {
     [SerializeField] private NavMeshAgent agent;
-    [SerializeField] private float _timeRef = 0;
-
     [SerializeField] private int _activePoint = 0;
-    
+
     [SerializeField] private bool _isGuard = false;
+    
+    [SerializeField] private float _timeRef = 0;
     
     public WayPoint[] _wayPoints;
 
@@ -24,7 +24,6 @@ public class PNJMovement : MonoBehaviour
         public GameObject target;
         public float waitTime;
     }
-
    
     // Start is called before the first frame update
     void Start()
@@ -53,23 +52,18 @@ public class PNJMovement : MonoBehaviour
                 {                    
                     _activePoint = (_activePoint + 1) % _wayPoints.Length;
                     _timeRef = 0;
-                    Debug.Log(_activePoint.ToString());
                 }
                 else if (_timeRef > timer.waitTime)
                 {
                     _activePoint = 0;
                     _timeRef = 0;
-                    Debug.Log("ResetMove");
-                }
-                
-                                
+                }       
             }
         }
         else if (PNJDetection.Instance.IsCanSeePlayer == true)
         {
             agent.isStopped= true;
         }
-        
     }
 
     private void WalkRound()
@@ -77,5 +71,4 @@ public class PNJMovement : MonoBehaviour
         WayPoint actualPoint = _wayPoints[_activePoint];
         agent.SetDestination(actualPoint.target.transform.position);       
     }
-
 }

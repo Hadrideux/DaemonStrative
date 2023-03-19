@@ -9,8 +9,8 @@ public class CharacterConrtoller : MonoBehaviour
 
     [SerializeField] private NavMeshAgent _agent = null;
     [SerializeField] private Camera _camera = null;
-    [SerializeField] private GameObject _VFXMorsure = null;
-    [SerializeField] private GameObject _VFXGriffure = null;
+
+    [SerializeField] private GameObject[] _VFXType = null;
     [SerializeField] private GameObject _VFXOmbremarche = null;
     [SerializeField] private GameObject _VFXHitPoint = null;
 
@@ -32,31 +32,26 @@ public class CharacterConrtoller : MonoBehaviour
         {
            CharacterManager.Instance.Moving();
         }
-        CharacterManager.Instance.EndMovement();
 
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            CharacterManager.Instance.VFXSkills = _VFXMorsure;            
+            CharacterManager.Instance.VFXSkills = _VFXType[0];
             CharacterManager.Instance.Morsure();
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            CharacterManager.Instance.VFXSkills = _VFXGriffure;
-            PNJManager.Instance.isDead = true;
+            CharacterManager.Instance.VFXSkills = _VFXType[1];
             CharacterManager.Instance.Griffe();
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha3) && WitchManager.Instance.IsQuestOmbreMarche == true)
         {
             CharacterManager.Instance.Shadowalk();
-            UIManager.Instance.IsCast = true;
-
         }
 
         if (Input.GetKeyDown(KeyCode.Space) && DialogueManager.Instance.IsDialogueActive == true)
         {
-
             DialogueManager.Instance.NextMessage();
         }
                 

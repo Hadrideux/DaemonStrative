@@ -35,27 +35,22 @@ public class PNJController : MonoBehaviour
     {
         if (other.CompareTag("Player")) 
         {
-            PNJManager.Instance.ItemGet = _itemData;            
-            CharacterManager.Instance.IsHostile = true;
-            CharacterManager.Instance.VFXSpawner = _VFXSpawnPoint;
-            CharacterManager.Instance.Body = _body;
+            PNJManager.Instance.ItemGet = _itemData;
+            PNJManager.Instance.VFXSpawner = _VFXSpawnPoint;
+            PNJManager.Instance.Body = _body;
         }            
-    }
-    private void OnTriggerExit(Collider other)
-    {
-        CharacterManager.Instance.IsHostile = false;
     }
 
     private void Update()
     {
 
-        if (PNJManager.Instance.isDead == true)
+        if (PNJManager.Instance.IsDead == true)
         {
             _vFXDuration += Time.deltaTime;
 
             if (_vFXDuration > _vFXEndTimer) 
             { 
-                CharacterManager.Instance.DestroyAll();
+                PNJManager.Instance.DestroyAll();
             }
         }
         else

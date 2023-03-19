@@ -8,9 +8,13 @@ public class PNJManager : Singleton<PNJManager>
 {
     [SerializeField] private PNJController _controller = null;
 
+    [SerializeField] private GameObject _body = null;
+
     [SerializeField] private ItemData _itemData = null;
 
     [SerializeField] private bool _isDying = false;
+
+    [SerializeField] private GameObject _VFXSpawnPoint = null;
     [SerializeField] private float _VFXDuration = 0f;
     
 
@@ -21,19 +25,26 @@ public class PNJManager : Singleton<PNJManager>
         get => _controller;
         set => _controller = value;
     }
-
     public ItemData ItemGet
     {
         get => _itemData;
         set => _itemData = value;
     }
-
-    public bool isDead
+    public bool IsDead
     {
         get => _isDying;
         set => _isDying = value;
     }
-
+    public GameObject Body
+    {
+        get => _body;
+        set => _body = value;
+    }
+    public GameObject VFXSpawner
+    {
+        get => _VFXSpawnPoint;
+        set => _VFXSpawnPoint = value;
+    }
     public float VFXTimer
     {
         get => _VFXDuration;
@@ -45,6 +56,12 @@ public class PNJManager : Singleton<PNJManager>
     public void KillVillager()
     {
         InventoryManager.Instance.AddItem(ItemGet);
+        Destroy(Body);
     }
-        
+    public void DestroyAll()
+    {
+        Destroy(CharacterManager.Instance.Collider);
+        PNJManager.Instance.IsDead = false;
+    }
+
 }

@@ -173,5 +173,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _agent: {fileID: 3602215528309420423}
   _camera: {fileID: 0}
+  _typeVFX:
+  - {fileID: 0}
+  - {fileID: 0}
   _VFXMorsure: {fileID: 0}
   _VFXGriffure: {fileID: 0}
+  _VFXOmbremarche: {fileID: 0}
+  _VFXHitPoint: {fileID: 0}

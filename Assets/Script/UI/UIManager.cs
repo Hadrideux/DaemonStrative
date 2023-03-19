@@ -106,19 +106,20 @@ public class UIManager : Singleton<UIManager>
         if (OmbreMarcheTimer <= _coldDown && WitchManager.Instance.IsQuestOmbreMarche == true)
         {
             OmbreMarcheTime();
-            Debug.Log(OmbreMarcheTimer);
         }
+        /*
         if (_alphaMorsureTimer <= _alphaColdDown)
         {
             AlphaMorsure(true);
-            Debug.Log(_alphaMorsureTimer);
+            Debug.Log("Morsure Time : " + _alphaMorsureTimer);
         }
 
         if (_alphaGriffureTimer <= _alphaColdDown)
         {
             AlphaGriffure(true);
-            Debug.Log(_alphaGriffureTimer);
+            Debug.Log("Griffure Time : " + _alphaGriffureTimer);
         }
+        */
     }
 
     #region Methode
@@ -154,8 +155,8 @@ public class UIManager : Singleton<UIManager>
     public void ReloadScene()
     {
         SceneManager.LoadScene("TestScene");
-        Time.timeScale = 1;
         PNJDetection.Instance.DetectionFeedBack = 0;
+        Time.timeScale = 1;
     }
     #endregion UI System
 

@@ -9,7 +9,7 @@ public class ItemData : ScriptableObject
     [SerializeField] private string _name = "ItemData";
     [SerializeField] private ERessourceType _type = ERessourceType.BLOOD;
 
-    [SerializeField] private int _amount = 1;
+    [SerializeField] private int _amount = 0;
 
     public string Name => _name;
     public ERessourceType Type => _type;
