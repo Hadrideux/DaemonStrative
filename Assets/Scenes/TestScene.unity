@@ -6267,7 +6267,7 @@ MonoBehaviour:
   _bloodText: {fileID: 216004988}
   _skullImage: {fileID: 1463752568}
   _skullText: {fileID: 1718978897}
-  _maxBlood: 0
+  _maxBlood: 100
   _fillBlood: {fileID: 1426984623}
   _fillSuspicious: {fileID: 1198033438}
   _fillProgress: 0

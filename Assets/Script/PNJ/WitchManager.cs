@@ -27,6 +27,7 @@ public class WitchManager : Singleton<WitchManager>
         {
             InventoryManager.Instance.AmountSkull = 0;
             InventoryManager.Instance.AmountBlood = 0;
+            _isQuestOmbreMarche = true;
         }
         
     }

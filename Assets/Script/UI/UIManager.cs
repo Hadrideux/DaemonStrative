@@ -22,16 +22,16 @@ public class UIManager : Singleton<UIManager>
     #region Competence
     
     [SerializeField] private float _coldDown = 5f;
-    [SerializeField] private float _alphaColdDown = 1f;
+
+    [SerializeField] private float _alphaTimer = 0f;
+    [SerializeField] private float _alphaColdDown = 0.5f;
 
     [SerializeField] private Image _ombreMarcheImage = null;
     [SerializeField] private float _ombreMarcheTimer = 0.0f;
 
     [SerializeField] private Image _morsureImage = null;
-    [SerializeField] private float _alphaMorsureTimer = 0;
 
     [SerializeField] private Image _griffureImage = null;
-    [SerializeField] private float _alphaGriffureTimer = 0;
 
     #endregion Competence
 
@@ -170,17 +170,25 @@ public class UIManager : Singleton<UIManager>
 
     public void AlphaMorsure()
     {
-        //_alphaMorsureTimer += Time.deltaTime;
+        _alphaTimer += Time.deltaTime;
         MorsureImage.color = new Color(MorsureImage.color.r, MorsureImage.color.g, MorsureImage.color.b, 0.5f);
 
-        //MorsureImage.color = new Color(MorsureImage.color.r, MorsureImage.color.g, MorsureImage.color.b, 1f);
+        if (_alphaTimer > _alphaColdDown)
+        {
+            _alphaTimer = 0;
+            MorsureImage.color = new Color(MorsureImage.color.r, MorsureImage.color.g, MorsureImage.color.b, 1f);
+        }
     }
     public void AlphaGriffure()
     {
-       //_alphaGriffureTimer += Time.deltaTime;
+        _alphaTimer += Time.deltaTime;
         GriffureImage.color = new Color(GriffureImage.color.r, GriffureImage.color.g, GriffureImage.color.b, 0.5f);
 
-        //GriffureImage.color = new Color(GriffureImage.color.r, GriffureImage.color.g, GriffureImage.color.b, 1f);
+        if (_alphaTimer > _alphaColdDown)
+        {
+            _alphaTimer = 0;
+            GriffureImage.color = new Color(GriffureImage.color.r, GriffureImage.color.g, GriffureImage.color.b, 1f);
+        }
     }
 
     #endregion Competence
