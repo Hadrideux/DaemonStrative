@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class PNJManager : Singleton<PNJManager>
 {
     [SerializeField] private PNJController _controller = null;
+    [SerializeField] private PNJDetection _detection = null;
 
     [SerializeField] private GameObject _body = null;
 
@@ -24,6 +25,12 @@ public class PNJManager : Singleton<PNJManager>
     {
         get => _controller;
         set => _controller = value;
+    }
+
+    public PNJDetection Detection
+    {
+        get => _detection;
+        set => _detection = value;
     }
     public ItemData ItemGet
     {

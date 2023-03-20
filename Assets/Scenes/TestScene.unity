@@ -3515,6 +3515,10 @@ PrefabInstance:
       propertyPath: _playerRef
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1261295695285075962, guid: e98ccfe44a14faa45ad83f426776cd5c, type: 3}
+      propertyPath: _obstructionMask.m_Bits
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1391639470849539940, guid: e98ccfe44a14faa45ad83f426776cd5c, type: 3}
       propertyPath: m_Camera
       value: 
@@ -6689,7 +6693,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1261295695285075962, guid: e98ccfe44a14faa45ad83f426776cd5c, type: 3}
       propertyPath: _obstructionMask.m_Bits
-      value: 68
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1391639470849539940, guid: e98ccfe44a14faa45ad83f426776cd5c, type: 3}
       propertyPath: m_Camera
@@ -8202,7 +8206,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1573153658
 RectTransform:
   m_ObjectHideFlags: 0

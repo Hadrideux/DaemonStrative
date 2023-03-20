@@ -589,6 +589,8 @@ MonoBehaviour:
   _vFXDuration: 0
   _vFXEndTimer: 1
   _detectionGauge: {fileID: 4029515529519846825}
+  _pNJController: {fileID: 2630984617025578126}
+  _pNJDetection: {fileID: 1261295695285075962}
 --- !u!114 &1261295695285075962
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -603,13 +605,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _radius: 12
   _angle: 100
-  _playerRef: {fileID: 0}
   _targetMask:
     serializedVersion: 2
     m_Bits: 128
   _obstructionMask:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 0
   _isCanSeePlayer: 0
   _delayDetection: 2
   _delayDetectionTimer: 0
