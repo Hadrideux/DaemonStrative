@@ -11,7 +11,6 @@ public class CharacterManager : Singleton<CharacterManager>
     [SerializeField] private NavMeshAgent _agent = null;
 
     [SerializeField] private GameObject _collider = null;
-    [SerializeField] private GameObject _body = null;
     [SerializeField] private bool _isCanBeSee = true;
 
     [SerializeField] private GameObject _VFXSpawnPoint = null;
@@ -19,7 +18,6 @@ public class CharacterManager : Singleton<CharacterManager>
     [SerializeField] private GameObject _VFXOmbremarche = null;
 
     [SerializeField] private GameObject _VFXHitPointNavigation = null;
-
 
     #region Properties
 
