@@ -5196,7 +5196,7 @@ MonoBehaviour:
   _ombreMarcheText: {fileID: 1393189509}
   _skullImage: {fileID: 255449175}
   _skullText: {fileID: 1718978897}
-  _bloodImage: {fileID: 1289766616}
+  _bloodImage: {fileID: 0}
   _bloodText: {fileID: 216004988}
   _maxBlood: 100
   _fillBlood: {fileID: 1426984623}

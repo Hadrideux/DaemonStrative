@@ -47,6 +47,7 @@ public class UI_IngameController : MonoBehaviour
     private int _index = 0;
 
     #endregion Suspicious
+
     #endregion Attributs
 
     #region MONO
@@ -66,7 +67,7 @@ public class UI_IngameController : MonoBehaviour
     {
         _ombreMarcheText.text = UIManager.Instance.OmbreMarcheTimer.ToString("0");
 
-        _bloodText.text = InventoryManager.Instance.AmountBlood.ToString();
+        _bloodText.text = Mathf.Clamp(InventoryManager.Instance.AmountBlood, 0, _maxBlood).ToString();
         _skullText.text = InventoryManager.Instance.AmountSkull.ToString();    
 
         if (_skullText.text == "0")
@@ -75,8 +76,7 @@ public class UI_IngameController : MonoBehaviour
         }
         else
         {
-            _skullImage.color = new Color(_skullImage.color.r, _skullImage.color.g, _skullImage.color.b, 1f); ;
-
+            _skullImage.color = new Color(_skullImage.color.r, _skullImage.color.g, _skullImage.color.b, 1f);
         }
 
         UpdateBlood();
@@ -87,7 +87,7 @@ public class UI_IngameController : MonoBehaviour
 
     public void UpdateBlood()
     {
-        float perc = (float)InventoryManager.Instance.AmountBlood / (float)_maxBlood;
+        float perc = (float)InventoryManager.Instance.AmountBlood / _maxBlood;
         _fillBlood.localPosition = Vector3.Lerp(_startPos, _endPos, perc);
     }
 

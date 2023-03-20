@@ -30,7 +30,7 @@ public class CharacterConrtoller : MonoBehaviour
     {
         if (Input.GetMouseButton(1))
         {
-           CharacterManager.Instance.Moving();
+            CharacterManager.Instance.Moving();
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha1))
