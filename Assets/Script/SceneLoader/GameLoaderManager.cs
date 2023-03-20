@@ -18,6 +18,7 @@ public class GameLoaderManager : Singleton<GameLoaderManager>
 
     public void LoadGameScene()
     {
-        SceneManager.LoadScene("TestScene", LoadSceneMode.Single);
+        Time.timeScale = 1.0f;
+        SceneManager.LoadScene("TestScene", LoadSceneMode.Single);        
     }
 }

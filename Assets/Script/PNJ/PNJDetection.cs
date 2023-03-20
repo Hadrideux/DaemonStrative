@@ -51,8 +51,13 @@ public class PNJDetection : MonoBehaviour
         if (CharacterManager.Instance.IsCanBeSee)
         {
             FieldOfViewCheck();
-        }
-    }   
+        }               
+    }
+
+    private void Start()
+    {
+        _delayDetectionTimer = 0;
+    }
 
     private void FieldOfViewCheck()
     {
@@ -75,6 +80,7 @@ public class PNJDetection : MonoBehaviour
                                         
                     if (_delayDetectionTimer > _delayDetection)
                     {
+                        _delayDetectionTimer = 0;
                         UIManager.Instance.GameOver();
                     }                                        
                 }
