@@ -50,19 +50,7 @@ public class CharacterManager : Singleton<CharacterManager>
         get => _collider;
         set => _collider = value;
     }
-    /*
-    public GameObject Body
-    {
-        get => _body;
-        set => _body = value;
-    }
-    
-    public GameObject VFXSpawner
-    {
-        get => _VFXSpawnPoint;
-        set => _VFXSpawnPoint = value;
-    }
-    */
+
     public GameObject VFXSkills
     {
         get => _VFXSkills;
@@ -96,8 +84,9 @@ public class CharacterManager : Singleton<CharacterManager>
 
             if (Physics.Raycast(movePosition, out var hitInfo))
             {
-                //Agent.isStopped = false;
+                Agent.isStopped = false;
                 Agent.SetDestination(hitInfo.point);
+
                 VFXHitPointNavigation.gameObject.SetActive(true);
                 VFXHitPointNavigation.transform.position = new Vector3(hitInfo.point.x, 0.5f, hitInfo.point.z);
             }
@@ -129,7 +118,6 @@ public class CharacterManager : Singleton<CharacterManager>
     public void Griffe()
     {
         BloodAndFlesh();
-        //Destroy(Body);
 
         PNJManager.Instance.IsDead = true;
         PNJManager.Instance.KillVillager();

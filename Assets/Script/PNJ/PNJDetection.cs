@@ -17,8 +17,7 @@ public class PNJDetection : MonoBehaviour
 
     [SerializeField] private bool _isCanSeePlayer = false;
     [SerializeField] private float _delayDetection = 2f;
-    [SerializeField] private float _delayDetectionTimer = Mathf.Clamp(0, 0, 2);
-    [SerializeField] private Image _detectionGauge = null;
+    private float _delayDetectionTimer = 0f;
 
     #endregion Attributs
 
@@ -38,11 +37,6 @@ public class PNJDetection : MonoBehaviour
     {
         get => _isCanSeePlayer;
         set => _isCanSeePlayer = value;
-    }
-    public Image DetectionGauge
-    {
-        get => _detectionGauge;
-        set => _detectionGauge = value;
     }
     public float DetectionFeedBack
     {
@@ -101,7 +95,5 @@ public class PNJDetection : MonoBehaviour
             _delayDetectionTimer = Mathf.Clamp(_delayDetectionTimer -= Time.deltaTime, 0, 2);
             IsCanSeePlayer = false;
         }      
-    }
-
-    
+    }    
 }
