@@ -130,7 +130,7 @@ GameObject:
   - component: {fileID: 935416757803316336}
   m_Layer: 0
   m_Name: Capsule
-  m_TagString: Untagged
+  m_TagString: PNJ
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -441,7 +441,7 @@ GameObject:
   - component: {fileID: 2072425365772486016}
   m_Layer: 0
   m_Name: PNJ_Villageois
-  m_TagString: Untagged
+  m_TagString: PNJ
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
