@@ -127,7 +127,7 @@ GameObject:
   - component: {fileID: 338301409349924359}
   - component: {fileID: 2366153213628704441}
   - component: {fileID: 7636539596854965816}
-  - component: {fileID: 6834303778662462959}
+  - component: {fileID: 935416757803316336}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
@@ -201,7 +201,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &6834303778662462959
+--- !u!136 &935416757803316336
 CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -437,8 +437,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2508722819527280589}
-  - component: {fileID: 5206232195440760603}
   - component: {fileID: 4599159835990866831}
+  - component: {fileID: 2072425365772486016}
   m_Layer: 0
   m_Name: PNJ_Villageois
   m_TagString: Untagged
@@ -463,25 +463,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5206232195440760603
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8557925354634113017}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd715c3a5f808064ca0673066cae2648, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _pNJController: {fileID: 5206232195440760603}
-  _pNJDetection: {fileID: 0}
-  _body: {fileID: 1025556816027518734}
-  _itemData: {fileID: 0}
-  _VFXSpawnPoint: {fileID: 5898663854434335352}
-  _VFXEndTimer: 1
-  _detectionGauge: {fileID: 0}
 --- !u!54 &4599159835990866831
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -509,3 +490,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &2072425365772486016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8557925354634113017}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ece656e8a908c95418f8c535c06ecde6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _PNJVillager: {fileID: 2072425365772486016}
+  _body: {fileID: 1025556816027518734}
+  _itemData: {fileID: 0}
+  _VFXSpawnPoint: {fileID: 5898663854434335352}
+  _VFXEndTimer: 1

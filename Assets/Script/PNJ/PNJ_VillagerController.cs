@@ -10,26 +10,19 @@ public class PNJ_VillagerController : MonoBehaviour
 
     #region Attributs
 
-    [SerializeField] private PNJController _pNJController = null;    
+    [SerializeField] private PNJ_VillagerController _PNJVillager = null;    
     [SerializeField] private GameObject _body = null;    
     [SerializeField] private ItemData _itemData = null;    
     [SerializeField] private GameObject _VFXSpawnPoint = null;
     [SerializeField] private float _VFXEndTimer = 1;
     private float _VFXDuration = 0;
-    [SerializeField] private Image _detectionGauge= null;
     
     #endregion Attributs
     
-    public PNJController ControllerPNJ
+    public PNJ_VillagerController ControllerPNJ
     {
-        get => _pNJController;
-        set => _pNJController = value;
-    }
-       
-    public Image DetectionGauge
-    {
-        get => _detectionGauge;
-        set => _detectionGauge = value;
+        get => _PNJVillager;
+        set => _PNJVillager = value;
     }
 
     #region Mono
