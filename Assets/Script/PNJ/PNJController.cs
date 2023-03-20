@@ -10,56 +10,84 @@ public class PNJController : MonoBehaviour
 
     #region Attributs
 
-    [SerializeField] private ItemData _itemData = null;
-    [SerializeField] private GameObject _VFXSpawnPoint = null;
+    [SerializeField] private PNJController _pNJController = null;
+    [SerializeField] private PNJDetection _pNJDetection = null;
     [SerializeField] private GameObject _body = null;
-    [SerializeField] private float _vFXDuration = 0;
-    [SerializeField] private float _vFXEndTimer = 1;
     
-
+    [SerializeField] private ItemData _itemData = null;
+    
+    [SerializeField] private GameObject _VFXSpawnPoint = null;
+    private float _VFXDuration = 0;
+    [SerializeField] private float _VFXEndTimer = 1;
+    
+        [SerializeField] private Image _detectionGauge= null;
+    
     #endregion Attributs
+    
+    public PNJController ControllerPNJ
+    {
+        get => _pNJController;
+        set => _pNJController = value;
+    }
+    public PNJDetection DetectionPNJ
+    {
+        get => _pNJDetection;
+        set => _pNJDetection = value;
+    }
+   
+    public Image DetectionGauge
+    {
+        get => _detectionGauge;
+        set => _detectionGauge = value;
+    }
 
     #region Mono
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        PNJManager.Instance.Controller = this;
-
-        PNJManager.Instance.ItemGet = _itemData;
-        
-    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player")) 
         {
             PNJManager.Instance.ItemGet = _itemData;
-            CharacterManager.Instance.IsHostile = true;
-            CharacterManager.Instance.VFXSpawner = _VFXSpawnPoint;
-            CharacterManager.Instance.Body = _body;
+            PNJManager.Instance.VFXSpawner = _VFXSpawnPoint;
+            PNJManager.Instance.Body = _body;
         }            
-    }
-    private void OnTriggerExit(Collider other)
-    {
-        CharacterManager.Instance.IsHostile = false;
     }
 
     private void Update()
     {
 
-        if (PNJManager.Instance.isDead == true)
+        if (PNJManager.Instance.IsDead == true)
         {
-            _vFXDuration += Time.deltaTime;
+            _VFXDuration += Time.deltaTime;
 
-            if (_vFXDuration > _vFXEndTimer) 
+            if (_VFXDuration > _VFXEndTimer) 
             { 
-                CharacterManager.Instance.DestroyAll();
+                PNJManager.Instance.DestroyAll();
             }
         }
         else
         {
-            _vFXDuration = 0;
+            _VFXDuration = 0;
+        }
+
+        if(DetectionPNJ.IsCanSeePlayer == true) 
+        {
+            Detection();        
+        }
+        else if(DetectionPNJ.IsCanSeePlayer == false)
+        {
+            Undetecte();
         }
     }
     #endregion Mono
+
+    private void Detection()
+    {
+        DetectionGauge.fillAmount += DetectionPNJ.DetectionFeedBack / 2*Time.deltaTime;           
+    }
+
+    private void Undetecte()
+    {
+        DetectionGauge.fillAmount -= DetectionPNJ.DetectionFeedBack / 2 * Time.deltaTime;
+    }
 }

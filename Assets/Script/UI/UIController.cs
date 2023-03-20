@@ -1,12 +1,20 @@
 using Engine.Utils;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIController : MonoBehaviour
 {
+    #region Attributs
+    #region UI Menu
+
     [SerializeField] private GameObject _pauseUI = null;
     [SerializeField] private GameObject _gameOverUI = null;
+
+    #endregion UI Menu
+    #endregion Attributs
 
     #region Mono
 
@@ -25,7 +33,6 @@ public class UIController : MonoBehaviour
         {
             UIManager.Instance.pauseGame();
         }
-
     }
 
     #endregion Mono

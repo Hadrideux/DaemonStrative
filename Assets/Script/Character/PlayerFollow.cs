@@ -15,12 +15,6 @@ public class PlayerFollow : MonoBehaviour
 
     private Vector3 targetRotation = Vector3.zero;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {

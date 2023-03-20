@@ -2,20 +2,22 @@ using Engine.Utils;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using static UnityEngine.Rendering.DebugUI;
 
-public class PNJDetection : Singleton<PNJDetection>
+public class PNJDetection : MonoBehaviour
 {
     #region Attributs
 
     [SerializeField] private float _radius = 0f; [Range(0, 360)]
     [SerializeField] private float _angle = 0f;
 
-    [SerializeField] private GameObject _playerRef = null;
-
     [SerializeField] private LayerMask _targetMask;
     [SerializeField] private LayerMask _obstructionMask;
 
     [SerializeField] private bool _isCanSeePlayer = false;
+    [SerializeField] private float _delayDetection = 2f;
+    private float _delayDetectionTimer = 0f;
 
     #endregion Attributs
 
@@ -26,45 +28,35 @@ public class PNJDetection : Singleton<PNJDetection>
         get => _radius;
         set => _radius = value;
     }
-
     public float Angle
     {
         get => _angle;
         set => _angle = value;
     }
-
     public bool IsCanSeePlayer
     {
         get => _isCanSeePlayer;
         set => _isCanSeePlayer = value;
     }
-
-    public GameObject PlayerRef
+    public float DetectionFeedBack
     {
-        get => _playerRef;
-        set => _playerRef = value;
+        get => _delayDetectionTimer;  
+        set => _delayDetectionTimer = Mathf.Clamp(value,0,2);
     }
 
     #endregion Properties
 
-    private void Start()
+    private void Update()
     {
-        StartCoroutine(FOVRoutine());
+        if (CharacterManager.Instance.IsCanBeSee)
+        {
+            FieldOfViewCheck();
+        }               
     }
 
-    private IEnumerator FOVRoutine()
+    private void Start()
     {
-        WaitForSeconds wait = new WaitForSeconds(0.2f);
-
-        while (true)
-        {
-            yield return wait;
-            if (CharacterManager.Instance.IsCanBeSee)
-            {
-                FieldOfViewCheck();
-            }
-            
-        }
+        _delayDetectionTimer = 0;
     }
 
     private void FieldOfViewCheck()
@@ -83,23 +75,31 @@ public class PNJDetection : Singleton<PNJDetection>
                 if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, _obstructionMask))
                 {
                     IsCanSeePlayer = true;
-                    UIManager.Instance.GameOver();                    
+
+                    _delayDetectionTimer += Time.deltaTime;
+                                        
+                    if (_delayDetectionTimer > _delayDetection)
+                    {
+                        _delayDetectionTimer = 0;
+                        UIManager.Instance.GameOver();
+                    }                                        
                 }
                 else
                 {
+                    _delayDetectionTimer = Mathf.Clamp(_delayDetectionTimer -= Time.deltaTime,0,2);
                     IsCanSeePlayer = false;
                 }
             }
             else
             {
+                _delayDetectionTimer = Mathf.Clamp(_delayDetectionTimer -= Time.deltaTime, 0, 2);
                 IsCanSeePlayer = false;
             }
         }
         else //if (IsCanSeePlayer)
         {
+            _delayDetectionTimer = Mathf.Clamp(_delayDetectionTimer -= Time.deltaTime, 0, 2);
             IsCanSeePlayer = false;
         }      
-    }
-
-
+    }    
 }

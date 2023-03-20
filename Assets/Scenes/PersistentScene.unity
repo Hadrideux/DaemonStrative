@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -106,15 +106,15 @@ NavMeshSettings:
   m_BuildSettings:
     serializedVersion: 3
     agentTypeID: 0
-    agentRadius: 0.5
+    agentRadius: 0.1
     agentHeight: 2
-    agentSlope: 45
-    agentClimb: 0.4
+    agentSlope: 60
+    agentClimb: 1
     ledgeDropHeight: 0
     maxJumpAcrossDistance: 0
     minRegionArea: 2
     manualCellSize: 0
-    cellSize: 0.16666667
+    cellSize: 0.033333335
     manualTileSize: 0
     tileSize: 256
     buildHeightMesh: 0
@@ -122,7 +122,7 @@ NavMeshSettings:
     preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 23800000, guid: 9960dc5cf9d46f145af33b3e005fb43b, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 2e4007ef49622804e875d9b0a7097860, type: 2}
 --- !u!1 &341432180
 GameObject:
   m_ObjectHideFlags: 0
@@ -200,10 +200,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _controller: {fileID: 0}
   _pauseUI: {fileID: 0}
-  _interactUI: {fileID: 0}
   _gameOverUI: {fileID: 0}
   _coldDown: 5
+  _alphaTimer: 0
+  _alphaColdDown: 1
+  _ombreMarcheImage: {fileID: 0}
   _ombreMarcheTimer: 0
+  _morsureImage: {fileID: 0}
+  _griffureImage: {fileID: 0}
   _isCast: 0
 --- !u!4 &400180203
 Transform:
@@ -219,6 +223,52 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &555823026
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 555823028}
+  - component: {fileID: 555823027}
+  m_Layer: 0
+  m_Name: WitchManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &555823027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 555823026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ceb453dd46752e459d87f3c947ecae8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _witchController: {fileID: 0}
+  _isQuestOmbreMarche: 0
+--- !u!4 &555823028
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 555823026}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -9.446193, y: -0.42057353, z: -30.34252}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &704118264
 GameObject:
@@ -297,7 +347,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 890269680}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fd092f540ba039d40a50254bfc1df2cb, type: 3}
   m_Name: 
@@ -347,16 +397,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _controller: {fileID: 0}
+  _camera: {fileID: 0}
+  _agent: {fileID: 0}
   _collider: {fileID: 0}
   _body: {fileID: 0}
-  _agent: {fileID: 0}
-  _camera: {fileID: 0}
-  _isHostile: 0
+  _isCanBeSee: 1
   _VFXSpawnPoint: {fileID: 0}
-  _VFXType: {fileID: 0}
-  _layer:
-    serializedVersion: 2
-    m_Bits: 0
+  _VFXSkills: {fileID: 0}
+  _VFXOmbremarche: {fileID: 0}
+  _VFXHitPointNavigation: {fileID: 0}
 --- !u!4 &1159214846
 Transform:
   m_ObjectHideFlags: 0
@@ -402,9 +451,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _controller: {fileID: 0}
+  _detection: {fileID: 0}
+  _body: {fileID: 0}
+  _VFXSpawnPoint: {fileID: 0}
   _itemData: {fileID: 0}
   _isDying: 0
-  _VFXDuration: 0
 --- !u!4 &1602088755
 Transform:
   m_ObjectHideFlags: 0

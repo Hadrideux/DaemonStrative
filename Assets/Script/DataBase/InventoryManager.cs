@@ -14,8 +14,7 @@ public class InventoryManager : Singleton<InventoryManager>
     {
         get => _amountSkull;
         set => _amountSkull = value;
-    }
-    
+    }    
     public int AmountBlood
     {
         get => _amountBlood;
@@ -29,13 +28,12 @@ public class InventoryManager : Singleton<InventoryManager>
         if(ERessourceType.SKULL == itemGet.Type)
         {
             AmountSkull += itemGet.Amount;
-            Debug.Log(itemGet.Name + " : " + AmountSkull);
         }
 
         if (ERessourceType.BLOOD == itemGet.Type)
         {
             AmountBlood += itemGet.Amount;
-            Debug.Log(itemGet.Name + " : " + AmountBlood);
+
         }
     }
 }

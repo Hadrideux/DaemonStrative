@@ -63,21 +63,24 @@ public class DialogueManager : Singleton<DialogueManager>
         _activeMessage = 0;
         _currentMessages = messages;
         _currentActors = actors;
+
         IsDialogueActive = true;
-        Debug.Log("Started Conversation !" + messages.Length);
+        CharacterManager.Instance.Agent.isStopped = true;
+
         BackGroundBox.LeanScale(Vector3.one, 0.5f);
 
         DialogueController.Message messageToDisplay = _currentMessages[_activeMessage];
         MessageText.text = messageToDisplay.message;
 
         DialogueController.Actor actorToDisplay = _currentActors[messageToDisplay.actorId];
+        
         ActorName.text = actorToDisplay.name;
         ActorImage.sprite = actorToDisplay.sprite;
+        
         AnimatedTextColor();
 
         HideButton();
     }
-
     private void DisplayMessage()
     {
         DialogueController.Message messageToDisplay = _currentMessages[_activeMessage];
@@ -89,10 +92,8 @@ public class DialogueManager : Singleton<DialogueManager>
         AnimatedTextColor();
         
     }
-
     public void NextMessage()
     {
-        Debug.Log("dialogue :" + _activeMessage);
         _activeMessage = _activeMessage + 1;
         if (_activeMessage < _currentMessages.Length)
         {
@@ -100,24 +101,20 @@ public class DialogueManager : Singleton<DialogueManager>
         }
         else
         {
-            Debug.Log("Conversation eneded!");
             IsDialogueActive = false;
+            CharacterManager.Instance.Agent.isStopped = false;
+
             BackGroundBox.LeanScale(Vector3.zero, 0.5f).setEaseInOutExpo();
             HideButton();
             /*if (CharacterManager.Instance.Agent.remainingDistance < 0.5f)
                 CharacterManager.Instance.Agent.isStopped = false;*/
         }
     }
-     
     private void AnimatedTextColor()
     {
         LeanTween.textAlpha(MessageText.rectTransform, 0, 0);
         LeanTween.textAlpha(MessageText.rectTransform, 1, 0.5f);
     }
-
-       
-     
-
     private void HideButton()
     {
         if (IsDialogueActive == true) 
