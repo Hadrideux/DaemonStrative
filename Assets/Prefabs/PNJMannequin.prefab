@@ -631,6 +631,7 @@ MonoBehaviour:
   _activePoint: 0
   _isGuard: 0
   _timeRef: 0
+  _pNJController: {fileID: 2630984617025578126}
   _wayPoints: []
 --- !u!54 &2739785758015266038
 Rigidbody:

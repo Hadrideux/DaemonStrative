@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using static UnityEngine.Rendering.DebugUI;
 
-public class PNJDetection : Singleton<PNJDetection>
+public class PNJDetection : MonoBehaviour
 {
     #region Attributs
 
@@ -78,9 +78,7 @@ public class PNJDetection : Singleton<PNJDetection>
                     IsCanSeePlayer = true;
 
                     _delayDetectionTimer += Time.deltaTime;
-
-                    Debug.Log("Time beeing see : " + _delayDetectionTimer);
-
+                                        
                     if (_delayDetectionTimer > _delayDetection)
                     {
                         UIManager.Instance.GameOver();
