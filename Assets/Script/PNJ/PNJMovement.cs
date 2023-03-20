@@ -15,7 +15,9 @@ public class PNJMovement : MonoBehaviour
     [SerializeField] private bool _isGuard = false;
     
     [SerializeField] private float _timeRef = 0;
-    
+
+    [SerializeField] private PNJController _pNJController = null;
+
     public WayPoint[] _wayPoints;
 
     [System.Serializable]
@@ -28,14 +30,18 @@ public class PNJMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _activePoint = 0;
+         _activePoint = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (_isGuard == true && PNJDetection.Instance.IsCanSeePlayer == false)
+        PNJController controller = _pNJController;
+        Debug.Log(controller.DetectionPNJ.IsCanSeePlayer);
+
+        if (_isGuard == true && controller.DetectionPNJ.IsCanSeePlayer == false)
         {
+            
             if(agent.isStopped == true)
             {
                 agent.isStopped = false;
@@ -60,7 +66,7 @@ public class PNJMovement : MonoBehaviour
                 }       
             }
         }
-        else if (PNJDetection.Instance.IsCanSeePlayer == true)
+        else if (controller.DetectionPNJ.IsCanSeePlayer == true)
         {
             agent.isStopped= true;
         }
