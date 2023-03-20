@@ -13,9 +13,14 @@ public class CharacterConrtoller : MonoBehaviour
     [SerializeField] private GameObject[] _VFXType = null;
     [SerializeField] private GameObject _VFXOmbremarche = null;
     [SerializeField] private GameObject _VFXHitPoint = null;
-
+    
     #endregion Attributs
 
+    public GameObject VFXHitPoint
+    {
+        get => _VFXHitPoint;
+        set => _VFXHitPoint = value;
+    }
 
     void Start()
     {
@@ -27,7 +32,7 @@ public class CharacterConrtoller : MonoBehaviour
         CharacterManager.Instance.VFXHitPointNavigation = _VFXHitPoint;
     }
     void Update()
-    {
+    {        
         if (Input.GetMouseButton(1))
         {
            CharacterManager.Instance.Moving();

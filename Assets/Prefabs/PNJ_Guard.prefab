@@ -139,6 +139,7 @@ GameObject:
   - component: {fileID: 1261295695285075962}
   - component: {fileID: 4828975165600286614}
   - component: {fileID: 2739785758015266038}
+  - component: {fileID: 5867274898060758799}
   m_Layer: 0
   m_Name: PNJ_Guard
   m_TagString: PNJ
@@ -199,6 +200,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _pNJController: {fileID: 2630984617025578126}
   _pNJDetection: {fileID: 1261295695285075962}
+  _pNJMovement: {fileID: 4828975165600286614}
   _body: {fileID: 8926253096823780629}
   _itemData: {fileID: 0}
   _VFXSpawnPoint: {fileID: 1252289265297556068}
@@ -216,7 +218,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fc0d4f5bd40d8c4d8970985f5d06902, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _radius: 12
+  _radius: 10
   _angle: 100
   _targetMask:
     serializedVersion: 2
@@ -239,6 +241,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _pNJController: {fileID: 2630984617025578126}
+  _character: {fileID: 4883083976113711012, guid: 6176ab60aae01f54887ac1da213f6338, type: 3}
   agent: {fileID: 5434017713403560353}
   _activePoint: 0
   _isGuard: 0
@@ -270,6 +273,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &5867274898060758799
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4494110322694235859}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2, y: 1, z: 2}
+  m_Center: {x: 0, y: 0, z: -1.5}
 --- !u!1 &7745096567742721424
 GameObject:
   m_ObjectHideFlags: 0

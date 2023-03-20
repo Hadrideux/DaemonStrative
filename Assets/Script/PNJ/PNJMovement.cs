@@ -10,6 +10,7 @@ using static UnityEngine.GraphicsBuffer;
 public class PNJMovement : MonoBehaviour
 {
     [SerializeField] private PNJController _pNJController = null;
+    [SerializeField] private Transform _character = null;
     
     [SerializeField] private NavMeshAgent agent;
     [SerializeField] private int _activePoint = 0;
@@ -22,6 +23,7 @@ public class PNJMovement : MonoBehaviour
         get => _timeRef;
         set => _timeRef = value;
     }
+
 
     public WayPoint[] _wayPoints;
 
@@ -66,8 +68,11 @@ public class PNJMovement : MonoBehaviour
             }
         }
         else if (controller.DetectionPNJ.IsCanSeePlayer == true)
-        {
+        {            
             agent.isStopped= true;
+
+            Transform target = CharacterManager.Instance.Controller.transform;
+            _pNJController.transform.LookAt(target.position);
         }
     }
 

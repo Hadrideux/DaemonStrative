@@ -84,8 +84,11 @@ public class CharacterManager : Singleton<CharacterManager>
                 Agent.isStopped = false;
                 Agent.SetDestination(hitInfo.point);
 
-                VFXHitPointNavigation.gameObject.SetActive(true);
-                VFXHitPointNavigation.transform.position = new Vector3(hitInfo.point.x, 0.5f, hitInfo.point.z);
+                //A Debug
+                Controller.VFXHitPoint.transform.position = new Vector3(hitInfo.point.x, 0.5f, hitInfo.point.z);
+                Controller.VFXHitPoint.gameObject.SetActive(true);
+
+                Debug.Log(hitInfo.transform.position);
             }
         }       
     }
