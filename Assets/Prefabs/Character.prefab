@@ -35,7 +35,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &7506898960236861497
 MeshFilter:
@@ -173,10 +173,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _agent: {fileID: 3602215528309420423}
   _camera: {fileID: 0}
-  _typeVFX:
-  - {fileID: 0}
-  - {fileID: 0}
-  _VFXMorsure: {fileID: 0}
-  _VFXGriffure: {fileID: 0}
+  _VFXType:
+  - {fileID: 1000013355911406, guid: d32aa916f50cac94db11e6f19821a58f, type: 3}
+  - {fileID: 1834194341294532, guid: d5f26854a8904624c8073139cd2eb346, type: 3}
   _VFXOmbremarche: {fileID: 0}
   _VFXHitPoint: {fileID: 0}
