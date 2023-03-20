@@ -12,8 +12,6 @@ public class PNJDetection : Singleton<PNJDetection>
     [SerializeField] private float _radius = 0f; [Range(0, 360)]
     [SerializeField] private float _angle = 0f;
 
-    [SerializeField] private GameObject _playerRef = null;
-
     [SerializeField] private LayerMask _targetMask;
     [SerializeField] private LayerMask _obstructionMask;
 
@@ -45,11 +43,6 @@ public class PNJDetection : Singleton<PNJDetection>
     {
         get => _detectionGauge;
         set => _detectionGauge = value;
-    }
-    public GameObject PlayerRef
-    {
-        get => _playerRef;
-        set => _playerRef = value;
     }
     public float DetectionFeedBack
     {

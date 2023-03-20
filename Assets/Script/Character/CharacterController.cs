@@ -14,6 +14,8 @@ public class CharacterConrtoller : MonoBehaviour
     [SerializeField] private GameObject _VFXOmbremarche = null;
     [SerializeField] private GameObject _VFXHitPoint = null;
 
+    [SerializeField] private ETypePerso _eTypePersp = ETypePerso.CHARACTER;
+
     #endregion Attributs
 
 
