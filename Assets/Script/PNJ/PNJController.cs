@@ -16,19 +16,31 @@ public class PNJController : MonoBehaviour
     [SerializeField] private float _vFXDuration = 0;
     [SerializeField] private float _vFXEndTimer = 1;
     [SerializeField] private Image _detectionGauge= null;
-    
-
     #endregion Attributs
+
+    [SerializeField] private PNJController _pNJController = null;
+    [SerializeField] private PNJDetection _pNJDetection = null;
+
+    public PNJController ControllerPNJ
+    {
+        get => _pNJController;
+        set => _pNJController = value;
+    }
+    public PNJDetection DetectionPNJ
+    {
+        get => _pNJDetection;
+        set => _pNJDetection = value;
+    }
 
     #region Mono
 
     // Start is called before the first frame update
     void Start()
     {
-        PNJManager.Instance.Controller = this;
-
-        PNJManager.Instance.ItemGet = _itemData;
-        PNJDetection.Instance.DetectionGauge = _detectionGauge;
+        // Attention, c'est sur le singleton, à changer peut etre
+        //PNJManager.Instance.ItemGet = _itemData;
+        //
+        DetectionPNJ.DetectionGauge = _detectionGauge;
 
     }
     private void OnTriggerEnter(Collider other)
@@ -58,11 +70,11 @@ public class PNJController : MonoBehaviour
             _vFXDuration = 0;
         }
 
-        if(PNJDetection.Instance.IsCanSeePlayer == true) 
+        if(DetectionPNJ.IsCanSeePlayer == true) 
         {
             Detection();        
         }
-        else if(PNJDetection.Instance.IsCanSeePlayer == false)
+        else if(DetectionPNJ.IsCanSeePlayer == false)
         {
             Undetecte();
         }
@@ -70,11 +82,11 @@ public class PNJController : MonoBehaviour
     #endregion Mono
     private void Detection()
     {        
-        _detectionGauge.fillAmount += PNJDetection.Instance.DetectionFeedBack / 2*Time.deltaTime;           
+        _detectionGauge.fillAmount += DetectionPNJ.DetectionFeedBack / 2*Time.deltaTime;           
     }
 
     private void Undetecte()
     {
-        _detectionGauge.fillAmount -= PNJDetection.Instance.DetectionFeedBack / 2 * Time.deltaTime;
+        _detectionGauge.fillAmount -= DetectionPNJ.DetectionFeedBack / 2 * Time.deltaTime;
     }
 }
