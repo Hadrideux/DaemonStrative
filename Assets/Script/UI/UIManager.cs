@@ -134,7 +134,10 @@ public class UIManager : Singleton<UIManager>
     public void GameOver()
     {
         _gameOverUI.SetActive(true);
-        Time.timeScale = 0;
+        if (Time.timeScale != 0)
+        {
+            Time.timeScale = 0;
+        }
     }
 
     public void ReloadScene()

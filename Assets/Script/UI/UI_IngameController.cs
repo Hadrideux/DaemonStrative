@@ -21,8 +21,6 @@ public class UI_IngameController : MonoBehaviour
 
     #region Item
 
-    [SerializeField] private Image _bloodImage = null;
-    [SerializeField] private TextMeshProUGUI _bloodText = null;
 
     [SerializeField] private Image _skullImage = null;
     [SerializeField] private TextMeshProUGUI _skullText = null;
@@ -30,6 +28,9 @@ public class UI_IngameController : MonoBehaviour
     #endregion Item
 
     #region Blood
+
+    [SerializeField] private Image _bloodImage = null;
+    [SerializeField] private TextMeshProUGUI _bloodText = null;
 
     [SerializeField] private int _maxBlood = 0;
     [SerializeField] private RectTransform _fillBlood = null;
@@ -41,10 +42,9 @@ public class UI_IngameController : MonoBehaviour
 
     #region Suspicious
 
-    [SerializeField] private Image _fillSuspicious = null;
-
-    [Range(0, 1)]
-    [SerializeField] private float _fillProgress = 0;
+    [SerializeField] private Sprite[] _suspiciousSprite = null;
+    [SerializeField] private Image _suspiciousImage = null;
+    private int _index = 0;
 
     #endregion Suspicious
     #endregion Attributs
@@ -90,8 +90,14 @@ public class UI_IngameController : MonoBehaviour
         float perc = (float)InventoryManager.Instance.AmountBlood / (float)_maxBlood;
         _fillBlood.localPosition = Vector3.Lerp(_startPos, _endPos, perc);
     }
+
     public void UpdateSuspicious()
     {
-        _fillSuspicious.fillAmount = _fillProgress;
+        _suspiciousImage.sprite = _suspiciousSprite[_index];
+
+        if (Input.GetKeyDown(KeyCode.KeypadPlus) )
+        {
+            _index++;
+        }
     }
 }

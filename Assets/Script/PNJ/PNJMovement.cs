@@ -9,14 +9,19 @@ using static UnityEngine.GraphicsBuffer;
 
 public class PNJMovement : MonoBehaviour
 {
+    [SerializeField] private PNJController _pNJController = null;
+    
     [SerializeField] private NavMeshAgent agent;
     [SerializeField] private int _activePoint = 0;
-
     [SerializeField] private bool _isGuard = false;
-    
-    [SerializeField] private float _timeRef = 0;
+        
+    private float _timeRef = 0;
 
-    [SerializeField] private PNJController _pNJController = null;
+    public float TimerRef
+    {
+        get => _timeRef;
+        set => _timeRef = value;
+    }
 
     public WayPoint[] _wayPoints;
 
@@ -26,18 +31,12 @@ public class PNJMovement : MonoBehaviour
         public GameObject target;
         public float waitTime;
     }
-   
-    // Start is called before the first frame update
-    void Start()
-    {
-         _activePoint = 0;
-    }
+
 
     // Update is called once per frame
     void Update()
     {
         PNJController controller = _pNJController;
-        Debug.Log(controller.DetectionPNJ.IsCanSeePlayer);
 
         if (_isGuard == true && controller.DetectionPNJ.IsCanSeePlayer == false)
         {
@@ -49,20 +48,20 @@ public class PNJMovement : MonoBehaviour
             
             if(agent.remainingDistance < 0.05f)
             {
-                _timeRef += Time.deltaTime;
+                TimerRef += Time.deltaTime;
                 WayPoint timer = _wayPoints[_activePoint];
 
                 WalkRound();
 
-                if (_timeRef > timer.waitTime && _activePoint < _wayPoints.Length)
+                if (TimerRef > timer.waitTime && _activePoint < _wayPoints.Length)
                 {                    
                     _activePoint = (_activePoint + 1) % _wayPoints.Length;
-                    _timeRef = 0;
+                    TimerRef = 0;
                 }
-                else if (_timeRef > timer.waitTime)
+                else if (TimerRef > timer.waitTime)
                 {
                     _activePoint = 0;
-                    _timeRef = 0;
+                    TimerRef = 0;
                 }       
             }
         }
