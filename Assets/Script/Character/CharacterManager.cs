@@ -8,12 +8,11 @@ using UnityEngine.AI;
 public class CharacterManager : Singleton<CharacterManager>
 {
     [SerializeField] private CharacterConrtoller _controller = null;
+    [SerializeField] private Camera _camera = null;
+    [SerializeField] private NavMeshAgent _agent = null;
+
     [SerializeField] private GameObject _collider = null;
     [SerializeField] private GameObject _body = null;
-
-    [SerializeField] private NavMeshAgent _agent = null;
-    [SerializeField] private Camera _camera = null;
-
     [SerializeField] private bool _isCanBeSee = true;
 
     [SerializeField] private GameObject _VFXSpawnPoint = null;
@@ -50,7 +49,6 @@ public class CharacterManager : Singleton<CharacterManager>
         get => _collider;
         set => _collider = value;
     }
-
     public GameObject VFXSkills
     {
         get => _VFXSkills;
