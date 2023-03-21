@@ -107,8 +107,7 @@ public class CharacterManager : Singleton<CharacterManager>
     {
         BloodAndFlesh();
 
-        PNJManager.Instance.KillVillager();
-        PNJManager.Instance.IsDead = true;
+        PNJManager.Instance.KillVillager(false);
 
         UIManager.Instance.AlphaSkills();
         UIManager.Instance.IsMorsureCast = false;
@@ -117,8 +116,7 @@ public class CharacterManager : Singleton<CharacterManager>
     {
         BloodAndFlesh();
 
-        PNJManager.Instance.IsDead = true;
-        PNJManager.Instance.KillVillager();
+        PNJManager.Instance.KillVillager(true);
 
         UIManager.Instance.AlphaSkills();
         UIManager.Instance.IsGriffureCast = false;
