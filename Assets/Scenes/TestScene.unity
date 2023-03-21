@@ -5786,6 +5786,10 @@ PrefabInstance:
       propertyPath: m_VersionIndex
       value: 615
       objectReference: {fileID: 0}
+    - target: {fileID: 7094780020502332219, guid: e98ccfe44a14faa45ad83f426776cd5c, type: 3}
+      propertyPath: m_Intensity
+      value: 75
+      objectReference: {fileID: 0}
     - target: {fileID: 8080138170144255983, guid: e98ccfe44a14faa45ad83f426776cd5c, type: 3}
       propertyPath: m_Mesh
       value: 
