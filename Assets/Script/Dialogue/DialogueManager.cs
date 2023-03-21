@@ -20,6 +20,8 @@ public class DialogueManager : Singleton<DialogueManager>
     [SerializeField] private DialogueController.Actor[] _currentActors;
     [SerializeField] private int _activeMessage = 0;
     [SerializeField] private bool _isDialogueActive = false;
+    [SerializeField] private PNJ_VillagerController _PNJVillager = null;
+
 
     #endregion Attributs
 
@@ -54,6 +56,11 @@ public class DialogueManager : Singleton<DialogueManager>
     {
         get => _dialogueButton;
         set => _dialogueButton = value;
+    }
+    public PNJ_VillagerController VillagerController
+    {
+        get => _PNJVillager;
+        set => _PNJVillager = value;
     }
 
     #endregion Properties
@@ -119,11 +126,14 @@ public class DialogueManager : Singleton<DialogueManager>
     {
         if (IsDialogueActive == true) 
         {
-            _dialogueButton.gameObject.SetActive(false);
+            
+            VillagerController.DialogueButton.gameObject.SetActive(false);
+                       
         }
         else if (IsDialogueActive == false) 
         {
-            _dialogueButton.gameObject.SetActive(true);
+            VillagerController.DialogueButton.gameObject.SetActive(true);
+            
         }
     }
 }

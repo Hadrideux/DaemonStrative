@@ -14,6 +14,8 @@ public class PNJManager : Singleton<PNJManager>
        
     [SerializeField] private ItemData _itemData = null;
     [SerializeField] private bool _isDying = false;
+    [SerializeField] private PNJ_VillagerController _PNJVillager = null;
+    [SerializeField] private DialogueController _Dialogue = null;
 
     #region Properties
 
@@ -21,6 +23,16 @@ public class PNJManager : Singleton<PNJManager>
     {
         get => _controller;
         set => _controller = value;
+    }
+    public PNJ_VillagerController VillagerController
+    {
+        get => _PNJVillager;
+        set => _PNJVillager = value;
+    }
+    public DialogueController Dialogue
+    {
+        get => _Dialogue;
+        set => _Dialogue = value;
     }
     public GameObject Body
     {
@@ -53,10 +65,17 @@ public class PNJManager : Singleton<PNJManager>
         
     #endregion Properties
 
-    public void KillVillager()
+    public void KillVillager(bool isKill)
     {
         InventoryManager.Instance.AddItem(ItemGet);
-        Destroy(Body);
+        
+
+        if(isKill)
+        {
+            IsDead = true;
+            Destroy(Body);
+        }
+        
     }
     public void DestroyAll()
     {

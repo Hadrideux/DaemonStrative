@@ -14,6 +14,7 @@ public class CharacterConrtoller : MonoBehaviour
     [SerializeField] private GameObject _VFXOmbremarche = null;
     [SerializeField] private GameObject _VFXHitPoint = null;
     
+    
     #endregion Attributs
 
     public GameObject VFXHitPoint
@@ -68,9 +69,13 @@ public class CharacterConrtoller : MonoBehaviour
     {
         if (other.CompareTag("PNJ"))
         {
-            CharacterManager.Instance.Collider = other.gameObject;
+            CharacterManager.Instance.Collider = other.gameObject;           
         }
     }
 
-  
+    private void OnTriggerExit(Collider other)
+    {
+       
+    }
+
 }

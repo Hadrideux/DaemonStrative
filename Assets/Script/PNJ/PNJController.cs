@@ -22,6 +22,7 @@ public class PNJController : MonoBehaviour
     [SerializeField] private float _VFXEndTimer = 1;
 
     [SerializeField] private Image _detectionGauge = null;
+    [SerializeField] private GameObject _characterCompFeedback = null;
 
     #endregion Attributs
 
@@ -58,7 +59,11 @@ public class PNJController : MonoBehaviour
             PNJManager.Instance.ItemGet = _itemData;
             PNJManager.Instance.VFXSpawner = _VFXSpawnPoint;
             PNJManager.Instance.Body = _body;
+
+            ControllerPNJ._characterCompFeedback.SetActive(true);
         }            
+
+
     }
 
     private void OnTriggerExit(Collider other) 
@@ -66,6 +71,9 @@ public class PNJController : MonoBehaviour
         PNJManager.Instance.ItemGet = null;
         PNJManager.Instance.VFXSpawner = null;
         PNJManager.Instance.Body = null;
+
+        ControllerPNJ._characterCompFeedback.SetActive(false);
+
     }
 
     private void Update()

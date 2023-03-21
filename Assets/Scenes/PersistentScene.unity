@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -308,6 +308,7 @@ MonoBehaviour:
   _currentActors: []
   _activeMessage: 0
   _isDialogueActive: 0
+  _PNJVillager: {fileID: 0}
 --- !u!4 &704118266
 Transform:
   m_ObjectHideFlags: 0
@@ -400,7 +401,6 @@ MonoBehaviour:
   _camera: {fileID: 0}
   _agent: {fileID: 0}
   _collider: {fileID: 0}
-  _body: {fileID: 0}
   _isCanBeSee: 1
   _VFXSpawnPoint: {fileID: 0}
   _VFXSkills: {fileID: 0}
@@ -456,6 +456,8 @@ MonoBehaviour:
   _VFXSpawnPoint: {fileID: 0}
   _itemData: {fileID: 0}
   _isDying: 0
+  _PNJVillager: {fileID: 0}
+  _Dialogue: {fileID: 0}
 --- !u!4 &1602088755
 Transform:
   m_ObjectHideFlags: 0
