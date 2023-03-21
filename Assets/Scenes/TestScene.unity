@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -959,6 +959,11 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &291934588 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100010, guid: 4599d7e0ab9766c47bd8e1d46453eb2a, type: 3}
+  m_PrefabInstance: {fileID: 832530566}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &308867923
 GameObject:
   m_ObjectHideFlags: 0
@@ -1286,7 +1291,7 @@ PrefabInstance:
     - target: {fileID: 1391639470849539940, guid: e98ccfe44a14faa45ad83f426776cd5c, type: 3}
       propertyPath: m_Camera
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1262304719}
     - target: {fileID: 1578614675497705963, guid: e98ccfe44a14faa45ad83f426776cd5c, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -2536,7 +2541,7 @@ PrefabInstance:
     - target: {fileID: 1391639470849539940, guid: e98ccfe44a14faa45ad83f426776cd5c, type: 3}
       propertyPath: m_Camera
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1262304719}
     - target: {fileID: 1578614675497705963, guid: e98ccfe44a14faa45ad83f426776cd5c, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -3517,7 +3522,7 @@ PrefabInstance:
     - target: {fileID: 1391639470849539940, guid: e98ccfe44a14faa45ad83f426776cd5c, type: 3}
       propertyPath: m_Camera
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1262304719}
     - target: {fileID: 1578614675497705963, guid: e98ccfe44a14faa45ad83f426776cd5c, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -4268,6 +4273,17 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!114 &1036075140 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 929958974762694482, guid: 56c33cadddc8bba4b9795497ffca6d8c, type: 3}
+  m_PrefabInstance: {fileID: 2255842464004495784}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06b1835dfc4a0644faca68e6ceea8a20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1036445854
 GameObject:
   m_ObjectHideFlags: 0
@@ -5597,7 +5613,7 @@ PrefabInstance:
     - target: {fileID: 1391639470849539940, guid: e98ccfe44a14faa45ad83f426776cd5c, type: 3}
       propertyPath: m_Camera
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1262304719}
     - target: {fileID: 1578614675497705963, guid: e98ccfe44a14faa45ad83f426776cd5c, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -8311,7 +8327,7 @@ PrefabInstance:
     - target: {fileID: 6549709111852446123, guid: 6176ab60aae01f54887ac1da213f6338, type: 3}
       propertyPath: _VFXHitPoint
       value: 
-      objectReference: {fileID: 1516013503}
+      objectReference: {fileID: 291934588}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10582,6 +10598,10 @@ PrefabInstance:
       propertyPath: _itemData
       value: 
       objectReference: {fileID: 11400000, guid: e204b99a137969648892dca845744744, type: 2}
+    - target: {fileID: 2266514964427653435, guid: 56c33cadddc8bba4b9795497ffca6d8c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2439311242172574323, guid: 56c33cadddc8bba4b9795497ffca6d8c, type: 3}
       propertyPath: _cameraTarget
       value: 
@@ -10629,6 +10649,14 @@ PrefabInstance:
     - target: {fileID: 2508722819527280589, guid: 56c33cadddc8bba4b9795497ffca6d8c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7749673165470990256, guid: 56c33cadddc8bba4b9795497ffca6d8c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1036075140}
+    - target: {fileID: 7749673165470990256, guid: 56c33cadddc8bba4b9795497ffca6d8c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: StartDialogue
       objectReference: {fileID: 0}
     - target: {fileID: 8557925354634113017, guid: 56c33cadddc8bba4b9795497ffca6d8c, type: 3}
       propertyPath: m_Name
