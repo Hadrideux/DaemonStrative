@@ -34,4 +34,9 @@ public class PlayerFollow : MonoBehaviour
         targetRotation = new Vector3(0, Time.deltaTime * _speed  * Input.GetAxis("RotateCam"), 0);
     }
 
+    private void CameraZoom()
+    {
+
+    }
+
 }

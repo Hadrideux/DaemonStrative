@@ -110,7 +110,8 @@ public class CharacterManager : Singleton<CharacterManager>
         PNJManager.Instance.KillVillager();
         PNJManager.Instance.IsDead = true;
 
-        UIManager.Instance.AlphaMorsure();
+        UIManager.Instance.AlphaSkills();
+        UIManager.Instance.IsMorsureCast = false;
     }
     public void Griffe()
     {
@@ -119,7 +120,8 @@ public class CharacterManager : Singleton<CharacterManager>
         PNJManager.Instance.IsDead = true;
         PNJManager.Instance.KillVillager();
 
-        UIManager.Instance.AlphaGriffure();
+        UIManager.Instance.AlphaSkills();
+        UIManager.Instance.IsGriffureCast = false;
     }
     public void Shadowalk()
     {

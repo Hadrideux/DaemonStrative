@@ -41,12 +41,14 @@ public class CharacterConrtoller : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             CharacterManager.Instance.VFXSkills = _VFXType[0];
+            UIManager.Instance.IsMorsureCast = true;
             CharacterManager.Instance.Morsure();
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             CharacterManager.Instance.VFXSkills = _VFXType[1];
+            UIManager.Instance.IsGriffureCast = true;
             CharacterManager.Instance.Griffe();
         }
 

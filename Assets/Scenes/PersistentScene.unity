@@ -206,6 +206,7 @@ MonoBehaviour:
   _alphaColdDown: 1
   _ombreMarcheImage: {fileID: 0}
   _ombreMarcheTimer: 0
+  _activeSkill: 0
   _morsureImage: {fileID: 0}
   _griffureImage: {fileID: 0}
   _isCast: 0
@@ -400,7 +401,6 @@ MonoBehaviour:
   _camera: {fileID: 0}
   _agent: {fileID: 0}
   _collider: {fileID: 0}
-  _body: {fileID: 0}
   _isCanBeSee: 1
   _VFXSpawnPoint: {fileID: 0}
   _VFXSkills: {fileID: 0}
