@@ -14,6 +14,7 @@ public class CharacterConrtoller : MonoBehaviour
     [SerializeField] private GameObject _VFXOmbremarche = null;
     [SerializeField] private GameObject _VFXHitPoint = null;
     
+    
     #endregion Attributs
 
     public GameObject VFXHitPoint
@@ -41,12 +42,14 @@ public class CharacterConrtoller : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             CharacterManager.Instance.VFXSkills = _VFXType[0];
+            UIManager.Instance.IsMorsureCast = true;
             CharacterManager.Instance.Morsure();
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             CharacterManager.Instance.VFXSkills = _VFXType[1];
+            UIManager.Instance.IsGriffureCast = true;
             CharacterManager.Instance.Griffe();
         }
 
@@ -59,6 +62,12 @@ public class CharacterConrtoller : MonoBehaviour
         {
             DialogueManager.Instance.NextMessage();
         }
+
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            InventoryManager.Instance.AmountBlood = 100;
+            //InventoryManager.Instance.AmountSkull = 1;
+        }
                 
         //Vector3 destination = Input.GetAxis("Horizontal") * transform.right + Input.GetAxis("Vertical") * transform.forward; //0f <> 1f
         //if(Input.GetButtonDown("Fire1")
@@ -68,9 +77,13 @@ public class CharacterConrtoller : MonoBehaviour
     {
         if (other.CompareTag("PNJ"))
         {
-            CharacterManager.Instance.Collider = other.gameObject;
+            CharacterManager.Instance.Collider = other.gameObject;           
         }
     }
 
-  
+    private void OnTriggerExit(Collider other)
+    {
+       
+    }
+
 }

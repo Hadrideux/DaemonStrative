@@ -82,7 +82,6 @@ public class CharacterManager : Singleton<CharacterManager>
                 Agent.isStopped = false;
                 Agent.SetDestination(hitInfo.point);
 
-                //A Debug
                 Controller.VFXHitPoint.transform.position = new Vector3(hitInfo.point.x, 0.5f, hitInfo.point.z);
                 Controller.VFXHitPoint.gameObject.SetActive(true);
 
@@ -108,25 +107,28 @@ public class CharacterManager : Singleton<CharacterManager>
     {
         BloodAndFlesh();
 
-        PNJManager.Instance.KillVillager();
-        PNJManager.Instance.IsDead = true;
+        PNJManager.Instance.KillVillager(false);
 
-        UIManager.Instance.AlphaMorsure();
+        UIManager.Instance.AlphaSkills();
+        UIManager.Instance.IsMorsureCast = false;
     }
     public void Griffe()
     {
         BloodAndFlesh();
 
-        PNJManager.Instance.IsDead = true;
-        PNJManager.Instance.KillVillager();
+        PNJManager.Instance.KillVillager(true);
 
-        UIManager.Instance.AlphaGriffure();
+        UIManager.Instance.AlphaSkills();
+        UIManager.Instance.IsGriffureCast = false;
     }
     public void Shadowalk()
     {
         UIManager.Instance.IsCast = true;
         UIManager.Instance.OmbreMarcheTime();
+        
         IsCanBeSee = false;
+
+        InventoryManager.Instance.AmountBlood -= 15;
     }
 
     #endregion Player Action

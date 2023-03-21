@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UI_DialogueLookAtCam : MonoBehaviour
+public class Player_Comp_Feedback : MonoBehaviour
 {
     [SerializeField] private Camera _cameraTarget = null;
-
+ 
    
     void Update()
     {
@@ -14,6 +14,8 @@ public class UI_DialogueLookAtCam : MonoBehaviour
             _cameraTarget = CharacterManager.Instance.Camera;
         }
 
-        transform.LookAt(_cameraTarget.transform.position);
+        transform.rotation = Quaternion.LookRotation(transform.position - _cameraTarget.transform.position);
+
+        
     }
 }
