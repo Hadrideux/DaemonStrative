@@ -48,7 +48,6 @@ public class PNJ_VillagerController : MonoBehaviour
             PNJManager.Instance.VFXSpawner = _VFXSpawnPoint;
             PNJManager.Instance.Body = _body;
 
-            Debug.Log("Collide Villager");
             if (VillagerController._characterCompFeedback != null)
             {
                 _characterCompFeedback.SetActive(true);               
