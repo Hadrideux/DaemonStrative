@@ -50,8 +50,7 @@ public class PNJ_VillagerController : MonoBehaviour
 
             if (VillagerController._characterCompFeedback != null)
             {
-                VillagerController._characterCompFeedback.SetActive(true);
-                VillagerController._dialogueButton.gameObject.SetActive(true);
+                _characterCompFeedback.SetActive(true);               
             }
         }            
     }
@@ -64,8 +63,7 @@ public class PNJ_VillagerController : MonoBehaviour
 
         if (VillagerController._characterCompFeedback != null)
         {
-            VillagerController._characterCompFeedback.SetActive(false);
-            VillagerController._dialogueButton.gameObject.SetActive(false);
+            _characterCompFeedback.SetActive(false);            
         }
 
     }
