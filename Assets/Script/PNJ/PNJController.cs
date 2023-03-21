@@ -53,7 +53,6 @@ public class PNJController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Collide");
         if (other.CompareTag("Player")) 
         {
             PNJManager.Instance.ItemGet = _itemData;
