@@ -82,7 +82,6 @@ public class CharacterManager : Singleton<CharacterManager>
                 Agent.isStopped = false;
                 Agent.SetDestination(hitInfo.point);
 
-                //A Debug
                 Controller.VFXHitPoint.transform.position = new Vector3(hitInfo.point.x, 0.5f, hitInfo.point.z);
                 Controller.VFXHitPoint.gameObject.SetActive(true);
 
@@ -126,7 +125,10 @@ public class CharacterManager : Singleton<CharacterManager>
     {
         UIManager.Instance.IsCast = true;
         UIManager.Instance.OmbreMarcheTime();
+        
         IsCanBeSee = false;
+
+        InventoryManager.Instance.AmountBlood -= 15;
     }
 
     #endregion Player Action
