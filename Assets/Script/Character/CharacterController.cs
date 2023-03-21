@@ -42,12 +42,14 @@ public class CharacterConrtoller : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             CharacterManager.Instance.VFXSkills = _VFXType[0];
+            UIManager.Instance.IsMorsureCast = true;
             CharacterManager.Instance.Morsure();
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             CharacterManager.Instance.VFXSkills = _VFXType[1];
+            UIManager.Instance.IsGriffureCast = true;
             CharacterManager.Instance.Griffe();
         }
 
@@ -59,6 +61,12 @@ public class CharacterConrtoller : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && DialogueManager.Instance.IsDialogueActive == true)
         {
             DialogueManager.Instance.NextMessage();
+        }
+
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            InventoryManager.Instance.AmountBlood = 100;
+            //InventoryManager.Instance.AmountSkull = 1;
         }
                 
         //Vector3 destination = Input.GetAxis("Horizontal") * transform.right + Input.GetAxis("Vertical") * transform.forward; //0f <> 1f

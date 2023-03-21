@@ -81,9 +81,11 @@ public class CharacterManager : Singleton<CharacterManager>
             {
                 Agent.isStopped = false;
                 Agent.SetDestination(hitInfo.point);
-                
+
                 Controller.VFXHitPoint.transform.position = new Vector3(hitInfo.point.x, 0.5f, hitInfo.point.z);
-                Controller.VFXHitPoint.gameObject.SetActive(true);               
+                Controller.VFXHitPoint.gameObject.SetActive(true);
+
+                Debug.Log(hitInfo.transform.position);
             }
         }       
     }
@@ -104,22 +106,31 @@ public class CharacterManager : Singleton<CharacterManager>
     public void Morsure()
     {
         BloodAndFlesh();
-        PNJManager.Instance.KillVillager(false);
 
-        UIManager.Instance.AlphaMorsure();
+        PNJManager.Instance.KillVillager();
+        PNJManager.Instance.IsDead = true;
+
+        UIManager.Instance.AlphaSkills();
+        UIManager.Instance.IsMorsureCast = false;
     }
     public void Griffe()
     {
         BloodAndFlesh();
-        PNJManager.Instance.KillVillager(true);
 
-        UIManager.Instance.AlphaGriffure();
+        PNJManager.Instance.IsDead = true;
+        PNJManager.Instance.KillVillager();
+
+        UIManager.Instance.AlphaSkills();
+        UIManager.Instance.IsGriffureCast = false;
     }
     public void Shadowalk()
     {
         UIManager.Instance.IsCast = true;
         UIManager.Instance.OmbreMarcheTime();
+        
         IsCanBeSee = false;
+
+        InventoryManager.Instance.AmountBlood -= 15;
     }
 
     #endregion Player Action
