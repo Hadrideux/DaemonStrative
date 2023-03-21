@@ -84,8 +84,7 @@ public class CharacterManager : Singleton<CharacterManager>
 
                 Controller.VFXHitPoint.transform.position = new Vector3(hitInfo.point.x, 0.5f, hitInfo.point.z);
                 Controller.VFXHitPoint.gameObject.SetActive(true);
-
-                Debug.Log(hitInfo.transform.position);
+                               
             }
         }       
     }
