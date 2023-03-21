@@ -61,6 +61,12 @@ public class CharacterConrtoller : MonoBehaviour
         {
             DialogueManager.Instance.NextMessage();
         }
+
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            InventoryManager.Instance.AmountBlood = 100;
+            //InventoryManager.Instance.AmountSkull = 1;
+        }
                 
         //Vector3 destination = Input.GetAxis("Horizontal") * transform.right + Input.GetAxis("Vertical") * transform.forward; //0f <> 1f
         //if(Input.GetButtonDown("Fire1")
