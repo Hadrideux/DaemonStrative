@@ -7,48 +7,59 @@ public class CharacterConrtoller : MonoBehaviour
 {
     #region Attributs
 
+    
+    [SerializeField] private CharacterMovement _characterMove = null;
+
     [SerializeField] private NavMeshAgent _agent = null;
     [SerializeField] private Camera _camera = null;
 
-    [SerializeField] private GameObject[] _VFXType = null;
+    [SerializeField] private GameObject[] _typeVFX = null;
     [SerializeField] private GameObject _VFXOmbremarche = null;
-    [SerializeField] private GameObject _VFXHitPoint = null;
-    
-    
+
+    [SerializeField] private AudioClip[] _skillsSFX = null;
+
     #endregion Attributs
 
-    public GameObject VFXHitPoint
+    public NavMeshAgent Agent
     {
-        get => _VFXHitPoint;
-        set => _VFXHitPoint = value;
+        get => _agent;
+        set => _agent = value;
+    }
+    public Camera Camera
+    {
+        get => _camera;
+        set => _camera = value;
     }
 
     void Start()
     {
         CharacterManager.Instance.Controller = this;
 
-        CharacterManager.Instance.Agent = _agent;
-        CharacterManager.Instance.Camera = _camera;
+        CharacterManager.Instance.Agent = Agent;
+        CharacterManager.Instance.Camera = Camera;
         CharacterManager.Instance.VFXOmbremarche = _VFXOmbremarche;
-        CharacterManager.Instance.VFXHitPointNavigation = _VFXHitPoint;
     }
     void Update()
     {        
         if (Input.GetMouseButton(1))
         {
-            CharacterManager.Instance.Moving();
+            _characterMove.Moving();
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            CharacterManager.Instance.VFXSkills = _VFXType[0];
+            CharacterManager.Instance.SkillsVFX = _typeVFX[0];
+            CharacterManager.Instance.SkillsSFX = _skillsSFX[0];
+
             UIManager.Instance.IsMorsureCast = true;
             CharacterManager.Instance.Morsure();
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            CharacterManager.Instance.VFXSkills = _VFXType[1];
+            CharacterManager.Instance.SkillsVFX = _typeVFX[1];
+            CharacterManager.Instance.SkillsSFX = _skillsSFX[1];
+
             UIManager.Instance.IsGriffureCast = true;
             CharacterManager.Instance.Griffe();
         }
@@ -66,7 +77,6 @@ public class CharacterConrtoller : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.B))
         {
             InventoryManager.Instance.AmountBlood = 100;
-            //InventoryManager.Instance.AmountSkull = 1;
         }
                 
         //Vector3 destination = Input.GetAxis("Horizontal") * transform.right + Input.GetAxis("Vertical") * transform.forward; //0f <> 1f
