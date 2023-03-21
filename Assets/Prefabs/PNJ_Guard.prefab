@@ -661,7 +661,7 @@ NavMeshAgent:
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
-  m_Height: 2
+  m_Height: 1
   m_BaseOffset: 0.91
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
@@ -677,15 +677,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd715c3a5f808064ca0673066cae2648, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _pNJController: {fileID: 2630984617025578126}
-  _pNJDetection: {fileID: 1261295695285075962}
-  _pNJMovement: {fileID: 4828975165600286614}
+  _controllerPNJ: {fileID: 2630984617025578126}
+  _detectionPNJ: {fileID: 1261295695285075962}
+  _characterCompFeedback: {fileID: 3882965354235375307}
   _body: {fileID: 8926253096823780629}
   _itemData: {fileID: 0}
   _VFXSpawnPoint: {fileID: 1252289265297556068}
   _VFXEndTimer: 1
-  _detectionGauge: {fileID: 2838332315421247650}
-  _characterCompFeedback: {fileID: 3882965354235375307}
+  _isGuard: 1
 --- !u!114 &1261295695285075962
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -698,6 +697,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fc0d4f5bd40d8c4d8970985f5d06902, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _controllerPNJ: {fileID: 2630984617025578126}
   _radius: 10
   _angle: 100
   _targetMask:
@@ -706,8 +706,8 @@ MonoBehaviour:
   _obstructionMask:
     serializedVersion: 2
     m_Bits: 4
-  _isCanSeePlayer: 0
-  _delayDetection: 2
+  _detectionGauge: {fileID: 2838332315421247650}
+  _delayDetection: 3
 --- !u!114 &4828975165600286614
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -720,11 +720,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d3e7893698be5f47b67655f2e7113a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _pNJController: {fileID: 2630984617025578126}
-  _character: {fileID: 4883083976113711012, guid: 6176ab60aae01f54887ac1da213f6338, type: 3}
+  _controllerPNJ: {fileID: 2630984617025578126}
   agent: {fileID: 5434017713403560353}
   _activePoint: 0
-  _isGuard: 0
+  _isRound: 0
   _wayPoints: []
 --- !u!54 &2739785758015266038
 Rigidbody:

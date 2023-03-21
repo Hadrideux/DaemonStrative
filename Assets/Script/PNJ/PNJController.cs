@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,9 +7,11 @@ public class PNJController : MonoBehaviour
 
     #region Attributs
 
-    [SerializeField] private PNJController _pNJController = null;
-    [SerializeField] private PNJDetection _pNJDetection = null;
-    [SerializeField] private PNJMovement _pNJMovement = null;
+    [SerializeField] private PNJController _controllerPNJ = null;
+    [SerializeField] private PNJDetection _detectionPNJ = null;
+    //[SerializeField] private PNJMovement _pNJMovement = null;
+    
+    [SerializeField] private GameObject _characterCompFeedback = null;
     [SerializeField] private GameObject _body = null;
 
     [SerializeField] private ItemData _itemData = null;
@@ -21,33 +20,47 @@ public class PNJController : MonoBehaviour
     private float _VFXDuration = 0;
     [SerializeField] private float _VFXEndTimer = 1;
 
-    [SerializeField] private Image _detectionGauge = null;
-    [SerializeField] private GameObject _characterCompFeedback = null;
+    private bool _isCanSeePlayer = false;
+    //[SerializeField] private Image _detectionGauge = null;
 
     #endregion Attributs
 
+    #region Properties
+        #region Controller
+    
     public PNJController ControllerPNJ
     {
-        get => _pNJController;
-        set => _pNJController = value;
+        get => _controllerPNJ;
+        set => _controllerPNJ = value;
     }
     public PNJDetection DetectionPNJ
     {
-        get => _pNJDetection;
-        set => _pNJDetection = value;
+        get => _detectionPNJ;
+        set => _detectionPNJ = value;
     }
-
+    /*
     public PNJMovement MovementPNJ
     {
         get => _pNJMovement;
         set => _pNJMovement = value;
     }
-   
+    */
+
+    #endregion Controller
+    /*
     public Image DetectionGauge
     {
         get => _detectionGauge;
         set => _detectionGauge = value;
     }
+    */
+    public bool IsCanSeePlayer
+    {
+        get => _isCanSeePlayer;
+        set => _isCanSeePlayer = value;
+    }
+
+    #endregion Properties
 
     #region Mono
 
@@ -59,10 +72,8 @@ public class PNJController : MonoBehaviour
             PNJManager.Instance.VFXSpawner = _VFXSpawnPoint;
             PNJManager.Instance.Body = _body;
 
-            ControllerPNJ._characterCompFeedback.SetActive(true);
-        }            
-
-
+            _characterCompFeedback.SetActive(true);
+        }
     }
 
     private void OnTriggerExit(Collider other) 
@@ -71,7 +82,7 @@ public class PNJController : MonoBehaviour
         PNJManager.Instance.VFXSpawner = null;
         PNJManager.Instance.Body = null;
 
-        ControllerPNJ._characterCompFeedback.SetActive(false);
+        _characterCompFeedback.SetActive(false);
 
     }
 
@@ -91,26 +102,25 @@ public class PNJController : MonoBehaviour
         {
             _VFXDuration = 0;
         }
-
-        if(DetectionPNJ.IsCanSeePlayer == true && _detectionGauge != null) 
+        /*
+        if(IsCanSeePlayer == true && _detectionGauge != null) 
         {
             Detection();        
         }
-        else if(DetectionPNJ.IsCanSeePlayer == false && _detectionGauge != null)
+        else if(IsCanSeePlayer == false && _detectionGauge != null) 
         {
             Undetecte();
         }
+        */
     }
     #endregion Mono
 
     private void Detection()
     {
-
-        DetectionGauge.fillAmount += DetectionPNJ.DetectionFeedBack / 2*Time.deltaTime;           
+        //DetectionGauge.fillAmount += DetectionPNJ.DetectionFeedBack / 2 * Time.deltaTime;
     }
-
     private void Undetecte()
     {
-        DetectionGauge.fillAmount -= DetectionPNJ.DetectionFeedBack / 2 * Time.deltaTime;
+        //DetectionGauge.fillAmount -= DetectionPNJ.DetectionFeedBack / 2 * Time.deltaTime;
     }
 }

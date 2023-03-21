@@ -9,13 +9,16 @@ public class PNJDetection : MonoBehaviour
 {
     #region Attributs
 
-    [SerializeField] private float _radius = 0f; [Range(0, 360)]
+    [SerializeField] private PNJController _controllerPNJ = null;
+
+    [SerializeField] private float _radius = 0f; 
+    [Range(0, 360)]
     [SerializeField] private float _angle = 0f;
 
     [SerializeField] private LayerMask _targetMask;
     [SerializeField] private LayerMask _obstructionMask;
 
-    [SerializeField] private bool _isCanSeePlayer = false;
+    [SerializeField] private Image _detectionGauge = null;
     [SerializeField] private float _delayDetection = 2f;
     private float _delayDetectionTimer = 0f;
 
@@ -33,48 +36,57 @@ public class PNJDetection : MonoBehaviour
         get => _angle;
         set => _angle = value;
     }
-    public bool IsCanSeePlayer
-    {
-        get => _isCanSeePlayer;
-        set => _isCanSeePlayer = value;
-    }
     public float DetectionFeedBack
     {
         get => _delayDetectionTimer;  
         set => _delayDetectionTimer = Mathf.Clamp(value,0,2);
     }
-
-    #endregion Properties
-
-    private void Update()
+    public Image DetectionGauge
     {
-        if (CharacterManager.Instance.IsCanBeSee)
-        {
-            FieldOfViewCheck();
-        }               
+        get => _detectionGauge;
+        set => _detectionGauge = value;
     }
 
+    #endregion Properties
     private void Start()
     {
         _delayDetectionTimer = 0;
     }
 
+    private void Update()
+    {
+        if (CharacterManager.Instance.IsCanBeSee == true)
+        {
+            FieldOfViewCheck();
+        }
+
+        if (_controllerPNJ.IsCanSeePlayer == true && _detectionGauge != null)
+        {
+            Detection();
+        }
+        else if (_controllerPNJ.IsCanSeePlayer == false && _detectionGauge != null)
+        {
+            Undetecte();
+        }
+    }
+
+
     private void FieldOfViewCheck()
     {
-        Collider[] rangeChecks = Physics.OverlapSphere(transform.position, Radius, _targetMask);
+        Collider[] rangeChecks = Physics.OverlapSphere(transform.position, _radius, _targetMask);
 
         if (rangeChecks.Length != 0)
         {
             Transform target = rangeChecks[0].transform;
             Vector3 directionToTarget = (target.position - transform.position).normalized;
 
-            if (Vector3.Angle(transform.forward, directionToTarget) < Angle / 2)
+            if (Vector3.Angle(transform.forward, directionToTarget) < _angle / 2)
             {
                 float distanceToTarget = Vector3.Distance(transform.position, target.position);
 
                 if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, _obstructionMask))
                 {
-                    IsCanSeePlayer = true;
+                    _controllerPNJ.IsCanSeePlayer = true;
 
                     _delayDetectionTimer += Time.deltaTime;
                                         
@@ -86,20 +98,33 @@ public class PNJDetection : MonoBehaviour
                 }
                 else
                 {
-                    _delayDetectionTimer = Mathf.Clamp(_delayDetectionTimer -= Time.deltaTime,0,2);
-                    IsCanSeePlayer = false;
+                    DetectionTimer();
+                    
                 }
             }
             else
             {
-                _delayDetectionTimer = Mathf.Clamp(_delayDetectionTimer -= Time.deltaTime, 0, 2);
-                IsCanSeePlayer = false;
+                DetectionTimer();
             }
         }
-        else //if (IsCanSeePlayer)
+        else
         {
-            _delayDetectionTimer = Mathf.Clamp(_delayDetectionTimer -= Time.deltaTime, 0, 2);
-            IsCanSeePlayer = false;
+            DetectionTimer();
         }      
-    }    
+    }
+
+    private void DetectionTimer()
+    {
+        _delayDetectionTimer = Mathf.Clamp(_delayDetectionTimer -= Time.deltaTime, 0, 2);
+        _controllerPNJ.IsCanSeePlayer = false;
+    }
+
+    private void Detection()
+    {
+        DetectionGauge.fillAmount += DetectionFeedBack / 2 * Time.deltaTime;
+    }
+    private void Undetecte()
+    {
+        DetectionGauge.fillAmount -= DetectionFeedBack / 2 * Time.deltaTime;
+    }
 }

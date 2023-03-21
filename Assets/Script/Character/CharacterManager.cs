@@ -13,11 +13,11 @@ public class CharacterManager : Singleton<CharacterManager>
     [SerializeField] private GameObject _collider = null;
     [SerializeField] private bool _isCanBeSee = true;
 
-    [SerializeField] private GameObject _VFXSpawnPoint = null;
-    [SerializeField] private GameObject _VFXSkills = null;
-    [SerializeField] private GameObject _VFXOmbremarche = null;
+    [SerializeField] private GameObject _VFXSpawnPoint = null;  
+    [SerializeField] private GameObject _skillsVFX = null;
+    [SerializeField] private AudioClip _skillsSFX = null;
 
-    [SerializeField] private GameObject _VFXHitPointNavigation = null;
+    [SerializeField] private GameObject _VFXOmbremarche = null;
 
     #region Properties
 
@@ -46,67 +46,37 @@ public class CharacterManager : Singleton<CharacterManager>
         get => _collider;
         set => _collider = value;
     }
-    public GameObject VFXSkills
+    public GameObject SkillsVFX
     {
-        get => _VFXSkills;
-        set => _VFXSkills = value;
+        get => _skillsVFX;
+        set => _skillsVFX = value;
+    }
+    public AudioClip SkillsSFX
+    {
+        get => _skillsSFX;
+        set => _skillsSFX = value;
     }
     public GameObject VFXOmbremarche
     {
         get => _VFXOmbremarche;
         set => _VFXOmbremarche = value;
     }
-    public GameObject VFXHitPointNavigation
-    {
-        get => _VFXHitPointNavigation;
-        set => _VFXHitPointNavigation = value;
-    }
 
     #endregion properties
 
-    private void Update()
-    {
-        EndMovement();
-    }
-
     #region Methode
-
-    public void Moving()
-    {
-        if (!DialogueManager.Instance.IsDialogueActive == true && Agent.isStopped == false)
-        {
-            Ray movePosition = Camera.ScreenPointToRay(Input.mousePosition);
-
-            if (Physics.Raycast(movePosition, out var hitInfo))
-            {
-                Agent.isStopped = false;
-                Agent.SetDestination(hitInfo.point);
-
-                Controller.VFXHitPoint.transform.position = new Vector3(hitInfo.point.x, 0.5f, hitInfo.point.z);
-                Controller.VFXHitPoint.gameObject.SetActive(true);
-            }
-        }       
-    }
-
-    public void EndMovement()
-    {
-        if (_agent.remainingDistance < 0.05f)
-        {
-            VFXHitPointNavigation.gameObject.SetActive(false);
-        }
-    }
-
+    
     #region Player Action
     /// <summary>
     /// Fonction des action du joueur durant les différente phase de jeux
     /// </summary>
-
     public void Morsure()
     {
         BloodAndFlesh();
 
         PNJManager.Instance.KillVillager(false);
 
+        
         UIManager.Instance.AlphaSkills();
         UIManager.Instance.IsMorsureCast = false;
     }
@@ -133,8 +103,9 @@ public class CharacterManager : Singleton<CharacterManager>
 
     public void BloodAndFlesh()
     {
-        Instantiate(VFXSkills, PNJManager.Instance.VFXSpawner.transform);
+        Instantiate(SkillsVFX, PNJManager.Instance.VFXSpawner.transform);
+        //Instantiate(SkillsSFX, PNJManager.Instance.VFXSpawner.transform);
     }
 
-    #endregion Methode
+    #endregion Methode;
 }

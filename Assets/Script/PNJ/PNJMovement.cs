@@ -1,21 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.EventSystems;
-//using static UnityEditor.PlayerSettings;
-using static UnityEngine.GraphicsBuffer;
 
 public class PNJMovement : MonoBehaviour
 {
-    [SerializeField] private PNJController _pNJController = null;
-    [SerializeField] private Transform _character = null;
+    [SerializeField] private PNJController _controllerPNJ = null;
     
     [SerializeField] private NavMeshAgent agent;
     [SerializeField] private int _activePoint = 0;
+
     [SerializeField] private bool _isGuard = false;
-        
+
     private float _timeRef = 0;
 
     public float TimerRef
@@ -23,7 +17,6 @@ public class PNJMovement : MonoBehaviour
         get => _timeRef;
         set => _timeRef = value;
     }
-
 
     public WayPoint[] _wayPoints;
 
@@ -38,17 +31,20 @@ public class PNJMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        PNJController controller = _pNJController;
+        Movement();        
+    }
 
-        if (_isGuard == true && controller.DetectionPNJ.IsCanSeePlayer == false)
+    private void Movement()
+    {
+        if (_isGuard == true && _controllerPNJ.IsCanSeePlayer == false)
         {
-            
-            if(agent.isStopped == true)
+
+            if (agent.isStopped == true)
             {
                 agent.isStopped = false;
             }
-            
-            if(agent.remainingDistance < 0.05f)
+
+            if (agent.remainingDistance < 0.05f)
             {
                 TimerRef += Time.deltaTime;
                 WayPoint timer = _wayPoints[_activePoint];
@@ -56,7 +52,7 @@ public class PNJMovement : MonoBehaviour
                 WalkRound();
 
                 if (TimerRef > timer.waitTime && _activePoint < _wayPoints.Length)
-                {                    
+                {
                     _activePoint = (_activePoint + 1) % _wayPoints.Length;
                     TimerRef = 0;
                 }
@@ -64,18 +60,17 @@ public class PNJMovement : MonoBehaviour
                 {
                     _activePoint = 0;
                     TimerRef = 0;
-                }       
+                }
             }
         }
-        else if (controller.DetectionPNJ.IsCanSeePlayer == true)
-        {            
-            agent.isStopped= true;
+        else if (_controllerPNJ.IsCanSeePlayer == true)
+        {
+            agent.isStopped = true;
 
             Transform target = CharacterManager.Instance.Controller.transform;
-            _pNJController.transform.LookAt(target.position);
+            _controllerPNJ.transform.LookAt(target.position);
         }
     }
-
     private void WalkRound()
     {
         WayPoint actualPoint = _wayPoints[_activePoint];
