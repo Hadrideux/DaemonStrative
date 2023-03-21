@@ -122,7 +122,7 @@ NavMeshSettings:
     preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 23800000, guid: 9960dc5cf9d46f145af33b3e005fb43b, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: b73b721197503b64286bcf833cb2f522, type: 2}
 --- !u!1 &341432180
 GameObject:
   m_ObjectHideFlags: 0
@@ -202,11 +202,8 @@ MonoBehaviour:
   _pauseUI: {fileID: 0}
   _gameOverUI: {fileID: 0}
   _coldDown: 5
-  _alphaTimer: 0
-  _alphaColdDown: 1
   _ombreMarcheImage: {fileID: 0}
   _ombreMarcheTimer: 0
-  _activeSkill: 0
   _morsureImage: {fileID: 0}
   _griffureImage: {fileID: 0}
   _isCast: 0
@@ -404,9 +401,9 @@ MonoBehaviour:
   _collider: {fileID: 0}
   _isCanBeSee: 1
   _VFXSpawnPoint: {fileID: 0}
-  _VFXSkills: {fileID: 0}
+  _skillsVFX: {fileID: 0}
+  _skillsSFX: {fileID: 0}
   _VFXOmbremarche: {fileID: 0}
-  _VFXHitPointNavigation: {fileID: 0}
 --- !u!4 &1159214846
 Transform:
   m_ObjectHideFlags: 0
@@ -452,13 +449,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _controller: {fileID: 0}
+  _PNJVillager: {fileID: 0}
+  _Dialogue: {fileID: 0}
   _detection: {fileID: 0}
   _body: {fileID: 0}
   _VFXSpawnPoint: {fileID: 0}
   _itemData: {fileID: 0}
   _isDying: 0
-  _PNJVillager: {fileID: 0}
-  _Dialogue: {fileID: 0}
 --- !u!4 &1602088755
 Transform:
   m_ObjectHideFlags: 0

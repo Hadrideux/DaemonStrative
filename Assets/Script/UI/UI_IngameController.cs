@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -29,14 +26,9 @@ public class UI_IngameController : MonoBehaviour
 
     #region Blood
 
-    [SerializeField] private Image _bloodImage = null;
+    [SerializeField] private Image _fillBlood = null;
     [SerializeField] private TextMeshProUGUI _bloodText = null;
-
     [SerializeField] private int _maxBlood = 0;
-    [SerializeField] private RectTransform _fillBlood = null;
-
-    private Vector3 _startPos = Vector3.zero;
-    private Vector3 _endPos = Vector3.zero;
 
     #endregion Blood
 
@@ -55,8 +47,6 @@ public class UI_IngameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _startPos.y = -_fillBlood.rect.width;
-
         UIManager.Instance.OmbreMarcheImage = _ombreMarcheImage;
         UIManager.Instance.MorsureImage = _morsureImage;
         UIManager.Instance.GriffureImage = _griffureImage;
@@ -87,8 +77,7 @@ public class UI_IngameController : MonoBehaviour
 
     public void UpdateBlood()
     {
-        float perc = (float)InventoryManager.Instance.AmountBlood / _maxBlood;
-        _fillBlood.localPosition = Vector3.Lerp(_startPos, _endPos, perc);
+        _fillBlood.fillAmount += InventoryManager.Instance.AmountBlood / _maxBlood;
     }
 
     public void UpdateSuspicious()

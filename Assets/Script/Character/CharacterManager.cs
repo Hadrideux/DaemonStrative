@@ -1,6 +1,4 @@
 using Engine.Utils;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -13,7 +11,6 @@ public class CharacterManager : Singleton<CharacterManager>
     [SerializeField] private GameObject _collider = null;
     [SerializeField] private bool _isCanBeSee = true;
 
-    [SerializeField] private GameObject _VFXSpawnPoint = null;  
     [SerializeField] private GameObject _skillsVFX = null;
     [SerializeField] private AudioClip _skillsSFX = null;
 

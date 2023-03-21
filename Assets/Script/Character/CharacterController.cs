@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -69,7 +67,7 @@ public class CharacterConrtoller : MonoBehaviour
             CharacterManager.Instance.Shadowalk();
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) && DialogueManager.Instance.IsDialogueActive == true)
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             DialogueManager.Instance.NextMessage();
         }
@@ -77,6 +75,10 @@ public class CharacterConrtoller : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.B))
         {
             InventoryManager.Instance.AmountBlood = 100;
+        }
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            WitchManager.Instance.IsQuestOmbreMarche = true;
         }
                 
         //Vector3 destination = Input.GetAxis("Horizontal") * transform.right + Input.GetAxis("Vertical") * transform.forward; //0f <> 1f

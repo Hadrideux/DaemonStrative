@@ -101,21 +101,25 @@ public class DialogueManager : Singleton<DialogueManager>
     }
     public void NextMessage()
     {
-        _activeMessage = _activeMessage + 1;
-        if (_activeMessage < _currentMessages.Length)
+        if (IsDialogueActive == true)
         {
-            DisplayMessage();
-        }
-        else
-        {
-            IsDialogueActive = false;
-            CharacterManager.Instance.Agent.isStopped = false;
+            _activeMessage = _activeMessage + 1;
+            if (_activeMessage < _currentMessages.Length)
+            {
+                DisplayMessage();
+            }
+            else
+            {
+                IsDialogueActive = false;
+                CharacterManager.Instance.Agent.isStopped = false;
 
-            BackGroundBox.LeanScale(Vector3.zero, 0.5f).setEaseInOutExpo();
-            HideButton();
-            /*if (CharacterManager.Instance.Agent.remainingDistance < 0.5f)
-                CharacterManager.Instance.Agent.isStopped = false;*/
+                BackGroundBox.LeanScale(Vector3.zero, 0.5f).setEaseInOutExpo();
+                HideButton();
+                /*if (CharacterManager.Instance.Agent.remainingDistance < 0.5f)
+                    CharacterManager.Instance.Agent.isStopped = false;*/
+            }
         }
+       
     }
     private void AnimatedTextColor()
     {
