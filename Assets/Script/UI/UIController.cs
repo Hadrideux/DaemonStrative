@@ -8,11 +8,17 @@ public class UIController : MonoBehaviour
 
     [SerializeField] private GameObject _pauseUI = null;
     [SerializeField] private GameObject _gameOverUI = null;
+
     [SerializeField] private GameObject _vignetShadowStep = null;
+    [SerializeField] private GameObject _vignetDetection = null;
 
     [SerializeField] private Animator _animationShadowStep = null;
-    [SerializeField] private AnimationClip _fadeIn = null;
-    [SerializeField] private AnimationClip _fadeOut = null;
+    [SerializeField] private AnimationClip _fadeInShadowStep = null;
+    [SerializeField] private AnimationClip _fadeOutShadowStep = null;
+
+    [SerializeField] private Animator _animationDetection = null;
+    [SerializeField] private AnimationClip _fadeInDetection = null;
+    [SerializeField] private AnimationClip _fadeOutDetection = null;
 
     #endregion UI Menu
     #endregion Attributs
@@ -60,7 +66,22 @@ public class UIController : MonoBehaviour
         else
         {
             _vignetShadowStep.SetActive(false);
-        }
-        
+        }        
     }
+    /*
+    private void CastVignetDetection()
+    {
+        if ()
+        {
+            _vignetDetection.SetActive(true);
+            _animationDetection.SetTrigger("FadeIn");
+            _animationDetection.SetTrigger("FadeOut");
+           
+        }
+        else
+        {
+            _vignetDetection.SetActive(false);
+        }
+    }
+    */
 }
