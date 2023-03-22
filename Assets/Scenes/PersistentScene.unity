@@ -204,8 +204,13 @@ MonoBehaviour:
   _coldDown: 5
   _ombreMarcheImage: {fileID: 0}
   _ombreMarcheTimer: 0
+  _biteCooldownDelay: 1
+  _clawCooldownDelay: 1
+  _alphaBiteTimer: 0
+  _alphaClawTimer: 0
   _morsureImage: {fileID: 0}
   _griffureImage: {fileID: 0}
+  _isActive: 0
   _isCast: 0
 --- !u!4 &400180203
 Transform:
