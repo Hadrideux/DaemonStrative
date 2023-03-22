@@ -74,7 +74,7 @@ public class CharacterManager : Singleton<CharacterManager>
         PNJManager.Instance.KillVillager(false);
 
         UIManager.Instance.ToggleBiteSkillButton(true);
-        UIManager.Instance.IsActive = true;
+        UIManager.Instance.IsBiteSkillActive = true;
         UIManager.Instance.IsMorsureCast = false;
     }
     public void Griffe()
@@ -84,7 +84,7 @@ public class CharacterManager : Singleton<CharacterManager>
         PNJManager.Instance.KillVillager(true);
 
         UIManager.Instance.ToggleClawSkillButton(true);
-        UIManager.Instance.IsActive = true;
+        UIManager.Instance.IsClawSkillActive = true;
         UIManager.Instance.IsGriffureCast = false;
     }
     public void Shadowalk()

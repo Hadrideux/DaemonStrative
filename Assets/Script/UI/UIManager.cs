@@ -24,8 +24,10 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] private float _ombreMarcheTimer = 0.0f;
     private float _activeSkill = 0;
 
-    [SerializeField] private float _alphaTimer = 0f;
-    [SerializeField] private float _alphaSkill = 1f;
+    [SerializeField] private float _biteCooldownDelay = 1f;
+    [SerializeField] private float _clawCooldownDelay = 1f;
+    [SerializeField] private float _alphaBiteTimer = 0f;
+    [SerializeField] private float _alphaClawTimer = 0f;
 
     [SerializeField] private Image _morsureImage = null;
     private bool _isMorsureCast = false;
@@ -112,12 +114,22 @@ public class UIManager : Singleton<UIManager>
         get => _isGriffureCast;
         set => _isGriffureCast = value;
     }
-    public float AlphaTimer
+    public float AlphaBiteTimer
     {
-        get => _alphaTimer;
-        set => _alphaTimer = value;
+        get => _alphaBiteTimer;
+        set => _alphaBiteTimer = value;
     }
-    public bool IsActive
+    public float AlphaClawTimer
+    {
+        get => _alphaClawTimer;
+        set => _alphaClawTimer = value;
+    }
+    public bool IsBiteSkillActive
+    {
+        get => _isActive;
+        set => _isActive = value;
+    }
+    public bool IsClawSkillActive
     {
         get => _isActive;
         set => _isActive = value;
@@ -129,7 +141,8 @@ public class UIManager : Singleton<UIManager>
             OmbreMarcheTime();
         }
 
-        AlphaSkills();
+        CooldownBiteControl();
+        CooldownClawControl();
     }
 
     #region Methode
@@ -231,7 +244,7 @@ public class UIManager : Singleton<UIManager>
             if (AlphaBiteTimer >= _biteCooldownDelay)
             {
                 ToggleBiteSkillButton(false);
-                StopCd();
+                StopBiteCd();
             }
         }
     }
@@ -246,7 +259,7 @@ public class UIManager : Singleton<UIManager>
             if (AlphaClawTimer >= _clawCooldownDelay)
             {
                 ToggleClawSkillButton(false);
-                StopCd();
+                StopClawCd();
             }
         }
     }
@@ -266,16 +279,16 @@ public class UIManager : Singleton<UIManager>
     }
 }*/
 
-    private void StopCd()
+    private void StopBiteCd()
     {
-        AlphaTimer = 0;
-        IsActive = false;
+        AlphaBiteTimer = 0;
+        IsBiteSkillActive = false;
     }
 
-    private void StopCd()
+    private void StopClawCd()
     {
-        AlphaTimer = 0;
-        IsActive = false;
+        AlphaClawTimer = 0;
+        IsClawSkillActive = false;
     }
     #endregion Competence
     #endregion Methode
