@@ -47,15 +47,15 @@ public class UI_IngameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        UIManager.Instance.OmbreMarcheImage = _ombreMarcheImage;
-        UIManager.Instance.MorsureImage = _morsureImage;
-        UIManager.Instance.GriffureImage = _griffureImage;
+        UIManager.Instance.ShadowStepImage = _ombreMarcheImage;
+        UIManager.Instance.BiteImage = _morsureImage;
+        UIManager.Instance.ClawImage = _griffureImage;
     }
 
     // Update is called once per frame
     void Update()
     {
-        _ombreMarcheText.text = UIManager.Instance.OmbreMarcheTimer.ToString("0");
+        _ombreMarcheText.text = UIManager.Instance.ShadowStepTimer.ToString("0");
 
         _bloodText.text = Mathf.Clamp(InventoryManager.Instance.AmountBlood, 0, _maxBlood).ToString();
         _skullText.text = InventoryManager.Instance.AmountSkull.ToString();    

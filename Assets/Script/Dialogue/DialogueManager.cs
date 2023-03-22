@@ -67,6 +67,7 @@ public class DialogueManager : Singleton<DialogueManager>
 
     public void OpenDialogue(DialogueController.Message[] messages, DialogueController.Actor[] actors)
     {
+        LeanTween.textAlpha(_messageText.rectTransform, 0, 0f);
         _activeMessage = 0;
         _currentMessages = messages;
         _currentActors = actors;
@@ -74,7 +75,7 @@ public class DialogueManager : Singleton<DialogueManager>
         IsDialogueActive = true;
         CharacterManager.Instance.Agent.isStopped = true;
 
-        BackGroundBox.LeanScale(Vector3.one, 0.5f);
+        BackGroundBox.LeanScale(Vector3.one, 1f);
 
         DialogueController.Message messageToDisplay = _currentMessages[_activeMessage];
         MessageText.text = messageToDisplay.message;
@@ -84,12 +85,11 @@ public class DialogueManager : Singleton<DialogueManager>
         ActorName.text = actorToDisplay.name;
         ActorImage.sprite = actorToDisplay.sprite;
         
-        AnimatedTextColor();
-
-        HideButton();
+        AnimatedTextColor();       
     }
     private void DisplayMessage()
     {
+        LeanTween.textAlpha(_messageText.rectTransform, 0, 0f);
         DialogueController.Message messageToDisplay = _currentMessages[_activeMessage];
         MessageText.text = messageToDisplay.message;
 
@@ -113,8 +113,8 @@ public class DialogueManager : Singleton<DialogueManager>
                 IsDialogueActive = false;
                 CharacterManager.Instance.Agent.isStopped = false;
 
-                BackGroundBox.LeanScale(Vector3.zero, 0.5f).setEaseInOutExpo();
-                HideButton();
+                BackGroundBox.LeanScale(Vector3.zero, 1f).setEaseInOutExpo();
+                
                 /*if (CharacterManager.Instance.Agent.remainingDistance < 0.5f)
                     CharacterManager.Instance.Agent.isStopped = false;*/
             }

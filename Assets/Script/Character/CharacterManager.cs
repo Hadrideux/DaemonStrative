@@ -67,7 +67,7 @@ public class CharacterManager : Singleton<CharacterManager>
     /// <summary>
     /// Fonction des action du joueur durant les différente phase de jeux
     /// </summary>
-    public void Morsure()
+    public void BiteAction()
     {
         BloodAndFlesh();
         
@@ -75,9 +75,8 @@ public class CharacterManager : Singleton<CharacterManager>
 
         UIManager.Instance.ToggleBiteSkillButton(true);
         UIManager.Instance.IsBiteSkillActive = true;
-        UIManager.Instance.IsMorsureCast = false;
     }
-    public void Griffe()
+    public void ClawAction()
     {
         BloodAndFlesh();
 
@@ -85,12 +84,11 @@ public class CharacterManager : Singleton<CharacterManager>
 
         UIManager.Instance.ToggleClawSkillButton(true);
         UIManager.Instance.IsClawSkillActive = true;
-        UIManager.Instance.IsGriffureCast = false;
     }
-    public void Shadowalk()
+    public void ShadoStepAction()
     {
-        UIManager.Instance.IsCast = true;
-        UIManager.Instance.OmbreMarcheTime();
+        UIManager.Instance.ToggleShadowStepButton(true);
+        UIManager.Instance.IsShadowStepSkillActive = true;
         
         IsCanBeSee = false;
 
@@ -101,6 +99,7 @@ public class CharacterManager : Singleton<CharacterManager>
 
     public void BloodAndFlesh()
     {
+        if (_collider != null)
         Instantiate(SkillsVFX, PNJManager.Instance.VFXSpawner.transform);
     }
 
