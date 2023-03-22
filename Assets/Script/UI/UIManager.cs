@@ -6,7 +6,6 @@ using System;
 
 public class UIManager : Singleton<UIManager>
 {
-
     #region Attributs
 
     #region UI Menu
@@ -198,43 +197,82 @@ public class UIManager : Singleton<UIManager>
         }
     }
 
-    public void AlphaSkills()
+    public void ToggleBiteSkillButton(bool isOnCd)
     {
-        if (IsActive == true)
+        if (isOnCd)
         {
-            AlphaTimer += Time.deltaTime;
+            MorsureImage.color = new Color(MorsureImage.color.r, MorsureImage.color.g, MorsureImage.color.b, 0.5f);
+        }
+        else
+        {
+            MorsureImage.color = new Color(MorsureImage.color.r, MorsureImage.color.g, MorsureImage.color.b, 1f);
+        }
+    }
+
+    public void ToggleClawSkillButton(bool isOnCd)
+    {
+        if (isOnCd)
+        {
+            GriffureImage.color = new Color(MorsureImage.color.r, MorsureImage.color.g, MorsureImage.color.b, 0.5f);
+        }
+        else
+        {
+            GriffureImage.color = new Color(MorsureImage.color.r, MorsureImage.color.g, MorsureImage.color.b, 1f);
+        }
+    }
+
+    public void CooldownBiteControl()
+    {
+        if (IsBiteSkillActive == true)
+        {
+            AlphaBiteTimer += Time.deltaTime;
 
 
-            switch (IsMorsureCast)
+            if (AlphaBiteTimer >= _biteCooldownDelay)
             {
-                case true:
-                    MorsureImage.color = new Color(MorsureImage.color.r, MorsureImage.color.g, MorsureImage.color.b, 0.5f);
-                    break;
-                case false:
-                    if (AlphaTimer > _alphaSkill)
-                    {
-                        MorsureImage.color = new Color(MorsureImage.color.r, MorsureImage.color.g, MorsureImage.color.b, 1f);
-                        ActiveAlpha();
-                    }
-                    break;
-            }
-            switch (IsGriffureCast)
-            {
-                case true:
-                    GriffureImage.color = new Color(GriffureImage.color.r, GriffureImage.color.g, GriffureImage.color.b, 0.5f);
-                    break;
-                case false:
-                    if (AlphaTimer > _alphaSkill)
-                    {
-                        GriffureImage.color = new Color(GriffureImage.color.r, GriffureImage.color.g, GriffureImage.color.b, 1f);
-                        ActiveAlpha();
-                    }
-                    break;
+                ToggleBiteSkillButton(false);
+                StopCd();
             }
         }
     }
 
-    private void ActiveAlpha()
+    public void CooldownClawControl()
+    {
+        if (IsBiteSkillActive == true)
+        {
+            AlphaClawTimer += Time.deltaTime;
+
+
+            if (AlphaClawTimer >= _clawCooldownDelay)
+            {
+                ToggleClawSkillButton(false);
+                StopCd();
+            }
+        }
+    }
+    /*
+    switch (IsGriffureCast)
+    {
+        case true:
+            GriffureImage.color = new Color(GriffureImage.color.r, GriffureImage.color.g, GriffureImage.color.b, 0.5f);
+            break;
+        case false:
+            if (AlphaTimer > _alphaSkill)
+            {
+                GriffureImage.color = new Color(GriffureImage.color.r, GriffureImage.color.g, GriffureImage.color.b, 1f);
+                ActiveAlpha();
+            }
+            break;
+    }
+}*/
+
+    private void StopCd()
+    {
+        AlphaTimer = 0;
+        IsActive = false;
+    }
+
+    private void StopCd()
     {
         AlphaTimer = 0;
         IsActive = false;

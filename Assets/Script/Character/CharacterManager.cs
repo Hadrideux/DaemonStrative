@@ -73,8 +73,7 @@ public class CharacterManager : Singleton<CharacterManager>
 
         PNJManager.Instance.KillVillager(false);
 
-        
-        UIManager.Instance.AlphaSkills();
+        UIManager.Instance.ToggleBiteSkillButton(true);
         UIManager.Instance.IsActive = true;
         UIManager.Instance.IsMorsureCast = false;
     }
@@ -84,7 +83,7 @@ public class CharacterManager : Singleton<CharacterManager>
 
         PNJManager.Instance.KillVillager(true);
 
-        UIManager.Instance.AlphaSkills();
+        UIManager.Instance.ToggleClawSkillButton(true);
         UIManager.Instance.IsActive = true;
         UIManager.Instance.IsGriffureCast = false;
     }
