@@ -70,7 +70,7 @@ public class CharacterManager : Singleton<CharacterManager>
     public void Morsure()
     {
         BloodAndFlesh();
-
+        
         PNJManager.Instance.KillVillager(false);
 
         UIManager.Instance.ToggleBiteSkillButton(true);
@@ -102,7 +102,6 @@ public class CharacterManager : Singleton<CharacterManager>
     public void BloodAndFlesh()
     {
         Instantiate(SkillsVFX, PNJManager.Instance.VFXSpawner.transform);
-        //Instantiate(SkillsSFX, PNJManager.Instance.VFXSpawner.transform);
     }
 
     #endregion Methode;

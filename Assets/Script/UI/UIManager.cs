@@ -263,21 +263,6 @@ public class UIManager : Singleton<UIManager>
             }
         }
     }
-    /*
-    switch (IsGriffureCast)
-    {
-        case true:
-            GriffureImage.color = new Color(GriffureImage.color.r, GriffureImage.color.g, GriffureImage.color.b, 0.5f);
-            break;
-        case false:
-            if (AlphaTimer > _alphaSkill)
-            {
-                GriffureImage.color = new Color(GriffureImage.color.r, GriffureImage.color.g, GriffureImage.color.b, 1f);
-                ActiveAlpha();
-            }
-            break;
-    }
-}*/
 
     private void StopBiteCd()
     {
