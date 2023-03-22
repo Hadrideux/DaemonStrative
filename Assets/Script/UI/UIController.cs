@@ -10,6 +10,10 @@ public class UIController : MonoBehaviour
     [SerializeField] private GameObject _gameOverUI = null;
     [SerializeField] private GameObject _vignetShadowStep = null;
 
+    [SerializeField] private Animator _animationShadowStep = null;
+    [SerializeField] private AnimationClip _fadeIn = null;
+    [SerializeField] private AnimationClip _fadeOut = null;
+
     #endregion UI Menu
     #endregion Attributs
 
@@ -50,6 +54,8 @@ public class UIController : MonoBehaviour
         if (UIManager.Instance.IsShadowStepSkillActive == true && UIManager.Instance.ShadowStepTimer <= 2f)
         {
             _vignetShadowStep.SetActive(true);
+            _animationShadowStep.SetTrigger("FadeIn");
+            _animationShadowStep.SetTrigger("FadeOut");
         }
         else
         {

@@ -2339,14 +2339,14 @@ MonoBehaviour:
   _isGoGameScene: 0
   _blackFade: {fileID: 0}
   _blackFadeAnimation: {fileID: 0}
-  _fadeIn: {fileID: 0}
+  _fadeIn: {fileID: 7400000, guid: 3198188969fe9cc4aa9f4315848ad5f2, type: 2}
 --- !u!43 &509790375
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh92654
+  m_Name: pb_Mesh31646
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -2511,7 +2511,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh92258
+  m_Name: pb_Mesh31534
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -3445,7 +3445,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh92780
+  m_Name: pb_Mesh31700
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -4262,13 +4262,14 @@ GameObject:
   - component: {fileID: 854846483}
   - component: {fileID: 854846485}
   - component: {fileID: 854846484}
+  - component: {fileID: 854846486}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &854846483
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4302,7 +4303,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -4327,6 +4328,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 854846482}
   m_CullTransparentMesh: 1
+--- !u!95 &854846486
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 854846482}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ab4cda06a82ed924796db89c9f70c4f0, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &875077195
 GameObject:
   m_ObjectHideFlags: 0
@@ -4449,6 +4471,9 @@ MonoBehaviour:
   _pauseUI: {fileID: 1533636584}
   _gameOverUI: {fileID: 1600901930}
   _vignetShadowStep: {fileID: 854846482}
+  _animationShadowStep: {fileID: 854846486}
+  _fadeIn: {fileID: 7400000, guid: 40b04f718370aa8438880fc71506b2ff, type: 2}
+  _fadeOut: {fileID: 7400000, guid: d4dc64a05f860e4448f813cd5edc1c53, type: 2}
 --- !u!43 &923004535
 Mesh:
   m_ObjectHideFlags: 0
