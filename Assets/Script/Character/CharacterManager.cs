@@ -70,12 +70,11 @@ public class CharacterManager : Singleton<CharacterManager>
     public void Morsure()
     {
         BloodAndFlesh();
-
+        
         PNJManager.Instance.KillVillager(false);
 
-        
-        UIManager.Instance.AlphaSkills();
-        UIManager.Instance.IsActive = true;
+        UIManager.Instance.ToggleBiteSkillButton(true);
+        UIManager.Instance.IsBiteSkillActive = true;
         UIManager.Instance.IsMorsureCast = false;
     }
     public void Griffe()
@@ -84,8 +83,8 @@ public class CharacterManager : Singleton<CharacterManager>
 
         PNJManager.Instance.KillVillager(true);
 
-        UIManager.Instance.AlphaSkills();
-        UIManager.Instance.IsActive = true;
+        UIManager.Instance.ToggleClawSkillButton(true);
+        UIManager.Instance.IsClawSkillActive = true;
         UIManager.Instance.IsGriffureCast = false;
     }
     public void Shadowalk()
@@ -103,7 +102,6 @@ public class CharacterManager : Singleton<CharacterManager>
     public void BloodAndFlesh()
     {
         Instantiate(SkillsVFX, PNJManager.Instance.VFXSpawner.transform);
-        //Instantiate(SkillsSFX, PNJManager.Instance.VFXSpawner.transform);
     }
 
     #endregion Methode;
