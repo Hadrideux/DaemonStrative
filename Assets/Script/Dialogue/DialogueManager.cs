@@ -84,9 +84,7 @@ public class DialogueManager : Singleton<DialogueManager>
         ActorName.text = actorToDisplay.name;
         ActorImage.sprite = actorToDisplay.sprite;
         
-        AnimatedTextColor();
-
-        HideButton();
+        AnimatedTextColor();       
     }
     private void DisplayMessage()
     {
@@ -114,7 +112,7 @@ public class DialogueManager : Singleton<DialogueManager>
                 CharacterManager.Instance.Agent.isStopped = false;
 
                 BackGroundBox.LeanScale(Vector3.zero, 0.5f).setEaseInOutExpo();
-                HideButton();
+                
                 /*if (CharacterManager.Instance.Agent.remainingDistance < 0.5f)
                     CharacterManager.Instance.Agent.isStopped = false;*/
             }
