@@ -2,7 +2,6 @@ using Engine.Utils;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using System;
 
 public class UIManager : Singleton<UIManager>
 {
@@ -17,7 +16,9 @@ public class UIManager : Singleton<UIManager>
     #endregion UI Menu
 
     #region Competence
-    
+
+    [SerializeField] private GameObject _vignetShadowStep = null;
+
     [SerializeField] private Image _shadowStepImage = null;
     [SerializeField] private Image _biteImage = null;
     [SerializeField] private Image _clawImage = null;
@@ -62,7 +63,11 @@ public class UIManager : Singleton<UIManager>
     #endregion UI Menu
 
     #region UI Competence
-
+    public GameObject VignetShadowStep
+    {
+        get => _vignetShadowStep;
+        set => _vignetShadowStep = value;
+    }
     public Image ShadowStepImage
     {
         get => _shadowStepImage;
