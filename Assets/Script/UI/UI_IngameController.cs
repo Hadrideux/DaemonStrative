@@ -48,8 +48,8 @@ public class UI_IngameController : MonoBehaviour
     void Start()
     {
         UIManager.Instance.ShadowStepImage = _ombreMarcheImage;
-        UIManager.Instance.MorsureImage = _morsureImage;
-        UIManager.Instance.GriffureImage = _griffureImage;
+        UIManager.Instance.BiteImage = _morsureImage;
+        UIManager.Instance.ClawImage = _griffureImage;
     }
 
     // Update is called once per frame
