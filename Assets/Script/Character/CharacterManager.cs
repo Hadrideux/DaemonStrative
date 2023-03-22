@@ -75,6 +75,7 @@ public class CharacterManager : Singleton<CharacterManager>
 
         
         UIManager.Instance.AlphaSkills();
+        UIManager.Instance.IsActive = true;
         UIManager.Instance.IsMorsureCast = false;
     }
     public void Griffe()
@@ -84,6 +85,7 @@ public class CharacterManager : Singleton<CharacterManager>
         PNJManager.Instance.KillVillager(true);
 
         UIManager.Instance.AlphaSkills();
+        UIManager.Instance.IsActive = true;
         UIManager.Instance.IsGriffureCast = false;
     }
     public void Shadowalk()
