@@ -13,7 +13,7 @@ public class CharacterMovement : MonoBehaviour
 
     #region Methode
 
-    public void Moving()
+    public void MovingAction()
     {
         if (!DialogueManager.Instance.IsDialogueActive == true && _characterController.Agent.isStopped == false)
         {

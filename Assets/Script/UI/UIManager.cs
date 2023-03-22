@@ -18,14 +18,15 @@ public class UIManager : Singleton<UIManager>
 
     #region Competence
     
-    [SerializeField] private float _coldDown = 5f;
-
     [SerializeField] private Image _shadowStepImage = null;
-    [SerializeField] private float _shadowStepTimer = 0.0f;
-    private float _activeSkill = 0;
-    
+    [SerializeField] private Image _biteImage = null;
+    [SerializeField] private Image _clawImage = null;
 
-    [SerializeField] private float _skillCooldownDelay = 1f;
+    [SerializeField] private float _coldDownShadowStep = 5f;
+    [SerializeField] private float _shadowStepTimer = 0f;
+    private float _activeShadowStep = 2f;
+
+    [SerializeField] private float _skillCooldownDelay = 0.2f;
 
     [SerializeField] private float _alphaShadowStepTimer = 0f;
     [SerializeField] private float _alphaBiteTimer = 0f;
@@ -34,12 +35,6 @@ public class UIManager : Singleton<UIManager>
     private bool _isShadowStepActive = false;
     private bool _isBiteActive = false;
     private bool _isClawActive = false;
-
-    [SerializeField] private Image _morsureImage = null;
-    private bool _isMorsureCast = false;
-
-    [SerializeField] private Image _griffureImage = null;
-    private bool _isGriffureCast = false;
 
     #endregion Competence
     #endregion Attributs
@@ -73,26 +68,25 @@ public class UIManager : Singleton<UIManager>
         get => _shadowStepImage;
         set => _shadowStepImage = value;
     }
+    public Image BiteImage
+    {
+        get => _biteImage;
+        set => _biteImage = value;
+    }
+    public Image ClawImage
+    {
+        get => _clawImage;
+        set => _clawImage = value;
+    }
+
+    #endregion UI Competence
+
     public float ShadowStepTimer
     {
         get => _shadowStepTimer;
-        set => _shadowStepTimer = Mathf.Clamp(value, 0, _coldDown);
+        set => _shadowStepTimer = Mathf.Clamp(value, 0, _coldDownShadowStep);
 
     }
-    #endregion UI Competence
-
-    public Image MorsureImage
-    {
-        get => _morsureImage;
-        set => _morsureImage = value;
-    }
-
-    public Image GriffureImage
-    {
-        get => _griffureImage;
-        set => _griffureImage = value;
-    }
-    #endregion Properties
 
     public float AlphaShadowStepTimer
     {
@@ -109,6 +103,7 @@ public class UIManager : Singleton<UIManager>
         get => _alphaClawTimer;
         set => _alphaClawTimer = value;
     }
+
     public bool IsShadowStepSkillActive
     {
         get => _isShadowStepActive;
@@ -124,6 +119,8 @@ public class UIManager : Singleton<UIManager>
         get => _isClawActive;
         set => _isClawActive = value;
     }
+
+    #endregion Properties
 
     private void Update()
     {
@@ -193,37 +190,37 @@ public class UIManager : Singleton<UIManager>
     {
         if (isOnCd)
         {
-            MorsureImage.color = new Color(MorsureImage.color.r, MorsureImage.color.g, MorsureImage.color.b, 0.5f);
+            BiteImage.color = new Color(BiteImage.color.r, BiteImage.color.g, BiteImage.color.b, 0.5f);
         }
         else
         {
-            MorsureImage.color = new Color(MorsureImage.color.r, MorsureImage.color.g, MorsureImage.color.b, 1f);
+            BiteImage.color = new Color(BiteImage.color.r, BiteImage.color.g, BiteImage.color.b, 1f);
         }
     }
     public void ToggleClawSkillButton(bool isOnCd)
     {
         if (isOnCd)
         {
-            GriffureImage.color = new Color(GriffureImage.color.r, GriffureImage.color.g, GriffureImage.color.b, 0.5f);
+            ClawImage.color = new Color(ClawImage.color.r, ClawImage.color.g, ClawImage.color.b, 0.5f);
         }
         else
         {
-            GriffureImage.color = new Color(GriffureImage.color.r, GriffureImage.color.g, GriffureImage.color.b, 1f);
+            ClawImage.color = new Color(ClawImage.color.r, ClawImage.color.g, ClawImage.color.b, 1f);
         }
     }
 
-    public void CoolDownShadowStep()
+    private void CoolDownShadowStep()
     {
         if (IsShadowStepSkillActive == true)
         {
             ShadowStepTimer += Time.deltaTime;
 
-            if (ShadowStepTimer > _activeSkill)
+            if (ShadowStepTimer > _activeShadowStep)
             {
                 CharacterManager.Instance.IsCanBeSee = true;
                 CharacterManager.Instance.VFXOmbremarche.SetActive(false);
 
-                if (ShadowStepTimer >= _coldDown)
+                if (ShadowStepTimer >= _coldDownShadowStep)
                 {
                     ToggleShadowStepButton(false);
                     StopShadowStepCd();
@@ -236,7 +233,7 @@ public class UIManager : Singleton<UIManager>
         }
        
     }
-    public void CooldownBiteControl()
+    private void CooldownBiteControl()
     {
         if (IsBiteSkillActive == true)
         {
@@ -249,10 +246,9 @@ public class UIManager : Singleton<UIManager>
             }
         }
     }
-
-    public void CooldownClawControl()
+    private void CooldownClawControl()
     {
-        if (IsBiteSkillActive == true)
+        if (IsClawSkillActive == true)
         {
             AlphaClawTimer += Time.deltaTime;
 
@@ -267,7 +263,7 @@ public class UIManager : Singleton<UIManager>
     private void StopShadowStepCd()
     {
         AlphaShadowStepTimer = 0;
-        IsBiteSkillActive = false;
+        IsClawSkillActive = false;
     }
     private void StopBiteCd()
     {
