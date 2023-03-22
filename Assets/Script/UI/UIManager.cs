@@ -186,7 +186,7 @@ public class UIManager : Singleton<UIManager>
         }
         else
         {
-            BiteImage.color = new Color(BiteImage.color.r, BiteImage.color.g, BiteImage.color.b, 1f);
+            BiteImage.color = new Color(BiteImage.color.r, BiteImage.color.g, BiteImage.color.b, 1f);          
         }
     }
     public void ToggleClawSkillButton(bool isOnCd)

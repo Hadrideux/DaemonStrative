@@ -6,6 +6,8 @@ public class CharacterManager : Singleton<CharacterManager>
 {
     [SerializeField] private CharacterConrtoller _controller = null;
     [SerializeField] private Camera _camera = null;
+    
+
     [SerializeField] private NavMeshAgent _agent = null;
 
     [SerializeField] private GameObject _collider = null;
@@ -62,7 +64,7 @@ public class CharacterManager : Singleton<CharacterManager>
     #endregion properties
 
     #region Methode
-    
+
     #region Player Action
     /// <summary>
     /// Fonction des action du joueur durant les différente phase de jeux
@@ -70,12 +72,12 @@ public class CharacterManager : Singleton<CharacterManager>
     public void BiteAction()
     {
         BloodAndFlesh();
-        
+
         PNJManager.Instance.KillVillager(false);
 
         UIManager.Instance.ToggleBiteSkillButton(true);
         UIManager.Instance.IsBiteSkillActive = true;
-    }
+    }   
     public void ClawAction()
     {
         BloodAndFlesh();
@@ -84,6 +86,7 @@ public class CharacterManager : Singleton<CharacterManager>
 
         UIManager.Instance.ToggleClawSkillButton(true);
         UIManager.Instance.IsClawSkillActive = true;
+        
     }
     public void ShadoStepAction()
     {
@@ -102,6 +105,6 @@ public class CharacterManager : Singleton<CharacterManager>
         if (_collider != null)
         Instantiate(SkillsVFX, PNJManager.Instance.VFXSpawner.transform);
     }
-
+          
     #endregion Methode;
 }

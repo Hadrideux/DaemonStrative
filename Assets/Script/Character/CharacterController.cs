@@ -17,6 +17,12 @@ public class CharacterConrtoller : MonoBehaviour
 
     [SerializeField] private AudioClip[] _skillsSFX = null;
 
+    [SerializeField] private GameObject virtualCam = null;
+    [SerializeField] private float animTimer = 0;
+    [SerializeField] private float animDelay = 5;
+    [SerializeField] private float timeCount = 0;
+    [SerializeField] private bool onActivation = false;
+
     #endregion Attributs
 
     public NavMeshAgent Agent
@@ -36,10 +42,14 @@ public class CharacterConrtoller : MonoBehaviour
 
         CharacterManager.Instance.Agent = Agent;
         CharacterManager.Instance.Camera = Camera;
+        
+
         CharacterManager.Instance.VFXOmbremarche = _VFXOmbremarche;
     }
     void Update()
-    {        
+    {
+        SwitchCam(animTimer, animDelay, virtualCam, onActivation);
+
         if (Input.GetMouseButton(1))
         {
             _characterMove.MovingAction();
@@ -51,6 +61,8 @@ public class CharacterConrtoller : MonoBehaviour
             _audioSource.PlayOneShot(_skillsSFX[0], 1f);
 
             CharacterManager.Instance.BiteAction();
+            onActivation= true;
+            timeCount = 0;
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha2))
@@ -59,6 +71,8 @@ public class CharacterConrtoller : MonoBehaviour
             _audioSource.PlayOneShot(_skillsSFX[1], 3f);
 
             CharacterManager.Instance.ClawAction();
+            onActivation = true;
+            timeCount = 0;
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha3))
@@ -98,7 +112,26 @@ public class CharacterConrtoller : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-       
+        if (other.CompareTag("PNJ"))
+        {
+            CharacterManager.Instance.Collider = null;
+        }
+    }
+
+    private void SwitchCam(float timeCount, float animDelay, GameObject virtualCam, bool onActivation)
+    {
+        animTimer = timeCount += Time.deltaTime;
+        Debug.Log(animTimer);
+
+        if (onActivation == true)
+        {
+            virtualCam.SetActive(true);
+        }
+        if (animTimer >= animDelay)
+        {
+            virtualCam.SetActive(false);
+            animTimer = 0;
+        }
     }
 
 }
