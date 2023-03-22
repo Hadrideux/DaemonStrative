@@ -858,9 +858,13 @@ MonoBehaviour:
   _pauseUI: {fileID: 337444143}
   _gameOverUI: {fileID: 279682135}
   _vignetShadowStep: {fileID: 0}
+  _vignetDetection: {fileID: 0}
   _animationShadowStep: {fileID: 0}
-  _fadeIn: {fileID: 7400000, guid: 40b04f718370aa8438880fc71506b2ff, type: 2}
-  _fadeOut: {fileID: 7400000, guid: d4dc64a05f860e4448f813cd5edc1c53, type: 2}
+  _fadeInShadowStep: {fileID: 0}
+  _fadeOutShadowStep: {fileID: 0}
+  _animationDetection: {fileID: 0}
+  _fadeInDetection: {fileID: 0}
+  _fadeOutDetection: {fileID: 0}
 --- !u!114 &424400059
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1004,6 +1008,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6549709111852446123, guid: 6176ab60aae01f54887ac1da213f6338, type: 3}
+      propertyPath: _camera
+      value: 
+      objectReference: {fileID: 392529647}
+    - target: {fileID: 6549709111852446123, guid: 6176ab60aae01f54887ac1da213f6338, type: 3}
+      propertyPath: virtualCam
+      value: 
+      objectReference: {fileID: 952621649}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1733,6 +1745,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1c961af22f3a88f4eb7d3d2fd664f443, type: 3}
+--- !u!1 &952621649 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5272227896598512372, guid: 1c961af22f3a88f4eb7d3d2fd664f443, type: 3}
+  m_PrefabInstance: {fileID: 952621648}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1010941528
 GameObject:
   m_ObjectHideFlags: 0

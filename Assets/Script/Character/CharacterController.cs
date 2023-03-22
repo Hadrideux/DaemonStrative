@@ -119,13 +119,11 @@ public class CharacterConrtoller : MonoBehaviour
     }
 
     private void SwitchCam(float timeCount, float animDelay, GameObject virtualCam, bool onActivation)
-    {
-        animTimer = timeCount += Time.deltaTime;
-        Debug.Log(animTimer);
-
+    {                
         if (onActivation == true)
         {
             virtualCam.SetActive(true);
+            animTimer = timeCount += Time.deltaTime;
         }
         if (animTimer >= animDelay)
         {
