@@ -9,7 +9,6 @@ public class PNJController : MonoBehaviour
 
     [SerializeField] private PNJController _controllerPNJ = null;
     [SerializeField] private PNJDetection _detectionPNJ = null;
-    //[SerializeField] private PNJMovement _pNJMovement = null;
     
     [SerializeField] private GameObject _characterCompFeedback = null;
     [SerializeField] private GameObject _body = null;
@@ -21,18 +20,11 @@ public class PNJController : MonoBehaviour
     [SerializeField] private float _VFXEndTimer = 1;
 
     private bool _isCanSeePlayer = false;
-    //[SerializeField] private Image _detectionGauge = null;
 
     #endregion Attributs
 
     #region Properties
         #region Controller
-    
-    public PNJController ControllerPNJ
-    {
-        get => _controllerPNJ;
-        set => _controllerPNJ = value;
-    }
     public PNJDetection DetectionPNJ
     {
         get => _detectionPNJ;
@@ -47,6 +39,7 @@ public class PNJController : MonoBehaviour
     */
 
     #endregion Controller
+
     /*
     public Image DetectionGauge
     {
@@ -102,25 +95,6 @@ public class PNJController : MonoBehaviour
         {
             _VFXDuration = 0;
         }
-        /*
-        if(IsCanSeePlayer == true && _detectionGauge != null) 
-        {
-            Detection();        
-        }
-        else if(IsCanSeePlayer == false && _detectionGauge != null) 
-        {
-            Undetecte();
-        }
-        */
     }
     #endregion Mono
-
-    private void Detection()
-    {
-        //DetectionGauge.fillAmount += DetectionPNJ.DetectionFeedBack / 2 * Time.deltaTime;
-    }
-    private void Undetecte()
-    {
-        //DetectionGauge.fillAmount -= DetectionPNJ.DetectionFeedBack / 2 * Time.deltaTime;
-    }
 }
