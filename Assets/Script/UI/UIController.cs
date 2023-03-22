@@ -10,6 +10,10 @@ public class UIController : MonoBehaviour
     [SerializeField] private GameObject _gameOverUI = null;
     [SerializeField] private GameObject _vignetShadowStep = null;
 
+    [SerializeField] private Animator _animationShadowStep = null;
+    [SerializeField] private AnimationClip _fadeIn = null;
+    [SerializeField] private AnimationClip _fadeOut = null;
+
     #endregion UI Menu
     #endregion Attributs
 
@@ -21,16 +25,13 @@ public class UIController : MonoBehaviour
         UIManager.Instance.Controller = this;
         UIManager.Instance.PauseUI = _pauseUI;
         UIManager.Instance.GameOverUI = _gameOverUI;
-        UIManager.Instance.VignetShadowStep = _vignetShadowStep;
+
+       
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            UIManager.Instance.pauseGame();
-        }
+        CastVignetShadowStep();
     }
 
     #endregion Mono
@@ -39,16 +40,27 @@ public class UIController : MonoBehaviour
     {
         UIManager.Instance.ResumeGame();
     }
-
     public void QuitGameInstance()
     {
         UIManager.Instance.QuitGame();
     }
-
     public void ReloadScceneInstance()
     {
         UIManager.Instance.ReloadScene();
     }
 
-
+    private void CastVignetShadowStep()
+    {
+        if (UIManager.Instance.IsShadowStepSkillActive == true && UIManager.Instance.ShadowStepTimer <= 2f)
+        {
+            _vignetShadowStep.SetActive(true);
+            _animationShadowStep.SetTrigger("FadeIn");
+            _animationShadowStep.SetTrigger("FadeOut");
+        }
+        else
+        {
+            _vignetShadowStep.SetActive(false);
+        }
+        
+    }
 }

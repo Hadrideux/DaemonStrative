@@ -61,7 +61,7 @@ public class CharacterConrtoller : MonoBehaviour
             CharacterManager.Instance.ClawAction();
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha3) && WitchManager.Instance.IsQuestOmbreMarche == true)
+        if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             CharacterManager.Instance.ShadoStepAction();
         }
@@ -79,7 +79,11 @@ public class CharacterConrtoller : MonoBehaviour
         {
             WitchManager.Instance.IsQuestOmbreMarche = true;
         }
-                
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            UIManager.Instance.pauseGame();
+        }
+
         //Vector3 destination = Input.GetAxis("Horizontal") * transform.right + Input.GetAxis("Vertical") * transform.forward; //0f <> 1f
         //if(Input.GetButtonDown("Fire1")
     }

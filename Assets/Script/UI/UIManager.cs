@@ -6,18 +6,15 @@ using UnityEngine.SceneManagement;
 public class UIManager : Singleton<UIManager>
 {
     #region Attributs
-
     #region UI Menu
 
     [SerializeField] private UIController _controller = null;
 
     [SerializeField] private GameObject _pauseUI = null;
     [SerializeField] private GameObject _gameOverUI = null;
+
     #endregion UI Menu
-
     #region Competence
-
-    [SerializeField] private GameObject _vignetShadowStep = null;
 
     [SerializeField] private Image _shadowStepImage = null;
     [SerializeField] private Image _biteImage = null;
@@ -63,11 +60,6 @@ public class UIManager : Singleton<UIManager>
     #endregion UI Menu
 
     #region UI Competence
-    public GameObject VignetShadowStep
-    {
-        get => _vignetShadowStep;
-        set => _vignetShadowStep = value;
-    }
     public Image ShadowStepImage
     {
         get => _shadowStepImage;
@@ -129,11 +121,7 @@ public class UIManager : Singleton<UIManager>
 
     private void Update()
     {
-        if (WitchManager.Instance.IsQuestOmbreMarche == true)
-        {
-            CoolDownShadowStep();
-        }
-        
+        CoolDownShadowStep();
         CooldownBiteControl();
         CooldownClawControl();
     }
@@ -179,7 +167,6 @@ public class UIManager : Singleton<UIManager>
 
     #region Competence
 
-
     public void ToggleShadowStepButton(bool isOnCd)
     {
         if (isOnCd)
@@ -216,7 +203,7 @@ public class UIManager : Singleton<UIManager>
 
     private void CoolDownShadowStep()
     {
-        if (IsShadowStepSkillActive == true)
+        if (IsShadowStepSkillActive == true && ShadowStepTimer <= _coldDownShadowStep)
         {
             ShadowStepTimer += Time.deltaTime;
 
@@ -224,6 +211,7 @@ public class UIManager : Singleton<UIManager>
             {
                 CharacterManager.Instance.IsCanBeSee = true;
                 CharacterManager.Instance.VFXOmbremarche.SetActive(false);
+                
 
                 if (ShadowStepTimer >= _coldDownShadowStep)
                 {
@@ -235,8 +223,7 @@ public class UIManager : Singleton<UIManager>
             {
                 CharacterManager.Instance.VFXOmbremarche.SetActive(true);
             }
-        }
-       
+        }       
     }
     private void CooldownBiteControl()
     {
@@ -268,7 +255,8 @@ public class UIManager : Singleton<UIManager>
     private void StopShadowStepCd()
     {
         AlphaShadowStepTimer = 0;
-        IsClawSkillActive = false;
+        ShadowStepTimer = 0;
+        IsShadowStepSkillActive = false;
     }
     private void StopBiteCd()
     {
