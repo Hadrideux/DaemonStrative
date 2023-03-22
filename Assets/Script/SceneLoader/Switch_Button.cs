@@ -21,8 +21,8 @@ public class Switch_Button : MonoBehaviour
     {
         if (_isGoWitchScene)
         {
-            _blackFade.SetActive(true);
-            _blackFadeAnimation.Play("Fade In");
+            /*_blackFade.SetActive(true);
+            _blackFadeAnimation.Play("Fade In");*/
             GameLoaderManager.Instance.LoadWitchScene();
         }
         if (_isGoGameScene)
