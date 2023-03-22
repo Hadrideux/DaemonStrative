@@ -42,7 +42,7 @@ public class CharacterConrtoller : MonoBehaviour
     {        
         if (Input.GetMouseButton(1))
         {
-            _characterMove.Moving();
+            _characterMove.MovingAction();
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha1))
@@ -50,8 +50,7 @@ public class CharacterConrtoller : MonoBehaviour
             CharacterManager.Instance.SkillsVFX = _typeVFX[0];
             _audioSource.PlayOneShot(_skillsSFX[0], 1f);
 
-            UIManager.Instance.IsMorsureCast = true;
-            CharacterManager.Instance.Morsure();
+            CharacterManager.Instance.BiteAction();
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha2))
@@ -59,13 +58,12 @@ public class CharacterConrtoller : MonoBehaviour
             CharacterManager.Instance.SkillsVFX = _typeVFX[1]; 
             _audioSource.PlayOneShot(_skillsSFX[1], 3f);
 
-            UIManager.Instance.IsGriffureCast = true;
-            CharacterManager.Instance.Griffe();
+            CharacterManager.Instance.ClawAction();
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha3) && WitchManager.Instance.IsQuestOmbreMarche == true)
         {
-            CharacterManager.Instance.Shadowalk();
+            CharacterManager.Instance.ShadoStepAction();
         }
 
         if (Input.GetKeyDown(KeyCode.Space))

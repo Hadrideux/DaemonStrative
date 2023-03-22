@@ -80,7 +80,7 @@ public class PNJManager : Singleton<PNJManager>
         
     }
     public void DestroyAll()
-    {
+    { 
         Destroy(CharacterManager.Instance.Collider);
         IsDead = false;
     }
