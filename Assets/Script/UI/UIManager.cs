@@ -6,7 +6,6 @@ using System;
 
 public class UIManager : Singleton<UIManager>
 {
-
     #region Attributs
 
     #region UI Menu
@@ -25,8 +24,10 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] private float _ombreMarcheTimer = 0.0f;
     private float _activeSkill = 0;
 
-    [SerializeField] private float _alphaTimer = 0f;
-    [SerializeField] private float _alphaSkill = 1f;
+    [SerializeField] private float _biteCooldownDelay = 1f;
+    [SerializeField] private float _clawCooldownDelay = 1f;
+    [SerializeField] private float _alphaBiteTimer = 0f;
+    [SerializeField] private float _alphaClawTimer = 0f;
 
     [SerializeField] private Image _morsureImage = null;
     private bool _isMorsureCast = false;
@@ -113,12 +114,22 @@ public class UIManager : Singleton<UIManager>
         get => _isGriffureCast;
         set => _isGriffureCast = value;
     }
-    public float AlphaTimer
+    public float AlphaBiteTimer
     {
-        get => _alphaTimer;
-        set => _alphaTimer = value;
+        get => _alphaBiteTimer;
+        set => _alphaBiteTimer = value;
     }
-    public bool IsActive
+    public float AlphaClawTimer
+    {
+        get => _alphaClawTimer;
+        set => _alphaClawTimer = value;
+    }
+    public bool IsBiteSkillActive
+    {
+        get => _isActive;
+        set => _isActive = value;
+    }
+    public bool IsClawSkillActive
     {
         get => _isActive;
         set => _isActive = value;
@@ -130,7 +141,8 @@ public class UIManager : Singleton<UIManager>
             OmbreMarcheTime();
         }
 
-        AlphaSkills();
+        CooldownBiteControl();
+        CooldownClawControl();
     }
 
     #region Methode
@@ -198,46 +210,70 @@ public class UIManager : Singleton<UIManager>
         }
     }
 
-    public void AlphaSkills()
+    public void ToggleBiteSkillButton(bool isOnCd)
     {
-        if (IsActive == true)
+        if (isOnCd)
         {
-            AlphaTimer += Time.deltaTime;
+            MorsureImage.color = new Color(MorsureImage.color.r, MorsureImage.color.g, MorsureImage.color.b, 0.5f);
+        }
+        else
+        {
+            MorsureImage.color = new Color(MorsureImage.color.r, MorsureImage.color.g, MorsureImage.color.b, 1f);
+        }
+    }
+
+    public void ToggleClawSkillButton(bool isOnCd)
+    {
+        if (isOnCd)
+        {
+            GriffureImage.color = new Color(MorsureImage.color.r, MorsureImage.color.g, MorsureImage.color.b, 0.5f);
+        }
+        else
+        {
+            GriffureImage.color = new Color(MorsureImage.color.r, MorsureImage.color.g, MorsureImage.color.b, 1f);
+        }
+    }
+
+    public void CooldownBiteControl()
+    {
+        if (IsBiteSkillActive == true)
+        {
+            AlphaBiteTimer += Time.deltaTime;
 
 
-            switch (IsMorsureCast)
+            if (AlphaBiteTimer >= _biteCooldownDelay)
             {
-                case true:
-                    MorsureImage.color = new Color(MorsureImage.color.r, MorsureImage.color.g, MorsureImage.color.b, 0.5f);
-                    break;
-                case false:
-                    if (AlphaTimer > _alphaSkill)
-                    {
-                        MorsureImage.color = new Color(MorsureImage.color.r, MorsureImage.color.g, MorsureImage.color.b, 1f);
-                        ActiveAlpha();
-                    }
-                    break;
-            }
-            switch (IsGriffureCast)
-            {
-                case true:
-                    GriffureImage.color = new Color(GriffureImage.color.r, GriffureImage.color.g, GriffureImage.color.b, 0.5f);
-                    break;
-                case false:
-                    if (AlphaTimer > _alphaSkill)
-                    {
-                        GriffureImage.color = new Color(GriffureImage.color.r, GriffureImage.color.g, GriffureImage.color.b, 1f);
-                        ActiveAlpha();
-                    }
-                    break;
+                ToggleBiteSkillButton(false);
+                StopBiteCd();
             }
         }
     }
 
-    private void ActiveAlpha()
+    public void CooldownClawControl()
     {
-        AlphaTimer = 0;
-        IsActive = false;
+        if (IsBiteSkillActive == true)
+        {
+            AlphaClawTimer += Time.deltaTime;
+
+
+            if (AlphaClawTimer >= _clawCooldownDelay)
+            {
+                ToggleClawSkillButton(false);
+                StopClawCd();
+            }
+        }
+    }
+
+    private void StopBiteCd()
+    {
+        AlphaBiteTimer = 0;
+        IsBiteSkillActive = false;
+    }
+
+    private void StopClawCd()
+    {
+        AlphaClawTimer = 0;
+        IsClawSkillActive = false;
     }
     #endregion Competence
     #endregion Methode
