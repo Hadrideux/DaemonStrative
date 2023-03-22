@@ -50,7 +50,7 @@ public class CharacterConrtoller : MonoBehaviour
             CharacterManager.Instance.SkillsVFX = _typeVFX[0];
             _audioSource.PlayOneShot(_skillsSFX[0], 1f);
 
-            UIManager.Instance.IsMorsureCast = true;
+            //UIManager.Instance.IsMorsureCast = true;
             CharacterManager.Instance.Morsure();
         }
 
@@ -59,7 +59,7 @@ public class CharacterConrtoller : MonoBehaviour
             CharacterManager.Instance.SkillsVFX = _typeVFX[1]; 
             _audioSource.PlayOneShot(_skillsSFX[1], 3f);
 
-            UIManager.Instance.IsGriffureCast = true;
+            //UIManager.Instance.IsGriffureCast = true;
             CharacterManager.Instance.Griffe();
         }
 

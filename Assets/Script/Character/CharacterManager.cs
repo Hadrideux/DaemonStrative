@@ -75,7 +75,6 @@ public class CharacterManager : Singleton<CharacterManager>
 
         UIManager.Instance.ToggleBiteSkillButton(true);
         UIManager.Instance.IsBiteSkillActive = true;
-        UIManager.Instance.IsMorsureCast = false;
     }
     public void Griffe()
     {
@@ -85,12 +84,11 @@ public class CharacterManager : Singleton<CharacterManager>
 
         UIManager.Instance.ToggleClawSkillButton(true);
         UIManager.Instance.IsClawSkillActive = true;
-        UIManager.Instance.IsGriffureCast = false;
     }
     public void Shadowalk()
     {
-        UIManager.Instance.IsCast = true;
-        UIManager.Instance.OmbreMarcheTime();
+        UIManager.Instance.ToggleShadowStepButton(true);
+        UIManager.Instance.IsShadowStepSkillActive = true;
         
         IsCanBeSee = false;
 
