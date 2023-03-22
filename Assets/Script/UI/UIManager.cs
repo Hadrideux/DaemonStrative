@@ -2,6 +2,7 @@ using Engine.Utils;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System;
 
 public class UIManager : Singleton<UIManager>
 {
@@ -24,6 +25,9 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] private float _ombreMarcheTimer = 0.0f;
     private float _activeSkill = 0;
 
+    [SerializeField] private float _alphaTimer = 0f;
+    [SerializeField] private float _alphaSkill = 1f;
+
     [SerializeField] private Image _morsureImage = null;
     private bool _isMorsureCast = false;
 
@@ -32,6 +36,7 @@ public class UIManager : Singleton<UIManager>
 
     #endregion Competence
 
+    [SerializeField] private bool _isActive = false;
     [SerializeField] private bool _isCast = false;
 
     #endregion Attributs
@@ -108,13 +113,24 @@ public class UIManager : Singleton<UIManager>
         get => _isGriffureCast;
         set => _isGriffureCast = value;
     }
-
+    public float AlphaTimer
+    {
+        get => _alphaTimer;
+        set => _alphaTimer = value;
+    }
+    public bool IsActive
+    {
+        get => _isActive;
+        set => _isActive = value;
+    }
     private void Update()
     {
         if (OmbreMarcheTimer <= _coldDown && WitchManager.Instance.IsQuestOmbreMarche == true)
         {
             OmbreMarcheTime();
         }
+
+        AlphaSkills();
     }
 
     #region Methode
@@ -180,32 +196,49 @@ public class UIManager : Singleton<UIManager>
         {
             CharacterManager.Instance.VFXOmbremarche.SetActive(true);
         }
-
-        AlphaSkills();
     }
 
     public void AlphaSkills()
     {
-        switch (IsMorsureCast)
+        if (IsActive == true)
         {
-            case true:
-                MorsureImage.color = new Color(MorsureImage.color.r, MorsureImage.color.g, MorsureImage.color.b, 0.5f);
-                break;
-            case false:
-                MorsureImage.color = new Color(MorsureImage.color.r, MorsureImage.color.g, MorsureImage.color.b, 1f);
-                break;
-        }
-        switch (IsGriffureCast)
-        {
-            case true:
-                GriffureImage.color = new Color(GriffureImage.color.r, GriffureImage.color.g, GriffureImage.color.b, 0.5f);
-                break;
-            case false:
-                GriffureImage.color = new Color(GriffureImage.color.r, GriffureImage.color.g, GriffureImage.color.b, 1f);
-                break;
+            AlphaTimer += Time.deltaTime;
+
+
+            switch (IsMorsureCast)
+            {
+                case true:
+                    MorsureImage.color = new Color(MorsureImage.color.r, MorsureImage.color.g, MorsureImage.color.b, 0.5f);
+                    break;
+                case false:
+                    if (AlphaTimer > _alphaSkill)
+                    {
+                        MorsureImage.color = new Color(MorsureImage.color.r, MorsureImage.color.g, MorsureImage.color.b, 1f);
+                        ActiveAlpha();
+                    }
+                    break;
+            }
+            switch (IsGriffureCast)
+            {
+                case true:
+                    GriffureImage.color = new Color(GriffureImage.color.r, GriffureImage.color.g, GriffureImage.color.b, 0.5f);
+                    break;
+                case false:
+                    if (AlphaTimer > _alphaSkill)
+                    {
+                        GriffureImage.color = new Color(GriffureImage.color.r, GriffureImage.color.g, GriffureImage.color.b, 1f);
+                        ActiveAlpha();
+                    }
+                    break;
+            }
         }
     }
 
+    private void ActiveAlpha()
+    {
+        AlphaTimer = 0;
+        IsActive = false;
+    }
     #endregion Competence
     #endregion Methode
 }
