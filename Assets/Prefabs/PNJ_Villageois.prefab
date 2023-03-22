@@ -1048,7 +1048,7 @@ MonoBehaviour:
   _PNJVillager: {fileID: 2072425365772486016}
   _DialogueController: {fileID: 929958974762694482}
   _body: {fileID: 1025556816027518734}
-  _itemData: {fileID: 0}
+  _itemData: {fileID: 11400000, guid: e204b99a137969648892dca845744744, type: 2}
   _VFXSpawnPoint: {fileID: 5898663854434335352}
   _VFXEndTimer: 1
   _characterCompFeedback: {fileID: 739838098914350114}

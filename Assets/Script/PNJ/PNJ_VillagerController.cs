@@ -48,9 +48,10 @@ public class PNJ_VillagerController : MonoBehaviour
             PNJManager.Instance.VFXSpawner = _VFXSpawnPoint;
             PNJManager.Instance.Body = _body;
 
-            if (VillagerController._characterCompFeedback != null)
+            if (VillagerController._characterCompFeedback != null && _dialogueButton.gameObject != null)
             {
-                _characterCompFeedback.SetActive(true);               
+                _characterCompFeedback.SetActive(true);   
+                _dialogueButton.gameObject.SetActive(true);
             }
         }            
     }
@@ -61,9 +62,10 @@ public class PNJ_VillagerController : MonoBehaviour
         PNJManager.Instance.VFXSpawner = null;
         PNJManager.Instance.Body = null;
 
-        if (VillagerController._characterCompFeedback != null)
+        if (VillagerController._characterCompFeedback != null && _dialogueButton.gameObject != null)
         {
-            _characterCompFeedback.SetActive(false);            
+            _characterCompFeedback.SetActive(false);
+            _dialogueButton.gameObject.SetActive(false);
         }
 
     }
