@@ -276,7 +276,7 @@ MonoBehaviour:
   _typeVFX:
   - {fileID: 1000013355911406, guid: d32aa916f50cac94db11e6f19821a58f, type: 3}
   - {fileID: 1834194341294532, guid: d5f26854a8904624c8073139cd2eb346, type: 3}
-  _VFXOmbremarche: {fileID: 0}
+  _VFXOmbremarche: {fileID: 100006, guid: 1fc7dfffb398d0b48b056795e222cbc4, type: 3}
   _skillsSFX:
   - {fileID: 8300000, guid: 74e3b70ea94f21242b6e4ae68eb2db31, type: 3}
   - {fileID: 8300000, guid: 9aa315675f2a0604fb2545d08d953549, type: 3}
