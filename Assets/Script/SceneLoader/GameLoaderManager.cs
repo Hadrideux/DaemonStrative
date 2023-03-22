@@ -7,18 +7,17 @@ public class GameLoaderManager : Singleton<GameLoaderManager>
     // Start is called before the first frame update
     void Start()
     {
-        DontDestroyOnLoad(this);
-        SceneManager.LoadScene("TestScene");
+        SceneManager.LoadScene("WitchScene");
     }
 
     public void LoadWitchScene()
     {
-        SceneManager.LoadScene("WitchScene", LoadSceneMode.Single);
+        SceneManager.LoadScene("WitchScene");
     }
 
     public void LoadGameScene()
     {
         Time.timeScale = 1.0f;
-        SceneManager.LoadScene("TestScene", LoadSceneMode.Single);        
+        SceneManager.LoadScene("GameScene");        
     }
 }
