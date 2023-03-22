@@ -124,18 +124,4 @@ public class DialogueManager : Singleton<DialogueManager>
         LeanTween.textAlpha(MessageText.rectTransform, 0, 0);
         LeanTween.textAlpha(MessageText.rectTransform, 1, 0.5f);
     }
-    private void HideButton()
-    {
-        if (IsDialogueActive == true) 
-        {
-            
-            VillagerController.DialogueButton.gameObject.SetActive(false);
-                       
-        }
-        else if (IsDialogueActive == false) 
-        {
-            VillagerController.DialogueButton.gameObject.SetActive(true);
-            
-        }
-    }
 }

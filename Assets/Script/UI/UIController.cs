@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIController : MonoBehaviour
 {
@@ -7,6 +8,7 @@ public class UIController : MonoBehaviour
 
     [SerializeField] private GameObject _pauseUI = null;
     [SerializeField] private GameObject _gameOverUI = null;
+    [SerializeField] private GameObject _vignetShadowStep = null;
 
     #endregion UI Menu
     #endregion Attributs
@@ -19,6 +21,7 @@ public class UIController : MonoBehaviour
         UIManager.Instance.Controller = this;
         UIManager.Instance.PauseUI = _pauseUI;
         UIManager.Instance.GameOverUI = _gameOverUI;
+        UIManager.Instance.VignetShadowStep = _vignetShadowStep;
     }
 
     // Update is called once per frame
@@ -46,4 +49,6 @@ public class UIController : MonoBehaviour
     {
         UIManager.Instance.ReloadScene();
     }
+
+
 }
