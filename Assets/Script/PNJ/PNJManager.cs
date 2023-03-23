@@ -20,7 +20,7 @@ public class PNJManager : Singleton<PNJManager>
     [SerializeField] private bool _isDying = false;
 
     #region Properties
-    /*
+    
     public PNJController ControllerPNJ
     {
         get => _controller;
@@ -36,7 +36,6 @@ public class PNJManager : Singleton<PNJManager>
         get => _Dialogue;
         set => _Dialogue = value;
     }
-    */
     public GameObject Body
     {
         get => _body;
