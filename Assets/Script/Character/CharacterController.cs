@@ -104,6 +104,10 @@ public class CharacterConrtoller : MonoBehaviour
         {
             UIManager.Instance.pauseGame();
         }
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            InventoryManager.Instance.AddItem();
+        }
 
         //Vector3 destination = Input.GetAxis("Horizontal") * transform.right + Input.GetAxis("Vertical") * transform.forward; //0f <> 1f
         //if(Input.GetButtonDown("Fire1")
