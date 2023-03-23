@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 262.33694, g: 325.04984, b: 430.2193, a: 1}
+  m_IndirectSpecularColor: {r: 15.484835, g: 17.55826, b: 55.380013, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -167,6 +167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 462233d272bf34c449d226e430c29750, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _itemGet: {fileID: 0}
   _amountBlood: 0
   _amountSkull: 0
 --- !u!1 &400180201
