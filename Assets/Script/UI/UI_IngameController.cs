@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -29,14 +26,9 @@ public class UI_IngameController : MonoBehaviour
 
     #region Blood
 
-    [SerializeField] private Image _bloodImage = null;
+    [SerializeField] private Image _fillBlood = null;
     [SerializeField] private TextMeshProUGUI _bloodText = null;
-
     [SerializeField] private int _maxBlood = 0;
-    [SerializeField] private RectTransform _fillBlood = null;
-
-    private Vector3 _startPos = Vector3.zero;
-    private Vector3 _endPos = Vector3.zero;
 
     #endregion Blood
 
@@ -47,6 +39,7 @@ public class UI_IngameController : MonoBehaviour
     private int _index = 0;
 
     #endregion Suspicious
+
     #endregion Attributs
 
     #region MONO
@@ -54,19 +47,17 @@ public class UI_IngameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _startPos.y = -_fillBlood.rect.width;
-
-        UIManager.Instance.OmbreMarcheImage = _ombreMarcheImage;
-        UIManager.Instance.MorsureImage = _morsureImage;
-        UIManager.Instance.GriffureImage = _griffureImage;
+        UIManager.Instance.ShadowStepImage = _ombreMarcheImage;
+        UIManager.Instance.BiteImage = _morsureImage;
+        UIManager.Instance.ClawImage = _griffureImage;
     }
 
     // Update is called once per frame
     void Update()
     {
-        _ombreMarcheText.text = UIManager.Instance.OmbreMarcheTimer.ToString("0");
+        _ombreMarcheText.text = UIManager.Instance.ShadowStepTimer.ToString("0");
 
-        _bloodText.text = InventoryManager.Instance.AmountBlood.ToString();
+        _bloodText.text = Mathf.Clamp(InventoryManager.Instance.AmountBlood, 0, _maxBlood).ToString();
         _skullText.text = InventoryManager.Instance.AmountSkull.ToString();    
 
         if (_skullText.text == "0")
@@ -75,8 +66,7 @@ public class UI_IngameController : MonoBehaviour
         }
         else
         {
-            _skullImage.color = new Color(_skullImage.color.r, _skullImage.color.g, _skullImage.color.b, 1f); ;
-
+            _skullImage.color = new Color(_skullImage.color.r, _skullImage.color.g, _skullImage.color.b, 1f);
         }
 
         UpdateBlood();
@@ -87,8 +77,7 @@ public class UI_IngameController : MonoBehaviour
 
     public void UpdateBlood()
     {
-        float perc = (float)InventoryManager.Instance.AmountBlood / (float)_maxBlood;
-        _fillBlood.localPosition = Vector3.Lerp(_startPos, _endPos, perc);
+        _fillBlood.fillAmount += InventoryManager.Instance.AmountBlood / _maxBlood;
     }
 
     public void UpdateSuspicious()

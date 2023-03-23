@@ -14,7 +14,9 @@ GameObject:
   - component: {fileID: 3190261278684252814}
   - component: {fileID: 1398927481679743896}
   - component: {fileID: 3602215528309420423}
+  - component: {fileID: 5014584302978902075}
   - component: {fileID: 6549709111852446123}
+  - component: {fileID: 6549310192447595053}
   m_Layer: 7
   m_Name: Character
   m_TagString: Player
@@ -106,7 +108,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 2.5
+  m_Radius: 1.5
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
@@ -159,6 +161,102 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!82 &5014584302978902075
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3848892102310061311}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!114 &6549709111852446123
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -171,10 +269,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 584fbed43152d1642b13cb3680c120c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _characterMove: {fileID: 6549310192447595053}
   _agent: {fileID: 3602215528309420423}
   _camera: {fileID: 0}
-  _VFXType:
+  _audioSource: {fileID: 5014584302978902075}
+  _typeVFX:
   - {fileID: 1000013355911406, guid: d32aa916f50cac94db11e6f19821a58f, type: 3}
   - {fileID: 1834194341294532, guid: d5f26854a8904624c8073139cd2eb346, type: 3}
-  _VFXOmbremarche: {fileID: 0}
-  _VFXHitPoint: {fileID: 100010, guid: 4599d7e0ab9766c47bd8e1d46453eb2a, type: 3}
+  _VFXOmbremarche: {fileID: 100006, guid: 1fc7dfffb398d0b48b056795e222cbc4, type: 3}
+  _skillsSFX:
+  - {fileID: 8300000, guid: 74e3b70ea94f21242b6e4ae68eb2db31, type: 3}
+  - {fileID: 8300000, guid: 9aa315675f2a0604fb2545d08d953549, type: 3}
+  virtualCam: {fileID: 0}
+  animTimer: 0
+  animDelay: 5
+  onActivation: 0
+--- !u!114 &6549310192447595053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3848892102310061311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c244bb13e6c76c148894b660cde93727, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _characterController: {fileID: 6549709111852446123}
+  _nacPointVFX: {fileID: 100010, guid: 4599d7e0ab9766c47bd8e1d46453eb2a, type: 3}

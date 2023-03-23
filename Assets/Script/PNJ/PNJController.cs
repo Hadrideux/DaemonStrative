@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,39 +7,59 @@ public class PNJController : MonoBehaviour
 
     #region Attributs
 
-    [SerializeField] private PNJController _pNJController = null;
-    [SerializeField] private PNJDetection _pNJDetection = null;
+    [SerializeField] private PNJController _controllerPNJ = null;
+    [SerializeField] private PNJDetection _detectionPNJ = null;
+    
+    [SerializeField] private GameObject _characterCompFeedback = null;
     [SerializeField] private GameObject _body = null;
-    
+
     [SerializeField] private ItemData _itemData = null;
-    
+
     [SerializeField] private GameObject _VFXSpawnPoint = null;
     private float _VFXDuration = 0;
     [SerializeField] private float _VFXEndTimer = 1;
-    
-        [SerializeField] private Image _detectionGauge= null;
-    
+
+    private bool _isCanSeePlayer = false;
+
     #endregion Attributs
-    
-    public PNJController ControllerPNJ
-    {
-        get => _pNJController;
-        set => _pNJController = value;
-    }
+
+    #region Properties
+        #region Controller
+    /*
     public PNJDetection DetectionPNJ
     {
-        get => _pNJDetection;
-        set => _pNJDetection = value;
+        get => _detectionPNJ;
+        set => _detectionPNJ = value;
     }
-   
+    public PNJMovement MovementPNJ
+    {
+        get => _pNJMovement;
+        set => _pNJMovement = value;
+    }
+    */
+
+    #endregion Controller
+
+    /*
     public Image DetectionGauge
     {
         get => _detectionGauge;
         set => _detectionGauge = value;
     }
+    */
+    public bool IsCanSeePlayer
+    {
+        get => _isCanSeePlayer;
+        set => _isCanSeePlayer = value;
+    }
+
+    #endregion Properties
 
     #region Mono
 
+    private void Start()
+    {
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player")) 
@@ -50,7 +67,19 @@ public class PNJController : MonoBehaviour
             PNJManager.Instance.ItemGet = _itemData;
             PNJManager.Instance.VFXSpawner = _VFXSpawnPoint;
             PNJManager.Instance.Body = _body;
-        }            
+
+            _characterCompFeedback.SetActive(true);
+        }
+    }
+
+    private void OnTriggerExit(Collider other) 
+    {
+        PNJManager.Instance.ItemGet = null;
+        PNJManager.Instance.VFXSpawner = null;
+        PNJManager.Instance.Body = null;
+
+        _characterCompFeedback.SetActive(false);
+
     }
 
     private void Update()
@@ -69,25 +98,6 @@ public class PNJController : MonoBehaviour
         {
             _VFXDuration = 0;
         }
-
-        if(DetectionPNJ.IsCanSeePlayer == true) 
-        {
-            Detection();        
-        }
-        else if(DetectionPNJ.IsCanSeePlayer == false)
-        {
-            Undetecte();
-        }
     }
     #endregion Mono
-
-    private void Detection()
-    {
-        DetectionGauge.fillAmount += DetectionPNJ.DetectionFeedBack / 2*Time.deltaTime;           
-    }
-
-    private void Undetecte()
-    {
-        DetectionGauge.fillAmount -= DetectionPNJ.DetectionFeedBack / 2 * Time.deltaTime;
-    }
 }

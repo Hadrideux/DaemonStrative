@@ -1,6 +1,4 @@
 using Engine.Utils;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -8,18 +6,17 @@ public class CharacterManager : Singleton<CharacterManager>
 {
     [SerializeField] private CharacterConrtoller _controller = null;
     [SerializeField] private Camera _camera = null;
+    
+
     [SerializeField] private NavMeshAgent _agent = null;
 
     [SerializeField] private GameObject _collider = null;
-    [SerializeField] private GameObject _body = null;
     [SerializeField] private bool _isCanBeSee = true;
 
-    [SerializeField] private GameObject _VFXSpawnPoint = null;
-    [SerializeField] private GameObject _VFXSkills = null;
+    [SerializeField] private GameObject _skillsVFX = null;
+    [SerializeField] private AudioClip _skillsSFX = null;
+
     [SerializeField] private GameObject _VFXOmbremarche = null;
-
-    [SerializeField] private GameObject _VFXHitPointNavigation = null;
-
 
     #region Properties
 
@@ -48,92 +45,66 @@ public class CharacterManager : Singleton<CharacterManager>
         get => _collider;
         set => _collider = value;
     }
-    public GameObject VFXSkills
+    public GameObject SkillsVFX
     {
-        get => _VFXSkills;
-        set => _VFXSkills = value;
+        get => _skillsVFX;
+        set => _skillsVFX = value;
+    }
+    public AudioClip SkillsSFX
+    {
+        get => _skillsSFX;
+        set => _skillsSFX = value;
     }
     public GameObject VFXOmbremarche
     {
         get => _VFXOmbremarche;
         set => _VFXOmbremarche = value;
     }
-    public GameObject VFXHitPointNavigation
-    {
-        get => _VFXHitPointNavigation;
-        set => _VFXHitPointNavigation = value;
-    }
 
     #endregion properties
 
-    private void Update()
-    {
-        EndMovement();
-    }
-
     #region Methode
-
-    public void Moving()
-    {
-        if (!DialogueManager.Instance.IsDialogueActive == true && Agent.isStopped == false)
-        {
-            Ray movePosition = Camera.ScreenPointToRay(Input.mousePosition);
-
-            if (Physics.Raycast(movePosition, out var hitInfo))
-            {
-                Agent.isStopped = false;
-                Agent.SetDestination(hitInfo.point);
-
-                VFXHitPointNavigation.gameObject.SetActive(true);
-                VFXHitPointNavigation.transform.position = new Vector3(hitInfo.point.x, 0.5f, hitInfo.point.z);
-            }
-        }       
-    }
-
-    public void EndMovement()
-    {
-        if (_agent.remainingDistance < 0.05f)
-        {
-            VFXHitPointNavigation.gameObject.SetActive(false);
-        }
-    }
 
     #region Player Action
     /// <summary>
     /// Fonction des action du joueur durant les différente phase de jeux
     /// </summary>
-
-    public void Morsure()
+    public void BiteAction()
     {
         BloodAndFlesh();
 
-        PNJManager.Instance.KillVillager();
-        PNJManager.Instance.IsDead = true;
+        PNJManager.Instance.KillVillager(false);
 
-        UIManager.Instance.AlphaMorsure();
-    }
-    public void Griffe()
+        UIManager.Instance.ToggleBiteSkillButton(true);
+        UIManager.Instance.IsBiteSkillActive = true;
+    }   
+    public void ClawAction()
     {
         BloodAndFlesh();
 
-        PNJManager.Instance.IsDead = true;
-        PNJManager.Instance.KillVillager();
+        PNJManager.Instance.KillVillager(true);
 
-        UIManager.Instance.AlphaGriffure();
+        UIManager.Instance.ToggleClawSkillButton(true);
+        UIManager.Instance.IsClawSkillActive = true;
+        
     }
-    public void Shadowalk()
+    public void ShadoStepAction()
     {
-        UIManager.Instance.IsCast = true;
-        UIManager.Instance.OmbreMarcheTime();
+        UIManager.Instance.ToggleShadowStepButton(true);
+        UIManager.Instance.IsShadowStepSkillActive = true;
+        
         IsCanBeSee = false;
+
+        InventoryManager.Instance.AmountBlood -= 15;
     }
 
     #endregion Player Action
 
     public void BloodAndFlesh()
     {
-        Instantiate(VFXSkills, PNJManager.Instance.VFXSpawner.transform);
+        if (_collider != null)
+            Instantiate(SkillsVFX, PNJManager.Instance.VFXSpawner.transform);
     }
-
-    #endregion Methode
+          
+    #endregion Methode;
 }

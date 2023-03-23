@@ -1,24 +1,42 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class TriggerLoadScene : MonoBehaviour
 {
     [SerializeField] private bool _isGoWitchScene = false;
     [SerializeField] private bool _isGoGameScene = false;
+    [SerializeField] private GameObject _blackFade = null;
+    [SerializeField] private Animator _blackFadeAnimation = null;
+    [SerializeField] private AnimationClip _fadeIn = null;
+    [SerializeField] private RectTransform _activation = null;
+    [SerializeField] private GameObject _VFXPortal = null;
 
+    
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            if (_isGoWitchScene)
-            {
-                GameLoaderManager.Instance.LoadWitchScene();
-            }
-            if (_isGoGameScene)
-            {
-                GameLoaderManager.Instance.LoadGameScene();
-            }
+            _activation.gameObject.SetActive(true);
+            _VFXPortal.SetActive(true);
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        _activation.gameObject.SetActive(false);
+        _VFXPortal.SetActive(false);
+    }
+    public void SwitchScene()
+    {
+        if (_isGoWitchScene)
+        {
+            _blackFade.SetActive(true);
+            _blackFadeAnimation.Play("Fade In");
+            GameLoaderManager.Instance.LoadWitchScene();
+        }
+        if (_isGoGameScene)
+        {
+            GameLoaderManager.Instance.LoadGameScene();
         }
     }
 }
+

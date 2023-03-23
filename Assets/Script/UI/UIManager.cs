@@ -1,42 +1,40 @@
 using Engine.Utils;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 using UnityEngine.SceneManagement;
 
 public class UIManager : Singleton<UIManager>
 {
-
     #region Attributs
-
     #region UI Menu
 
     [SerializeField] private UIController _controller = null;
 
     [SerializeField] private GameObject _pauseUI = null;
     [SerializeField] private GameObject _gameOverUI = null;
+
     #endregion UI Menu
-
     #region Competence
-    
-    [SerializeField] private float _coldDown = 5f;
 
-    [SerializeField] private float _alphaTimer = 0f;
-    [SerializeField] private float _alphaColdDown = 0.5f;
+    [SerializeField] private Image _shadowStepImage = null;
+    [SerializeField] private Image _biteImage = null;
+    [SerializeField] private Image _clawImage = null;
 
-    [SerializeField] private Image _ombreMarcheImage = null;
-    [SerializeField] private float _ombreMarcheTimer = 0.0f;
+    [SerializeField] private float _coldDownShadowStep = 5f;
+    [SerializeField] private float _shadowStepTimer = 0f;
+    private float _activeShadowStep = 2f;
 
-    [SerializeField] private Image _morsureImage = null;
+    [SerializeField] private float _skillCooldownDelay = 0.2f;
 
-    [SerializeField] private Image _griffureImage = null;
+    [SerializeField] private float _alphaShadowStepTimer = 0f;
+    [SerializeField] private float _alphaBiteTimer = 0f;
+    [SerializeField] private float _alphaClawTimer = 0f;
+
+    private bool _isShadowStepActive = false;
+    private bool _isBiteActive = false;
+    private bool _isClawActive = false;
 
     #endregion Competence
-
-    [SerializeField] private bool _isCast = false;
-
     #endregion Attributs
 
     #region Properties
@@ -62,51 +60,70 @@ public class UIManager : Singleton<UIManager>
     #endregion UI Menu
 
     #region UI Competence
-
-    public Image OmbreMarcheImage
+    public Image ShadowStepImage
     {
-        get => _ombreMarcheImage;
-        set => _ombreMarcheImage = value;
+        get => _shadowStepImage;
+        set => _shadowStepImage = value;
     }
-    public float OmbreMarcheTimer
+    public Image BiteImage
     {
-        get => _ombreMarcheTimer;
-        set => _ombreMarcheTimer = Mathf.Clamp(value, 0, _coldDown);
-
+        get => _biteImage;
+        set => _biteImage = value;
     }
-    public float ColdDown
+    public Image ClawImage
     {
-        get => _coldDown;
+        get => _clawImage;
+        set => _clawImage = value;
     }
 
     #endregion UI Competence
 
-    public Image MorsureImage
+    public float ShadowStepTimer
     {
-        get => _morsureImage;
-        set => _morsureImage = value;
+        get => _shadowStepTimer;
+        set => _shadowStepTimer = Mathf.Clamp(value, 0, _coldDownShadowStep);
+
     }
 
-    public Image GriffureImage
+    public float AlphaShadowStepTimer
     {
-        get => _griffureImage;
-        set => _griffureImage = value;
+        get => _alphaShadowStepTimer;
+        set => _alphaShadowStepTimer = value;
+    }
+    public float AlphaBiteTimer
+    {
+        get => _alphaBiteTimer;
+        set => _alphaBiteTimer = value;
+    }
+    public float AlphaClawTimer
+    {
+        get => _alphaClawTimer;
+        set => _alphaClawTimer = value;
     }
 
-    public bool IsCast
+    public bool IsShadowStepSkillActive
     {
-        get => _isCast;
-        set => _isCast = value;
+        get => _isShadowStepActive;
+        set => _isShadowStepActive = value;
+    }
+    public bool IsBiteSkillActive
+    {
+        get => _isBiteActive;
+        set => _isBiteActive = value;
+    }
+    public bool IsClawSkillActive
+    {
+        get => _isClawActive;
+        set => _isClawActive = value;
     }
 
     #endregion Properties
 
     private void Update()
     {
-        if (OmbreMarcheTimer <= _coldDown && WitchManager.Instance.IsQuestOmbreMarche == true)
-        {
-            OmbreMarcheTime();
-        }
+        CoolDownShadowStep();
+        CooldownBiteControl();
+        CooldownClawControl();
     }
 
     #region Methode
@@ -150,48 +167,106 @@ public class UIManager : Singleton<UIManager>
 
     #region Competence
 
-    public void OmbreMarcheTime()
+    public void ToggleShadowStepButton(bool isOnCd)
     {
-        OmbreMarcheTimer += Time.deltaTime;
-        OmbreMarcheImage.color = new Color(OmbreMarcheImage.color.r, OmbreMarcheImage.color.g, OmbreMarcheImage.color.b, 0.5f);
-
-        if (OmbreMarcheTimer >= _coldDown)
+        if (isOnCd)
         {
-            OmbreMarcheTimer = 0;
-            CharacterManager.Instance.IsCanBeSee = true;
-
-            IsCast = false;
-            OmbreMarcheImage.color = new Color(OmbreMarcheImage.color.r, OmbreMarcheImage.color.g, OmbreMarcheImage.color.b, 1f);
-
-            CharacterManager.Instance.VFXOmbremarche.SetActive(false);
+            ShadowStepImage.color = new Color(ShadowStepImage.color.r, ShadowStepImage.color.g, ShadowStepImage.color.b, 0.5f);
         }
         else
         {
-            CharacterManager.Instance.VFXOmbremarche.SetActive(true);
+            ShadowStepImage.color = new Color(ShadowStepImage.color.r, ShadowStepImage.color.g, ShadowStepImage.color.b, 1f);
+        }
+    }
+    public void ToggleBiteSkillButton(bool isOnCd)
+    {
+        if (isOnCd)
+        {
+            BiteImage.color = new Color(BiteImage.color.r, BiteImage.color.g, BiteImage.color.b, 0.5f);
+        }
+        else
+        {
+            BiteImage.color = new Color(BiteImage.color.r, BiteImage.color.g, BiteImage.color.b, 1f);          
+        }
+    }
+    public void ToggleClawSkillButton(bool isOnCd)
+    {
+        if (isOnCd)
+        {
+            ClawImage.color = new Color(ClawImage.color.r, ClawImage.color.g, ClawImage.color.b, 0.5f);
+        }
+        else
+        {
+            ClawImage.color = new Color(ClawImage.color.r, ClawImage.color.g, ClawImage.color.b, 1f);
         }
     }
 
-    public void AlphaMorsure()
+    private void CoolDownShadowStep()
     {
-        _alphaTimer += Time.deltaTime;
-        MorsureImage.color = new Color(MorsureImage.color.r, MorsureImage.color.g, MorsureImage.color.b, 0.5f);
-
-        if (_alphaTimer > _alphaColdDown)
+        if (IsShadowStepSkillActive == true && ShadowStepTimer <= _coldDownShadowStep)
         {
-            _alphaTimer = 0;
-            MorsureImage.color = new Color(MorsureImage.color.r, MorsureImage.color.g, MorsureImage.color.b, 1f);
+            ShadowStepTimer += Time.deltaTime;
+
+            if (ShadowStepTimer > _activeShadowStep)
+            {
+                CharacterManager.Instance.IsCanBeSee = true;
+                CharacterManager.Instance.VFXOmbremarche.SetActive(false);
+                
+
+                if (ShadowStepTimer >= _coldDownShadowStep)
+                {
+                    ToggleShadowStepButton(false);
+                    StopShadowStepCd();
+                }
+            }
+            else
+            {
+                CharacterManager.Instance.VFXOmbremarche.SetActive(true);
+            }
+        }       
+    }
+    private void CooldownBiteControl()
+    {
+        if (IsBiteSkillActive == true)
+        {
+            AlphaBiteTimer += Time.deltaTime;
+
+            if (AlphaBiteTimer >= _skillCooldownDelay)
+            {
+                ToggleBiteSkillButton(false);
+                StopBiteCd();
+            }
         }
     }
-    public void AlphaGriffure()
+    private void CooldownClawControl()
     {
-        _alphaTimer += Time.deltaTime;
-        GriffureImage.color = new Color(GriffureImage.color.r, GriffureImage.color.g, GriffureImage.color.b, 0.5f);
-
-        if (_alphaTimer > _alphaColdDown)
+        if (IsClawSkillActive == true)
         {
-            _alphaTimer = 0;
-            GriffureImage.color = new Color(GriffureImage.color.r, GriffureImage.color.g, GriffureImage.color.b, 1f);
+            AlphaClawTimer += Time.deltaTime;
+
+            if (AlphaClawTimer >= _skillCooldownDelay)
+            {
+                ToggleClawSkillButton(false);
+                StopClawCd();
+            }
         }
+    }
+
+    private void StopShadowStepCd()
+    {
+        AlphaShadowStepTimer = 0;
+        ShadowStepTimer = 0;
+        IsShadowStepSkillActive = false;
+    }
+    private void StopBiteCd()
+    {
+        AlphaBiteTimer = 0;
+        IsBiteSkillActive = false;
+    }
+    private void StopClawCd()
+    {
+        AlphaClawTimer = 0;
+        IsClawSkillActive = false;
     }
 
     #endregion Competence

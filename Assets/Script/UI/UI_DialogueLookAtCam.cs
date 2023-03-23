@@ -6,7 +6,7 @@ public class UI_DialogueLookAtCam : MonoBehaviour
 {
     [SerializeField] private Camera _cameraTarget = null;
 
-    // Update is called once per frame
+   
     void Update()
     {
         if (_cameraTarget == null)

@@ -20,6 +20,8 @@ public class DialogueManager : Singleton<DialogueManager>
     [SerializeField] private DialogueController.Actor[] _currentActors;
     [SerializeField] private int _activeMessage = 0;
     [SerializeField] private bool _isDialogueActive = false;
+    [SerializeField] private PNJ_VillagerController _PNJVillager = null;
+
 
     #endregion Attributs
 
@@ -55,11 +57,17 @@ public class DialogueManager : Singleton<DialogueManager>
         get => _dialogueButton;
         set => _dialogueButton = value;
     }
+    public PNJ_VillagerController VillagerController
+    {
+        get => _PNJVillager;
+        set => _PNJVillager = value;
+    }
 
     #endregion Properties
 
     public void OpenDialogue(DialogueController.Message[] messages, DialogueController.Actor[] actors)
     {
+        LeanTween.textAlpha(_messageText.rectTransform, 0, 0f);
         _activeMessage = 0;
         _currentMessages = messages;
         _currentActors = actors;
@@ -67,7 +75,7 @@ public class DialogueManager : Singleton<DialogueManager>
         IsDialogueActive = true;
         CharacterManager.Instance.Agent.isStopped = true;
 
-        BackGroundBox.LeanScale(Vector3.one, 0.5f);
+        BackGroundBox.LeanScale(Vector3.one, 1f);
 
         DialogueController.Message messageToDisplay = _currentMessages[_activeMessage];
         MessageText.text = messageToDisplay.message;
@@ -77,12 +85,11 @@ public class DialogueManager : Singleton<DialogueManager>
         ActorName.text = actorToDisplay.name;
         ActorImage.sprite = actorToDisplay.sprite;
         
-        AnimatedTextColor();
-
-        HideButton();
+        AnimatedTextColor();       
     }
     private void DisplayMessage()
     {
+        LeanTween.textAlpha(_messageText.rectTransform, 0, 0f);
         DialogueController.Message messageToDisplay = _currentMessages[_activeMessage];
         MessageText.text = messageToDisplay.message;
 
@@ -94,21 +101,25 @@ public class DialogueManager : Singleton<DialogueManager>
     }
     public void NextMessage()
     {
-        _activeMessage = _activeMessage + 1;
-        if (_activeMessage < _currentMessages.Length)
+        if (IsDialogueActive == true)
         {
-            DisplayMessage();
-        }
-        else
-        {
-            IsDialogueActive = false;
-            CharacterManager.Instance.Agent.isStopped = false;
+            _activeMessage = _activeMessage + 1;
+            if (_activeMessage < _currentMessages.Length)
+            {
+                DisplayMessage();
+            }
+            else
+            {
+                IsDialogueActive = false;
+                CharacterManager.Instance.Agent.isStopped = false;
 
-            BackGroundBox.LeanScale(Vector3.zero, 0.5f).setEaseInOutExpo();
-            HideButton();
-            /*if (CharacterManager.Instance.Agent.remainingDistance < 0.5f)
-                CharacterManager.Instance.Agent.isStopped = false;*/
+                BackGroundBox.LeanScale(Vector3.zero, 1f).setEaseInOutExpo();
+                
+                /*if (CharacterManager.Instance.Agent.remainingDistance < 0.5f)
+                    CharacterManager.Instance.Agent.isStopped = false;*/
+            }
         }
+       
     }
     private void AnimatedTextColor()
     {
@@ -119,11 +130,14 @@ public class DialogueManager : Singleton<DialogueManager>
     {
         if (IsDialogueActive == true) 
         {
-            _dialogueButton.gameObject.SetActive(false);
+            
+            VillagerController.DialogueButton.gameObject.SetActive(false);
+                       
         }
         else if (IsDialogueActive == false) 
         {
-            _dialogueButton.gameObject.SetActive(true);
+            VillagerController.DialogueButton.gameObject.SetActive(true);
+            
         }
     }
 }
