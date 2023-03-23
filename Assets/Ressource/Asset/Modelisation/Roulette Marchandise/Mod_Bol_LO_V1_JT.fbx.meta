@@ -3,7 +3,12 @@ guid: e6d4b4ec54452f648adf16a86f271ced
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: assiettes_hv_tapis
+    second: {fileID: 2100000, guid: cac362234f2bd1446a6da7b392f63e2d, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

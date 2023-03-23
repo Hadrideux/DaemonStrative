@@ -3,7 +3,12 @@ guid: 6f1bbd61a23f7134fb07b583304f6068
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: tables_tissus
+    second: {fileID: 2100000, guid: f3e28c06a5c7e2640b0bcca90c61c038, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
