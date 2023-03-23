@@ -20,11 +20,12 @@ public class PNJController : MonoBehaviour
     [SerializeField] private float _VFXEndTimer = 1;
 
     private bool _isCanSeePlayer = false;
+    private bool _isDetectedPlayer = false;
 
     #endregion Attributs
 
     #region Properties
-        #region Controller
+    #region Controller
     /*
     public PNJDetection DetectionPNJ
     {
