@@ -18,6 +18,11 @@ public class PNJDetection : MonoBehaviour
     [SerializeField] private float _delayDetection = 2f;
     private float _delayDetectionTimer = 0f;
 
+    [SerializeField] private GameObject _vignetDetection = null;
+
+    [SerializeField] private Animator _animationDetection = null;
+    [SerializeField] private AnimationClip _fadeDetection = null;
+
     #endregion Attributs
 
     #region Propertie
@@ -83,7 +88,7 @@ public class PNJDetection : MonoBehaviour
                 if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, _obstructionMask))
                 {
                     _controllerPNJ.IsCanSeePlayer = true;
-
+                    CastVignetDetection(true);
                     _delayDetectionTimer += Time.deltaTime;
                                         
                     if (_delayDetectionTimer > _delayDetection)
@@ -95,23 +100,26 @@ public class PNJDetection : MonoBehaviour
                 else
                 {
                     DetectionTimer();
-                    
+                    CastVignetDetection(false);
+
                 }
             }
             else
             {
                 DetectionTimer();
+                CastVignetDetection(false);
             }
         }
         else
         {
             DetectionTimer();
+            CastVignetDetection(false);
         }      
     }
 
     private void DetectionTimer()
     {
-        _delayDetectionTimer = Mathf.Clamp(_delayDetectionTimer -= Time.deltaTime, 0, 2);
+        _delayDetectionTimer = Mathf.Clamp(_delayDetectionTimer -= Time.deltaTime, 0, _delayDetection);
         _controllerPNJ.IsCanSeePlayer = false;
     }
 
@@ -122,5 +130,17 @@ public class PNJDetection : MonoBehaviour
     private void Undetecte()
     {
         DetectionGauge.fillAmount -= DetectionFeedBack / 2 * Time.deltaTime;
+    }
+    private void CastVignetDetection(bool isCastDetection)
+    {
+        if (isCastDetection)
+        {
+            _vignetDetection.SetActive(true);
+            _animationDetection.Play("Fade_Vignettage_Detection");
+        }
+        else
+        {
+            _vignetDetection.SetActive(false);
+        }
     }
 }

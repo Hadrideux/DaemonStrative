@@ -9,16 +9,11 @@ public class UIController : MonoBehaviour
     [SerializeField] private GameObject _pauseUI = null;
     [SerializeField] private GameObject _gameOverUI = null;
 
-    [SerializeField] private GameObject _vignetShadowStep = null;
-    [SerializeField] private GameObject _vignetDetection = null;
+    [SerializeField] private GameObject _vignetShadowStep = null;    
 
     [SerializeField] private Animator _animationShadowStep = null;
     [SerializeField] private AnimationClip _fadeInShadowStep = null;
     [SerializeField] private AnimationClip _fadeOutShadowStep = null;
-
-    [SerializeField] private Animator _animationDetection = null;
-    [SerializeField] private AnimationClip _fadeInDetection = null;
-    [SerializeField] private AnimationClip _fadeOutDetection = null;
 
     #endregion UI Menu
     #endregion Attributs
@@ -31,13 +26,11 @@ public class UIController : MonoBehaviour
         UIManager.Instance.Controller = this;
         UIManager.Instance.PauseUI = _pauseUI;
         UIManager.Instance.GameOverUI = _gameOverUI;
-
-       
     }
 
     private void Update()
     {
-        CastVignetShadowStep();
+        CastVignetShadowStep();        
     }
 
     #endregion Mono
@@ -57,7 +50,7 @@ public class UIController : MonoBehaviour
 
     private void CastVignetShadowStep()
     {
-        if (UIManager.Instance.IsShadowStepSkillActive == true && UIManager.Instance.ShadowStepTimer <= 2f)
+        if (UIManager.Instance.IsShadowStepSkillActive == true /*&& UIManager.Instance.ShadowStepTimer <= 2f*/)
         {
             _vignetShadowStep.SetActive(true);
             _animationShadowStep.SetTrigger("FadeIn");
@@ -68,20 +61,5 @@ public class UIController : MonoBehaviour
             _vignetShadowStep.SetActive(false);
         }        
     }
-    /*
-    private void CastVignetDetection()
-    {
-        if ()
-        {
-            _vignetDetection.SetActive(true);
-            _animationDetection.SetTrigger("FadeIn");
-            _animationDetection.SetTrigger("FadeOut");
-           
-        }
-        else
-        {
-            _vignetDetection.SetActive(false);
-        }
-    }
-    */
+
 }
