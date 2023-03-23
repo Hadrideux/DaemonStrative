@@ -804,7 +804,7 @@ MonoBehaviour:
   _detectionPNJ: {fileID: 1261295695285075962}
   _characterCompFeedback: {fileID: 3882965354235375307}
   _body: {fileID: 8926253096823780629}
-  _itemData: {fileID: 0}
+  _itemData: {fileID: 11400000, guid: e204b99a137969648892dca845744744, type: 2}
   _VFXSpawnPoint: {fileID: 1252289265297556068}
   _VFXEndTimer: 1
 --- !u!114 &1261295695285075962

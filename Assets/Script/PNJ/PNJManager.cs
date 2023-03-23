@@ -61,7 +61,8 @@ public class PNJManager : Singleton<PNJManager>
 
     public void KillVillager(bool isKill)
     {
-        InventoryManager.Instance.AddItem(ItemGet);
+        InventoryManager.Instance.ItemGet = _itemData;
+        InventoryManager.Instance.AddItem();
         
 
         if(isKill)
