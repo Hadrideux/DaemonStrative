@@ -20,9 +20,8 @@ public class PNJManager : Singleton<PNJManager>
     [SerializeField] private bool _isDying = false;
 
     #region Properties
-
     /*
-    public PNJController Controller
+    public PNJController ControllerPNJ
     {
         get => _controller;
         set => _controller = value;
@@ -78,5 +77,7 @@ public class PNJManager : Singleton<PNJManager>
         Destroy(CharacterManager.Instance.Collider);
         IsDead = false;
     }
+
+    
 
 }

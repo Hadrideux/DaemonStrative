@@ -25,12 +25,12 @@ public class PNJController : MonoBehaviour
 
     #region Properties
         #region Controller
+    /*
     public PNJDetection DetectionPNJ
     {
         get => _detectionPNJ;
         set => _detectionPNJ = value;
     }
-    /*
     public PNJMovement MovementPNJ
     {
         get => _pNJMovement;
@@ -57,6 +57,9 @@ public class PNJController : MonoBehaviour
 
     #region Mono
 
+    private void Start()
+    {
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player")) 
