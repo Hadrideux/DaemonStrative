@@ -4308,6 +4308,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2342748007093934457, guid: a6d83214a56d7d2429104953bba517df, type: 3}
+      propertyPath: _cameraTarget
+      value: 
+      objectReference: {fileID: 392529647}
+    - target: {fileID: 3168149335527359424, guid: a6d83214a56d7d2429104953bba517df, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 392529647}
     - target: {fileID: 4103194993863922288, guid: a6d83214a56d7d2429104953bba517df, type: 3}
       propertyPath: m_Name
       value: TriggerWitchScene
