@@ -15,8 +15,8 @@ public class PNJDetection : MonoBehaviour
     [SerializeField] private LayerMask _obstructionMask;
 
     [SerializeField] private Image _detectionGauge = null;
-    [SerializeField] private float _delayDetection = 2f;
-    private float _delayDetectionTimer = 0f;
+    [SerializeField] private float _delayDetection = 0f;
+    [SerializeField] private float _delayDetectionTimer = 0f;
 
     [SerializeField] private GameObject _vignetDetection = null;
 
@@ -27,20 +27,10 @@ public class PNJDetection : MonoBehaviour
 
     #region Propertie
 
-    public float Radius
-    {
-        get => _radius;
-        set => _radius = value;
-    }
-    public float Angle
-    {
-        get => _angle;
-        set => _angle = value;
-    }
     public float DetectionFeedBack
     {
         get => _delayDetectionTimer;  
-        set => _delayDetectionTimer = Mathf.Clamp(value,0,2);
+        set => _delayDetectionTimer = Mathf.Clamp(value, 0, _delayDetection);
     }
     public Image DetectionGauge
     {
@@ -61,14 +51,8 @@ public class PNJDetection : MonoBehaviour
             FieldOfViewCheck();
         }
 
-        if (_controllerPNJ.IsCanSeePlayer == true && _detectionGauge != null)
-        {
-            Detection();
-        }
-        else if (_controllerPNJ.IsCanSeePlayer == false && _detectionGauge != null)
-        {
-            Undetecte();
-        }
+        DetectionGaugeUpdate();
+        CastVignetDetection();
     }
 
 
@@ -88,7 +72,7 @@ public class PNJDetection : MonoBehaviour
                 if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, _obstructionMask))
                 {
                     _controllerPNJ.IsCanSeePlayer = true;
-                    CastVignetDetection(true);
+
                     _delayDetectionTimer += Time.deltaTime;
                                         
                     if (_delayDetectionTimer > _delayDetection)
@@ -100,20 +84,16 @@ public class PNJDetection : MonoBehaviour
                 else
                 {
                     DetectionTimer();
-                    CastVignetDetection(false);
-
                 }
             }
             else
             {
                 DetectionTimer();
-                CastVignetDetection(false);
             }
         }
         else
         {
             DetectionTimer();
-            CastVignetDetection(false);
         }      
     }
 
@@ -123,17 +103,22 @@ public class PNJDetection : MonoBehaviour
         _controllerPNJ.IsCanSeePlayer = false;
     }
 
-    private void Detection()
+    private void DetectionGaugeUpdate()
     {
-        DetectionGauge.fillAmount += DetectionFeedBack / 2 * Time.deltaTime;
+        if (_controllerPNJ.IsCanSeePlayer == true && _detectionGauge != null)
+        {
+            DetectionGauge.fillAmount += DetectionFeedBack / 2 * Time.deltaTime;
+        }
+        else
+        {
+            DetectionGauge.fillAmount -= DetectionFeedBack / 2 * Time.deltaTime;
+        }
+        
     }
-    private void Undetecte()
+
+    private void CastVignetDetection()
     {
-        DetectionGauge.fillAmount -= DetectionFeedBack / 2 * Time.deltaTime;
-    }
-    private void CastVignetDetection(bool isCastDetection)
-    {
-        if (isCastDetection)
+        if (_controllerPNJ.IsCanSeePlayer == true)
         {
             _vignetDetection.SetActive(true);
             _animationDetection.Play("Fade_Vignettage_Detection");

@@ -1635,10 +1635,6 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1261295695285075962, guid: e98ccfe44a14faa45ad83f426776cd5c, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1261295695285075962, guid: e98ccfe44a14faa45ad83f426776cd5c, type: 3}
       propertyPath: _playerRef
       value: 
       objectReference: {fileID: 0}
@@ -2448,7 +2444,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh33974
+  m_Name: pb_Mesh75154
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -3390,7 +3386,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh34028
+  m_Name: pb_Mesh75208
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -3879,10 +3875,6 @@ PrefabInstance:
     - target: {fileID: 1143662628575882297, guid: e98ccfe44a14faa45ad83f426776cd5c, type: 3}
       propertyPath: _dialogueButton
       value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1261295695285075962, guid: e98ccfe44a14faa45ad83f426776cd5c, type: 3}
-      propertyPath: m_Enabled
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1261295695285075962, guid: e98ccfe44a14faa45ad83f426776cd5c, type: 3}
       propertyPath: _playerRef
@@ -4433,7 +4425,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh33862
+  m_Name: pb_Mesh75038
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -6602,10 +6594,6 @@ PrefabInstance:
     - target: {fileID: 5258048500708836414, guid: e98ccfe44a14faa45ad83f426776cd5c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5434017713403560353, guid: e98ccfe44a14faa45ad83f426776cd5c, type: 3}
-      propertyPath: m_Height
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5473014209307443017, guid: e98ccfe44a14faa45ad83f426776cd5c, type: 3}
       propertyPath: m_Mesh
