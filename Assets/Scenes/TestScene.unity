@@ -326,6 +326,62 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8596436206063375145, guid: 3f101813cbab6ff4f96ad4754cdde7e0, type: 3}
+      propertyPath: MaxDistance
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8596436206063375145, guid: 3f101813cbab6ff4f96ad4754cdde7e0, type: 3}
+      propertyPath: rolloffMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8596436206063375145, guid: 3f101813cbab6ff4f96ad4754cdde7e0, type: 3}
+      propertyPath: DopplerLevel
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8596436206063375145, guid: 3f101813cbab6ff4f96ad4754cdde7e0, type: 3}
+      propertyPath: rolloffCustomCurve.m_Curve.Array.data[0].time
+      value: 0.34621733
+      objectReference: {fileID: 0}
+    - target: {fileID: 8596436206063375145, guid: 3f101813cbab6ff4f96ad4754cdde7e0, type: 3}
+      propertyPath: rolloffCustomCurve.m_Curve.Array.data[0].value
+      value: 0.9961586
+      objectReference: {fileID: 0}
+    - target: {fileID: 8596436206063375145, guid: 3f101813cbab6ff4f96ad4754cdde7e0, type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8596436206063375145, guid: 3f101813cbab6ff4f96ad4754cdde7e0, type: 3}
+      propertyPath: rolloffCustomCurve.m_Curve.Array.data[0].inSlope
+      value: -0.5609717
+      objectReference: {fileID: 0}
+    - target: {fileID: 8596436206063375145, guid: 3f101813cbab6ff4f96ad4754cdde7e0, type: 3}
+      propertyPath: rolloffCustomCurve.m_Curve.Array.data[1].inSlope
+      value: -1.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8596436206063375145, guid: 3f101813cbab6ff4f96ad4754cdde7e0, type: 3}
+      propertyPath: rolloffCustomCurve.m_Curve.Array.data[0].inWeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8596436206063375145, guid: 3f101813cbab6ff4f96ad4754cdde7e0, type: 3}
+      propertyPath: rolloffCustomCurve.m_Curve.Array.data[0].outSlope
+      value: -0.5609717
+      objectReference: {fileID: 0}
+    - target: {fileID: 8596436206063375145, guid: 3f101813cbab6ff4f96ad4754cdde7e0, type: 3}
+      propertyPath: rolloffCustomCurve.m_Curve.Array.data[1].inWeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8596436206063375145, guid: 3f101813cbab6ff4f96ad4754cdde7e0, type: 3}
+      propertyPath: rolloffCustomCurve.m_Curve.Array.data[1].outSlope
+      value: -1.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8596436206063375145, guid: 3f101813cbab6ff4f96ad4754cdde7e0, type: 3}
+      propertyPath: rolloffCustomCurve.m_Curve.Array.data[0].outWeight
+      value: 0.30442786
+      objectReference: {fileID: 0}
+    - target: {fileID: 8596436206063375145, guid: 3f101813cbab6ff4f96ad4754cdde7e0, type: 3}
+      propertyPath: rolloffCustomCurve.m_Curve.Array.data[1].outWeight
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 2533598584178646870, guid: 3f101813cbab6ff4f96ad4754cdde7e0, type: 3}
@@ -856,7 +912,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &181144930
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2449,7 +2505,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh75154
+  m_Name: pb_Mesh222150
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -3391,7 +3447,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh75208
+  m_Name: pb_Mesh222292
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -4430,7 +4486,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh75038
+  m_Name: pb_Mesh221702
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -9006,6 +9062,10 @@ PrefabInstance:
       propertyPath: _VFXHitPoint
       value: 
       objectReference: {fileID: 291934588}
+    - target: {fileID: 6549709111852446123, guid: 6176ab60aae01f54887ac1da213f6338, type: 3}
+      propertyPath: _animationDetection
+      value: 
+      objectReference: {fileID: 181144933}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -11417,7 +11477,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2508722819527280589, guid: 56c33cadddc8bba4b9795497ffca6d8c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: 0.95000005
       objectReference: {fileID: 0}
     - target: {fileID: 2508722819527280589, guid: 56c33cadddc8bba4b9795497ffca6d8c, type: 3}
       propertyPath: m_LocalPosition.z

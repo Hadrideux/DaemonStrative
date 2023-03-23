@@ -23,6 +23,8 @@ public class CharacterConrtoller : MonoBehaviour
     [SerializeField] private float timeCount = 0;
     [SerializeField] private bool onActivation = false;
 
+    [SerializeField] private Animator _animationDetection = null;
+
     #endregion Attributs
 
     public NavMeshAgent Agent
@@ -34,6 +36,11 @@ public class CharacterConrtoller : MonoBehaviour
     {
         get => _camera;
         set => _camera = value;
+    }
+    public Animator AnimationDetection
+    {
+        get => _animationDetection;
+        set => _animationDetection = value;
     }
 
     void Start()

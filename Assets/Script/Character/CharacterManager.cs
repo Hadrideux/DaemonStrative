@@ -1,4 +1,6 @@
 using Engine.Utils;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -12,6 +14,7 @@ public class CharacterManager : Singleton<CharacterManager>
 
     [SerializeField] private GameObject _collider = null;
     [SerializeField] private bool _isCanBeSee = true;
+    [SerializeField] private List<PNJDetection> _detectedBy = new List<PNJDetection>();
 
     [SerializeField] private GameObject _skillsVFX = null;
     [SerializeField] private AudioClip _skillsSFX = null;
@@ -22,8 +25,14 @@ public class CharacterManager : Singleton<CharacterManager>
 
     public bool IsCanBeSee
     {
-        get => _isCanBeSee; 
+        get => _isCanBeSee;
         set => _isCanBeSee = value;
+    }
+   
+    public List<PNJDetection> DetectedBy
+    {
+        get => _detectedBy;
+        set => _detectedBy = value;
     }
     public CharacterConrtoller Controller
     {
@@ -105,6 +114,28 @@ public class CharacterManager : Singleton<CharacterManager>
         if (_collider != null)
             Instantiate(SkillsVFX, PNJManager.Instance.VFXSpawner.transform);
     }
-          
+
+    private void Update()
+    {
+        CastVignetDetection();
+    }
+
+    private void CastVignetDetection()
+    {
+        if(DetectedBy.Count > 0)
+        {
+            _controller.AnimationDetection.gameObject.SetActive(true);
+            _controller.AnimationDetection.enabled = true;
+            _controller.AnimationDetection.Play("Fade_Vignettage_Detection");
+            // Alerte
+        }
+         else
+        {
+            _controller.AnimationDetection.gameObject.SetActive(false);
+            _controller.AnimationDetection.enabled = false;
+            // Pas d'alerte
+        }
+    }
+
     #endregion Methode;
 }
