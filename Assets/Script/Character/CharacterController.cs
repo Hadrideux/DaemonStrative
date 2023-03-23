@@ -48,7 +48,7 @@ public class CharacterConrtoller : MonoBehaviour
     }
     void Update()
     {
-        SwitchCam(animTimer, animDelay, virtualCam, onActivation);
+        SwitchCam(animTimer, animDelay, virtualCam);
 
         if (Input.GetMouseButton(1))
         {
@@ -118,7 +118,7 @@ public class CharacterConrtoller : MonoBehaviour
         }
     }
 
-    private void SwitchCam(float timeCount, float animDelay, GameObject virtualCam, bool onActivation)
+    private void SwitchCam(float timeCount, float animDelay, GameObject virtualCam)
     {                
         if (onActivation == true)
         {
@@ -127,6 +127,7 @@ public class CharacterConrtoller : MonoBehaviour
         }
         if (animTimer >= animDelay)
         {
+            onActivation = false;
             virtualCam.SetActive(false);
             animTimer = 0;
         }

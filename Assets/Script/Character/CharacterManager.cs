@@ -103,7 +103,7 @@ public class CharacterManager : Singleton<CharacterManager>
     public void BloodAndFlesh()
     {
         if (_collider != null)
-        Instantiate(SkillsVFX, PNJManager.Instance.VFXSpawner.transform);
+            Instantiate(SkillsVFX, PNJManager.Instance.VFXSpawner.transform);
     }
           
     #endregion Methode;
