@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7357845056877006046}
+  - component: {fileID: 2477525098599097307}
   m_Layer: 0
   m_Name: Maison_5X5_Door
   m_TagString: Untagged
@@ -48,13 +49,35 @@ Transform:
   - {fileID: 755827064955501432}
   - {fileID: 2306662584554254770}
   - {fileID: 1980928780553733875}
-  - {fileID: 1308697726543163173}
+  - {fileID: 1559323935114922191}
   - {fileID: 2181587594724030593}
   - {fileID: 8338303068201044167}
-  - {fileID: 1282358531987757076}
+  - {fileID: 1603672030655234040}
   m_Father: {fileID: 0}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!64 &2477525098599097307
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6087647340930117934}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1001 &368443528586779000
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -388,7 +411,7 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2dfb63fcb77e9e6448c378e70ad5a65f, type: 3}
---- !u!4 &1282358531987757076 stripped
+--- !u!4 &1603672030655234040 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 2dfb63fcb77e9e6448c378e70ad5a65f, type: 3}
   m_PrefabInstance: {fileID: 1282358531987757075}
@@ -474,7 +497,7 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ba420ea6694349b4cb6cffb4a7b4a8d1, type: 3}
---- !u!4 &1308697726543163173 stripped
+--- !u!4 &1559323935114922191 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: ba420ea6694349b4cb6cffb4a7b4a8d1, type: 3}
   m_PrefabInstance: {fileID: 1308697726543163172}
