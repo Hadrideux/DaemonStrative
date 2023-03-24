@@ -22,6 +22,8 @@ public class PNJController : MonoBehaviour
     private bool _isCanSeePlayer = false;
     private bool _isDetectedPlayer = false;
 
+    [SerializeField] private Animator _animator = null;
+
     #endregion Attributs
 
     #region Properties
@@ -58,6 +60,10 @@ public class PNJController : MonoBehaviour
 
     #region Mono
 
+    private void Start()
+    {
+        _animator = GetComponent<Animator>();
+    }
     private void Update()
     {
         PNJManager.Instance.IsSeePlayer = IsCanSeePlayer;
@@ -75,6 +81,8 @@ public class PNJController : MonoBehaviour
         {
             _VFXDuration = 0;
         }
+
+        _animator.Play("mixamo_com");
     }
     private void OnTriggerEnter(Collider other)
     {

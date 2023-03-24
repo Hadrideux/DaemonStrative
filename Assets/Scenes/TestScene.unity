@@ -122,7 +122,7 @@ NavMeshSettings:
     preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 23800000, guid: 5ae4ec0a05cafeb47b74cb5fa87f3cde, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 2e4007ef49622804e875d9b0a7097860, type: 2}
 --- !u!1 &50657736
 GameObject:
   m_ObjectHideFlags: 0
@@ -2551,7 +2551,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh43352
+  m_Name: pb_Mesh61396
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -3493,7 +3493,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh43406
+  m_Name: pb_Mesh61450
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -4532,7 +4532,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh43240
+  m_Name: pb_Mesh61284
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -11544,15 +11544,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2508722819527280589, guid: 56c33cadddc8bba4b9795497ffca6d8c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 15.150919
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2508722819527280589, guid: 56c33cadddc8bba4b9795497ffca6d8c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.95000005
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2508722819527280589, guid: 56c33cadddc8bba4b9795497ffca6d8c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -13.087379
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2508722819527280589, guid: 56c33cadddc8bba4b9795497ffca6d8c, type: 3}
       propertyPath: m_LocalRotation.w
@@ -11582,6 +11582,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3261781486635630516, guid: 56c33cadddc8bba4b9795497ffca6d8c, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6336899613132600871, guid: 56c33cadddc8bba4b9795497ffca6d8c, type: 3}
       propertyPath: m_ProvidesContacts
       value: 0
@@ -11590,7 +11594,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: PNJ_Villageois
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2838547388052605134, guid: 56c33cadddc8bba4b9795497ffca6d8c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
