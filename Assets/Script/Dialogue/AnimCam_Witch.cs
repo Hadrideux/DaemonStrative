@@ -5,13 +5,9 @@ using UnityEngine;
 
 public class AnimCam_Witch : MonoBehaviour
 {
-    [SerializeField] private DialogueController.Actor[] _currentActors;
-    
-    [SerializeField] private int _activeMessage = 0;
-    [SerializeField] private int _activeActor = 0;
-
-
     public VirtualCams[] virtualCams;
+    private int _activeCam = 0;
+    private int _camToDisable = 0;
 
     [System.Serializable]
     public class VirtualCams
@@ -28,25 +24,43 @@ public class AnimCam_Witch : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(DialogueManager.Instance.IsDialogueActive == true)
+        if (DialogueManager.Instance.IsDialogueActive == true)
         {
             EnableCamSpeaker(virtualCams);
+            DisableCamSpeaker(virtualCams);            
         }
         else
         {
-            DisableCamSpeaker(virtualCams);
+            DisableSwitchCam();
         }
     }
 
    private void EnableCamSpeaker(VirtualCams[] virtualCams)
     {
-        VirtualCams activeCam = virtualCams[DialogueManager.Instance.ActiveMessage];
-        activeCam.virtualcam.gameObject.SetActive(true);       
-    }
+        _activeCam = DialogueManager.Instance.ActiveMessage;
+
+        VirtualCams activeCam = virtualCams[_activeCam];
+        activeCam.virtualcam.gameObject.SetActive(true);
+   }
 
     private void DisableCamSpeaker(VirtualCams[] virtualCams)
     {
-        VirtualCams activeCam = virtualCams[DialogueManager.Instance.ActiveMessage];
-        activeCam.virtualcam.gameObject.SetActive(false);
+        _camToDisable = DialogueManager.Instance.ActiveMessage-1;
+
+        if (_camToDisable >= 0 && _activeCam <= virtualCams.Length)
+        {
+            VirtualCams activeCam = virtualCams[_camToDisable];
+            activeCam.virtualcam.gameObject.SetActive(false);
+        }
+        
+    }
+
+    private void DisableSwitchCam()
+    {
+        VirtualCams activeCam = virtualCams[_activeCam];
+        if (activeCam.virtualcam.gameObject == true && DialogueManager.Instance.IsDialogueActive == false)
+        {
+            activeCam.virtualcam.gameObject.SetActive(false);
+        }
     }
 }
