@@ -18,6 +18,7 @@ public class PNJManager : Singleton<PNJManager>
        
     [SerializeField] private ItemData _itemData = null;
     [SerializeField] private bool _isDying = false;
+    [SerializeField] private bool _isSeePlayer = false;
 
     #region Properties
     
@@ -57,6 +58,11 @@ public class PNJManager : Singleton<PNJManager>
         set => _VFXSpawnPoint = value;
     }
     
+    public bool IsSeePlayer
+    {
+        get => _isSeePlayer;
+        set => _isSeePlayer = value;
+    }
     #endregion Properties
 
     public void KillVillager(bool isKill)
