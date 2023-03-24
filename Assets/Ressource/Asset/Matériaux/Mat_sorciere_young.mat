@@ -26,12 +26,12 @@ Material:
   m_Name: Mat_sorciere_young
   m_Shader: {fileID: -6465566751694194690, guid: aefc63699cf4eff49a6bbb7c9ef5d160, type: 3}
   m_Parent: {fileID: 2100000, guid: 6ceced78530f8164eb5f4985bb2c91fe, type: 2}
-  m_ModifiedSerializedProperties: 10
+  m_ModifiedSerializedProperties: 14
   m_ValidKeywords:
   - _DISABLE_SSR_TRANSPARENT
   - _DOUBLESIDED_ON
   m_InvalidKeywords: []
-  m_LightmapFlags: 0
+  m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 1
   m_CustomRenderQueue: -1
@@ -70,5 +70,5 @@ Material:
     - _DoubleSidedEnable: 1
     - _OPACITY: 1
     m_Colors:
-    - _EMISSION_COLOR: {r: 1, g: 0, b: 0, a: 0}
+    - _EMISSION_COLOR: {r: 1, g: 1, b: 1, a: 0}
   m_BuildTextureStacks: []
