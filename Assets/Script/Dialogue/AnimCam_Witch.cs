@@ -29,7 +29,7 @@ public class AnimCam_Witch : MonoBehaviour
 
     private void SwitchCamOnSpeaker(DialogueController.Actor[] actors)
     {
-       
-        
+        System.Array.IndexOf(_virtualCam, _activeCam);
+        Debug.Log(_activeCam.ToString());
     }
 }

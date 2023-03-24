@@ -67,7 +67,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 9682c3da6d5384d098160b19ba3e02c5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -280,10 +280,13 @@ MonoBehaviour:
   _skillsSFX:
   - {fileID: 8300000, guid: 74e3b70ea94f21242b6e4ae68eb2db31, type: 3}
   - {fileID: 8300000, guid: 9aa315675f2a0604fb2545d08d953549, type: 3}
+  - {fileID: 8300000, guid: 8e2775ba5ee00b74ca6374883d94511e, type: 3}
   virtualCam: {fileID: 0}
   animTimer: 0
   animDelay: 5
+  timeCount: 0
   onActivation: 0
+  _animationDetection: {fileID: 0}
 --- !u!114 &6549310192447595053
 MonoBehaviour:
   m_ObjectHideFlags: 0

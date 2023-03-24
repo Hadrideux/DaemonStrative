@@ -2505,7 +2505,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh222150
+  m_Name: pb_Mesh43352
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -3447,7 +3447,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh222292
+  m_Name: pb_Mesh43406
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -4486,7 +4486,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh221702
+  m_Name: pb_Mesh43240
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -5125,17 +5125,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 56c33cadddc8bba4b9795497ffca6d8c, type: 3}
---- !u!114 &1036075140 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 929958974762694482, guid: 56c33cadddc8bba4b9795497ffca6d8c, type: 3}
-  m_PrefabInstance: {fileID: 2255842464004495784}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 06b1835dfc4a0644faca68e6ceea8a20, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1036445854
 GameObject:
   m_ObjectHideFlags: 0
@@ -6729,6 +6718,30 @@ PrefabInstance:
       propertyPath: m_VersionIndex
       value: 615
       objectReference: {fileID: 0}
+    - target: {fileID: 7076722950077855696, guid: e98ccfe44a14faa45ad83f426776cd5c, type: 3}
+      propertyPath: m_Intensity
+      value: 17821.885
+      objectReference: {fileID: 0}
+    - target: {fileID: 7076722950077855696, guid: e98ccfe44a14faa45ad83f426776cd5c, type: 3}
+      propertyPath: m_SpotAngle
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 7076722950077855696, guid: e98ccfe44a14faa45ad83f426776cd5c, type: 3}
+      propertyPath: m_Lightmapping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7076722950077855696, guid: e98ccfe44a14faa45ad83f426776cd5c, type: 3}
+      propertyPath: m_ShadowRadius
+      value: 58.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7076722950077855696, guid: e98ccfe44a14faa45ad83f426776cd5c, type: 3}
+      propertyPath: m_InnerSpotAngle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7076722950077855696, guid: e98ccfe44a14faa45ad83f426776cd5c, type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7094780020502332219, guid: e98ccfe44a14faa45ad83f426776cd5c, type: 3}
       propertyPath: m_Intensity
       value: 534.65656
@@ -6765,6 +6778,18 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 2077434664}
+    - target: {fileID: 8925631806677507845, guid: e98ccfe44a14faa45ad83f426776cd5c, type: 3}
+      propertyPath: m_Intensity
+      value: 40000
+      objectReference: {fileID: 0}
+    - target: {fileID: 8925631806677507845, guid: e98ccfe44a14faa45ad83f426776cd5c, type: 3}
+      propertyPath: m_LightUnit
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8925631806677507845, guid: e98ccfe44a14faa45ad83f426776cd5c, type: 3}
+      propertyPath: m_CustomSpotLightShadowCone
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9126979400923937253, guid: e98ccfe44a14faa45ad83f426776cd5c, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -7334,7 +7359,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c22777d6e868e4f2fb421913386b154e, type: 2}
+  - {fileID: 2100000, guid: d47ae0396110840289d47476d8289fbf, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -9732,7 +9757,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c22777d6e868e4f2fb421913386b154e, type: 2}
+  - {fileID: 2100000, guid: d47ae0396110840289d47476d8289fbf, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -11146,7 +11171,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c22777d6e868e4f2fb421913386b154e, type: 2}
+  - {fileID: 2100000, guid: d47ae0396110840289d47476d8289fbf, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -11514,14 +11539,6 @@ PrefabInstance:
     - target: {fileID: 6336899613132600871, guid: 56c33cadddc8bba4b9795497ffca6d8c, type: 3}
       propertyPath: m_ProvidesContacts
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7749673165470990256, guid: 56c33cadddc8bba4b9795497ffca6d8c, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1036075140}
-    - target: {fileID: 7749673165470990256, guid: 56c33cadddc8bba4b9795497ffca6d8c, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: StartDialogue
       objectReference: {fileID: 0}
     - target: {fileID: 8557925354634113017, guid: 56c33cadddc8bba4b9795497ffca6d8c, type: 3}
       propertyPath: m_Name
