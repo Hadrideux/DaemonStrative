@@ -122,7 +122,7 @@ NavMeshSettings:
     preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 23800000, guid: 2e4007ef49622804e875d9b0a7097860, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 5ae4ec0a05cafeb47b74cb5fa87f3cde, type: 2}
 --- !u!1 &341432180
 GameObject:
   m_ObjectHideFlags: 0
@@ -406,7 +406,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &890269681
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -414,7 +414,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 890269680}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fd092f540ba039d40a50254bfc1df2cb, type: 3}
   m_Name: 
@@ -470,7 +470,6 @@ MonoBehaviour:
   _isCanBeSee: 1
   _detectedBy: []
   _skillsVFX: {fileID: 0}
-  _skillsSFX: {fileID: 0}
   _VFXOmbremarche: {fileID: 0}
 --- !u!4 &1159214846
 Transform:
@@ -524,6 +523,7 @@ MonoBehaviour:
   _VFXSpawnPoint: {fileID: 0}
   _itemData: {fileID: 0}
   _isDying: 0
+  _isSeePlayer: 0
 --- !u!4 &1602088755
 Transform:
   m_ObjectHideFlags: 0
