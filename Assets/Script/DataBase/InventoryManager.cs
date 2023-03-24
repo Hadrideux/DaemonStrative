@@ -7,7 +7,7 @@ public class InventoryManager : Singleton<InventoryManager>
 {
     [SerializeField] private ItemData _itemGet = null;
 
-    [SerializeField] private int _amountBlood = 5;
+    [SerializeField] private int _amountBlood = 0;
     [SerializeField] private int _amountSkull = 0;
 
     #region Properties
