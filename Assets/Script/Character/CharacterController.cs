@@ -23,7 +23,13 @@ public class CharacterConrtoller : MonoBehaviour
 
     [SerializeField] private bool onActivation = false;
 
+    [SerializeField] private GameObject _mapCamView = null;
+    [SerializeField] private GameObject _UIpCharacter= null;
+    [SerializeField] private bool _isMapEnable = false;
+    
+
     [SerializeField] private Animator _animationDetection = null;
+    
 
     #endregion Attributs
 
@@ -106,6 +112,20 @@ public class CharacterConrtoller : MonoBehaviour
         {
             InventoryManager.Instance.AddItem();
         }
+        if (Input.GetKeyDown(KeyCode.M)) 
+        {
+            if (_isMapEnable == false)
+            {
+                EnableMapView();
+                
+            }
+            else if (_isMapEnable == true)
+            {
+                RemoveMapView();
+                
+            }
+            
+        }
 
         //Vector3 destination = Input.GetAxis("Horizontal") * transform.right + Input.GetAxis("Vertical") * transform.forward; //0f <> 1f
         //if(Input.GetButtonDown("Fire1")
@@ -157,4 +177,17 @@ public class CharacterConrtoller : MonoBehaviour
         }
     }
 
+    private void EnableMapView()
+    {
+        _isMapEnable = true;
+        _UIpCharacter.gameObject.SetActive(false);
+        _mapCamView.gameObject.SetActive(true);
+    }
+
+    private void RemoveMapView ()
+    {
+        _isMapEnable = false;
+        _UIpCharacter.gameObject.SetActive(true);
+        _mapCamView.gameObject.SetActive(false);
+    }
 }
