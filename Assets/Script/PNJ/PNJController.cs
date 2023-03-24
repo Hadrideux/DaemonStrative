@@ -58,8 +58,23 @@ public class PNJController : MonoBehaviour
 
     #region Mono
 
-    private void Start()
+    private void Update()
     {
+        PNJManager.Instance.IsSeePlayer = IsCanSeePlayer;
+
+        if (PNJManager.Instance.IsDead == true)
+        {
+            _VFXDuration += Time.deltaTime;
+
+            if (_VFXDuration > _VFXEndTimer) 
+            { 
+                PNJManager.Instance.DestroyAll();
+            }
+        }
+        else
+        {
+            _VFXDuration = 0;
+        }
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -83,22 +98,5 @@ public class PNJController : MonoBehaviour
 
     }
 
-    private void Update()
-    {
-
-        if (PNJManager.Instance.IsDead == true)
-        {
-            _VFXDuration += Time.deltaTime;
-
-            if (_VFXDuration > _VFXEndTimer) 
-            { 
-                PNJManager.Instance.DestroyAll();
-            }
-        }
-        else
-        {
-            _VFXDuration = 0;
-        }
-    }
     #endregion Mono
 }

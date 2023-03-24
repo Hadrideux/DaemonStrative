@@ -17,7 +17,6 @@ public class CharacterManager : Singleton<CharacterManager>
     [SerializeField] private List<PNJDetection> _detectedBy = new List<PNJDetection>();
 
     [SerializeField] private GameObject _skillsVFX = null;
-    [SerializeField] private AudioClip _skillsSFX = null;
 
     [SerializeField] private GameObject _VFXOmbremarche = null;
 
@@ -27,8 +26,7 @@ public class CharacterManager : Singleton<CharacterManager>
     {
         get => _isCanBeSee;
         set => _isCanBeSee = value;
-    }
-   
+    }   
     public List<PNJDetection> DetectedBy
     {
         get => _detectedBy;
@@ -58,11 +56,6 @@ public class CharacterManager : Singleton<CharacterManager>
     {
         get => _skillsVFX;
         set => _skillsVFX = value;
-    }
-    public AudioClip SkillsSFX
-    {
-        get => _skillsSFX;
-        set => _skillsSFX = value;
     }
     public GameObject VFXOmbremarche
     {
@@ -127,12 +120,14 @@ public class CharacterManager : Singleton<CharacterManager>
             _controller.AnimationDetection.gameObject.SetActive(true);
             _controller.AnimationDetection.enabled = true;
             _controller.AnimationDetection.Play("Fade_Vignettage_Detection");
+            Controller.AudioDetected(true);
             // Alerte
         }
-         else
+        else
         {
             _controller.AnimationDetection.gameObject.SetActive(false);
             _controller.AnimationDetection.enabled = false;
+            Controller.AudioDetected(false);
             // Pas d'alerte
         }
     }

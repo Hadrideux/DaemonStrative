@@ -20,7 +20,7 @@ public class CharacterConrtoller : MonoBehaviour
     [SerializeField] private GameObject virtualCam = null;
     [SerializeField] private float animTimer = 0;
     [SerializeField] private float animDelay = 5;
-    [SerializeField] private float timeCount = 0;
+
     [SerializeField] private bool onActivation = false;
 
     [SerializeField] private Animator _animationDetection = null;
@@ -69,7 +69,6 @@ public class CharacterConrtoller : MonoBehaviour
 
             CharacterManager.Instance.BiteAction();
             onActivation= true;
-            timeCount = 0;
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha2))
@@ -79,7 +78,6 @@ public class CharacterConrtoller : MonoBehaviour
 
             CharacterManager.Instance.ClawAction();
             onActivation = true;
-            timeCount = 0;
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha3))
@@ -111,6 +109,21 @@ public class CharacterConrtoller : MonoBehaviour
 
         //Vector3 destination = Input.GetAxis("Horizontal") * transform.right + Input.GetAxis("Vertical") * transform.forward; //0f <> 1f
         //if(Input.GetButtonDown("Fire1")
+    }
+
+    public void AudioDetected(bool isDetected)
+    {
+        if (isDetected)
+        {
+            _audioSource.enabled = true;
+            Debug.Log(_audioSource.clip.length);
+            _audioSource.PlayOneShot(_skillsSFX[2], 1f);
+        }
+        else
+        {
+            _audioSource.Stop();
+        }
+        
     }
 
     private void OnTriggerEnter(Collider other)
