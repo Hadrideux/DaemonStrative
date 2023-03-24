@@ -2505,7 +2505,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh222150
+  m_Name: pb_Mesh43352
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -3447,7 +3447,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh222292
+  m_Name: pb_Mesh43406
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -4486,7 +4486,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh221702
+  m_Name: pb_Mesh43240
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -6729,6 +6729,30 @@ PrefabInstance:
       propertyPath: m_VersionIndex
       value: 615
       objectReference: {fileID: 0}
+    - target: {fileID: 7076722950077855696, guid: e98ccfe44a14faa45ad83f426776cd5c, type: 3}
+      propertyPath: m_Intensity
+      value: 17821.885
+      objectReference: {fileID: 0}
+    - target: {fileID: 7076722950077855696, guid: e98ccfe44a14faa45ad83f426776cd5c, type: 3}
+      propertyPath: m_SpotAngle
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 7076722950077855696, guid: e98ccfe44a14faa45ad83f426776cd5c, type: 3}
+      propertyPath: m_Lightmapping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7076722950077855696, guid: e98ccfe44a14faa45ad83f426776cd5c, type: 3}
+      propertyPath: m_ShadowRadius
+      value: 58.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7076722950077855696, guid: e98ccfe44a14faa45ad83f426776cd5c, type: 3}
+      propertyPath: m_InnerSpotAngle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7076722950077855696, guid: e98ccfe44a14faa45ad83f426776cd5c, type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7094780020502332219, guid: e98ccfe44a14faa45ad83f426776cd5c, type: 3}
       propertyPath: m_Intensity
       value: 534.65656
@@ -6765,6 +6789,18 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 2077434664}
+    - target: {fileID: 8925631806677507845, guid: e98ccfe44a14faa45ad83f426776cd5c, type: 3}
+      propertyPath: m_Intensity
+      value: 40000
+      objectReference: {fileID: 0}
+    - target: {fileID: 8925631806677507845, guid: e98ccfe44a14faa45ad83f426776cd5c, type: 3}
+      propertyPath: m_LightUnit
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8925631806677507845, guid: e98ccfe44a14faa45ad83f426776cd5c, type: 3}
+      propertyPath: m_CustomSpotLightShadowCone
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9126979400923937253, guid: e98ccfe44a14faa45ad83f426776cd5c, type: 3}
       propertyPath: m_Mesh
       value: 
