@@ -280,6 +280,7 @@ MonoBehaviour:
   _skillsSFX:
   - {fileID: 8300000, guid: 74e3b70ea94f21242b6e4ae68eb2db31, type: 3}
   - {fileID: 8300000, guid: 9aa315675f2a0604fb2545d08d953549, type: 3}
+  - {fileID: 8300000, guid: 8e2775ba5ee00b74ca6374883d94511e, type: 3}
   virtualCam: {fileID: 0}
   animTimer: 0
   animDelay: 5
