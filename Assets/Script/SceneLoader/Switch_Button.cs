@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class Switch_Button : MonoBehaviour
@@ -23,11 +24,11 @@ public class Switch_Button : MonoBehaviour
         {
             /*_blackFade.SetActive(true);
             _blackFadeAnimation.Play("Fade In");*/
-            GameLoaderManager.Instance.LoadWitchScene();
+            SceneManager.LoadScene("WitchScene");
         }
         if (_isGoGameScene)
         {
-            GameLoaderManager.Instance.LoadGameScene();
+            SceneManager.LoadScene("GameScene");
         }
     }
 }
