@@ -8,17 +8,20 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Mat_sorciere_old
-  m_Shader: {fileID: -6465566751694194690, guid: aefc63699cf4eff49a6bbb7c9ef5d160, type: 3}
-  m_Parent: {fileID: 2100000, guid: 6ceced78530f8164eb5f4985bb2c91fe, type: 2}
-  m_ModifiedSerializedProperties: 14
+  m_Shader: {fileID: 4800000, guid: 6e4ae4064600d784cac1e41a9e6f2e59, type: 3}
+  m_Parent: {fileID: 2100000, guid: 51e73aa372a02f545a940e295c58168a, type: 2}
+  m_ModifiedSerializedProperties: 30
   m_ValidKeywords:
   - _DISABLE_SSR_TRANSPARENT
   - _DOUBLESIDED_ON
+  - _EMISSIVE_COLOR_MAP
+  - _NORMALMAP
+  - _NORMALMAP_TANGENT_SPACE
   m_InvalidKeywords: []
   m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 1
-  m_CustomRenderQueue: -1
+  m_CustomRenderQueue: 2225
   stringTagMap:
     MotionVector: User
   disabledShaderPasses:
@@ -26,6 +29,7 @@ Material:
   - TransparentDepthPostpass
   - TransparentBackface
   - MOTIONVECTORS
+  - RayTracingPrepass
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
@@ -52,6 +56,7 @@ Material:
     - _CullMode: 0
     - _CullModeForward: 0
     - _DoubleSidedEnable: 1
+    - _StencilWriteMaskMV: 41
     m_Colors:
     - _EMISSION_COLOR: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
