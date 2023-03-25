@@ -18,10 +18,6 @@ public class PNJDetection : MonoBehaviour
     [SerializeField] private float _delayDetection = 0f;
     [SerializeField] private float _delayDetectionTimer = 0f;
 
-    [SerializeField] private GameObject _vignetDetection = null;
-
-    [SerializeField] private AnimationClip _fadeDetection = null;
-
     #endregion Attributs
 
     #region Propertie
@@ -41,6 +37,8 @@ public class PNJDetection : MonoBehaviour
     private void Start()
     {
         _delayDetectionTimer = 0;
+
+        _controllerPNJ.DetectionPNJ = this;
     }
 
     private void Update()
@@ -115,7 +113,6 @@ public class PNJDetection : MonoBehaviour
         else
         {
             DetectionGauge.fillAmount -= DetectionFeedBack / 2 * Time.deltaTime;
-        }
-        
+        }        
     }
 }

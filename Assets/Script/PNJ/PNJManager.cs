@@ -6,8 +6,8 @@ using UnityEngine.UI;
 
 public class PNJManager : Singleton<PNJManager>
 {
-    [SerializeField] private PNJController _controller = null;
-    [SerializeField] private PNJ_VillagerController _PNJVillager = null;
+    [SerializeField] private PNJController _controllerPNJ = null;
+    [SerializeField] private PNJ_VillagerController _villagerPNJ = null;
 
     [SerializeField] private DialogueController _Dialogue = null;
     
@@ -24,13 +24,13 @@ public class PNJManager : Singleton<PNJManager>
     
     public PNJController ControllerPNJ
     {
-        get => _controller;
-        set => _controller = value;
+        get => _controllerPNJ;
+        set => _controllerPNJ = value;
     }
-    public PNJ_VillagerController VillagerController
+    public PNJ_VillagerController ControllerVillager
     {
-        get => _PNJVillager;
-        set => _PNJVillager = value;
+        get => _villagerPNJ;
+        set => _villagerPNJ = value;
     }
     public DialogueController Dialogue
     {
@@ -57,21 +57,25 @@ public class PNJManager : Singleton<PNJManager>
         get => _VFXSpawnPoint;
         set => _VFXSpawnPoint = value;
     }
-    
-    public bool IsSeePlayer
-    {
-        get => _isSeePlayer;
-        set => _isSeePlayer = value;
-    }
+
     #endregion Properties
 
     public void KillVillager(bool isKill)
     {
         InventoryManager.Instance.ItemGet = _itemData;
         InventoryManager.Instance.AddItem();
-        
 
-        if(isKill)
+        if (ControllerPNJ != null )
+        {
+            ControllerPNJ.CastAnimation();
+        }
+
+        if (ControllerVillager != null)
+        {
+            ControllerVillager.CastAnimation();
+        }
+
+        if (isKill)
         {
             IsDead = true;
             Destroy(Body);

@@ -55,7 +55,8 @@ public class CharacterConrtoller : MonoBehaviour
 
         CharacterManager.Instance.Agent = Agent;
         CharacterManager.Instance.Camera = Camera;
-        
+
+        AnimationDetection.gameObject.SetActive(false);
 
         CharacterManager.Instance.VFXOmbremarche = _VFXOmbremarche;
     }

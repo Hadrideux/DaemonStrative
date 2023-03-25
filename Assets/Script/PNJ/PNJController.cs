@@ -9,7 +9,8 @@ public class PNJController : MonoBehaviour
 
     [SerializeField] private PNJController _controllerPNJ = null;
     [SerializeField] private PNJDetection _detectionPNJ = null;
-    
+    [SerializeField] private PNJMovement _movementPNJ = null;
+
     [SerializeField] private GameObject _characterCompFeedback = null;
     [SerializeField] private GameObject _body = null;
 
@@ -20,51 +21,49 @@ public class PNJController : MonoBehaviour
     [SerializeField] private float _VFXEndTimer = 1;
 
     private bool _isCanSeePlayer = false;
-    private bool _isDetectedPlayer = false;
+
+    [SerializeField] private Animator _animator = null;
 
     #endregion Attributs
 
     #region Properties
     #region Controller
-    /*
+
     public PNJDetection DetectionPNJ
     {
         get => _detectionPNJ;
         set => _detectionPNJ = value;
     }
+
     public PNJMovement MovementPNJ
     {
-        get => _pNJMovement;
-        set => _pNJMovement = value;
+        get => _movementPNJ;
+        set => _movementPNJ = value;
     }
-    */
 
     #endregion Controller
 
-    /*
-    public Image DetectionGauge
-    {
-        get => _detectionGauge;
-        set => _detectionGauge = value;
-    }
-    */
     public bool IsCanSeePlayer
     {
         get => _isCanSeePlayer;
         set => _isCanSeePlayer = value;
     }
 
+    public Animator Animator
+    {
+        get => _animator;
+        set => _animator = value;
+    }
     #endregion Properties
 
     #region Mono
 
     private void Start()
     {
+        _animator = GetComponent<Animator>();
     }
     private void Update()
     {
-        PNJManager.Instance.IsSeePlayer = IsCanSeePlayer;
-
         if (PNJManager.Instance.IsDead == true)
         {
             _VFXDuration += Time.deltaTime;
@@ -83,6 +82,7 @@ public class PNJController : MonoBehaviour
     {
         if (other.CompareTag("Player")) 
         {
+            PNJManager.Instance.ControllerPNJ = _controllerPNJ;
             PNJManager.Instance.ItemGet = _itemData;
             PNJManager.Instance.VFXSpawner = _VFXSpawnPoint;
             PNJManager.Instance.Body = _body;
@@ -98,8 +98,19 @@ public class PNJController : MonoBehaviour
         PNJManager.Instance.Body = null;
 
         _characterCompFeedback.SetActive(false);
-
     }
 
+    public void CastAnimation()
+    {
+        if (UIManager.Instance.IsClawSkillActive == true)
+        {
+            _animator.SetTrigger("DieByClaw");
+        }
+        
+        if (UIManager.Instance.IsBiteSkillActive == true)
+        {
+            _animator.SetTrigger("DieByBite");
+        }
+    }
     #endregion Mono
 }

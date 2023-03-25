@@ -20,18 +20,20 @@ public class PNJ_VillagerController : MonoBehaviour
     [SerializeField] private GameObject _characterCompFeedback = null;
     [SerializeField] private RectTransform _dialogueButton;
 
+    [SerializeField] private Animator _animator = null;
+
+    #endregion Attributs
+
     public RectTransform DialogueButton
     {
         get => _dialogueButton;
         set => _dialogueButton = value;
     }
-    #endregion Attributs
     public PNJ_VillagerController VillagerController
     {
         get => _PNJVillager;
         set => _PNJVillager = value;
     }
-
     public DialogueController DialogueController
     {
         get => _DialogueController;
@@ -39,37 +41,10 @@ public class PNJ_VillagerController : MonoBehaviour
     }
 
     #region Mono
-
-    private void OnTriggerEnter(Collider other)
+    private void Start()
     {
-        if (other.CompareTag("Player")) 
-        {
-            PNJManager.Instance.ItemGet = _itemData;
-            PNJManager.Instance.VFXSpawner = _VFXSpawnPoint;
-            PNJManager.Instance.Body = _body;
-
-            if (VillagerController._characterCompFeedback != null && _dialogueButton.gameObject != null && _dialogueButton != null)
-            {
-                _characterCompFeedback.SetActive(true);   
-                _dialogueButton.gameObject.SetActive(true);
-            }
-        }            
+        _animator = GetComponent<Animator>();
     }
-
-    private void OnTriggerExit(Collider other)
-    {
-        PNJManager.Instance.ItemGet = null;
-        PNJManager.Instance.VFXSpawner = null;
-        PNJManager.Instance.Body = null;
-
-        if (VillagerController._characterCompFeedback != null && _dialogueButton.gameObject != null && _dialogueButton != null)
-        {
-            _characterCompFeedback.SetActive(false);
-            _dialogueButton.gameObject.SetActive(false);
-        }
-
-    }
-
     private void Update()
     {
 
@@ -85,9 +60,52 @@ public class PNJ_VillagerController : MonoBehaviour
         else
         {
             _VFXDuration = 0;
+        }                
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player")) 
+        {
+            PNJManager.Instance.ControllerVillager = _PNJVillager;
+            PNJManager.Instance.ItemGet = _itemData;
+            PNJManager.Instance.VFXSpawner = _VFXSpawnPoint;
+            PNJManager.Instance.Body = _body;
+
+            if (VillagerController._characterCompFeedback != null && _dialogueButton.gameObject != null && _dialogueButton != null)
+            {
+                _characterCompFeedback.SetActive(true);   
+                _dialogueButton.gameObject.SetActive(true);
+            }
+        }            
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        PNJManager.Instance.ControllerVillager = null;
+        PNJManager.Instance.ItemGet = null;
+        PNJManager.Instance.VFXSpawner = null;
+        PNJManager.Instance.Body = null;
+
+        if (VillagerController._characterCompFeedback != null && _dialogueButton.gameObject != null && _dialogueButton != null)
+        {
+            _characterCompFeedback.SetActive(false);
+            _dialogueButton.gameObject.SetActive(false);
         }
-                
+    }
+
+
+    public void CastAnimation()
+    {
+        if (UIManager.Instance.IsClawSkillActive == true)
+        {
+            _animator.SetTrigger("DieByClaw");
+        }
+
+        if (UIManager.Instance.IsBiteSkillActive == true)
+        {
+            _animator.SetTrigger("DieByBite");
+        }
     }
     #endregion Mono
-       
+
 }

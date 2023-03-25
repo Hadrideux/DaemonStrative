@@ -12,6 +12,8 @@ public class PNJMovement : MonoBehaviour
 
     private float _timeRef = 0;
 
+    [SerializeField] private Animator _animator = null;
+
     public float TimerRef
     {
         get => _timeRef;
@@ -27,11 +29,17 @@ public class PNJMovement : MonoBehaviour
         public float waitTime;
     }
 
+    private void Start()
+    {
+        _animator = GetComponent<Animator>();
+
+        _controllerPNJ.MovementPNJ = this;
+    }
 
     // Update is called once per frame
     void Update()
     {
-        Movement();        
+        Movement();
     }
 
     private void Movement()
@@ -47,7 +55,7 @@ public class PNJMovement : MonoBehaviour
             if (agent.remainingDistance < 0.05f)
             {
                 TimerRef += Time.deltaTime;
-                WayPoint timer = _wayPoints[_activePoint];
+                WayPoint timer = _wayPoints[_activePoint];                
 
                 WalkRound();
 
@@ -55,6 +63,7 @@ public class PNJMovement : MonoBehaviour
                 {
                     _activePoint = (_activePoint + 1) % _wayPoints.Length;
                     TimerRef = 0;
+
                 }
                 else if (TimerRef > timer.waitTime)
                 {
@@ -66,6 +75,7 @@ public class PNJMovement : MonoBehaviour
         else if (_controllerPNJ.IsCanSeePlayer == true)
         {
             agent.isStopped = true;
+            _animator.SetBool("IsWalk", false);
 
             Transform target = CharacterManager.Instance.Controller.transform;
             _controllerPNJ.transform.LookAt(target.position);
@@ -74,6 +84,8 @@ public class PNJMovement : MonoBehaviour
     private void WalkRound()
     {
         WayPoint actualPoint = _wayPoints[_activePoint];
-        agent.SetDestination(actualPoint.target.transform.position);       
+        agent.SetDestination(actualPoint.target.transform.position);
+        
+        _animator.SetBool("IsWalk", true);
     }
 }
