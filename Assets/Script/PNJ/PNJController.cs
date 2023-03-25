@@ -21,7 +21,8 @@ public class PNJController : MonoBehaviour
     [SerializeField] private float _VFXEndTimer = 1;
 
     private bool _isCanSeePlayer = false;
-    private bool _isDetectedPlayer = false;
+
+    [SerializeField] private Animator _animator = null;
 
     #endregion Attributs
 
@@ -48,10 +49,19 @@ public class PNJController : MonoBehaviour
         set => _isCanSeePlayer = value;
     }
 
+    public Animator Animator
+    {
+        get => _animator;
+        set => _animator = value;
+    }
     #endregion Properties
 
     #region Mono
 
+    private void Start()
+    {
+        _animator = GetComponent<Animator>();
+    }
     private void Update()
     {
         if (PNJManager.Instance.IsDead == true)
@@ -72,6 +82,7 @@ public class PNJController : MonoBehaviour
     {
         if (other.CompareTag("Player")) 
         {
+            PNJManager.Instance.ControllerPNJ = _controllerPNJ;
             PNJManager.Instance.ItemGet = _itemData;
             PNJManager.Instance.VFXSpawner = _VFXSpawnPoint;
             PNJManager.Instance.Body = _body;
@@ -89,5 +100,17 @@ public class PNJController : MonoBehaviour
         _characterCompFeedback.SetActive(false);
     }
 
+    public void CastAnimation()
+    {
+        if (UIManager.Instance.IsClawSkillActive == true)
+        {
+            _animator.SetTrigger("DieByClaw");
+        }
+        
+        if (UIManager.Instance.IsBiteSkillActive == true)
+        {
+            _animator.SetTrigger("DieByBite");
+        }
+    }
     #endregion Mono
 }
