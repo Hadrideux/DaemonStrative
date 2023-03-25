@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 15.37018, g: 17.350618, b: 54.842293, a: 1}
+  m_IndirectSpecularColor: {r: 15.370424, g: 17.350618, b: 54.84681, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -16378,8 +16378,12 @@ PrefabInstance:
       value: 0.73
       objectReference: {fileID: 0}
     - target: {fileID: 2173342541950258335, guid: a6d83214a56d7d2429104953bba517df, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2173342541950258335, guid: a6d83214a56d7d2429104953bba517df, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -10.28
+      value: -8.47
       objectReference: {fileID: 0}
     - target: {fileID: 2173342541950258335, guid: a6d83214a56d7d2429104953bba517df, type: 3}
       propertyPath: m_LocalPosition.y
@@ -16387,7 +16391,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2173342541950258335, guid: a6d83214a56d7d2429104953bba517df, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 9.62
+      value: 8.01
       objectReference: {fileID: 0}
     - target: {fileID: 2173342541950258335, guid: a6d83214a56d7d2429104953bba517df, type: 3}
       propertyPath: m_LocalRotation.w
@@ -16465,7 +16469,20 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 4972380429869977478, guid: a6d83214a56d7d2429104953bba517df, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4972380429870338982, guid: a6d83214a56d7d2429104953bba517df, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 5458926054647654509, guid: a6d83214a56d7d2429104953bba517df, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 2342748007093934457, guid: a6d83214a56d7d2429104953bba517df, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
