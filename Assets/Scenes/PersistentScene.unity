@@ -968,7 +968,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc5193b7196e17849a85af02f7d4532f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _loadingProgress: {fileID: 262238934}
+  _LoadingProgress: {fileID: 262238934}
 --- !u!114 &1679044325
 MonoBehaviour:
   m_ObjectHideFlags: 0
