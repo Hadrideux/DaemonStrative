@@ -8,6 +8,7 @@ public class EndWitchView : MonoBehaviour
     [SerializeField] private GameObject _self = null;
     [SerializeField] private GameObject _proximityTrigger = null;
     [SerializeField] private GameObject _dialogueDisable = null;
+    [SerializeField] private GameObject _portalEnable = null;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,5 +31,6 @@ public class EndWitchView : MonoBehaviour
         _proximityTrigger.gameObject.SetActive(false);
         _self.gameObject.SetActive(true);
         _dialogueDisable.gameObject.SetActive(false);
+        _portalEnable.gameObject.SetActive(true);
     }
 }

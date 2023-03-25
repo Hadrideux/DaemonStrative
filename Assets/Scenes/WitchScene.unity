@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 16.426638, g: 19.299105, b: 59.917854, a: 1}
+  m_IndirectSpecularColor: {r: 15.37018, g: 17.350618, b: 54.842293, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3006,7 +3006,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4883083976113711012, guid: 6176ab60aae01f54887ac1da213f6338, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -10.94
+      value: -7.32
       objectReference: {fileID: 0}
     - target: {fileID: 4883083976113711012, guid: 6176ab60aae01f54887ac1da213f6338, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3014,7 +3014,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4883083976113711012, guid: 6176ab60aae01f54887ac1da213f6338, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 9.85
+      value: 7.73
       objectReference: {fileID: 0}
     - target: {fileID: 4883083976113711012, guid: 6176ab60aae01f54887ac1da213f6338, type: 3}
       propertyPath: m_LocalRotation.w
@@ -10966,6 +10966,7 @@ MonoBehaviour:
   _self: {fileID: 1675111495}
   _proximityTrigger: {fileID: 140546056}
   _dialogueDisable: {fileID: 788579434}
+  _portalEnable: {fileID: 5205634519859092625}
 --- !u!4 &1317081100 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c948aa603be92e24db04e32486230668, type: 3}
@@ -15473,6 +15474,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c948aa603be92e24db04e32486230668, type: 3}
   m_PrefabInstance: {fileID: 1292264680}
   m_PrefabAsset: {fileID: 0}
+--- !u!224 &1994116696 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 449345646949187102, guid: a6d83214a56d7d2429104953bba517df, type: 3}
+  m_PrefabInstance: {fileID: 5205634519859092624}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2004401572
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15766,8 +15772,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Hello hero ! Welcome to my castle.
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 442703dff4f2e8546998966e1d4515fa, type: 2}
-  m_sharedMaterial: {fileID: 8961230803463733183, guid: 442703dff4f2e8546998966e1d4515fa, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: b8696e849b766064eabdd674af16eadc, type: 2}
+  m_sharedMaterial: {fileID: -8445651678708324537, guid: b8696e849b766064eabdd674af16eadc, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -15791,7 +15797,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 62.15
+  m_fontSize: 51.25
   m_fontSizeBase: 34
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -16364,20 +16370,24 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2173342541950258335, guid: a6d83214a56d7d2429104953bba517df, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.73
+      objectReference: {fileID: 0}
+    - target: {fileID: 2173342541950258335, guid: a6d83214a56d7d2429104953bba517df, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -10.28
       objectReference: {fileID: 0}
     - target: {fileID: 2173342541950258335, guid: a6d83214a56d7d2429104953bba517df, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 2.39
       objectReference: {fileID: 0}
     - target: {fileID: 2173342541950258335, guid: a6d83214a56d7d2429104953bba517df, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -35
+      value: 9.62
       objectReference: {fileID: 0}
     - target: {fileID: 2173342541950258335, guid: a6d83214a56d7d2429104953bba517df, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.9321344
       objectReference: {fileID: 0}
     - target: {fileID: 2173342541950258335, guid: a6d83214a56d7d2429104953bba517df, type: 3}
       propertyPath: m_LocalRotation.x
@@ -16385,7 +16395,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2173342541950258335, guid: a6d83214a56d7d2429104953bba517df, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0.3621126
       objectReference: {fileID: 0}
     - target: {fileID: 2173342541950258335, guid: a6d83214a56d7d2429104953bba517df, type: 3}
       propertyPath: m_LocalRotation.z
@@ -16397,7 +16407,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2173342541950258335, guid: a6d83214a56d7d2429104953bba517df, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: -42.46
       objectReference: {fileID: 0}
     - target: {fileID: 2173342541950258335, guid: a6d83214a56d7d2429104953bba517df, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -16410,13 +16420,34 @@ PrefabInstance:
     - target: {fileID: 3168149335527359424, guid: a6d83214a56d7d2429104953bba517df, type: 3}
       propertyPath: m_Camera
       value: 
+      objectReference: {fileID: 1958669137}
+    - target: {fileID: 3205070184965605160, guid: a6d83214a56d7d2429104953bba517df, type: 3}
+      propertyPath: _activation
+      value: 
+      objectReference: {fileID: 1994116696}
+    - target: {fileID: 3205070184965605160, guid: a6d83214a56d7d2429104953bba517df, type: 3}
+      propertyPath: _isGoGameScene
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3205070184965605160, guid: a6d83214a56d7d2429104953bba517df, type: 3}
+      propertyPath: _isGoWitchScene
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4103194993863922288, guid: a6d83214a56d7d2429104953bba517df, type: 3}
       propertyPath: m_Name
       value: TriggerWitchScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 4103194993863922288, guid: a6d83214a56d7d2429104953bba517df, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a6d83214a56d7d2429104953bba517df, type: 3}
+--- !u!1 &5205634519859092625 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4103194993863922288, guid: a6d83214a56d7d2429104953bba517df, type: 3}
+  m_PrefabInstance: {fileID: 5205634519859092624}
+  m_PrefabAsset: {fileID: 0}
