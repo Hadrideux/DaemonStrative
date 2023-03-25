@@ -64,6 +64,10 @@ public class CharacterManager : Singleton<CharacterManager>
     }
 
     #endregion properties
+    private void Update()
+    {
+        CastVignetDetection();
+    }
 
     #region Methode
 
@@ -87,8 +91,7 @@ public class CharacterManager : Singleton<CharacterManager>
         PNJManager.Instance.KillVillager(true);
 
         UIManager.Instance.ToggleClawSkillButton(true);
-        UIManager.Instance.IsClawSkillActive = true;
-        
+        UIManager.Instance.IsClawSkillActive = true;        
     }
     public void ShadoStepAction()
     {
@@ -108,11 +111,6 @@ public class CharacterManager : Singleton<CharacterManager>
             Instantiate(SkillsVFX, PNJManager.Instance.VFXSpawner.transform);
     }
 
-    private void Update()
-    {
-        CastVignetDetection();
-    }
-
     private void CastVignetDetection()
     {
         if(DetectedBy.Count > 0)
@@ -123,7 +121,7 @@ public class CharacterManager : Singleton<CharacterManager>
             Controller.AudioDetected(true);
             // Alerte
         }
-        else
+        else if (DetectedBy.Count == 0)
         {
             _controller.AnimationDetection.gameObject.SetActive(false);
             _controller.AnimationDetection.enabled = false;

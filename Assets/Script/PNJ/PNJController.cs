@@ -9,7 +9,8 @@ public class PNJController : MonoBehaviour
 
     [SerializeField] private PNJController _controllerPNJ = null;
     [SerializeField] private PNJDetection _detectionPNJ = null;
-    
+    [SerializeField] private PNJMovement _movementPNJ = null;
+
     [SerializeField] private GameObject _characterCompFeedback = null;
     [SerializeField] private GameObject _body = null;
 
@@ -26,28 +27,21 @@ public class PNJController : MonoBehaviour
 
     #region Properties
     #region Controller
-    /*
+
     public PNJDetection DetectionPNJ
     {
         get => _detectionPNJ;
         set => _detectionPNJ = value;
     }
+
     public PNJMovement MovementPNJ
     {
-        get => _pNJMovement;
-        set => _pNJMovement = value;
+        get => _movementPNJ;
+        set => _movementPNJ = value;
     }
-    */
 
     #endregion Controller
 
-    /*
-    public Image DetectionGauge
-    {
-        get => _detectionGauge;
-        set => _detectionGauge = value;
-    }
-    */
     public bool IsCanSeePlayer
     {
         get => _isCanSeePlayer;
@@ -58,13 +52,8 @@ public class PNJController : MonoBehaviour
 
     #region Mono
 
-    private void Start()
-    {
-    }
     private void Update()
     {
-        PNJManager.Instance.IsSeePlayer = IsCanSeePlayer;
-
         if (PNJManager.Instance.IsDead == true)
         {
             _VFXDuration += Time.deltaTime;
@@ -98,7 +87,6 @@ public class PNJController : MonoBehaviour
         PNJManager.Instance.Body = null;
 
         _characterCompFeedback.SetActive(false);
-
     }
 
     #endregion Mono
