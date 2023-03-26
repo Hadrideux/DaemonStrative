@@ -1052,6 +1052,7 @@ MonoBehaviour:
   _VFXEndTimer: 1
   _characterCompFeedback: {fileID: 739838098914350114}
   _dialogueButton: {fileID: 5585016323323947357}
+  _animator: {fileID: 8909246162438022606}
 --- !u!65 &6336899613132600871
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1176,5 +1177,10 @@ BoxCollider:
 --- !u!4 &3261781486635630516 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 03126c758ac27014f8b360937f67458e, type: 3}
+  m_PrefabInstance: {fileID: 3084567204052719711}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &8909246162438022606 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 03126c758ac27014f8b360937f67458e, type: 3}
   m_PrefabInstance: {fileID: 3084567204052719711}
   m_PrefabAsset: {fileID: 0}

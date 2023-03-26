@@ -64,6 +64,7 @@ public class CharacterManager : Singleton<CharacterManager>
     }
 
     #endregion properties
+
     private void Update()
     {
         CastVignetDetection();

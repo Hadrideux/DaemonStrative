@@ -4,7 +4,7 @@ public class CharacterMovement : MonoBehaviour
 { 
     [SerializeField] private CharacterConrtoller _characterController = null;
 
-    [SerializeField] private GameObject _nacPointVFX = null;
+    [SerializeField] private GameObject _navPointVFX = null;
 
     private void Update()
     {
@@ -24,8 +24,10 @@ public class CharacterMovement : MonoBehaviour
                 _characterController.Agent.isStopped = false;
                 _characterController.Agent.SetDestination(hitInfo.point);
 
-                _nacPointVFX.transform.position = new Vector3(hitInfo.point.x, 0.5f, hitInfo.point.z);
-                _nacPointVFX.SetActive(true);
+                _navPointVFX.transform.position = new Vector3(hitInfo.point.x, 0.5f, hitInfo.point.z);
+                _navPointVFX.SetActive(true);
+
+                _characterController.AnimationCharacter.SetBool("IsWalk", true);
             }
         }
     }
@@ -34,7 +36,8 @@ public class CharacterMovement : MonoBehaviour
     {
         if (_characterController.Agent.remainingDistance < 0.05f)
         {
-            _nacPointVFX.SetActive(false);
+            _navPointVFX.SetActive(false);
+            _characterController.AnimationCharacter.SetBool("IsWalk", true);
         }
  
     }

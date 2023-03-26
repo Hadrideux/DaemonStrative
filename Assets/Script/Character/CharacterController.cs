@@ -29,7 +29,8 @@ public class CharacterConrtoller : MonoBehaviour
     
 
     [SerializeField] private Animator _animationDetection = null;
-    
+    [SerializeField] private Animator _animationCharacter = null;
+
 
     #endregion Attributs
 
@@ -48,6 +49,11 @@ public class CharacterConrtoller : MonoBehaviour
         get => _animationDetection;
         set => _animationDetection = value;
     }
+    public Animator AnimationCharacter
+    {
+        get => _animationCharacter;
+        set => _animationCharacter = value;
+    }
 
     void Start()
     {
@@ -60,6 +66,7 @@ public class CharacterConrtoller : MonoBehaviour
 
         CharacterManager.Instance.VFXOmbremarche = _VFXOmbremarche;
     }
+
     void Update()
     {
         SwitchCam(animTimer, animDelay, virtualCam);
@@ -76,6 +83,8 @@ public class CharacterConrtoller : MonoBehaviour
 
             CharacterManager.Instance.BiteAction();
             onActivation= true;
+
+            AnimationCharacter.SetTrigger("Bite");
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha2))
@@ -85,6 +94,8 @@ public class CharacterConrtoller : MonoBehaviour
 
             CharacterManager.Instance.ClawAction();
             onActivation = true;
+
+            AnimationCharacter.SetTrigger("Claw");
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha3))
