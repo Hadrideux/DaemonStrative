@@ -37,7 +37,7 @@ public class CharacterMovement : MonoBehaviour
         if (_characterController.Agent.remainingDistance < 0.05f)
         {
             _navPointVFX.SetActive(false);
-            _characterController.AnimationCharacter.SetBool("IsWalk", true);
+            _characterController.AnimationCharacter.SetBool("IsWalk", false);
         }
  
     }
