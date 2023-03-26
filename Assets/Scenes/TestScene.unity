@@ -9097,6 +9097,10 @@ PrefabInstance:
       propertyPath: _nacPointVFX
       value: 
       objectReference: {fileID: 291934588}
+    - target: {fileID: 6549310192447595053, guid: 6176ab60aae01f54887ac1da213f6338, type: 3}
+      propertyPath: _navPointVFX
+      value: 
+      objectReference: {fileID: 291934588}
     - target: {fileID: 6549709111852446123, guid: 6176ab60aae01f54887ac1da213f6338, type: 3}
       propertyPath: _camera
       value: 
