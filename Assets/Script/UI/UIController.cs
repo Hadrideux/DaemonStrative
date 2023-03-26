@@ -46,7 +46,7 @@ public class UIController : MonoBehaviour
     }
     public void ReloadScceneInstance()
     {
-        SceneManager.LoadScene("WitchScene");        
+        SceneManager.LoadScene("GameScene");        
     }
 
     private void CastVignetShadowStep()
