@@ -764,7 +764,7 @@ Transform:
   - {fileID: 5930189970907524179}
   - {fileID: 1500508022351719568}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!195 &5434017713403560353
 NavMeshAgent:
@@ -808,6 +808,7 @@ MonoBehaviour:
   _itemData: {fileID: 11400000, guid: e204b99a137969648892dca845744744, type: 2}
   _VFXSpawnPoint: {fileID: 1252289265297556068}
   _VFXEndTimer: 1
+  _animator: {fileID: 0}
 --- !u!114 &1261295695285075962
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1240,10 +1241,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7907377696606669212, guid: 03126c758ac27014f8b360937f67458e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 62634f95f8e263b4da8be88f9b495d97, type: 2}
     - target: {fileID: 919132149155446097, guid: 03126c758ac27014f8b360937f67458e, type: 3}
       propertyPath: m_Name
       value: Mode_Villager_Idle
       objectReference: {fileID: 0}
+    - target: {fileID: 5139161012084309247, guid: 03126c758ac27014f8b360937f67458e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 62634f95f8e263b4da8be88f9b495d97, type: 2}
     - target: {fileID: 5866666021909216657, guid: 03126c758ac27014f8b360937f67458e, type: 3}
       propertyPath: m_Controller
       value: 

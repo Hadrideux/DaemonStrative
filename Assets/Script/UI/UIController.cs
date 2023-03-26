@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UIController : MonoBehaviour
@@ -45,7 +46,7 @@ public class UIController : MonoBehaviour
     }
     public void ReloadScceneInstance()
     {
-        UIManager.Instance.ReloadScene();
+        SceneManager.LoadScene("WitchScene");        
     }
 
     private void CastVignetShadowStep()
