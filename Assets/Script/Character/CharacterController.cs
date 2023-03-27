@@ -98,7 +98,7 @@ public class CharacterConrtoller : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            CharacterManager.Instance.ShadoStepAction();
+            CharacterManager.Instance.ShadowStepAction();
         }
 
         if (Input.GetKeyDown(KeyCode.Space))
@@ -130,7 +130,7 @@ public class CharacterConrtoller : MonoBehaviour
             }
             else if (_isMapEnable == true)
             {
-                RemoveMapView();                
+                RemoveMapView();
             }
             
         }

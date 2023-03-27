@@ -92,7 +92,7 @@ public class CharacterManager : Singleton<CharacterManager>
         UIManager.Instance.ToggleClawSkillButton(true);
         UIManager.Instance.IsClawSkillActive = true;        
     }
-    public void ShadoStepAction()
+    public void ShadowStepAction()
     {
         UIManager.Instance.ToggleShadowStepButton(true);
         UIManager.Instance.IsShadowStepSkillActive = true;

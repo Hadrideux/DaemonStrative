@@ -79,7 +79,7 @@ public class PNJManager : Singleton<PNJManager>
     {
         if (ControllerPNJ != null)
         {
-            Destroy(PNJManager.Instance.ControllerPNJ.gameObject);
+            Destroy(ControllerPNJ.gameObject);
 
             ItemGet = null;
             VFXSpawner = null;
@@ -89,7 +89,7 @@ public class PNJManager : Singleton<PNJManager>
 
         if (ControllerVillager != null)
         {
-            Destroy(PNJManager.Instance.ControllerVillager.gameObject);
+            Destroy(ControllerVillager.gameObject);
 
             ItemGet = null;
             VFXSpawner = null;
