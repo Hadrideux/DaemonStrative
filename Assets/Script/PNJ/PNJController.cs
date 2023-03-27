@@ -80,24 +80,29 @@ public class PNJController : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player")) 
+        if (other.CompareTag("Player"))
         {
-            PNJManager.Instance.ControllerPNJ = _controllerPNJ;
             PNJManager.Instance.ItemGet = _itemData;
             PNJManager.Instance.VFXSpawner = _VFXSpawnPoint;
             PNJManager.Instance.Body = _body;
+            PNJManager.Instance.ControllerPNJ = _controllerPNJ;
 
             _characterCompFeedback.SetActive(true);
         }
     }
 
-    private void OnTriggerExit(Collider other) 
+    private void OnTriggerExit(Collider other)
     {
-        PNJManager.Instance.ItemGet = null;
-        PNJManager.Instance.VFXSpawner = null;
-        PNJManager.Instance.Body = null;
+        if (other.CompareTag("Player"))
+        {
+            PNJManager.Instance.ItemGet = null;
+            PNJManager.Instance.VFXSpawner = null;
+            PNJManager.Instance.Body = null;
+            PNJManager.Instance.ControllerPNJ = null;
 
-        _characterCompFeedback.SetActive(false);
+            _characterCompFeedback.SetActive(false);
+        }
+
     }
 
     public void CastAnimation()

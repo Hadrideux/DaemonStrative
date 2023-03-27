@@ -63,6 +63,8 @@ public class PNJManager : Singleton<PNJManager>
         InventoryManager.Instance.ItemGet = _itemData;
         InventoryManager.Instance.AddItem();
 
+        IsDead = isKill;
+
         if (ControllerPNJ != null )
         {
             ControllerPNJ.CastAnimation();
@@ -71,12 +73,6 @@ public class PNJManager : Singleton<PNJManager>
         if (ControllerVillager != null)
         {
             ControllerVillager.CastAnimation();
-        }
-
-        if (isKill)
-        {
-            IsDead = true;
-            Destroy(Body);
         }
         
     }
