@@ -32,7 +32,7 @@ public class InventoryManager : Singleton<InventoryManager>
 
     public void AddItem()
     {
-        if(ERessourceType.SKULL == _itemGet.Type)
+        if (ERessourceType.SKULL == _itemGet.Type)
         {
             AmountSkull += _itemGet.Amount;
         }
