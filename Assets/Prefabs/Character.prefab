@@ -155,10 +155,10 @@ NavMeshAgent:
   avoidancePriority: 50
   m_AngularSpeed: 120
   m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
+  m_AutoTraverseOffMeshLink: 0
   m_AutoBraking: 1
   m_AutoRepath: 1
-  m_Height: 2
+  m_Height: 1.7
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
@@ -304,7 +304,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _characterController: {fileID: 6549709111852446123}
-  _nacPointVFX: {fileID: 100010, guid: 4599d7e0ab9766c47bd8e1d46453eb2a, type: 3}
+  _navPointVFX: {fileID: 0}
 --- !u!1001 &7365718564923656655
 PrefabInstance:
   m_ObjectHideFlags: 0
