@@ -106,7 +106,7 @@ public class CharacterManager : Singleton<CharacterManager>
 
     public void CastVFXOnCollider()
     {
-        if (_collider != null)
+        if (Collider != null)
             Instantiate(SkillsVFX, PNJManager.Instance.VFXSpawner.transform);
     }
 
