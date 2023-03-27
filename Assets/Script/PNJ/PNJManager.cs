@@ -74,11 +74,29 @@ public class PNJManager : Singleton<PNJManager>
         {
             ControllerVillager.CastAnimation();
         }
-        
     }
     public void DestroyAll()
-    { 
-        Destroy(CharacterManager.Instance.Collider);
+    {
+        if (ControllerPNJ != null)
+        {
+            Destroy(PNJManager.Instance.ControllerPNJ.gameObject);
+
+            ItemGet = null;
+            VFXSpawner = null;
+            Body = null;
+            ControllerPNJ = null;
+        }
+
+        if (ControllerVillager != null)
+        {
+            Destroy(PNJManager.Instance.ControllerVillager.gameObject);
+
+            ItemGet = null;
+            VFXSpawner = null;
+            Body = null;
+            ControllerVillager = null;
+        }
+
         IsDead = false;
     }
 

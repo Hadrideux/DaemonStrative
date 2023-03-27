@@ -48,12 +48,6 @@ public class PNJController : MonoBehaviour
         get => _isCanSeePlayer;
         set => _isCanSeePlayer = value;
     }
-
-    public Animator Animator
-    {
-        get => _animator;
-        set => _animator = value;
-    }
     #endregion Properties
 
     #region Mono
@@ -62,14 +56,15 @@ public class PNJController : MonoBehaviour
     {
         _animator = GetComponent<Animator>();
     }
+
     private void Update()
     {
         if (PNJManager.Instance.IsDead == true)
         {
             _VFXDuration += Time.deltaTime;
 
-            if (_VFXDuration > _VFXEndTimer) 
-            { 
+            if (_VFXDuration >= _VFXEndTimer) 
+            {
                 PNJManager.Instance.DestroyAll();
             }
         }
@@ -78,6 +73,7 @@ public class PNJController : MonoBehaviour
             _VFXDuration = 0;
         }
     }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -91,30 +87,18 @@ public class PNJController : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            PNJManager.Instance.ItemGet = null;
-            PNJManager.Instance.VFXSpawner = null;
-            PNJManager.Instance.Body = null;
-            PNJManager.Instance.ControllerPNJ = null;
-
-            _characterCompFeedback.SetActive(false);
-        }
-
-    }
-
     public void CastAnimation()
     {
         if (UIManager.Instance.IsClawSkillActive == true)
         {
             _animator.SetTrigger("DieByClaw");
+            _characterCompFeedback.SetActive(false);
         }
         
         if (UIManager.Instance.IsBiteSkillActive == true)
         {
             _animator.SetTrigger("DieByBite");
+            _characterCompFeedback.SetActive(false);
         }
     }
     #endregion Mono

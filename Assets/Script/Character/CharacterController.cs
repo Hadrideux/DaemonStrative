@@ -80,11 +80,10 @@ public class CharacterConrtoller : MonoBehaviour
         {
             CharacterManager.Instance.SkillsVFX = _typeVFX[0];
             _audioSource.PlayOneShot(_skillsSFX[0], 1f);
+            AnimationCharacter.SetTrigger("Bite");
 
             CharacterManager.Instance.BiteAction();
             onActivation= true;
-
-            AnimationCharacter.SetTrigger("Bite");
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha2))
@@ -92,10 +91,9 @@ public class CharacterConrtoller : MonoBehaviour
             CharacterManager.Instance.SkillsVFX = _typeVFX[1]; 
             _audioSource.PlayOneShot(_skillsSFX[1], 3f);
 
+            AnimationCharacter.SetTrigger("Claw");
             CharacterManager.Instance.ClawAction();
             onActivation = true;
-
-            AnimationCharacter.SetTrigger("Claw");
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha3))
@@ -128,13 +126,11 @@ public class CharacterConrtoller : MonoBehaviour
         {
             if (_isMapEnable == false)
             {
-                EnableMapView();
-                
+                EnableMapView();                
             }
             else if (_isMapEnable == true)
             {
-                RemoveMapView();
-                
+                RemoveMapView();                
             }
             
         }
