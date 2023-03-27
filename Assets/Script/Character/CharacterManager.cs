@@ -118,14 +118,14 @@ public class CharacterManager : Singleton<CharacterManager>
             _controller.AnimationDetection.gameObject.SetActive(true);
             _controller.AnimationDetection.enabled = true;
             _controller.AnimationDetection.Play("Fade_Vignettage_Detection");
-            Controller.AudioDetected(true);
+            //Controller.AudioDetected(true);
         }
         else if (DetectedBy.Count == 0)
         {
             // Pas d'alerte
             _controller.AnimationDetection.gameObject.SetActive(false);
             _controller.AnimationDetection.enabled = false;
-            Controller.AudioDetected(false);
+            //Controller.AudioDetected(false);
         }
     }
 

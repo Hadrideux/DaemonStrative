@@ -142,7 +142,7 @@ public class CharacterConrtoller : MonoBehaviour
         //Vector3 destination = Input.GetAxis("Horizontal") * transform.right + Input.GetAxis("Vertical") * transform.forward; //0f <> 1f
         //if(Input.GetButtonDown("Fire1")
     }
-
+    /*
     public void AudioDetected(bool isDetected)
     {
         if (isDetected)
@@ -157,7 +157,7 @@ public class CharacterConrtoller : MonoBehaviour
         }
         
     }
-
+    */
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("PNJ"))
