@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 15.368105, g: 17.348207, b: 54.8628, a: 1}
+  m_IndirectSpecularColor: {r: 15.370729, g: 17.350252, b: 54.833138, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -10076,14 +10076,14 @@ PrefabInstance:
     - target: {fileID: 929958974762694482, guid: 698c4df39348a3449b5883e027c03232, type: 3}
       propertyPath: actors.Array.data[1].sprite
       value: 
-      objectReference: {fileID: 21300000, guid: d892ef4352299634ca6acb04479321f4, type: 3}
+      objectReference: {fileID: 21300000, guid: 161577e13a01ee74cb15a841d7f1aa7a, type: 3}
     - target: {fileID: 929958974762694482, guid: 698c4df39348a3449b5883e027c03232, type: 3}
       propertyPath: actors.Array.data[2].sprite
       value: 
       objectReference: {fileID: 21300000, guid: 0747171512bd47549ba1cf3f23215dec, type: 3}
     - target: {fileID: 929958974762694482, guid: 698c4df39348a3449b5883e027c03232, type: 3}
       propertyPath: messages.Array.data[0].message
-      value: "Bien... Formidable ! La transmoformation semble  s'\xEAtre op\xE9rer
+      value: "Bien... Formidable ! La transformation semble  s'\xEAtre op\xE9rer
         correctement. Peut-\xEAtre va-t-il pouvoir nous \xEAtre utile enfin de compte..."
       objectReference: {fileID: 0}
     - target: {fileID: 929958974762694482, guid: 698c4df39348a3449b5883e027c03232, type: 3}
