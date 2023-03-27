@@ -44,7 +44,8 @@ public class UIController : MonoBehaviour
     }
     public void ReloadScceneInstance()
     {
-        SceneManager.LoadScene("GameScene");        
+        SceneManager.LoadScene("GameScene"); 
+        Time.timeScale = 1.0f;
     }
 
     private void CastVignetShadowStep()
