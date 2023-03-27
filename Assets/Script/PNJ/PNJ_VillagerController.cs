@@ -45,15 +45,16 @@ public class PNJ_VillagerController : MonoBehaviour
     {
         _animator = GetComponent<Animator>();
     }
+    
     private void Update()
     {
 
         if (PNJManager.Instance.IsDead == true)
-        {
+        {            
             _VFXDuration += Time.deltaTime;
 
-            if (_VFXDuration > _VFXEndTimer) 
-            { 
+            if (_VFXDuration >= _VFXEndTimer) 
+            {
                 PNJManager.Instance.DestroyAll();
             }
         }
@@ -62,6 +63,7 @@ public class PNJ_VillagerController : MonoBehaviour
             _VFXDuration = 0;
         }                
     }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player")) 
@@ -79,34 +81,20 @@ public class PNJ_VillagerController : MonoBehaviour
         }            
     }
 
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            PNJManager.Instance.ControllerVillager = null;
-            PNJManager.Instance.ItemGet = null;
-            PNJManager.Instance.VFXSpawner = null;
-            PNJManager.Instance.Body = null;
-
-            if (VillagerController._characterCompFeedback != null && _dialogueButton.gameObject != null && _dialogueButton != null)
-            {
-                _characterCompFeedback.SetActive(false);
-                _dialogueButton.gameObject.SetActive(false);
-            }
-        }
-    }
-
-
     public void CastAnimation()
     {
         if (UIManager.Instance.IsClawSkillActive == true)
         {
             _animator.SetTrigger("DieByClaw");
+            _characterCompFeedback.SetActive(false);
+            _dialogueButton.gameObject.SetActive(false);
         }
 
         if (UIManager.Instance.IsBiteSkillActive == true)
         {
             _animator.SetTrigger("DieByBite");
+            _characterCompFeedback.SetActive(false);
+            _dialogueButton.gameObject.SetActive(false);
         }
     }
     #endregion Mono

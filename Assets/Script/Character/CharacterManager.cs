@@ -78,7 +78,7 @@ public class CharacterManager : Singleton<CharacterManager>
     {
         CastVFXOnCollider();
 
-        PNJManager.Instance.KillVillager(false);
+        PNJManager.Instance.KillVillager(true);
 
         UIManager.Instance.ToggleBiteSkillButton(true);
         UIManager.Instance.IsBiteSkillActive = true;
@@ -107,7 +107,9 @@ public class CharacterManager : Singleton<CharacterManager>
     public void CastVFXOnCollider()
     {
         if (Collider != null)
+        {
             Instantiate(SkillsVFX, PNJManager.Instance.VFXSpawner.transform);
+        }
     }
 
     private void CastVignetDetection()
@@ -118,14 +120,12 @@ public class CharacterManager : Singleton<CharacterManager>
             _controller.AnimationDetection.gameObject.SetActive(true);
             _controller.AnimationDetection.enabled = true;
             _controller.AnimationDetection.Play("Fade_Vignettage_Detection");
-            //Controller.AudioDetected(true);
         }
         else if (DetectedBy.Count == 0)
         {
             // Pas d'alerte
             _controller.AnimationDetection.gameObject.SetActive(false);
             _controller.AnimationDetection.enabled = false;
-            //Controller.AudioDetected(false);
         }
     }
 
