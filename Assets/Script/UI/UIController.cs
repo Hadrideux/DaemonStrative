@@ -13,8 +13,6 @@ public class UIController : MonoBehaviour
     [SerializeField] private GameObject _vignetShadowStep = null;    
 
     [SerializeField] private Animator _animationShadowStep = null;
-    [SerializeField] private AnimationClip _fadeInShadowStep = null;
-    [SerializeField] private AnimationClip _fadeOutShadowStep = null;
 
     #endregion UI Menu
     #endregion Attributs

@@ -10,15 +10,13 @@ public class PNJManager : Singleton<PNJManager>
     [SerializeField] private PNJ_VillagerController _villagerPNJ = null;
 
     [SerializeField] private DialogueController _Dialogue = null;
-    
-    [SerializeField] private PNJDetection _detection = null;
-    
+        
     [SerializeField] private GameObject _body = null;
     [SerializeField] private GameObject _VFXSpawnPoint = null;    
        
     [SerializeField] private ItemData _itemData = null;
     [SerializeField] private bool _isDying = false;
-    [SerializeField] private bool _isSeePlayer = false;
+    //[SerializeField] private bool _isSeePlayer = false;
 
     #region Properties
     
