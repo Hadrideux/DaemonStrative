@@ -67,7 +67,21 @@ public class CharacterManager : Singleton<CharacterManager>
 
     private void Update()
     {
+        if (PNJManager.Instance.ControllerPNJ != null)
+        {
+            Collider = PNJManager.Instance.ControllerPNJ.gameObject;
+        }
+        else if (PNJManager.Instance.ControllerVillager != null)
+        {
+            Collider = PNJManager.Instance.ControllerVillager.gameObject;
+        }
+        else
+        {
+            Collider = null;
+        }
+
         CastVignetDetection();
+
     }
 
     #region Methode
@@ -127,6 +141,7 @@ public class CharacterManager : Singleton<CharacterManager>
             _controller.AnimationDetection.gameObject.SetActive(false);
             _controller.AnimationDetection.enabled = false;
         }
+
     }
 
     #endregion Methode;

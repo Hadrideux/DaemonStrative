@@ -18,7 +18,6 @@ public class UI_IngameController : MonoBehaviour
 
     #region Item
 
-
     [SerializeField] private Image _skullImage = null;
     [SerializeField] private TextMeshProUGUI _skullText = null;
 
@@ -28,7 +27,7 @@ public class UI_IngameController : MonoBehaviour
 
     [SerializeField] private Image _fillBlood = null;
     [SerializeField] private TextMeshProUGUI _bloodText = null;
-    [SerializeField] private int _maxBlood = 0;
+    [SerializeField] private int _maxBlood = 100;
 
     #endregion Blood
 
@@ -77,7 +76,7 @@ public class UI_IngameController : MonoBehaviour
 
     public void UpdateBlood()
     {
-        _fillBlood.fillAmount += InventoryManager.Instance.AmountBlood / _maxBlood;
+        _fillBlood.fillAmount += Mathf.Clamp(InventoryManager.Instance.AmountBlood, 0, _maxBlood);
     }
 
     public void UpdateSuspicious()

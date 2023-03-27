@@ -209,7 +209,7 @@ MonoBehaviour:
   - {fileID: 1834194341294532, guid: d5f26854a8904624c8073139cd2eb346, type: 3}
   _VFXOmbremarche: {fileID: 8576645727241811606}
   _skillsSFX:
-  - {fileID: 8300000, guid: 74e3b70ea94f21242b6e4ae68eb2db31, type: 3}
+  - {fileID: 8300000, guid: 4a8947ae0ce04174da3534c3df3cbaab, type: 3}
   - {fileID: 8300000, guid: 9aa315675f2a0604fb2545d08d953549, type: 3}
   - {fileID: 8300000, guid: 8e2775ba5ee00b74ca6374883d94511e, type: 3}
   virtualCam: {fileID: 0}
@@ -303,10 +303,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.55
   m_Height: 2
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!95 &5029180668507386618
 Animator:
   serializedVersion: 5
