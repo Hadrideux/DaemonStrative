@@ -1,4 +1,6 @@
 using Engine.Utils;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -12,9 +14,9 @@ public class CharacterManager : Singleton<CharacterManager>
 
     [SerializeField] private GameObject _collider = null;
     [SerializeField] private bool _isCanBeSee = true;
+    [SerializeField] private List<PNJDetection> _detectedBy = new List<PNJDetection>();
 
     [SerializeField] private GameObject _skillsVFX = null;
-    [SerializeField] private AudioClip _skillsSFX = null;
 
     [SerializeField] private GameObject _VFXOmbremarche = null;
 
@@ -22,8 +24,13 @@ public class CharacterManager : Singleton<CharacterManager>
 
     public bool IsCanBeSee
     {
-        get => _isCanBeSee; 
+        get => _isCanBeSee;
         set => _isCanBeSee = value;
+    }   
+    public List<PNJDetection> DetectedBy
+    {
+        get => _detectedBy;
+        set => _detectedBy = value;
     }
     public CharacterConrtoller Controller
     {
@@ -50,11 +57,6 @@ public class CharacterManager : Singleton<CharacterManager>
         get => _skillsVFX;
         set => _skillsVFX = value;
     }
-    public AudioClip SkillsSFX
-    {
-        get => _skillsSFX;
-        set => _skillsSFX = value;
-    }
     public GameObject VFXOmbremarche
     {
         get => _VFXOmbremarche;
@@ -63,32 +65,48 @@ public class CharacterManager : Singleton<CharacterManager>
 
     #endregion properties
 
+    private void Update()
+    {
+        if (PNJManager.Instance.ControllerPNJ != null)
+        {
+            Collider = PNJManager.Instance.ControllerPNJ.gameObject;
+        }
+        else if (PNJManager.Instance.ControllerVillager != null)
+        {
+            Collider = PNJManager.Instance.ControllerVillager.gameObject;
+        }
+        else
+        {
+            Collider = null;
+        }
+
+        CastVignetDetection();
+
+    }
+
     #region Methode
 
     #region Player Action
-    /// <summary>
-    /// Fonction des action du joueur durant les différente phase de jeux
-    /// </summary>
+
     public void BiteAction()
     {
-        BloodAndFlesh();
+        CastVFXOnCollider();
 
-        PNJManager.Instance.KillVillager(false);
+        PNJManager.Instance.KillVillager(true);
 
         UIManager.Instance.ToggleBiteSkillButton(true);
         UIManager.Instance.IsBiteSkillActive = true;
     }   
     public void ClawAction()
     {
-        BloodAndFlesh();
+        CastVFXOnCollider();
 
         PNJManager.Instance.KillVillager(true);
 
         UIManager.Instance.ToggleClawSkillButton(true);
-        UIManager.Instance.IsClawSkillActive = true;
-        
+        UIManager.Instance.IsClawSkillActive = true;        
     }
-    public void ShadoStepAction()
+    public void ShadowStepAction()
     {
         UIManager.Instance.ToggleShadowStepButton(true);
         UIManager.Instance.IsShadowStepSkillActive = true;
@@ -100,11 +118,31 @@ public class CharacterManager : Singleton<CharacterManager>
 
     #endregion Player Action
 
-    public void BloodAndFlesh()
+    public void CastVFXOnCollider()
     {
-        if (_collider != null)
+        if (Collider != null)
+        {
             Instantiate(SkillsVFX, PNJManager.Instance.VFXSpawner.transform);
+        }
     }
-          
+
+    private void CastVignetDetection()
+    {
+        if(DetectedBy.Count > 0)
+        {
+            // Alerte
+            _controller.AnimationDetection.gameObject.SetActive(true);
+            _controller.AnimationDetection.enabled = true;
+            _controller.AnimationDetection.Play("Fade_Vignettage_Detection");
+        }
+        else if (DetectedBy.Count == 0)
+        {
+            // Pas d'alerte
+            _controller.AnimationDetection.gameObject.SetActive(false);
+            _controller.AnimationDetection.enabled = false;
+        }
+
+    }
+
     #endregion Methode;
 }

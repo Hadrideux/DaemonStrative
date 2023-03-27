@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class Switch_Button : MonoBehaviour
@@ -19,15 +20,13 @@ public class Switch_Button : MonoBehaviour
 
     public void SwitchScene()
     {
-        if (_isGoWitchScene)
+        if (_isGoWitchScene == true && _isGoGameScene == false)
         {
-            /*_blackFade.SetActive(true);
-            _blackFadeAnimation.Play("Fade In");*/
-            GameLoaderManager.Instance.LoadWitchScene();
+            SceneManager.LoadScene("WitchScene");            
         }
-        if (_isGoGameScene)
+        if (_isGoGameScene == true && _isGoWitchScene == false)
         {
-            GameLoaderManager.Instance.LoadGameScene();
+            SceneManager.LoadScene("GameScene");            
         }
     }
 }

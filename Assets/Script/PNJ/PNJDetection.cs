@@ -18,11 +18,6 @@ public class PNJDetection : MonoBehaviour
     [SerializeField] private float _delayDetection = 0f;
     [SerializeField] private float _delayDetectionTimer = 0f;
 
-    [SerializeField] private GameObject _vignetDetection = null;
-
-    [SerializeField] private Animator _animationDetection = null;
-    [SerializeField] private AnimationClip _fadeDetection = null;
-
     #endregion Attributs
 
     #region Propertie
@@ -42,6 +37,8 @@ public class PNJDetection : MonoBehaviour
     private void Start()
     {
         _delayDetectionTimer = 0;
+
+        _controllerPNJ.DetectionPNJ = this;
     }
 
     private void Update()
@@ -52,7 +49,6 @@ public class PNJDetection : MonoBehaviour
         }
 
         DetectionGaugeUpdate();
-        CastVignetDetection();
     }
 
 
@@ -72,6 +68,9 @@ public class PNJDetection : MonoBehaviour
                 if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, _obstructionMask))
                 {
                     _controllerPNJ.IsCanSeePlayer = true;
+
+                    if(!CharacterManager.Instance.DetectedBy.Contains(this))
+                        CharacterManager.Instance.DetectedBy.Add(this);
 
                     _delayDetectionTimer += Time.deltaTime;
                                         
@@ -101,6 +100,8 @@ public class PNJDetection : MonoBehaviour
     {
         _delayDetectionTimer = Mathf.Clamp(_delayDetectionTimer -= Time.deltaTime, 0, _delayDetection);
         _controllerPNJ.IsCanSeePlayer = false;
+
+        CharacterManager.Instance.DetectedBy.Remove(this);
     }
 
     private void DetectionGaugeUpdate()
@@ -112,20 +113,6 @@ public class PNJDetection : MonoBehaviour
         else
         {
             DetectionGauge.fillAmount -= DetectionFeedBack / 2 * Time.deltaTime;
-        }
-        
-    }
-
-    private void CastVignetDetection()
-    {
-        if (_controllerPNJ.IsCanSeePlayer == true)
-        {
-            _vignetDetection.SetActive(true);
-            _animationDetection.Play("Fade_Vignettage_Detection");
-        }
-        else
-        {
-            _vignetDetection.SetActive(false);
-        }
+        }        
     }
 }

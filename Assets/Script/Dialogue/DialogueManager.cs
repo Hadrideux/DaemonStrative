@@ -63,6 +63,12 @@ public class DialogueManager : Singleton<DialogueManager>
         set => _PNJVillager = value;
     }
 
+    public int ActiveMessage
+    {
+        get => _activeMessage;
+        set => _activeMessage = value;
+    }
+
     #endregion Properties
 
     public void OpenDialogue(DialogueController.Message[] messages, DialogueController.Actor[] actors)

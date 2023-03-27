@@ -6,30 +6,29 @@ using UnityEngine.UI;
 
 public class PNJManager : Singleton<PNJManager>
 {
-    [SerializeField] private PNJController _controller = null;
-    [SerializeField] private PNJ_VillagerController _PNJVillager = null;
+    [SerializeField] private PNJController _controllerPNJ = null;
+    [SerializeField] private PNJ_VillagerController _villagerPNJ = null;
 
     [SerializeField] private DialogueController _Dialogue = null;
-    
-    [SerializeField] private PNJDetection _detection = null;
-    
+        
     [SerializeField] private GameObject _body = null;
     [SerializeField] private GameObject _VFXSpawnPoint = null;    
        
     [SerializeField] private ItemData _itemData = null;
     [SerializeField] private bool _isDying = false;
+    //[SerializeField] private bool _isSeePlayer = false;
 
     #region Properties
     
     public PNJController ControllerPNJ
     {
-        get => _controller;
-        set => _controller = value;
+        get => _controllerPNJ;
+        set => _controllerPNJ = value;
     }
-    public PNJ_VillagerController VillagerController
+    public PNJ_VillagerController ControllerVillager
     {
-        get => _PNJVillager;
-        set => _PNJVillager = value;
+        get => _villagerPNJ;
+        set => _villagerPNJ = value;
     }
     public DialogueController Dialogue
     {
@@ -56,24 +55,48 @@ public class PNJManager : Singleton<PNJManager>
         get => _VFXSpawnPoint;
         set => _VFXSpawnPoint = value;
     }
-    
+
     #endregion Properties
 
     public void KillVillager(bool isKill)
     {
-        InventoryManager.Instance.AddItem(ItemGet);
-        
+        InventoryManager.Instance.ItemGet = _itemData;
+        InventoryManager.Instance.AddItem();
 
-        if(isKill)
+        IsDead = isKill;
+
+        if (ControllerPNJ != null )
         {
-            IsDead = true;
-            Destroy(Body);
+            ControllerPNJ.CastAnimation();
         }
-        
+
+        if (ControllerVillager != null)
+        {
+            ControllerVillager.CastAnimation();
+        }
     }
     public void DestroyAll()
-    { 
-        Destroy(CharacterManager.Instance.Collider);
+    {
+        if (ControllerPNJ != null)
+        {
+            Destroy(ControllerPNJ.gameObject);
+
+            ItemGet = null;
+            VFXSpawner = null;
+            Body = null;
+            ControllerPNJ = null;
+        }
+
+        if (ControllerVillager != null)
+        {
+            Destroy(ControllerVillager.gameObject);
+
+            ItemGet = null;
+            VFXSpawner = null;
+            Body = null;
+            ControllerVillager = null;
+        }
+
         IsDead = false;
     }
 

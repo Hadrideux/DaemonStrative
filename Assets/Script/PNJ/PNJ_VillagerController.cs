@@ -20,18 +20,20 @@ public class PNJ_VillagerController : MonoBehaviour
     [SerializeField] private GameObject _characterCompFeedback = null;
     [SerializeField] private RectTransform _dialogueButton;
 
+    [SerializeField] private Animator _animator = null;
+
+    #endregion Attributs
+
     public RectTransform DialogueButton
     {
         get => _dialogueButton;
         set => _dialogueButton = value;
     }
-    #endregion Attributs
     public PNJ_VillagerController VillagerController
     {
         get => _PNJVillager;
         set => _PNJVillager = value;
     }
-
     public DialogueController DialogueController
     {
         get => _DialogueController;
@@ -39,11 +41,34 @@ public class PNJ_VillagerController : MonoBehaviour
     }
 
     #region Mono
+    private void Start()
+    {
+        _animator = GetComponent<Animator>();
+    }
+    
+    private void Update()
+    {
+
+        if (PNJManager.Instance.IsDead == true)
+        {            
+            _VFXDuration += Time.deltaTime;
+
+            if (_VFXDuration >= _VFXEndTimer) 
+            {
+                PNJManager.Instance.DestroyAll();
+            }
+        }
+        else
+        {
+            _VFXDuration = 0;
+        }                
+    }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player")) 
         {
+            PNJManager.Instance.ControllerVillager = _PNJVillager;
             PNJManager.Instance.ItemGet = _itemData;
             PNJManager.Instance.VFXSpawner = _VFXSpawnPoint;
             PNJManager.Instance.Body = _body;
@@ -56,38 +81,22 @@ public class PNJ_VillagerController : MonoBehaviour
         }            
     }
 
-    private void OnTriggerExit(Collider other)
+    public void CastAnimation()
     {
-        PNJManager.Instance.ItemGet = null;
-        PNJManager.Instance.VFXSpawner = null;
-        PNJManager.Instance.Body = null;
-
-        if (VillagerController._characterCompFeedback != null && _dialogueButton.gameObject != null && _dialogueButton != null)
+        if (UIManager.Instance.IsClawSkillActive == true)
         {
+            _animator.SetTrigger("DieByClaw");
             _characterCompFeedback.SetActive(false);
             _dialogueButton.gameObject.SetActive(false);
         }
 
-    }
-
-    private void Update()
-    {
-
-        if (PNJManager.Instance.IsDead == true)
+        if (UIManager.Instance.IsBiteSkillActive == true)
         {
-            _VFXDuration += Time.deltaTime;
-
-            if (_VFXDuration > _VFXEndTimer) 
-            { 
-                PNJManager.Instance.DestroyAll();
-            }
+            _animator.SetTrigger("DieByBite");
+            _characterCompFeedback.SetActive(false);
+            _dialogueButton.gameObject.SetActive(false);
         }
-        else
-        {
-            _VFXDuration = 0;
-        }
-                
     }
     #endregion Mono
-       
+
 }

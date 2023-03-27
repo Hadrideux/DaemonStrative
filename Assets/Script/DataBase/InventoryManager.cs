@@ -5,11 +5,18 @@ using UnityEngine;
 
 public class InventoryManager : Singleton<InventoryManager>
 {
+    [SerializeField] private ItemData _itemGet = null;
+
     [SerializeField] private int _amountBlood = 0;
     [SerializeField] private int _amountSkull = 0;
 
     #region Properties
 
+    public ItemData ItemGet
+    {
+        get => _itemGet;
+        set => _itemGet = value;
+    }
     public int AmountSkull
     {
         get => _amountSkull;
@@ -23,16 +30,16 @@ public class InventoryManager : Singleton<InventoryManager>
 
     #endregion Properties
 
-    public void AddItem(ItemData itemGet)
+    public void AddItem()
     {
-        if(ERessourceType.SKULL == itemGet.Type)
+        if (ERessourceType.SKULL == ItemGet.Type)
         {
-            AmountSkull += itemGet.Amount;
+            AmountSkull += ItemGet.Amount;
         }
 
-        if (ERessourceType.BLOOD == itemGet.Type)
+        if (ERessourceType.BLOOD == ItemGet.Type)
         {
-            AmountBlood += itemGet.Amount;
+            AmountBlood += ItemGet.Amount;
 
         }
     }

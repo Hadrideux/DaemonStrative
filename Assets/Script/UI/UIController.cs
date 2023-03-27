@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UIController : MonoBehaviour
@@ -12,8 +13,6 @@ public class UIController : MonoBehaviour
     [SerializeField] private GameObject _vignetShadowStep = null;    
 
     [SerializeField] private Animator _animationShadowStep = null;
-    [SerializeField] private AnimationClip _fadeInShadowStep = null;
-    [SerializeField] private AnimationClip _fadeOutShadowStep = null;
 
     #endregion UI Menu
     #endregion Attributs
@@ -26,6 +25,8 @@ public class UIController : MonoBehaviour
         UIManager.Instance.Controller = this;
         UIManager.Instance.PauseUI = _pauseUI;
         UIManager.Instance.GameOverUI = _gameOverUI;
+
+        UIManager.Instance.ShadowStepImage.color = new Color(UIManager.Instance.ShadowStepImage.color.r, UIManager.Instance.ShadowStepImage.color.g, UIManager.Instance.ShadowStepImage.color.b, 0.5f);
     }
 
     private void Update()
@@ -45,7 +46,8 @@ public class UIController : MonoBehaviour
     }
     public void ReloadScceneInstance()
     {
-        UIManager.Instance.ReloadScene();
+        SceneManager.LoadScene("GameScene"); 
+        Time.timeScale = 1.0f;
     }
 
     private void CastVignetShadowStep()

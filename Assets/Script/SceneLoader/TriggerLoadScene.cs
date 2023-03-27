@@ -1,12 +1,11 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TriggerLoadScene : MonoBehaviour
 {
     [SerializeField] private bool _isGoWitchScene = false;
     [SerializeField] private bool _isGoGameScene = false;
-    [SerializeField] private GameObject _blackFade = null;
-    [SerializeField] private Animator _blackFadeAnimation = null;
-    [SerializeField] private AnimationClip _fadeIn = null;
+
     [SerializeField] private RectTransform _activation = null;
     [SerializeField] private GameObject _VFXPortal = null;
 
@@ -27,15 +26,15 @@ public class TriggerLoadScene : MonoBehaviour
     }
     public void SwitchScene()
     {
-        if (_isGoWitchScene)
+        if (_isGoWitchScene == true && _isGoGameScene == false)
         {
-            _blackFade.SetActive(true);
-            _blackFadeAnimation.Play("Fade In");
-            GameLoaderManager.Instance.LoadWitchScene();
+            SceneManager.LoadScene("WitchScene");
+            Debug.Log("WitchSceneLoaded");
         }
-        if (_isGoGameScene)
+        if (_isGoGameScene == true && _isGoWitchScene == false)
         {
-            GameLoaderManager.Instance.LoadGameScene();
+            SceneManager.LoadScene("GameScene");
+            Debug.Log("GameSceneLoaded");
         }
     }
 }
