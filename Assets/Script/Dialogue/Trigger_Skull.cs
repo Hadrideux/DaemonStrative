@@ -23,9 +23,10 @@ public class Trigger_Skull : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        _UIActivation.gameObject.SetActive(true);
         _focusCamRef.SetActive(true);
-        _playerCam.SetActive(false);        
+        _UIActivation.gameObject.SetActive(true);        
+        _playerCam.SetActive(false);
+        Debug.Log("Enter");
     }
 
     private void OnTriggerExit(Collider other)
@@ -33,13 +34,17 @@ public class Trigger_Skull : MonoBehaviour
         _UIActivation.gameObject.SetActive(false);
         _focusCamRef.SetActive(false);
         _playerCam.SetActive(true);
+        Debug.Log("Exit");
     }
 
     public void StealSkull() 
     {
         InventoryManager.Instance.AmountSkull += 1;
-        Destroy(_skullRef);
+        
         _UIActivation.gameObject.SetActive(false);
-        _focusCamRef.SetActive(false);        
+        _focusCamRef.SetActive(false);
+        _playerCam.SetActive(true);
+
+        Destroy(_skullRef);
     }
 }
