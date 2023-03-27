@@ -157,7 +157,6 @@ public class CharacterConrtoller : MonoBehaviour
         }
         
     }
-    */
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("PNJ"))
@@ -173,6 +172,7 @@ public class CharacterConrtoller : MonoBehaviour
             CharacterManager.Instance.Collider = null;
         }
     }
+    */
 
     private void SwitchCam(float timeCount, float animDelay, GameObject virtualCam)
     {                
