@@ -20,15 +20,13 @@ public class Switch_Button : MonoBehaviour
 
     public void SwitchScene()
     {
-        if (_isGoWitchScene)
+        if (_isGoWitchScene == true && _isGoGameScene == false)
         {
-            /*_blackFade.SetActive(true);
-            _blackFadeAnimation.Play("Fade In");*/
-            SceneManager.LoadScene("WitchScene");
+            SceneManager.LoadScene("WitchScene");            
         }
-        if (_isGoGameScene)
+        if (_isGoGameScene == true && _isGoWitchScene == false)
         {
-            SceneManager.LoadScene("GameScene");
+            SceneManager.LoadScene("GameScene");            
         }
     }
 }
