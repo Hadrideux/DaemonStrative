@@ -25,6 +25,8 @@ public class UIController : MonoBehaviour
         UIManager.Instance.Controller = this;
         UIManager.Instance.PauseUI = _pauseUI;
         UIManager.Instance.GameOverUI = _gameOverUI;
+
+        UIManager.Instance.ShadowStepImage.color = new Color(UIManager.Instance.ShadowStepImage.color.r, UIManager.Instance.ShadowStepImage.color.g, UIManager.Instance.ShadowStepImage.color.b, 0.5f);
     }
 
     private void Update()

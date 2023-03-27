@@ -211,7 +211,6 @@ public class UIManager : Singleton<UIManager>
             {
                 CharacterManager.Instance.IsCanBeSee = true;
                 CharacterManager.Instance.VFXOmbremarche.SetActive(false);
-                
 
                 if (ShadowStepTimer >= _coldDownShadowStep)
                 {
