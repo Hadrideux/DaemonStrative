@@ -733,26 +733,28 @@ MonoBehaviour:
   _dialogueButton: {fileID: 5585016323323947357}
   messages:
   - actorId: 0
-    message: Welcom
+    message: Bonsoir l'ami !
   - actorId: 1
-    message: Yeah !!
+    message: Bonsoir
   - actorId: 0
-    message: DIE DIE DIE !!!!
+    message: "Que me vaut ton int\xE9ret ?"
   - actorId: 1
-    message: dsjfgbkjgnk
+    message: "Une simple envie de mieux te conna\xEEtre, pour me rapprocher un peu
+      de toi."
+  - actorId: 0
+    message: "Ha, cel\xE0 me fait plaisir. Peut \xEAtre voudrais tu venir boire une
+      infusion chez moi ce soir ? Nous pourrions discuter un peu avant que je ne
+      couche mes enfants."
   - actorId: 1
-    message: pppppppppppoo
-  - actorId: 3
-    message: DIE DIE DIE !!!!
+    message: "Hmm, malheureusement j'ai \xE0 faire, peut \xEAtre une autre fois..
+      Bonne soir\xE9e"
+  - actorId: 0
+    message: "Bonne soir\xE9e l'ami !"
   actors:
-  - name: Sir Glob
-    sprite: {fileID: 21300000, guid: 24dfef829c13c0341a32242daf9e3973, type: 3}
-  - name: Silv
-    sprite: {fileID: 21300000, guid: 88f1070143e4591469dc80e4cb304992, type: 3}
-  - name: Barg
-    sprite: {fileID: 21300000, guid: 86464bdbe14e0224aab46bde42c8940d, type: 3}
-  - name: Barg
-    sprite: {fileID: 21300000, guid: 86464bdbe14e0224aab46bde42c8940d, type: 3}
+  - name: Slotek
+    sprite: {fileID: 21300000, guid: 230d2722308e09347991135ef401c1bf, type: 3}
+  - name: Tarkhal
+    sprite: {fileID: 21300000, guid: 0747171512bd47549ba1cf3f23215dec, type: 3}
 --- !u!1 &2314922766881701156
 GameObject:
   m_ObjectHideFlags: 0
